@@ -4,6 +4,7 @@ extends MeshInstance3D
 
 const GOLD: Mesh = preload("res://assets/materials/burst_gold_mesh.tres")
 const RED: Mesh = preload("res://assets/materials/burst_red_mesh.tres")
+const ICE: Mesh = preload("res://assets/materials/burst_ice_mesh.tres")
 
 @export var duration: float = 0.35
 

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://gwhhvi0063kj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21h4c"]
+shading_mode = 0
+albedo_color = Color(0.95686275, 0.972549, 1, 1)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_v4jyq"]
+material = SubResource("StandardMaterial3D_21h4c")
+size = Vector2(0.08, 0.08)
+
+[node name="Snowfall" type="CPUParticles3D" unique_id=257993770]
+cast_shadow = 0
+amount = 220
+lifetime = 7.0
+preprocess = 7.0
+mesh = SubResource("QuadMesh_v4jyq")
+emission_shape = 3
+emission_box_extents = Vector3(16, 0.5, 13)
+direction = Vector3(0.15, -1, 0)
+spread = 12.0
+gravity = Vector3(0, -0.3, 0)
+initial_velocity_min = 0.9
+initial_velocity_max = 1.5
+scale_amount_min = 0.6
+scale_amount_max = 1.3

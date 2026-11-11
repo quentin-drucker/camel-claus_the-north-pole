@@ -5,6 +5,18 @@ extends CPUParticles3D
 static var _cube: BoxMesh
 
 
+## Shared little cube mesh (vertex-colored, unshaded) for puffs and trails.
+static func cube_mesh() -> BoxMesh:
+	if _cube == null:
+		_cube = BoxMesh.new()
+		_cube.size = Vector3.ONE * 0.13
+		var material := StandardMaterial3D.new()
+		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		material.vertex_color_use_as_albedo = true
+		_cube.material = material
+	return _cube
+
+
 static func spawn(pos: Vector3, tint: Color = Color("F4F8FF"), count: int = 8, speed: float = 3.0) -> void:
 	var poof := Poof.new()
 	poof.amount = count
@@ -16,14 +28,7 @@ static func spawn(pos: Vector3, tint: Color = Color("F4F8FF"), count: int = 8, s
 
 
 func _init() -> void:
-	if _cube == null:
-		_cube = BoxMesh.new()
-		_cube.size = Vector3.ONE * 0.13
-		var material := StandardMaterial3D.new()
-		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-		material.vertex_color_use_as_albedo = true
-		_cube.material = material
-	mesh = _cube
+	mesh = cube_mesh()
 	one_shot = true
 	explosiveness = 1.0
 	lifetime = 0.45

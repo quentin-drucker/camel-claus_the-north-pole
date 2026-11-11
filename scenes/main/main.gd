@@ -1,6 +1,6 @@
 extends Node3D
-## Starts a run after the title screen (or straight away after "Play again"), and fades in the
-## music's drive layer for the final stretch.
+## The gameplay scene: starts a run as soon as it loads (the main menu and Transition handle the
+## fade in), and fades in the music's drive layer for the final stretch.
 
 ## Run time when the music's intensity layer fades in (docs/PLAN.md five-minute arc).
 const INTENSITY_TIME: float = 210.0
@@ -9,17 +9,8 @@ var _intense: bool = false
 
 
 func _ready() -> void:
-	if GameState.skip_title:
-		$TitleScreen.queue_free()
-		get_tree().paused = false
-		_begin()
-	else:
-		$TitleScreen.play_pressed.connect(_begin)
-
-
-func _begin() -> void:
 	GameState.start_run()
-	Audio.start_music()
+	Audio.play_music()
 
 
 func _process(_delta: float) -> void:
@@ -29,8 +20,8 @@ func _process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	# ponytail: debug loadout (F4) to see all Phase 3 content fast; remove before ship with F2/F3.
-	if not event.is_action_pressed("debug_loadout"):
+	# Debug loadout (F4) to see all content fast; debug builds only (like F2/F3).
+	if not OS.is_debug_build() or not event.is_action_pressed("debug_loadout"):
 		return
 	var player: Player = GameState.player
 	for upgrade: UpgradeData in $LevelUpMenu.upgrades:

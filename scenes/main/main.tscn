@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d3vk44upno6q5" path="res://scenes/ui/hud.tscn" id="5_ouso4"]
 [ext_resource type="PackedScene" uid="uid://mgoyfhilii5d" path="res://scenes/ui/level_up_menu.tscn" id="6_blune"]
 [ext_resource type="PackedScene" uid="uid://bb5xa4w3sxlm2" path="res://scenes/ui/end_screen.tscn" id="7_th5th"]
-[ext_resource type="PackedScene" uid="uid://bats1awndmnxs" path="res://scenes/ui/title_screen.tscn" id="10_a8run"]
+[ext_resource type="PackedScene" uid="uid://v513l42md5hr" path="res://scenes/ui/pause_menu.tscn" id="10_a8run"]
 
 [sub_resource type="Environment" id="Environment_vom5j"]
 background_mode = 1
@@ -69,4 +69,4 @@ spawn_rate_start = 1.4
 
 [node name="EndScreen" parent="." unique_id=1987390613 instance=ExtResource("7_th5th")]
 
-[node name="TitleScreen" parent="." unique_id=2054730325 instance=ExtResource("10_a8run")]
+[node name="PauseMenu" parent="." unique_id=1626184259 instance=ExtResource("10_a8run")]

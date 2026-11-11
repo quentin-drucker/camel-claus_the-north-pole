@@ -41,6 +41,19 @@ func _initialize() -> void:
 	player.add_item(cracker)
 	_check(is_equal_approx(player.explode_chance, 0.5), "item copies stack")
 
+	# Evolution uses the data's extra count; UI text comes from the same formulas.
+	var gift: Node = player.find_weapon(load("res://scenes/weapons/gift_toss.tscn"))
+	var before: int = gift.count()
+	gift.evolve()
+	_check(gift.count() == before + gift.data.evolved_extra_count, "evolved Gift Toss adds its extra gifts")
+	var describe: GDScript = load("res://scripts/ui/describe.gd")
+	var summary: String = describe.weapon_summary(gift.data, gift.level, true, player)
+	_check(summary.contains("%d gifts" % gift.count()), "weapon summary shows the real gift count: " + summary)
+	var damage_card: Resource = load("res://resources/upgrades/heavier_gifts.tres")
+	player.apply_upgrade(damage_card)
+	var damage_row: Dictionary = describe.stats(player).filter(func(r: Dictionary) -> bool: return r["name"] == "Damage")[0]
+	_check(damage_row["cmp"] == 1 and "Heavier Gifts" in damage_row["sources"], "stats show damage as improved, with its source")
+
 	player.free()
 	print("upgrade tests: %d failed" % _failures)
 	quit(1 if _failures > 0 else 0)

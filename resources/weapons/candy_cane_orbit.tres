@@ -9,3 +9,6 @@ damage = 9.0
 cooldown = 1.0
 projectile_count = 2
 attack_range = 1.9
+count_noun = "cane"
+show_radius = true
+show_cooldown = false

@@ -4,6 +4,9 @@ extends Node
 signal xp_changed(xp: int, xp_needed: int)
 signal leveled_up(level: int)
 signal chest_found
+## A weapon just evolved (HUD banner, effects). Emitted by the chest menu.
+@warning_ignore("unused_signal")
+signal weapon_evolved(weapon: Weapon)
 signal run_ended(won: bool)
 
 const RUN_LENGTH: float = 300.0
@@ -24,8 +27,6 @@ var pending_level_ups: int = 0
 var pending_chests: int = 0
 var kills: int = 0
 var is_running: bool = false
-## Set by "Play again": the reloaded main scene skips the title screen.
-var skip_title: bool = false
 
 
 func _process(delta: float) -> void:
@@ -65,6 +66,11 @@ func add_xp(amount: int) -> void:
 func add_chest() -> void:
 	pending_chests += 1
 	chest_found.emit()
+
+
+## Leaving mid-run (pause menu -> restart / main menu): stop the run without the end screen.
+func end_run_silently() -> void:
+	is_running = false
 
 
 func end_run(won: bool) -> void:

@@ -28,9 +28,8 @@ func _process(delta: float) -> void:
 			return origin.distance_squared_to(a.global_position) < origin.distance_squared_to(b.global_position)
 	)
 	_cooldown_left = cooldown()
-	Audio.play(&"throw")
-	var shots: int = count() + (2 if evolved else 0)
-	for i in shots:
+	Audio.play(&"throw", 1.25 if evolved else 1.0)
+	for i in count():
 		_fire_at(targets[i % targets.size()], floori(float(i) / targets.size()))
 
 
@@ -42,6 +41,7 @@ func _fire_at(target: Enemy, fan_step: int) -> void:
 	projectile.direction = aim.normalized().rotated(Vector3.UP, fan_step * 0.35)
 	projectile.speed = data.projectile_speed
 	projectile.damage = damage()
-	projectile.pierce = 2 if evolved else 0
+	projectile.pierce = data.evolved_pierce if evolved else 0
+	projectile.evolved = evolved
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = global_position + Vector3.UP * 0.6

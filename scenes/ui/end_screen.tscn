@@ -23,7 +23,7 @@ layout_mode = 2
 
 [node name="VBox" type="VBoxContainer" parent="Center/Panel" unique_id=809891372]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 14
 
 [node name="ResultLabel" type="Label" parent="Center/Panel/VBox" unique_id=1142960938]
 unique_name_in_owner = true
@@ -33,10 +33,28 @@ theme_override_font_sizes/font_size = 64
 text = "Result"
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="Center/Panel/VBox" unique_id=1533289641]
+[node name="BuildRow" type="HBoxContainer" parent="Center/Panel/VBox" unique_id=813789265]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(380, 88)
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Center/Panel/VBox" unique_id=581498631]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="Center/Panel/VBox/Buttons" unique_id=1533289641]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 88)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
 text = "Play again"
+
+[node name="MenuButton" type="Button" parent="Center/Panel/VBox/Buttons" unique_id=390433978]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 88)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Main menu"

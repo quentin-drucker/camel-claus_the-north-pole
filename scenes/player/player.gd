@@ -22,6 +22,8 @@ signal died
 @export var xp_pull_interval: float = 20.0
 
 var hp: float
+## max_hp before any upgrades (pause-menu comparisons).
+var base_max_hp: float
 ## Ground-plane velocity this frame (the spawner uses it to recycle enemies ahead of Claus).
 var velocity: Vector3 = Vector3.ZERO
 ## Global stats raised by upgrades and items (Megabonk-"tome" style: shared by all weapons).
@@ -59,7 +61,9 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	base_max_hp = max_hp
 	hp = max_hp
+	GameState.weapon_evolved.connect(_on_weapon_evolved)
 	body.rotation.y = PI  # start facing the camera (models face -Z)
 	_base_scale = body.scale
 
@@ -84,10 +88,20 @@ func _process(delta: float) -> void:
 			get_tree().call_group(&"xp_ornaments", &"attract")
 
 
+func _on_weapon_evolved(_weapon: Weapon) -> void:
+	Audio.play(&"evolve")
+	Audio.duck(1.5)
+	Burst.spawn(Burst.GOLD, global_position, 4.0)
+	Burst.spawn(Burst.ICE, global_position, 2.5)
+	Poof.spawn(global_position, Color("F2B53B"), 20, 6.0)
+	_squash = -0.6  # little stretch-up "power pose"
+	get_tree().call_group(&"camera", &"shake", 0.3)
+
+
 ## Hop + squash-and-stretch while walking, slow breathing when idle, squash on hits.
 func _animate(delta: float, moving: bool) -> void:
 	_anim_time += delta * (14.0 if moving else 3.0)
-	_squash = maxf(_squash - delta * 4.0, 0.0)
+	_squash = move_toward(_squash, 0.0, delta * 4.0)
 	var wave: float = sin(_anim_time)
 	var stretch: float = (absf(wave) * 0.08 if moving else wave * 0.02) - _squash * 0.25
 	body.scale = _base_scale * Vector3(1.0 - stretch * 0.5, 1.0 + stretch, 1.0 - stretch * 0.5)

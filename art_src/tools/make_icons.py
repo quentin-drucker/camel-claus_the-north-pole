@@ -1,11 +1,12 @@
-"""Camel Claus UI icons: 12x12 pixel art (saved 4x) from text maps, palette colors only (docs/ART_DIRECTION.md).
+"""Camel Claus UI icons: 12x12 pixel art + 1 px navy outline (saved 4x = 56 px) from text maps, palette colors only (docs/ART_DIRECTION.md).
 Writes assets/ui/icons/<name>.png; <name> matches the upgrade/item .tres file name, so the menu
 finds an icon from the resource path. Run: python art_src/tools/make_icons.py
 """
 import os
 from PIL import Image
 
-SCALE = 4  # saved at 48x48 so UI shows them at native size (no runtime scaling)
+SCALE = 4  # saved at 56x56 (14 px incl. outline x4); UI shows them at 56 (cards) or 28 (HUD)
+OUTLINE = "#22304F"
 PROJ = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 COLORS = {
     "W": "#F4F8FF", "S": "#C9DAF0", "B": "#8FA9D1", "I": "#7FD6F2", "N": "#4E6A9E", "K": "#22304F",
@@ -209,17 +210,17 @@ YYKYY.YYKYY.
 ..DDDDDDD...
 ..OOOOOOO...""",
     "chimney_draft": """
-..S..S......
-...S..S.....
-..S..S......
-............
-..MMMMMMM...
-..RRRRRRR...
-..MRMRMRM...
-..RRRRRRR...
-..MRMRMRM...
-..RRRRRRR...
-..MRMRMRM...""",
+.Y........Y.
+..Y......Y..
+...Y....Y...
+....YYYY....
+..MMMMMMMM..
+..RRRRRRRR..
+..MRRMRRMR..
+..RRRRRRRR..
+..RMRRMRRM..
+..RRRRRRRR..
+..MMMMMMMM..""",
     "lump_of_coal": """
 ............
 ....BBB.....
@@ -231,6 +232,31 @@ BNNNNNNNNNB.
 .BNNNNNNNB..
 ..BBNNNBB...
 ....BBB.....""",
+    "weapon_gift_toss_evo": """
+W....Y..Y..W
+.....RYYR...
+..W...RR....
+.YYYYYRRYYY.
+.YYYYYRRYYY.
+.RRRRRRRRRR.
+.YYYYYRRYYY.
+.YYYYYRRYYY.
+.CCCCCRRCCC.
+.CCCCCRRCCC.
+W..........W""",
+    "weapon_jingle_pulse_evo": """
+.......WW...
+.......W.W..
+..YY...W....
+.YYYY.WW....
+.YWYY.WW....
+YYYYYY......
+YYYYYY.YY...
+DDDDDD.YYY..
+..OO..YWYYY.
+......YYYYY.
+......DDDDD.
+........OO..""",
     "evolution": """
 .....YY.....
 .....YY.....
@@ -251,13 +277,19 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
     for name, art in ICONS.items():
         rows = [r for r in art.split("\n") if r != ""]
-        img = Image.new("RGBA", (12, 12), (0, 0, 0, 0))
+        # 14x14 canvas: the 12x12 art plus a 1 px navy outline so icons read on snow and on panels.
+        img = Image.new("RGBA", (14, 14), (0, 0, 0, 0))
         for y, row in enumerate(rows[:12]):
             for x, ch in enumerate(row[:12]):
                 if ch in COLORS:
                     h = COLORS[ch]
-                    img.putpixel((x, y), tuple(int(h[i:i + 2], 16) for i in (1, 3, 5)) + (255,))
-        img.resize((12 * SCALE, 12 * SCALE), Image.NEAREST).save(os.path.join(out_dir, name + ".png"))
+                    img.putpixel((x + 1, y + 1), tuple(int(h[i:i + 2], 16) for i in (1, 3, 5)) + (255,))
+        outline = tuple(int(OUTLINE[i:i + 2], 16) for i in (1, 3, 5)) + (255,)
+        solid = {(x, y) for x in range(14) for y in range(14) if img.getpixel((x, y))[3] > 0}
+        for x, y in [(x, y) for x in range(14) for y in range(14) if (x, y) not in solid]:
+            if any((x + dx, y + dy) in solid for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                img.putpixel((x, y), outline)
+        img.resize((14 * SCALE, 14 * SCALE), Image.NEAREST).save(os.path.join(out_dir, name + ".png"))
     print(f"{len(ICONS)} icons -> {os.path.relpath(out_dir, PROJ)}")
 
 

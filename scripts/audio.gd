@@ -20,6 +20,7 @@ const SFX: Dictionary = {
 	&"charge": ["sfx_charge.ogg", -6.0, 0.5, 1],
 	&"levelup": ["jingle_levelup.wav", -4.0, 0.2, 1],
 	&"chest": ["jingle_chest.wav", -4.0, 0.2, 1],
+	&"evolve": ["jingle_evolve.wav", -2.0, 0.5, 1],
 	&"boss": ["jingle_boss.wav", -2.0, 1.0, 1],
 	&"win": ["jingle_win.wav", -2.0, 1.0, 1],
 	&"lose": ["jingle_lose.wav", -2.0, 1.0, 1],
@@ -30,6 +31,13 @@ var _players: Dictionary = {}  # name -> AudioStreamPlayer
 var _last_played: Dictionary = {}  # name -> engine time (s)
 var _music_base: AudioStreamPlayer
 var _music_drive: AudioStreamPlayer
+const SILENT_DB: float = -60.0
+
+var _drive_db: float = SILENT_DB
+var _drive_target_db: float = SILENT_DB
+var _duck_db: float = 0.0
+var _duck_until: float = 0.0
+var _pause_duck: bool = false
 var _xp_combo: int = 0
 var _xp_last: float = -10.0
 
@@ -71,11 +79,14 @@ func play_xp() -> void:
 	play(&"xp", 1.0 + mini(_xp_combo, 12) * 0.05, 0.0)
 
 
-func start_music() -> void:
-	_music_drive.volume_db = -60.0
-	_music_base.volume_db = 0.0
-	_music_base.play()
-	_music_drive.play()
+## Start the music if it isn't already playing (menus, restarts and runs share one continuous track),
+## and drop back to the calm mix.
+func play_music() -> void:
+	_drive_target_db = SILENT_DB
+	if not _music_base.playing:
+		_drive_db = SILENT_DB
+		_music_base.play()
+		_music_drive.play()
 
 
 func stop_music() -> void:
@@ -85,15 +96,26 @@ func stop_music() -> void:
 
 ## Fade the drive stem in (final stretch) or out.
 func set_intensity(on: bool) -> void:
-	create_tween().tween_property(_music_drive, "volume_db", 0.0 if on else -60.0, 3.0)
+	_drive_target_db = 0.0 if on else SILENT_DB
 
 
-## Dip the music for a moment (boss, win/lose) without touching the player's Music slider.
+## Dip the music for a moment (boss, evolution) without touching the player's Music slider.
 func duck(seconds: float = 1.5) -> void:
-	var tween: Tween = create_tween()
-	tween.tween_property(_music_base, "volume_db", -10.0, 0.15)
-	tween.tween_interval(seconds)
-	tween.tween_property(_music_base, "volume_db", 0.0, 0.6)
+	_duck_until = Time.get_ticks_msec() / 1000.0 + seconds
+
+
+## Softer music while a pause menu is open.
+func set_paused_duck(on: bool) -> void:
+	_pause_duck = on
+
+
+func _process(delta: float) -> void:
+	var now: float = Time.get_ticks_msec() / 1000.0
+	var duck_db: float = -10.0 if now < _duck_until else (-8.0 if _pause_duck else 0.0)
+	_duck_db = move_toward(_duck_db, duck_db, delta * 40.0)
+	_drive_db = move_toward(_drive_db, _drive_target_db, delta * 20.0)  # ~3 s fade in
+	_music_base.volume_db = _duck_db
+	_music_drive.volume_db = _drive_db + _duck_db
 
 
 ## 0..1 slider value -> bus gain (squared so the slider feels even), saved for next time.

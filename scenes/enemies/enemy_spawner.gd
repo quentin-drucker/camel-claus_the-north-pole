@@ -69,7 +69,10 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	# ponytail: debug keys (F2 stress test, F3 skip 30 s); remove before ship.
+	# Debug keys (F2 stress test + god mode, F3 skip 30 s) exist only in debug builds; the shipped
+	# release export ignores them.
+	if not OS.is_debug_build():
+		return
 	if event.is_action_pressed("debug_skip_time"):
 		GameState.run_time += 30.0
 	if event.is_action_pressed("debug_stress_test"):
