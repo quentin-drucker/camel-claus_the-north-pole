@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b8ysltp5kkoe2"]
+
+[ext_resource type="Script" uid="uid://blq45ofcvtyih" path="res://scenes/weapons/gift_toss.gd" id="1_1v88y"]
+
+[node name="GiftToss" type="Node3D" unique_id=1549740611]
+script = ExtResource("1_1v88y")

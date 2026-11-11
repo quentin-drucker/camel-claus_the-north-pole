@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://d3vk44upno6q5"]
+
+[ext_resource type="Script" uid="uid://sxtjyjd7hixo" path="res://scenes/ui/hud.gd" id="1_0mwgc"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1847177649]
+script = ExtResource("1_0mwgc")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=959841318]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=1481690879]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="XpBar" type="ProgressBar" parent="Margin/VBox" unique_id=63347540]
+unique_name_in_owner = true
+modulate = Color(0.9490196, 0.70980394, 0.23137255, 1)
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+show_percentage = false
+
+[node name="TopRow" type="HBoxContainer" parent="Margin/VBox" unique_id=1007714652]
+layout_mode = 2
+
+[node name="HpBar" type="ProgressBar" parent="Margin/VBox/TopRow" unique_id=896533156]
+unique_name_in_owner = true
+modulate = Color(0.8509804, 0.20392157, 0.24705882, 1)
+custom_minimum_size = Vector2(240, 22)
+layout_mode = 2
+show_percentage = false
+
+[node name="LevelLabel" type="Label" parent="Margin/VBox/TopRow" unique_id=1158201793]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.1882353, 0.30980393, 1)
+theme_override_font_sizes/font_size = 22
+text = "Lv 1"
+
+[node name="Spacer" type="Control" parent="Margin/VBox/TopRow" unique_id=857468123]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="TimerLabel" type="Label" parent="Margin/VBox/TopRow" unique_id=2106703601]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.1882353, 0.30980393, 1)
+theme_override_font_sizes/font_size = 32
+text = "5:00"
+
+[node name="FpsLabel" type="Label" parent="Margin/VBox" unique_id=2039340649]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.30588236, 0.41568628, 0.61960787, 1)

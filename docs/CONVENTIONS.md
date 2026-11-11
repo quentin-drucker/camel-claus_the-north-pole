@@ -31,6 +31,13 @@ art_src/     .blend and other source files; has .gdignore so Godot won't auto-im
 docs/        devlog, art direction, these conventions
 ```
 
+## Godot MCP gotchas
+
+- Scripts written from outside Godot aren't registered until the editor rescans, which it does when its window gets focus. After creating new `.gd` files, focus the Godot window before using their `class_name`s.
+- Add an autoload only after its script compiles; if it was added while broken, remove and re-add it.
+- A script's `@export` fields can't be set in the same call that attaches the script; prefer `preload()` defaults in the script for data resources.
+- Tests live in `tests/` as `SceneTree` scripts: `godot --headless --path . -s res://tests/<test>.gd` (exit code 1 = failure).
+
 ## Web build
 
 - Must keep working with the GL Compatibility renderer and Web export.

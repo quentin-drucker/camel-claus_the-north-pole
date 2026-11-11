@@ -7,6 +7,25 @@ Entry format: `## YYYY-MM-DD — short title`, then what changed, why, and what'
 
 ---
 
+## 2026-11-10 — Phase 1: greybox core loop playable
+
+**Done**
+- Full run loop with primitives: Claus (tan capsule, WASD/arrows), chaser enemies (purple capsules) spawning in a ring 18 m out, Gift Toss auto-firing red cubes at the nearest enemies, gold XP ornaments pulled in by pickup radius, XP bar, level-up menu (pauses, 3 random of 6 upgrades), HP bar, 5:00 countdown, win/lose screen, restart.
+- No physics bodies: everything is distance checks. `EnemySpawner` moves all enemies in one loop with a spatial grid for separation (they form a crowd, not one blob) and applies contact damage.
+- Data as Resources: `EnemyData` (`resources/enemies/chaser.tres`), `WeaponData` (`resources/weapons/gift_toss.tres`), `UpgradeData` x6 (`resources/upgrades/`). `GameState` autoload holds run time, XP/level, and the live player/enemy lists.
+- Arena 120x120 m with two-tone pixel snow (noise texture, nearest filter) so movement reads; player clamped to it.
+- **Performance gate passed:** F2 debug key spawns 300 enemies + god mode. Web build in Chrome: ~300 enemies at 240 fps (median frame 4.2 ms, p95 4.3 ms), 0 console errors. Measured on an RTX 5080 laptop; re-check on weaker hardware in Phase 5. MultiMesh not needed.
+- Unit test `tests/test_game_state.gd` for XP/level math (multi-level grabs). Passing.
+- First tuning pass: Gift Toss 10 dmg / 0.7 s (5 dmg felt hopeless: died at 0:16 at level 1); spawn ramp 0.7 → 8 enemies/s; enemy HP x1 → x3 over the run.
+
+**Gotchas (now in `CONVENTIONS.md`)** — editor rescans only on focus; autoload must compile before it's added; set exported fields in a separate step from attaching the script.
+
+**Known rough edges (later phases)**
+- HUD timer shows 0:01 behind the win screen (cosmetic). F2 debug key and FPS label must go before ship. Balance is untested beyond the first minute.
+
+**Next**
+- Checkpoint 1: Quentin plays a full run in the browser and says if it's fun.
+
 ## 2026-11-10 — Phase 0: pipeline smoke test passed
 
 **Done**

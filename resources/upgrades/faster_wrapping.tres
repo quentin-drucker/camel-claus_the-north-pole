@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://iqknf1cieoxp"]
+
+[ext_resource type="Script" uid="uid://c4n4m808bru7f" path="res://scripts/data/upgrade_data.gd" id="1_bp5ut"]
+
+[resource]
+script = ExtResource("1_bp5ut")
+title = "Faster Wrapping"
+description = "Gift Toss: fires 0.12 s sooner"
+stat = 4
+amount = 0.12

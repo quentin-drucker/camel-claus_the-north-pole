@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://b52fqd5yeh77f"]
+
+[ext_resource type="Script" uid="uid://c4n4m808bru7f" path="res://scripts/data/upgrade_data.gd" id="1_btfa6"]
+
+[resource]
+script = ExtResource("1_btfa6")
+title = "Extra Hump"
+description = "+25 max HP (and heal 25)"
+stat = 1
+amount = 25.0

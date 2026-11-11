@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://b4lreaiuw2kl0"]
 
-[ext_resource type="PackedScene" path="res://scenes/props/gift_test.tscn" id="1_hyk8p"]
+[ext_resource type="Script" uid="uid://bcu3flxgsyf2o" path="res://scenes/main/main.gd" id="1_hujxm"]
+[ext_resource type="Script" uid="uid://oj1kv1bhe6ly" path="res://scenes/main/game_camera.gd" id="2_yyfjg"]
+[ext_resource type="PackedScene" uid="uid://bpvtgglcboef8" path="res://scenes/player/player.tscn" id="3_b1x3f"]
+[ext_resource type="Script" uid="uid://d0e7w16185t2i" path="res://scenes/enemies/enemy_spawner.gd" id="4_a8run"]
+[ext_resource type="PackedScene" uid="uid://d3vk44upno6q5" path="res://scenes/ui/hud.tscn" id="5_ouso4"]
+[ext_resource type="PackedScene" uid="uid://mgoyfhilii5d" path="res://scenes/ui/level_up_menu.tscn" id="6_blune"]
+[ext_resource type="PackedScene" uid="uid://bb5xa4w3sxlm2" path="res://scenes/ui/end_screen.tscn" id="7_th5th"]
 
 [sub_resource type="Environment" id="Environment_vom5j"]
 background_mode = 1
@@ -9,18 +15,38 @@ ambient_light_source = 2
 ambient_light_color = Color(0.7882353, 0.85490197, 0.9411765, 1)
 ambient_light_energy = 0.6
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyk8p"]
-albedo_color = Color(0.95686275, 0.972549, 1, 1)
+[sub_resource type="Gradient" id="Gradient_7smn1"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.7)
+colors = PackedColorArray(0.95686275, 0.972549, 1, 1, 0.7882353, 0.85490197, 0.9411765, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_iuonh"]
-size = Vector2(40, 40)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_raeie"]
+frequency = 0.06
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hxu8e"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_raeie")
+color_ramp = SubResource("Gradient_7smn1")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nvumn"]
+albedo_texture = SubResource("NoiseTexture2D_hxu8e")
+uv1_scale = Vector3(12, 12, 1)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ou6is"]
+size = Vector2(120, 120)
 
 [node name="Main" type="Node3D" unique_id=1986345608]
+script = ExtResource("1_hujxm")
 
-[node name="GameCamera" type="Camera3D" parent="." unique_id=830969928]
+[node name="GameCamera" type="Camera3D" parent="." unique_id=830969928 node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 0.57357645, 0.81915206, 0, -0.81915206, 0.57357645, 0, 13.93, 9.75)
 current = true
 fov = 40.0
+script = ExtResource("2_yyfjg")
+target = NodePath("../Player")
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=20958010]
 transform = Transform3D(0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
@@ -30,7 +56,17 @@ light_energy = 0.9
 environment = SubResource("Environment_vom5j")
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=227383403]
-material_override = SubResource("StandardMaterial3D_hyk8p")
-mesh = SubResource("PlaneMesh_iuonh")
+material_override = SubResource("StandardMaterial3D_nvumn")
+mesh = SubResource("PlaneMesh_ou6is")
 
-[node name="GiftTest" parent="." unique_id=411493732 instance=ExtResource("1_hyk8p")]
+[node name="Player" parent="." unique_id=1351532715 instance=ExtResource("3_b1x3f")]
+
+[node name="EnemySpawner" type="Node3D" parent="." unique_id=1960907399]
+script = ExtResource("4_a8run")
+spawn_rate_start = 0.7
+
+[node name="HUD" parent="." unique_id=1847177649 instance=ExtResource("5_ouso4")]
+
+[node name="LevelUpMenu" parent="." unique_id=1166969450 instance=ExtResource("6_blune")]
+
+[node name="EndScreen" parent="." unique_id=1987390613 instance=ExtResource("7_th5th")]

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://mgoyfhilii5d"]
+
+[ext_resource type="Script" uid="uid://drvdrwxyjrflk" path="res://scenes/ui/level_up_menu.gd" id="1_uklwp"]
+[ext_resource type="Script" uid="uid://c4n4m808bru7f" path="res://scripts/data/upgrade_data.gd" id="2_jpc1i"]
+[ext_resource type="Resource" uid="uid://pg8nne5ef2b2" path="res://resources/upgrades/swift_hooves.tres" id="3_12waf"]
+[ext_resource type="Resource" uid="uid://b52fqd5yeh77f" path="res://resources/upgrades/extra_hump.tres" id="4_gs4ci"]
+[ext_resource type="Resource" uid="uid://bqiacdwdes7bd" path="res://resources/upgrades/magnet_scarf.tres" id="5_1ivcs"]
+[ext_resource type="Resource" uid="uid://cpx2dovkr1kqk" path="res://resources/upgrades/heavier_gifts.tres" id="6_p7a5o"]
+[ext_resource type="Resource" uid="uid://iqknf1cieoxp" path="res://resources/upgrades/faster_wrapping.tres" id="7_ynggi"]
+[ext_resource type="Resource" uid="uid://0hd801d4qof" path="res://resources/upgrades/double_gift.tres" id="8_vy0on"]
+
+[node name="LevelUpMenu" type="CanvasLayer" unique_id=1166969450]
+process_mode = 3
+layer = 10
+script = ExtResource("1_uklwp")
+upgrades = Array[ExtResource("2_jpc1i")]([ExtResource("3_12waf"), ExtResource("4_gs4ci"), ExtResource("5_1ivcs"), ExtResource("6_p7a5o"), ExtResource("7_ynggi"), ExtResource("8_vy0on")])
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1473839333]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.13333334, 0.1882353, 0.30980393, 0.6666667)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=889725778]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="Center" unique_id=1577980428]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Center/VBox" unique_id=70713708]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Level up! Pick one"
+horizontal_alignment = 1
+
+[node name="Choices" type="HBoxContainer" parent="Center/VBox" unique_id=2070900489]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Choice1" type="Button" parent="Center/VBox/Choices" unique_id=1292554836]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="Choice2" type="Button" parent="Center/VBox/Choices" unique_id=401546093]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="Choice3" type="Button" parent="Center/VBox/Choices" unique_id=1612704273]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3

@@ -44,7 +44,7 @@ Prove the **entire** workflow once with throwaway content before building anythi
 5. Commit + push.
 - **Checkpoint 0:** you open the local web build yourself and see the gift box. Workflow proven.
 
-### Phase 1 — Greybox core loop (~8 h) ☐
+### Phase 1 — Greybox core loop (~8 h) ☐ — steps 1–7 done, awaiting Checkpoint 1
 Primitives only (capsules, boxes, spheres) — fun first, art later.
 1. Player moves on the ground plane; camera follows at the fixed angle.
 2. Enemy spawner rings the player off-screen; enemies walk toward Claus; contact damages.

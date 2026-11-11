@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bb5xa4w3sxlm2"]
+
+[ext_resource type="Script" uid="uid://pg8v4l8e3e8r" path="res://scenes/ui/end_screen.gd" id="1_4ttpn"]
+
+[node name="EndScreen" type="CanvasLayer" unique_id=1987390613]
+process_mode = 3
+layer = 20
+script = ExtResource("1_4ttpn")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=387485417]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.13333334, 0.1882353, 0.30980393, 0.8)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=2120463501]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="Center" unique_id=809891372]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="ResultLabel" type="Label" parent="Center/VBox" unique_id=1142960938]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Result"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Center/VBox" unique_id=1533289641]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Play again"
