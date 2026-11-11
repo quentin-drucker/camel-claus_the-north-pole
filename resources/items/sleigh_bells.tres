@@ -5,8 +5,7 @@
 [resource]
 script = ExtResource("1_xtxpx")
 title = "Sleigh Bells"
-description = "+20% attack speed
-(Jingle Pulse evolves with this)"
+description = "+20% attack speed (Jingle Pulse evolves with this)"
 effect = 1
 amount = 0.2
 color = Color(0.9490196, 0.70980394, 0.23137255, 1)

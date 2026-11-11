@@ -117,7 +117,12 @@ performance*, not for their characters, UI, logos or assets — everything here 
   (Quentin, 2026-11-11)
 - SFX character: short, soft-edged chiptune blips; festive (bells, paper rustle, ornament "tink"),
   never harsh or gory. Hits/pickups get small random pitch variation. (Quentin, 2026-11-11)
-- Audio source: CC0 packs only (e.g. Kenney, OpenGameArt CC0); credit them anyway. OGG for music,
+- Audio source: CC0 packs (Kenney Interface Sounds + Digital Audio, credited in `assets/CREDITS.md`) for
+  SFX. Music and jingles are **generated** by `art_src/tools/make_audio.py` (changed 2026-11-11: no CC0
+  Christmas chiptune loop was downloadable; the tune is the public-domain melody "Jingle Bells", our
+  own 8-bit arrangement — fits the all-AI pipeline). OGG for music,
   WAV for short SFX. Web build plays audio as samples, so no bus effects (reverb/compressor/limiter):
   balance with bus volume only.
-- UI fonts, colors, panel style: TBD (UI should reuse the palette above)
+- UI style (Quentin, 2026-11-11): **cozy pixel** — chunky CC0 pixel font, dark navy `#22304F` panels with
+  gold `#F2B53B` trim and a 2 px border, snow-white `#F4F8FF` text, small pixel icons on cards. Rarity
+  tints: rare = ice `#7FD6F2`, epic = hostile purple `#9B4FD1`, evolution = gold. Palette colors only.

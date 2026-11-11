@@ -3,17 +3,19 @@ extends CanvasLayer
 ## rolling a rarity) or, for a gift chest, items, plus an evolution when one is ready.
 ## Level-ups are offered before chests; the menu stays open until nothing is pending.
 
+## "color" tints the card border; "text" the card text (palette colors, readable on navy).
 const RARITIES: Array[Dictionary] = [
-	{"name": "", "mult": 1.0, "weight": 75.0, "color": Color(1, 1, 1)},
-	{"name": "RARE", "mult": 1.5, "weight": 20.0, "color": Color(0.55, 0.75, 1.0)},
-	{"name": "EPIC", "mult": 2.0, "weight": 5.0, "color": Color(0.85, 0.6, 1.0)},
+	{"name": "", "mult": 1.0, "weight": 75.0, "color": Color("8FA9D1"), "text": Color("F4F8FF")},
+	{"name": "RARE", "mult": 1.5, "weight": 20.0, "color": Color("7FD6F2"), "text": Color("7FD6F2")},
+	{"name": "EPIC", "mult": 2.0, "weight": 5.0, "color": Color("9B4FD1"), "text": Color("F4F8FF")},
 ]
-const EVOLUTION_COLOR: Color = Color(1.0, 0.85, 0.4)
+const EVOLUTION_COLOR: Color = Color("F2B53B")
+const ICON_DIR: String = "res://assets/ui/icons/"
 
 @export var upgrades: Array[UpgradeData] = []
 @export var items: Array[ItemData] = []
 
-## Each choice: {"text": String, "color": Color, "apply": Callable}
+## Each choice: {"text", "color" (border), "text_color", "icon": Texture2D, "apply": Callable}
 var _choices: Array[Dictionary] = []
 var _is_chest: bool = false
 
@@ -44,9 +46,16 @@ func _open_next() -> void:
 	title.text = "Gift chest! Pick one" if _is_chest else "Level up! Pick one"
 	for i in buttons.size():
 		buttons[i].visible = i < _choices.size()
-		if buttons[i].visible:
-			buttons[i].text = _choices[i]["text"]
-			buttons[i].modulate = _choices[i]["color"]
+		if not buttons[i].visible:
+			continue
+		var choice: Dictionary = _choices[i]
+		buttons[i].text = choice["text"]
+		buttons[i].icon = choice["icon"]
+		buttons[i].add_theme_color_override(&"font_color", choice["text_color"])
+		var style: StyleBoxFlat = ThemeDB.get_project_theme().get_stylebox(&"normal", &"Button").duplicate()
+		style.border_color = choice["color"]
+		buttons[i].add_theme_stylebox_override(&"normal", style)
+	Audio.play(&"chest" if _is_chest else &"levelup")
 	show()
 	get_tree().paused = true
 	buttons[0].grab_focus()
@@ -64,13 +73,15 @@ func _level_up_choices() -> Array[Dictionary]:
 		if upgrade.stat == UpgradeData.Stat.WEAPON:
 			var text: String = upgrade.new_description if level == 0 else upgrade.describe(1.0)
 			var header: String = "NEW WEAPON" if level == 0 else "%s  (Lv %d)" % [upgrade.title, level + 1]
-			out.append({"text": "%s\n\n%s" % [header, text], "color": Color(1, 1, 1),
+			out.append({"text": header + "\n" + text, "color": EVOLUTION_COLOR if level == 0 else Color("8FA9D1"),
+				"text_color": Color("F4F8FF"), "icon": _icon(upgrade),
 				"apply": player.apply_upgrade.bind(upgrade, 1.0)})
 			continue
 		var rarity: Dictionary = _roll_rarity() if upgrade.scales_with_rarity else RARITIES[0]
 		var name_line: String = ((rarity["name"] + "  ") if rarity["name"] else "") + upgrade.title
-		out.append({"text": "%s  (Lv %d)\n\n%s" % [name_line, level + 1, upgrade.describe(rarity["mult"])],
-			"color": rarity["color"], "apply": player.apply_upgrade.bind(upgrade, rarity["mult"])})
+		out.append({"text": "%s  (Lv %d)\n%s" % [name_line, level + 1, upgrade.describe(rarity["mult"])],
+			"color": rarity["color"], "text_color": rarity["text"], "icon": _icon(upgrade),
+			"apply": player.apply_upgrade.bind(upgrade, rarity["mult"])})
 	return out
 
 
@@ -80,8 +91,9 @@ func _chest_choices() -> Array[Dictionary]:
 	var evolvable: Array[Weapon] = player.evolvable_weapons()
 	if not evolvable.is_empty():
 		var weapon: Weapon = evolvable[0]
-		out.append({"text": "EVOLUTION\n%s\n\n%s" % [weapon.data.evolved_name, weapon.data.evolved_description],
-			"color": EVOLUTION_COLOR, "apply": func() -> void: weapon.evolved = true})
+		out.append({"text": "EVOLUTION: %s\n%s" % [weapon.data.evolved_name, weapon.data.evolved_description],
+			"color": EVOLUTION_COLOR, "text_color": EVOLUTION_COLOR, "icon": load(ICON_DIR + "evolution.png"),
+			"apply": func() -> void: weapon.evolved = true})
 	var pool: Array[ItemData] = items.filter(
 		func(item: ItemData) -> bool: return not (item.unique and player.items.has(item))
 	)
@@ -89,9 +101,15 @@ func _chest_choices() -> Array[Dictionary]:
 	for item in pool.slice(0, buttons.size() - out.size()):
 		var owned: int = player.items.get(item, 0)
 		var header: String = item.title + ("  (x%d)" % (owned + 1) if owned > 0 else "")
-		out.append({"text": "ITEM: %s\n\n%s" % [header, item.description], "color": item.color,
-			"apply": player.add_item.bind(item)})
+		out.append({"text": header + "\n" + item.description, "color": item.color,
+			"text_color": item.color, "icon": _icon(item), "apply": player.add_item.bind(item)})
 	return out
+
+
+## Icon named like the resource file (art_src/tools/make_icons.py).
+func _icon(res: Resource) -> Texture2D:
+	var path: String = ICON_DIR + res.resource_path.get_file().get_basename() + ".png"
+	return load(path) if ResourceLoader.exists(path) else null
 
 
 func _roll_rarity() -> Dictionary:
@@ -111,6 +129,7 @@ func _consume() -> void:
 
 
 func _on_choice(index: int) -> void:
+	Audio.play(&"click")
 	_choices[index]["apply"].call()
 	_consume()
 	hide()

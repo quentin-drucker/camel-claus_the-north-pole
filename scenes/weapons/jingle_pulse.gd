@@ -29,3 +29,4 @@ func _process(delta: float) -> void:
 			enemy.global_position += away.normalized() * knockback
 		GameState.player.deal_damage(enemy, dmg)
 	Burst.spawn(Burst.GOLD, origin, radius)
+	Audio.play(&"pulse")

@@ -6,8 +6,7 @@
 [resource]
 script = ExtResource("1_ccg1u")
 title = "Gift Toss"
-description = "+25% Gift Toss damage
-(+1 gift at Lv 3 and Lv 5)"
+description = "+25% Gift Toss damage (+1 gift at Lv 3 and Lv 5)"
 stat = 6
 scales_with_rarity = false
 weapon_scene = ExtResource("2_t55hm")

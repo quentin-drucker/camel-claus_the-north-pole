@@ -24,6 +24,8 @@ var pending_level_ups: int = 0
 var pending_chests: int = 0
 var kills: int = 0
 var is_running: bool = false
+## Set by "Play again": the reloaded main scene skips the title screen.
+var skip_title: bool = false
 
 
 func _process(delta: float) -> void:

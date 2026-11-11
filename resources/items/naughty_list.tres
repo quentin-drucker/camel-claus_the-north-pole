@@ -5,8 +5,7 @@
 [resource]
 script = ExtResource("1_a1yst")
 title = "Naughty List"
-description = "+0.2% damage per kill this run
-(max +60%)"
+description = "+0.2% damage per kill this run (max +60%)"
 effect = 7
 amount = 0.002
 color = Color(1, 0.6039216, 0.627451, 1)

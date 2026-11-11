@@ -5,8 +5,7 @@
 [resource]
 script = ExtResource("1_yy3o3")
 title = "Snow Globe"
-description = "Survive one fatal hit: time freezes
-around you (one use per globe)"
+description = "Survive one fatal hit: time freezes around you (one use per globe)"
 effect = 8
 amount = 1.0
 color = Color(0.49803922, 0.8392157, 0.9490196, 1)

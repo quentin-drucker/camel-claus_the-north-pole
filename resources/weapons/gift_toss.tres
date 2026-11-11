@@ -9,5 +9,4 @@ damage = 12.0
 cooldown = 0.7
 evolution_item = ExtResource("1_2yg0s")
 evolved_name = "Present Barrage"
-evolved_description = "Gift Toss evolves: +2 gifts per throw,
-gifts pierce 2 enemies, x1.5 damage"
+evolved_description = "Gift Toss evolves: +2 gifts per throw, gifts pierce 2 enemies, x1.5 damage"

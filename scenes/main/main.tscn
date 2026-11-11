@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://bpvtgglcboef8" path="res://scenes/player/player.tscn" id="3_b1x3f"]
 [ext_resource type="Shader" uid="uid://d3wyjpfsycgfn" path="res://assets/materials/snow_ground.gdshader" id="3_yyfjg"]
 [ext_resource type="Script" uid="uid://d0e7w16185t2i" path="res://scenes/enemies/enemy_spawner.gd" id="4_a8run"]
-[ext_resource type="Script" path="res://scenes/props/prop_scatter.gd" id="4_b1x3f"]
+[ext_resource type="Script" uid="uid://buvexj1nkps10" path="res://scenes/props/prop_scatter.gd" id="4_b1x3f"]
 [ext_resource type="PackedScene" uid="uid://d3vk44upno6q5" path="res://scenes/ui/hud.tscn" id="5_ouso4"]
 [ext_resource type="PackedScene" uid="uid://mgoyfhilii5d" path="res://scenes/ui/level_up_menu.tscn" id="6_blune"]
 [ext_resource type="PackedScene" uid="uid://bb5xa4w3sxlm2" path="res://scenes/ui/end_screen.tscn" id="7_th5th"]
+[ext_resource type="PackedScene" uid="uid://bats1awndmnxs" path="res://scenes/ui/title_screen.tscn" id="10_a8run"]
 
 [sub_resource type="Environment" id="Environment_vom5j"]
 background_mode = 1
@@ -67,3 +68,5 @@ spawn_rate_start = 1.4
 [node name="LevelUpMenu" parent="." unique_id=1166969450 instance=ExtResource("6_blune")]
 
 [node name="EndScreen" parent="." unique_id=1987390613 instance=ExtResource("7_th5th")]
+
+[node name="TitleScreen" parent="." unique_id=2054730325 instance=ExtResource("10_a8run")]

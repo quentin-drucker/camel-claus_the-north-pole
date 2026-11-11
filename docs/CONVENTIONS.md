@@ -34,6 +34,8 @@ docs/        devlog, art direction, these conventions
 ## Godot MCP gotchas
 
 - Scripts written from outside Godot aren't registered until the editor rescans, which it does when its window gets focus. After creating new `.gd` files, focus the Godot window before using their `class_name`s.
+- New `class_name` scripts written from outside sometimes never register ("Identifier not declared") even
+  after focusing Godot; re-save them with `godot_files_write`.
 - Changing a **Resource** script's fields from outside: the editor keeps the old property list (focus doesn't fix it). Write those scripts with `godot_files_write` so the editor reloads them, then set `.tres` values with `godot_resource_set`.
 - Add an autoload only after its script compiles; if it was added while broken, remove and re-add it.
   Rewriting the autoload script from outside can also break it in the editor ("Identifier not found:

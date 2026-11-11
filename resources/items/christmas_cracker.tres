@@ -5,8 +5,7 @@
 [resource]
 script = ExtResource("1_kdgxw")
 title = "Christmas Cracker"
-description = "Hits have a 25% chance to go BANG:
-60% damage to enemies nearby"
+description = "Hits have a 25% chance to go BANG: 60% damage to enemies nearby"
 effect = 5
 amount = 0.25
 color = Color(1, 0.6039216, 0.627451, 1)

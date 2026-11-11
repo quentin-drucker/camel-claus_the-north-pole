@@ -5,8 +5,7 @@
 [resource]
 script = ExtResource("1_iaiux")
 title = "Chimney Draft"
-description = "Every 20 s, every XP ornament
-on the map flies to you"
+description = "Every 20 s, every XP ornament on the map flies to you"
 effect = 9
 amount = 1.0
 unique = true

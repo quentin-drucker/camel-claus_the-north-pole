@@ -16,5 +16,6 @@ func _process(delta: float) -> void:
 	body.position.y = 0.08 + absf(sin(GameState.run_time * 4.0)) * 0.15  # hop to draw the eye
 	var to_player: Vector3 = GameState.player.global_position - global_position
 	if Vector2(to_player.x, to_player.z).length() < open_distance:
+		Poof.spawn(global_position, Color("F2B53B"), 14, 5.0)
 		GameState.add_chest()
 		queue_free()

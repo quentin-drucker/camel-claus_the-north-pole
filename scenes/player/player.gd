@@ -119,17 +119,22 @@ func deal_damage(enemy: Enemy, amount: float, can_proc: bool = true) -> void:
 		dmg *= 1.0 + elite_damage_bonus
 	var pos: Vector3 = enemy.global_position
 	enemy.take_damage(dmg)
+	DamageNumber.spawn(pos, dmg, Color("F4F8FF") if can_proc else Color("F2B53B"))
 	if not can_proc:
 		return
+	Audio.play(&"hit")
 	if poison_chance > 0.0 and randf() < poison_chance:
 		enemy.poison(dmg * 0.6 / 3.0, 3.0)
 	if freeze_chance > 0.0 and randf() < freeze_chance:
 		enemy.freeze(1.0)
+		Audio.play(&"freeze")
 	if explode_chance > 0.0 and randf() < explode_chance:
 		for other: Enemy in GameState.enemies.duplicate():
 			if other != enemy and other.global_position.distance_to(pos) < explosion_radius + other.radius:
 				deal_damage(other, dmg * 0.6, false)
 		Burst.spawn(Burst.RED, pos, explosion_radius)
+		Audio.play(&"explode")
+		get_tree().call_group(&"camera", &"shake", 0.12)
 
 
 func take_damage(amount: float) -> void:
@@ -138,6 +143,8 @@ func take_damage(amount: float) -> void:
 	hp = maxf(hp - amount, 0.0)
 	_invulnerable_left = hurt_invulnerability
 	_squash = 1.0
+	Audio.play(&"hurt")
+	get_tree().call_group(&"camera", &"shake", 0.4)
 	if hp == 0.0 and cheat_deaths > 0:
 		_cheat_death()
 	health_changed.emit(hp, max_hp)

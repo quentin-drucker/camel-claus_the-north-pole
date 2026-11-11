@@ -62,6 +62,9 @@ func _process(delta: float) -> void:
 	if not _boss_spawned and t >= boss_time:
 		_boss_spawned = true
 		_spawn(boss_data, 1.0, 1.0, false, true)
+		Audio.play(&"boss")
+		Audio.duck(2.0)
+		get_tree().call_group(&"camera", &"shake", 0.5)
 	_move_enemies(delta)
 
 
@@ -121,6 +124,7 @@ func _move_enemies(delta: float) -> void:
 	var poisoned: Array[Enemy] = []
 	var min_dist_sq: float = separation_radius * separation_radius
 	for enemy in GameState.enemies:
+		enemy.update_look(delta)
 		if enemy.poison_left > 0.0:
 			enemy.poison_left -= delta
 			poisoned.append(enemy)

@@ -5,8 +5,7 @@
 [resource]
 script = ExtResource("1_5xjmc")
 title = "Icicle"
-description = "Hits have a 15% chance to freeze
-the enemy for 1 s"
+description = "Hits have a 15% chance to freeze the enemy for 1 s"
 effect = 6
 amount = 0.15
 color = Color(0.49803922, 0.8392157, 0.9490196, 1)

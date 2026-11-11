@@ -35,7 +35,7 @@ items = Array[ExtResource("12_0o0mn")]([ExtResource("13_2f6tg"), ExtResource("14
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.13333334, 0.1882353, 0.30980393, 0.6666667)
+color = Color(0.13333334, 0.1882353, 0.30980393, 0.6)
 
 [node name="Center" type="CenterContainer" parent="." unique_id=889725778]
 anchors_preset = 15
@@ -48,7 +48,8 @@ theme_override_constants/separation = 20
 
 [node name="Title" type="Label" parent="Center/VBox" unique_id=70713708]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(0.9490196, 0.70980394, 0.23137255, 1)
+theme_override_font_sizes/font_size = 96
 text = "Level up! Pick one"
 horizontal_alignment = 1
 
@@ -58,21 +59,27 @@ theme_override_constants/separation = 16
 
 [node name="Choice1" type="Button" parent="Center/VBox/Choices" unique_id=1292554836]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(260, 150)
+custom_minimum_size = Vector2(390, 330)
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 48
 autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Choice2" type="Button" parent="Center/VBox/Choices" unique_id=401546093]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(260, 150)
+custom_minimum_size = Vector2(390, 330)
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 48
 autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Choice3" type="Button" parent="Center/VBox/Choices" unique_id=1612704273]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(260, 150)
+custom_minimum_size = Vector2(390, 330)
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 48
 autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0

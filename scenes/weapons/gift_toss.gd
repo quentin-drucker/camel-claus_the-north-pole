@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 			return origin.distance_squared_to(a.global_position) < origin.distance_squared_to(b.global_position)
 	)
 	_cooldown_left = cooldown()
+	Audio.play(&"throw")
 	var shots: int = count() + (2 if evolved else 0)
 	for i in shots:
 		_fire_at(targets[i % targets.size()], floori(float(i) / targets.size()))

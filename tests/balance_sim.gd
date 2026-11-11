@@ -24,6 +24,7 @@ func _initialize() -> void:
 	seed(int(args.get("seed", "1")))
 	_mode = args.get("mode", "collect")
 	_gs = root.get_node("GameState")
+	_gs.skip_title = true  # no title screen for the bot
 	_gs.leveled_up.connect(func(_l: int) -> void: _level_times.append(_gs.run_time))
 	change_scene_to_file("res://scenes/main/main.tscn")
 

@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 	var dist: float = to_player.length()
 	if dist < collect_distance:
 		GameState.add_xp(value)
+		Audio.play_xp()
 		queue_free()
 		return
 	if dist < player.get_pickup_radius():

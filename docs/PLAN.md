@@ -93,7 +93,7 @@ Fix what Checkpoint 1 found before spending time on art. Still greybox.
 - **Checkpoint 2:** you approve the look (or we iterate). Then fill in "Visual target" in
   `ART_DIRECTION.md`. **No more art until this is approved.**
 
-### Phase 3 — Content + art families (~10 h) ☐ — steps 1–4 done 2026-11-11, awaiting Checkpoint 3
+### Phase 3 — Content + art families (~10 h) ✅ (Quentin moved on to Phase 4, 2026-11-11)
 1. Systems, in order (greybox meshes first, art after):
    a. Weapons share a `Weapon` base (level 1–5, reads global stats); **Candy Cane Orbit** and
       **Jingle Pulse**; weapon cards in the level-up pool (new weapon / level up).
@@ -108,7 +108,7 @@ Fix what Checkpoint 1 found before spending time on art. Still greybox.
 4. Balance pass: spawn curve, damage, XP so a run feels good across 5 minutes.
 - **Checkpoint 3:** full run with all content; you playtest and list what feels off.
 
-### Phase 4 — UI, juice, audio (~6 h) ☐
+### Phase 4 — UI, juice, audio (~6 h) ☐ — steps 1–3 done 2026-11-11, awaiting Checkpoint 4
 1. Title screen, HUD, level-up cards with upgrade icons, win/lose screens — using the palette.
 2. Juice: hit flash, damage numbers, small screen shake, pickup pop, death poof particles.
 3. SFX + music loop; audio buses (music / SFX volume).
@@ -157,14 +157,13 @@ assets/models|textures|audio/   imported art;  art_src/ Blender sources
 
 ## Backlog (noted, not scheduled yet — pull into a phase when it fits)
 
-- Phase 4: damage numbers, hit flash on enemies, stats panel (damage ×, attack speed, etc.).
+- Stretch: stats panel (damage x, attack speed...), pause menu with volume (sliders are on the title only).
 - Phase 5 (must): remove debug keys F2 (stress), F3 (skip 30 s), F4 (all weapons + chest) and the FPS label; exclude `addons/godot_mcp` from the export;
   re-check performance on weaker hardware.
-- Check: `AudioStreamRandomizer` pitch variation works in the web build (sample playback).
+- Check by ear (Claude can't listen): music loop seam, SFX volumes/picks, jingles. Pitch variation uses
+  `pitch_scale` per play (no AudioStreamRandomizer).
 - Cosmetic: HUD timer shows 0:01 behind the win screen.
 - Separation uses one radius for all enemies, so big chonks overlap small ones; use per-type radius if it looks bad with art.
-- Phase 4 juice for Phase 3 systems: frozen enemies need a visual (ice tint), poison a green tint, item
-  pickup toast, boss entrance banner, chest "open" pop. Owned items/weapons list on the HUD.
 - Bot win rate ~65–75% with random picks (deaths mostly 4:20–4:55 = the climax); re-check with Quentin's
   playtest. Boss is usually survived, rarely killed (4500 HP).
 - Windowed Godot game launches crash on this PC (stack overflow even for an empty new project; the editor

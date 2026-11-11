@@ -5,8 +5,7 @@
 [resource]
 script = ExtResource("1_bef6s")
 title = "Fruitcake"
-description = "Hits have a 30% chance to poison:
-+60% of the hit as damage over 3 s"
+description = "Hits have a 30% chance to poison: +60% of the hit as damage over 3 s"
 effect = 4
 amount = 0.3
 color = Color(0.60784316, 0.8784314, 0.65882355, 1)

@@ -5,8 +5,7 @@
 [resource]
 script = ExtResource("1_dd6d4")
 title = "Santa's Sack"
-description = "+1 projectile for every weapon
-(Gift Toss evolves with this)"
+description = "+1 projectile for every weapon (Gift Toss evolves with this)"
 effect = 2
 amount = 1.0
 unique = true

@@ -10,6 +10,4 @@ description = "+30% Jingle Pulse damage"
 stat = 6
 scales_with_rarity = false
 weapon_scene = ExtResource("2_d3k0l")
-new_description = "Jingle Pulse
-A jingling burst hits and pushes
-back everything near Claus"
+new_description = "Jingle Pulse: a jingling burst hits and pushes back everything near Claus"
