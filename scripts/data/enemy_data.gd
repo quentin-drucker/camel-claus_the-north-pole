@@ -16,7 +16,10 @@ extends Resource
 ## Relative chance among the types that are unlocked.
 @export var spawn_weight: float = 1.0
 
-@export_group("Greybox look")
+@export_group("Look")
+## Wrapper scene of the baked model (e.g. chaser_model.tscn). Empty = tinted greybox capsule.
+@export var model: PackedScene
+## Capsule tint when there's no model.
 @export var color: Color = Color("9b4fd1")
-## Uniform scale of the body mesh.
+## Uniform scale of the model or capsule.
 @export var size: float = 1.0

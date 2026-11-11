@@ -23,13 +23,20 @@ func _exit_tree() -> void:
 func _ready() -> void:
 	hp = data.max_hp
 	var body: MeshInstance3D = $Body
-	body.scale = Vector3.ONE * data.size
-	body.position.y *= data.size
-	if not _materials.has(data):
-		var material := StandardMaterial3D.new()
-		material.albedo_color = data.color
-		_materials[data] = material
-	body.material_override = _materials[data]
+	if data.model:
+		body.queue_free()
+		var model: Node3D = data.model.instantiate()
+		model.scale = Vector3.ONE * data.size
+		add_child(model)
+	else:
+		body.scale = Vector3.ONE * data.size
+		body.position.y *= data.size
+		if not _materials.has(data):
+			var material := StandardMaterial3D.new()
+			material.albedo_color = data.color
+			_materials[data] = material
+		body.material_override = _materials[data]
+	$BlobShadow.scale = Vector3.ONE * data.radius * 2.4
 
 
 func take_damage(amount: float) -> void:

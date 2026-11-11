@@ -1,20 +1,16 @@
 [gd_scene format=3 uid="uid://bcpr4hegaad4j"]
 
-[ext_resource type="Script" path="res://scenes/pickups/xp_ornament.gd" id="1_7jxu6"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oludn"]
-albedo_color = Color(0.9490196, 0.70980394, 0.23137255, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_6wumk"]
-material = SubResource("StandardMaterial3D_oludn")
-radius = 0.15
-height = 0.3
-radial_segments = 8
-rings = 4
+[ext_resource type="Script" uid="uid://dx803sy65hdje" path="res://scenes/pickups/xp_ornament.gd" id="1_7jxu6"]
+[ext_resource type="PlaneMesh" uid="uid://cipog1wx2opgw" path="res://assets/materials/blob_shadow_mesh.tres" id="2_6wumk"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/ornament_model.tscn" id="3_kxhdi"]
 
 [node name="XpOrnament" type="Node3D" unique_id=1000248781]
 script = ExtResource("1_7jxu6")
 
-[node name="Body" type="MeshInstance3D" parent="." unique_id=1572874349]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
-mesh = SubResource("SphereMesh_6wumk")
+[node name="BlobShadow" type="MeshInstance3D" parent="." unique_id=462404997]
+transform = Transform3D(0.4, 0, 0, 0, 1, 0, 0, 0, 0.4, 0, 0.02, 0)
+cast_shadow = 0
+mesh = ExtResource("2_6wumk")
+
+[node name="Body" parent="." unique_id=78926235 instance=ExtResource("3_kxhdi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)

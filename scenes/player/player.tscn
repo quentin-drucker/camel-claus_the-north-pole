@@ -2,20 +2,18 @@
 
 [ext_resource type="Script" uid="uid://dxc4bfvcyk7ue" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://b8ysltp5kkoe2" path="res://scenes/weapons/gift_toss.tscn" id="2_gmlin"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvxji"]
-albedo_color = Color(0.7882353, 0.56078434, 0.33333334, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_p47bc"]
-material = SubResource("StandardMaterial3D_lvxji")
-radius = 0.4
-height = 1.2
+[ext_resource type="PlaneMesh" uid="uid://cipog1wx2opgw" path="res://assets/materials/blob_shadow_mesh.tres" id="2_lvxji"]
+[ext_resource type="PackedScene" path="res://scenes/player/claus_model.tscn" id="3_p47bc"]
 
 [node name="Player" type="Node3D" unique_id=1351532715]
 script = ExtResource("1_dovo2")
 
-[node name="Body" type="MeshInstance3D" parent="." unique_id=807908536]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
-mesh = SubResource("CapsuleMesh_p47bc")
+[node name="BlobShadow" type="MeshInstance3D" parent="." unique_id=742872598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0.02, 0)
+cast_shadow = 0
+mesh = ExtResource("2_lvxji")
+
+[node name="Body" parent="." unique_id=1167283690 instance=ExtResource("3_p47bc")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 
 [node name="GiftToss" parent="." unique_id=1549740611 instance=ExtResource("2_gmlin")]

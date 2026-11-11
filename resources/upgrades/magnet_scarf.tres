@@ -9,5 +9,3 @@ description = "+{v}% pickup radius"
 stat = 2
 amount = 0.3
 is_percent = true
-scales_with_rarity = true
-max_level = 5

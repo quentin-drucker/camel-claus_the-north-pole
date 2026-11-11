@@ -9,5 +9,3 @@ description = "+{v}% damage (all weapons)"
 stat = 3
 amount = 0.2
 is_percent = true
-scales_with_rarity = true
-max_level = 5

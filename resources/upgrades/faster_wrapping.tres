@@ -9,5 +9,3 @@ description = "+{v}% attack speed (all weapons)"
 stat = 4
 amount = 0.15
 is_percent = true
-scales_with_rarity = true
-max_level = 5

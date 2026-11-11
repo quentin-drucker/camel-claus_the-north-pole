@@ -12,6 +12,8 @@ signal died
 @export var body_radius: float = 0.4
 ## Seconds of invulnerability after taking a hit (Claus blinks meanwhile).
 @export var hurt_invulnerability: float = 0.75
+## How fast the model turns to face the walking direction.
+@export var turn_speed: float = 12.0
 ## Invisible walls: the player can't leave this square around the origin.
 @export var arena_half_size: float = 59.0
 
@@ -31,7 +33,7 @@ var invincible: bool = false
 
 var _invulnerable_left: float = 0.0
 
-@onready var body: MeshInstance3D = $Body
+@onready var body: Node3D = $Body
 
 
 func _enter_tree() -> void:
@@ -40,6 +42,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	hp = max_hp
+	body.rotation.y = PI  # start facing the camera (models face -Z)
 
 
 func _process(delta: float) -> void:
@@ -48,6 +51,9 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	position.x = clampf(position.x, -arena_half_size, arena_half_size)
 	position.z = clampf(position.z, -arena_half_size, arena_half_size)
+	if input != Vector2.ZERO:
+		var facing: float = atan2(-velocity.x, -velocity.z)
+		body.rotation.y = lerp_angle(body.rotation.y, facing, 1.0 - exp(-turn_speed * delta))
 	if _invulnerable_left > 0.0:
 		_invulnerable_left -= delta
 		body.visible = _invulnerable_left <= 0.0 or fmod(_invulnerable_left, 0.1) < 0.05

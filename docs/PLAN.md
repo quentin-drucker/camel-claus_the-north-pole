@@ -74,7 +74,7 @@ Primitives only (capsules, boxes, spheres) — fun first, art later.
    to MultiMesh before adding art.
 - **Checkpoint 1:** you play a full greybox run in the browser and say if it's fun.
 
-### Phase 1.5 — Balance & systems pass (~4 h) ☐ — added 2026-11-11; steps 1–5 done, awaiting Checkpoint 1.5
+### Phase 1.5 — Balance & systems pass (~4 h) ✅ (added and done 2026-11-11; Quentin moved on to Phase 2)
 Fix what Checkpoint 1 found before spending time on art. Still greybox.
 1. Contact damage you can feel: discrete hits + short invulnerability, blink while hurt, HP numbers.
 2. Enemies: zoomer + chonk as data (greybox colors), spawn table with unlock times; far-away
@@ -86,7 +86,7 @@ Fix what Checkpoint 1 found before spending time on art. Still greybox.
    to tune XP so a run gives ~20 level-ups.
 - **Checkpoint 1.5:** you replay in the browser: can you get hit, does it ramp, do picks matter?
 
-### Phase 2 — Visual target (~5 h) ☐
+### Phase 2 — Visual target (~5 h) ☐ — steps 1–2 done 2026-11-11, awaiting Checkpoint 2
 1. Blender: **Claus** (Santa hat + scarf), **one gift/XP ornament**, **chaser** enemy, **snow
    ground tile**, each baked to pixel textures within `ART_DIRECTION.md` budgets.
 2. Swap them into the greybox; view at 1280×720 through the game camera.
@@ -150,14 +150,14 @@ assets/models|textures|audio/   imported art;  art_src/ Blender sources
 
 ## Backlog (noted, not scheduled yet — pull into a phase when it fits)
 
-- Phase 2: real gift model replaces the red-cube projectile (chunkier bow, bigger); blob shadows
-  under Claus/enemies/orbs; less repetitive snow pattern.
 - Phase 4: damage numbers, hit flash on enemies, stats panel (damage ×, attack speed, etc.).
 - Phase 5 (must): remove F2 stress test + FPS label; exclude `addons/godot_mcp` from the export;
   re-check performance on weaker hardware.
 - Check: `AudioStreamRandomizer` pitch variation works in the web build (sample playback).
 - Cosmetic: HUD timer shows 0:01 behind the win screen.
 - Separation uses one radius for all enemies, so big chonks overlap small ones; use per-type radius if it looks bad with art.
+- Zoomer and chonk are still tinted capsules (art in Phase 3). Old UID warning for `ornament.glb` in
+  exports clears when the editor refreshes its UID cache (harmless: path fallback).
 - Rebalance with the balance bot once Phase 3 adds weapons/items/elites (current numbers assume one weapon).
 - Stretch: reroll/banish, luck stat, more items.
 

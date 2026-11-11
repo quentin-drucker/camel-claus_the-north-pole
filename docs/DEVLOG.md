@@ -7,6 +7,30 @@ Entry format: `## YYYY-MM-DD — short title`, then what changed, why, and what'
 
 ---
 
+## 2026-11-11 — Phase 2: visual target built (awaiting Checkpoint 2)
+
+**Done**
+- Reusable Blender pipeline `art_src/tools/pixel_bake.py`: primitives + palette materials → join →
+  one Cycles color bake → palette snap → single nearest-filtered material → `.glb` + `.blend`.
+- Models (all original, palette-only): **Claus** (chibi camel, Santa hat, blue/white scarf; 634 tris,
+  64 px), **chaser** frost imp (round blue plush, purple glaring eyes, angry brows, fangs, icicle
+  horns; 472 tris, 64 px), **gift** projectile (bigger, wide gold ribbons, chunky bow — per Checkpoint 0
+  feedback; 176 tris, 32 px), **XP ornament** bauble (104 tris, 32 px).
+- In game: Claus turns toward where he walks (starts facing the camera); enemies face Claus; gifts
+  spin in flight; ornaments turn. Blob shadows under Claus, enemies and ornaments. Claus ×1.25 and
+  chaser ×1.3 to hit the on-screen size targets (~70 px / ~45 px).
+- Ground: world-space pixel snow shader (drifts in the 3 snow swatches, rare ice sparkles) — no
+  visible tiling, no longer flat white. Noted as a deliberate change in ART_DIRECTION.
+- Removed the Phase 0 throwaway gift. Zoomer/chonk stay tinted capsules until Phase 3.
+
+**Checks**: 0 script errors; tests pass; balance sims unchanged (visual-only change). Web: 300
+modelled enemies + shadows at ~174 fps in Chrome (was ~210 with capsules), 0 console errors.
+
+**Learned**: an externally edited Resource script keeps its old property list in the editor even
+after a focus rescan; writing it with `godot_files_write` fixes it (added to CONVENTIONS).
+
+**Next**: Checkpoint 2 — Quentin approves the look or we iterate; then fill "Visual target".
+
 ## 2026-11-11 — Phase 1.5: balance & systems pass
 
 **Done**

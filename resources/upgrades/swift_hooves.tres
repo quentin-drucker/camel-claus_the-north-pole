@@ -6,8 +6,5 @@
 script = ExtResource("1_jrts0")
 title = "Swift Hooves"
 description = "+{v}% move speed"
-stat = 0
 amount = 0.1
 is_percent = true
-scales_with_rarity = true
-max_level = 5

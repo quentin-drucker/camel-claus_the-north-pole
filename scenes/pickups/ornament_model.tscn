@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://lcaspf4kpmcc" path="res://assets/models/ornament.glb" id="1"]
+
+[node name="OrnamentModel" instance=ExtResource("1")]

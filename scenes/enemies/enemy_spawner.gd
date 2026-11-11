@@ -114,5 +114,6 @@ func _move_enemies(delta: float) -> void:
 						var d: float = sqrt(d_sq)
 						push += away / d * (separation_radius - d)
 		enemy.global_position = pos + (velocity + push * separation_strength) * delta
+		enemy.rotation.y = atan2(-to_player.x, -to_player.z)  # models face -Z: look at Claus
 		if dist < enemy.data.radius + player.body_radius:
 			player.take_damage(enemy.data.contact_damage)

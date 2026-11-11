@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmctm7rkhiao1"
-path="res://.godot/imported/gift_test_gift_test_albedo.png-261693b07c73f4c937f997febe55f684.ctex"
+uid="uid://bjwck7anmhqcf"
+path="res://.godot/imported/claus_claus_albedo.png-556664ae51813b7aa6d6ed6ac5721168.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "5a790c5581d0fd87d9b1025cb151b7a5"
+"md5": "a0f2977904396bc126469f8fae47a70a"
 }
 
 [deps]
 
-source_file="res://assets/models/gift_test_gift_test_albedo.png"
-dest_files=["res://.godot/imported/gift_test_gift_test_albedo.png-261693b07c73f4c937f997febe55f684.ctex"]
+source_file="res://assets/models/claus_claus_albedo.png"
+dest_files=["res://.godot/imported/claus_claus_albedo.png-556664ae51813b7aa6d6ed6ac5721168.ctex"]
 
 [params]
 

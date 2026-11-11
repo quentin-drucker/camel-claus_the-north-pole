@@ -34,6 +34,7 @@ docs/        devlog, art direction, these conventions
 ## Godot MCP gotchas
 
 - Scripts written from outside Godot aren't registered until the editor rescans, which it does when its window gets focus. After creating new `.gd` files, focus the Godot window before using their `class_name`s.
+- Changing a **Resource** script's fields from outside: the editor keeps the old property list (focus doesn't fix it). Write those scripts with `godot_files_write` so the editor reloads them, then set `.tres` values with `godot_resource_set`.
 - Add an autoload only after its script compiles; if it was added while broken, remove and re-add it.
 - A script's `@export` fields can't be set in the same call that attaches the script; prefer `preload()` defaults in the script for data resources.
 - Tests live in `tests/` as `SceneTree` scripts: `godot --headless --path . -s res://tests/<test>.gd` (exit code 1 = failure).
@@ -42,6 +43,14 @@ docs/        devlog, art direction, these conventions
   plays a full run in ~2 s and prints level/HP/enemies. Run ~10 seeds after any tuning change.
 - After changing a data script's fields or defaults, the editor may keep the old script cached; saving a `.tres` through
   MCP then drops values equal to the *old* defaults. Check the `.tres` text afterwards (or write it explicitly).
+
+## Art pipeline
+
+- Model in Blender with `art_src/tools/pixel_bake.py` (`exec(open(path).read())` in Blender): build from
+  `part()` primitives with palette `mat()`s, `build_asset()` joins them, `bake_export(ob, name, px)` bakes one
+  albedo, palette-snaps it, exports `assets/models/<name>.glb` and saves `art_src/<name>.blend`.
+- Models face Blender **+Y** (= Godot −Z); code turns them with `rotation.y = atan2(-dir.x, -dir.z)`.
+- Characters and pickups get a `BlobShadow` (shared `assets/materials/blob_shadow_mesh.tres`).
 
 ## Web build
 

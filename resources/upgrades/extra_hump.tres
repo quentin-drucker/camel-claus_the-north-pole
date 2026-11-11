@@ -8,6 +8,3 @@ title = "Extra Hump"
 description = "+{v} max HP (and heals it)"
 stat = 1
 amount = 20.0
-is_percent = false
-scales_with_rarity = true
-max_level = 5

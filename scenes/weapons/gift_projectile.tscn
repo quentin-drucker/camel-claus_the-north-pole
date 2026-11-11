@@ -1,16 +1,10 @@
 [gd_scene format=3 uid="uid://rlk2l7f2e32e"]
 
-[ext_resource type="Script" path="res://scenes/weapons/gift_projectile.gd" id="1_boq4d"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwoxq"]
-albedo_color = Color(0.8509804, 0.20392157, 0.24705882, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ngi63"]
-material = SubResource("StandardMaterial3D_dwoxq")
-size = Vector3(0.3, 0.3, 0.3)
+[ext_resource type="Script" uid="uid://d23q1ojefuc1i" path="res://scenes/weapons/gift_projectile.gd" id="1_boq4d"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/gift_model.tscn" id="2_dwoxq"]
 
 [node name="GiftProjectile" type="Node3D" unique_id=1696514568]
 script = ExtResource("1_boq4d")
 
-[node name="Body" type="MeshInstance3D" parent="." unique_id=876463960]
-mesh = SubResource("BoxMesh_ngi63")
+[node name="Body" parent="." unique_id=673915676 instance=ExtResource("2_dwoxq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)

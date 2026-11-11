@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://bwk54cim2ytcr" path="res://assets/models/gift.glb" id="1"]
+
+[node name="GiftModel" instance=ExtResource("1")]

@@ -1,16 +1,9 @@
 [gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://cm08lwwkimy6r"]
 
 [ext_resource type="Script" uid="uid://0f5ks3uclghi" path="res://scripts/data/enemy_data.gd" id="1_8mvb3"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/chaser_model.tscn" id="1_btlgw"]
 
 [resource]
 script = ExtResource("1_8mvb3")
-display_name = "Chaser"
-max_hp = 10.0
-speed = 3.6
-contact_damage = 10.0
-xp_value = 1
-radius = 0.4
-spawn_after = 0.0
-spawn_weight = 1.0
-color = Color(0.60784316, 0.30980393, 0.81960785, 1)
-size = 1.0
+model = ExtResource("1_btlgw")
+size = 1.3

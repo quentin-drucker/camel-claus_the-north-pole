@@ -8,12 +8,15 @@ extends Node3D
 
 var _attracted: bool = false
 
+@onready var body: Node3D = $Body
+
 
 func _ready() -> void:
 	add_to_group(&"xp_ornaments")
 
 
 func _process(delta: float) -> void:
+	body.rotate_y(2.0 * delta)
 	var player: Player = GameState.player
 	var to_player: Vector3 = player.global_position - global_position
 	to_player.y = 0.0

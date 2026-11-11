@@ -7,7 +7,5 @@ script = ExtResource("1_ha4wt")
 title = "Double Gift"
 description = "+1 gift per throw (all weapons)"
 stat = 5
-amount = 1.0
-is_percent = false
 scales_with_rarity = false
 max_level = 2

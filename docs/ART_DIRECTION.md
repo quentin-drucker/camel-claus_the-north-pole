@@ -72,7 +72,10 @@ performance*, not for their characters, UI, logos or assets — everything here 
 
 - 3D format: `.glb` exported from Blender, 1 unit = 1 meter, apply transforms before export
 - Texel density: **32 px per meter**. Typical textures: enemy 32–64 px, player 64–128 px, props
-  32–64 px, ground tile 64×64 tileable. Hard cap 128×128.
+  32–64 px. Hard cap 128×128.
+- Ground (changed 2026-11-11, was a 64×64 tile): world-space pixel shader
+  `assets/materials/snow_ground.gdshader`, 16 px/m, snow swatches only, large drifts + rare ice
+  sparkles. Reason: a repeating tile looked redundant (Checkpoint 0 feedback); the shader never repeats.
 - Texture set per material: `<asset>_albedo.png` only. Built in Blender as a procedural material,
   then baked down to the target pixel size and palette-snapped to the swatches above.
 - Import settings: texture filter **nearest**, mipmaps off, lossless compression (VRAM compression
@@ -91,6 +94,9 @@ performance*, not for their characters, UI, logos or assets — everything here 
 - First target (to build and approve before anything else): **Claus the camel** (Santa hat, scarf),
   **one gift pickup**, **one common enemy**, and a **snow ground tile**, viewed in-engine from the
   game camera at 1280×720.
+- Built 2026-11-11, **awaiting approval**: `art_src/{claus,chaser,gift,ornament}.blend` →
+  `assets/models/*.glb` (Claus 634 tris/64 px, chaser 472/64 px, gift 176/32 px, ornament 104/32 px).
+  Pipeline: `art_src/tools/pixel_bake.py`. In-game scale: Claus model ×1.25, chaser size 1.3.
 - Approved seed/reference paths: TBD (after the first target is approved)
 - Required do/don't examples: TBD
 - Native-scale gameplay capture: TBD

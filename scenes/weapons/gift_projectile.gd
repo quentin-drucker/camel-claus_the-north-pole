@@ -4,14 +4,19 @@ extends Node3D
 
 @export var lifetime: float = 1.5
 @export var hit_radius: float = 0.3
+## Radians per second the gift tumbles while flying.
+@export var spin_speed: float = 9.0
 
 var direction: Vector3 = Vector3.FORWARD
 var speed: float = 14.0
 var damage: float = 5.0
 
+@onready var body: Node3D = $Body
+
 
 func _process(delta: float) -> void:
 	global_position += direction * speed * delta
+	body.rotate_y(spin_speed * delta)
 	lifetime -= delta
 	if lifetime <= 0.0:
 		queue_free()
