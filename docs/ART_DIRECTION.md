@@ -94,13 +94,15 @@ performance*, not for their characters, UI, logos or assets — everything here 
 - First target (to build and approve before anything else): **Claus the camel** (Santa hat, scarf),
   **one gift pickup**, **one common enemy**, and a **snow ground tile**, viewed in-engine from the
   game camera at 1280×720.
-- Built 2026-11-11, **awaiting approval**: `art_src/{claus,chaser,gift,ornament}.blend` →
+- **Approved 2026-11-11** (Quentin: Claus reads as a cute camel at a good size; the imp is clearly
+  an enemy but still cute; snow better): `art_src/{claus,chaser,gift,ornament}.blend` →
   `assets/models/*.glb` (Claus 634 tris/64 px, chaser 472/64 px, gift 176/32 px, ornament 104/32 px).
   Pipeline: `art_src/tools/pixel_bake.py`. In-game scale: Claus model ×1.25, chaser size 1.3.
-- Approved seed/reference paths: TBD (after the first target is approved)
+- Approved seed/reference paths: the four models above + `scenes/main/main.tscn` ground shader.
+  New art matches them: chunky primitives, palette-only bake, chibi faces, purple = danger.
 - Required do/don't examples: TBD
 - Native-scale gameplay capture: TBD
-- Approval owner/date: Quentin / TBD
+- Approval owner/date: Quentin / 2026-11-11
 
 ## Audio & UI style
 

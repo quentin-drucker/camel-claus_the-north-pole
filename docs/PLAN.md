@@ -86,7 +86,7 @@ Fix what Checkpoint 1 found before spending time on art. Still greybox.
    to tune XP so a run gives ~20 level-ups.
 - **Checkpoint 1.5:** you replay in the browser: can you get hit, does it ramp, do picks matter?
 
-### Phase 2 — Visual target (~5 h) ☐ — steps 1–2 done 2026-11-11, awaiting Checkpoint 2
+### Phase 2 — Visual target (~5 h) ✅ (approved 2026-11-11)
 1. Blender: **Claus** (Santa hat + scarf), **one gift/XP ornament**, **chaser** enemy, **snow
    ground tile**, each baked to pixel textures within `ART_DIRECTION.md` budgets.
 2. Swap them into the greybox; view at 1280×720 through the game camera.
@@ -94,8 +94,15 @@ Fix what Checkpoint 1 found before spending time on art. Still greybox.
   `ART_DIRECTION.md`. **No more art until this is approved.**
 
 ### Phase 3 — Content + art families (~10 h) ☐
-1. Art for zoomer + chonk (data exists from 1.5); weapons Candy Cane Orbit, Jingle Pulse.
-   Elites (bigger, tinted, drop a chest) + ~10–12 items + 1–2 evolutions + final boss at ~4:30.
+1. Systems, in order (greybox meshes first, art after):
+   a. Weapons share a `Weapon` base (level 1–5, reads global stats); **Candy Cane Orbit** and
+      **Jingle Pulse**; weapon cards in the level-up pool (new weapon / level up).
+   b. **Elites** at 1:00/2:00/3:00/4:00 (bigger, gold crown, ×HP) drop a **gift chest** → pick 1 of 3
+      **items** (11, our own designs; stats + on-hit procs + utility).
+   c. **Evolutions**: Gift Toss + Santa's Sack → Present Barrage; Jingle Pulse + Sleigh Bells →
+      Carol of the Bells (offered in a chest when the weapon is level 5 and you own the item).
+   d. **Final boss** (Grumpy Yeti) at 4:15 with a charge attack and an HP bar; spawn surge from 4:30.
+   Art: zoomer (ice bat), chonk (grumpy walking pine tree), elite crown, yeti, candy cane, chest.
 2. Props: pine trees, snowdrifts, gift piles, candy-cane posts, a blue-and-white camel pennant (original art, no college logo).
 3. Simple animation: bob/waddle vertex shader for enemies, squash-and-stretch tweens for Claus.
 4. Balance pass: spawn curve, damage, XP so a run feels good across 5 minutes.
