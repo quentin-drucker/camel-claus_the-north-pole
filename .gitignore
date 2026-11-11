@@ -4,3 +4,6 @@
 
 # Blender backup files
 *.blend1
+
+# Export output
+/build/

@@ -17,6 +17,8 @@ Add a rule here when you notice drift; don't add rules "just in case".
 - One responsibility per scene; compose with instanced child scenes.
 - Edit scenes through the Godot MCP tools, never by hand-editing `.tscn` text.
 - Script lives next to its scene with the same name (`player.tscn` + `player.gd`).
+- Each `.glb` gets a wrapper scene that inherits it (e.g. `scenes/props/gift_test.tscn`); instance the wrapper, never the `.glb` (the MCP tools can't instance `.glb`).
+- Textures Godot extracts from a `.glb` (`assets/models/<name>_<image>.png`) must be re-imported with `compress/mode=0` (lossless) and `mipmaps/generate=false`; the default is VRAM compression, which smears pixel art.
 
 ## Folders
 

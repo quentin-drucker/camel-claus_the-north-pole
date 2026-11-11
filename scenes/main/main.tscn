@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b4lreaiuw2kl0"]
+
+[ext_resource type="PackedScene" path="res://scenes/props/gift_test.tscn" id="1_hyk8p"]
+
+[sub_resource type="Environment" id="Environment_vom5j"]
+background_mode = 1
+background_color = Color(0.56078434, 0.6627451, 0.81960785, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.7882353, 0.85490197, 0.9411765, 1)
+ambient_light_energy = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyk8p"]
+albedo_color = Color(0.95686275, 0.972549, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iuonh"]
+size = Vector2(40, 40)
+
+[node name="Main" type="Node3D" unique_id=1986345608]
+
+[node name="GameCamera" type="Camera3D" parent="." unique_id=830969928]
+transform = Transform3D(1, 0, 0, 0, 0.57357645, 0.81915206, 0, -0.81915206, 0.57357645, 0, 13.93, 9.75)
+current = true
+fov = 40.0
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=20958010]
+transform = Transform3D(0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
+light_energy = 0.9
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=726272162]
+environment = SubResource("Environment_vom5j")
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=227383403]
+material_override = SubResource("StandardMaterial3D_hyk8p")
+mesh = SubResource("PlaneMesh_iuonh")
+
+[node name="GiftTest" parent="." unique_id=411493732 instance=ExtResource("1_hyk8p")]
