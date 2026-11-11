@@ -1,12 +1,15 @@
 class_name GiftToss
-extends Node3D
-## Auto-fires gifts at the nearest enemies in range. Scales with the player's global stats.
+extends Weapon
+## Auto-fires gifts at the nearest enemies in range.
+## Evolved (Present Barrage): +2 gifts per volley and each gift pierces 2 enemies.
 
 const PROJECTILE: PackedScene = preload("res://scenes/weapons/gift_projectile.tscn")
 
-@export var data: WeaponData = preload("res://resources/weapons/gift_toss.tres")
-
 var _cooldown_left: float = 0.0
+
+
+func _init() -> void:
+	data = preload("res://resources/weapons/gift_toss.tres")
 
 
 func _process(delta: float) -> void:
@@ -24,19 +27,20 @@ func _process(delta: float) -> void:
 		func(a: Enemy, b: Enemy) -> bool:
 			return origin.distance_squared_to(a.global_position) < origin.distance_squared_to(b.global_position)
 	)
-	var player: Player = GameState.player
-	# Attack speed is a percentage: +100% = twice as often. Linear, so no runaway like flat -0.12 s.
-	_cooldown_left = data.cooldown / (1.0 + player.attack_speed_bonus)
-	for i in mini(data.projectile_count + player.extra_projectiles, targets.size()):
-		_fire_at(targets[i], data.damage * player.damage_mult)
+	_cooldown_left = cooldown()
+	var shots: int = count() + (2 if evolved else 0)
+	for i in shots:
+		_fire_at(targets[i % targets.size()], floori(float(i) / targets.size()))
 
 
-func _fire_at(target: Enemy, damage: float) -> void:
+func _fire_at(target: Enemy, fan_step: int) -> void:
 	var projectile: GiftProjectile = PROJECTILE.instantiate()
 	var aim: Vector3 = target.global_position - global_position
 	aim.y = 0.0
-	projectile.direction = aim.normalized()
+	# More gifts than targets: fan the extras out instead of stacking them on one line.
+	projectile.direction = aim.normalized().rotated(Vector3.UP, fan_step * 0.35)
 	projectile.speed = data.projectile_speed
-	projectile.damage = damage
+	projectile.damage = damage()
+	projectile.pierce = 2 if evolved else 0
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = global_position + Vector3.UP * 0.6

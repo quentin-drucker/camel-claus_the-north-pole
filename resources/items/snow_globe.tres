@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d2yqn4ipbnwdm"]
+
+[ext_resource type="Script" uid="uid://deblhdrwrlk1" path="res://scripts/data/item_data.gd" id="1_yy3o3"]
+
+[resource]
+script = ExtResource("1_yy3o3")
+title = "Snow Globe"
+description = "Survive one fatal hit: time freezes
+around you (one use per globe)"
+effect = 8
+amount = 1.0
+color = Color(0.49803922, 0.8392157, 0.9490196, 1)

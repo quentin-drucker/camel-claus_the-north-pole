@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://bsmdpalldb73v"]
+
+[ext_resource type="Script" uid="uid://c4n4m808bru7f" path="res://scripts/data/upgrade_data.gd" id="1_ccg1u"]
+[ext_resource type="PackedScene" uid="uid://b8ysltp5kkoe2" path="res://scenes/weapons/gift_toss.tscn" id="2_t55hm"]
+
+[resource]
+script = ExtResource("1_ccg1u")
+title = "Gift Toss"
+description = "+25% Gift Toss damage
+(+1 gift at Lv 3 and Lv 5)"
+stat = 6
+scales_with_rarity = false
+weapon_scene = ExtResource("2_t55hm")
+new_description = "Gift Toss"

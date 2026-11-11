@@ -7,6 +7,8 @@ extends CanvasLayer
 @onready var level_label: Label = %LevelLabel
 @onready var timer_label: Label = %TimerLabel
 @onready var fps_label: Label = %FpsLabel
+@onready var boss_panel: Control = %BossPanel
+@onready var boss_bar: ProgressBar = %BossBar
 
 
 func _ready() -> void:
@@ -21,6 +23,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var left: int = ceili(maxf(GameState.RUN_LENGTH - GameState.run_time, 0.0))
 	timer_label.text = "%d:%02d" % [floori(left / 60.0), left % 60]
+	boss_panel.visible = GameState.boss != null
+	if GameState.boss:
+		boss_bar.value = GameState.boss.hp / GameState.boss.max_hp * 100.0
 	fps_label.text = "%d fps · %d enemies · %d kills" % [
 		Engine.get_frames_per_second(), GameState.enemies.size(), GameState.kills
 	]

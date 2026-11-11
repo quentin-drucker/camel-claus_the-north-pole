@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://cjkjp3gdfmjtv" path="res://assets/models/yeti.glb" id="1"]
+
+[node name="YetiModel" instance=ExtResource("1")]

@@ -70,6 +70,39 @@ def mat(name, light, dark=None, below=0.0, axis=2):
     return m
 
 
+def stripes(name, a, b, period=0.1):
+    """Diagonal stripes (candy cane): object-space (x + z) / period alternates colors a and b."""
+    m = bpy.data.materials.new(name)
+    m.use_nodes = True
+    N, L = m.node_tree.nodes, m.node_tree.links
+    bsdf = next(n for n in N if n.type == "BSDF_PRINCIPLED")
+    tc = N.new("ShaderNodeTexCoord")
+    sep = N.new("ShaderNodeSeparateXYZ")
+    L.new(tc.outputs["Object"], sep.inputs[0])
+    add = N.new("ShaderNodeMath")
+    add.operation = "ADD"
+    L.new(sep.outputs[0], add.inputs[0])
+    L.new(sep.outputs[2], add.inputs[1])
+    div = N.new("ShaderNodeMath")
+    div.operation = "DIVIDE"
+    L.new(add.outputs[0], div.inputs[0])
+    div.inputs[1].default_value = period
+    frac = N.new("ShaderNodeMath")
+    frac.operation = "FRACT"
+    L.new(div.outputs[0], frac.inputs[0])
+    lt = N.new("ShaderNodeMath")
+    lt.operation = "LESS_THAN"
+    L.new(frac.outputs[0], lt.inputs[0])
+    lt.inputs[1].default_value = 0.5
+    mix = N.new("ShaderNodeMix")
+    mix.data_type = "RGBA"
+    L.new(lt.outputs[0], mix.inputs[0])
+    mix.inputs[6].default_value = hex_lin(a)
+    mix.inputs[7].default_value = hex_lin(b)
+    L.new(mix.outputs[2], bsdf.inputs["Base Color"])
+    return m
+
+
 def part(kind, name, loc, scale, material, rot=(0, 0, 0), seg=8, rings=5, r2=0.0, bevel=0.0):
     """kind: sphere | cube | cyl | cone. cube/cyl/sphere scale = half-extents (radius)."""
     ops = bpy.ops.mesh
@@ -111,8 +144,9 @@ def build_asset(name, parts):
     return ob
 
 
-def bake_export(ob, name, size, island_margin=0.02):
-    """Bake all part materials into one size x size albedo, palette-snap, export .glb + .blend."""
+def bake_export(ob, name, size, island_margin=0.02, palette=None):
+    """Bake all part materials into one size x size albedo, palette-snap, export .glb + .blend.
+    `palette`: optional subset of PALETTE hexes, so blended edges can't snap to unrelated colors."""
     bpy.ops.object.select_all(action="DESELECT")
     ob.select_set(True)
     bpy.context.view_layer.objects.active = ob
@@ -144,7 +178,7 @@ def bake_export(ob, name, size, island_margin=0.02):
     bpy.ops.object.bake(type="DIFFUSE")
 
     # Palette snap (byte images hold sRGB values).
-    pal = [hex_srgb(h) for h in PALETTE]
+    pal = [hex_srgb(h) for h in (palette or PALETTE)]
     px = list(img.pixels)
     out = []
     for i in range(0, len(px), 4):

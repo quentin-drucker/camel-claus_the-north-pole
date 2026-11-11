@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://diav10wp7y7ou"]
+
+[ext_resource type="Script" uid="uid://deblhdrwrlk1" path="res://scripts/data/item_data.gd" id="1_dd6d4"]
+
+[resource]
+script = ExtResource("1_dd6d4")
+title = "Santa's Sack"
+description = "+1 projectile for every weapon
+(Gift Toss evolves with this)"
+effect = 2
+amount = 1.0
+unique = true
+color = Color(1, 0.6039216, 0.627451, 1)

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://m7b3eup5730h"]
+
+[ext_resource type="Script" path="res://scenes/pickups/chest.gd" id="1_mpvm2"]
+[ext_resource type="PlaneMesh" uid="uid://cipog1wx2opgw" path="res://assets/materials/blob_shadow_mesh.tres" id="2_j01wc"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/chest_model.tscn" id="3_sgd0m"]
+
+[node name="Chest" type="Node3D" unique_id=921168436]
+script = ExtResource("1_mpvm2")
+
+[node name="BlobShadow" type="MeshInstance3D" parent="." unique_id=1768615867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+cast_shadow = 0
+mesh = ExtResource("2_j01wc")
+
+[node name="Body" parent="." unique_id=493759691 instance=ExtResource("3_sgd0m")]

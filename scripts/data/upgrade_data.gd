@@ -1,9 +1,10 @@
 class_name UpgradeData
 extends Resource
 ## A level-up card. Stats are global: they apply to every weapon Claus carries.
+## WEAPON cards add `weapon_scene` to Claus, or level it up if he already has it.
 
 ## Enum order is saved in the .tres files: only append.
-enum Stat { MOVE_SPEED, MAX_HP, PICKUP_RADIUS, DAMAGE, ATTACK_SPEED, PROJECTILES }
+enum Stat { MOVE_SPEED, MAX_HP, PICKUP_RADIUS, DAMAGE, ATTACK_SPEED, PROJECTILES, WEAPON }
 
 @export var title: String = ""
 ## Card text; "{v}" is replaced by the (rarity-scaled) amount.
@@ -15,6 +16,11 @@ enum Stat { MOVE_SPEED, MAX_HP, PICKUP_RADIUS, DAMAGE, ATTACK_SPEED, PROJECTILES
 ## Rare/epic cards multiply `amount`; off for whole-number stats like projectiles.
 @export var scales_with_rarity: bool = true
 @export var max_level: int = 5
+
+@export_group("Weapon card")
+@export var weapon_scene: PackedScene
+## Card text when Claus doesn't have the weapon yet.
+@export var new_description: String = ""
 
 
 func describe(rarity_mult: float) -> String:

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://cj1ej7pmxi30f"]
+
+[ext_resource type="Script" uid="uid://c4n4m808bru7f" path="res://scripts/data/upgrade_data.gd" id="1_yxjnj"]
+[ext_resource type="PackedScene" uid="uid://cehso2v0kboxv" path="res://scenes/weapons/candy_cane_orbit.tscn" id="2_pfs0w"]
+
+[resource]
+script = ExtResource("1_yxjnj")
+title = "Candy Cane Orbit"
+description = "+25% candy cane damage
+(+1 cane at Lv 3 and Lv 5)"
+stat = 6
+scales_with_rarity = false
+weapon_scene = ExtResource("2_pfs0w")
+new_description = "Candy Cane Orbit
+Candy canes circle Claus and
+smack everything they pass"

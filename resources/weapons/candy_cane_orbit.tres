@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://clcun82ft1o00"]
+
+[ext_resource type="Script" uid="uid://01vqbxuebcob" path="res://scripts/data/weapon_data.gd" id="1_ebo2h"]
+
+[resource]
+script = ExtResource("1_ebo2h")
+display_name = "Candy Cane Orbit"
+damage = 9.0
+cooldown = 1.0
+projectile_count = 2
+attack_range = 1.9

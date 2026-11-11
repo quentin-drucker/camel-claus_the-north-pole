@@ -1,0 +1,24 @@
+[gd_resource type="PlaneMesh" format=3 uid="uid://cumv0bramh4ug"]
+
+[sub_resource type="Gradient" id="Gradient_rd1yk"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.45, 0.75, 0.95)
+colors = PackedColorArray(0.8509804, 0.20392157, 0.24705882, 0.4, 0.9490196, 0.70980394, 0.23137255, 0.73333335, 0.8509804, 0.20392157, 0.24705882, 0.8666667, 0.8509804, 0.20392157, 0.24705882, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_20w2v"]
+gradient = SubResource("Gradient_rd1yk")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ken6l"]
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_20w2v")
+texture_filter = 0
+
+[resource]
+material = SubResource("StandardMaterial3D_ken6l")
+size = Vector2(1, 1)

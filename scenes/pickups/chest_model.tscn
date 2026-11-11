@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://cpvsapaehr5g7" path="res://assets/models/chest.glb" id="1"]
+
+[node name="ChestModel" instance=ExtResource("1")]

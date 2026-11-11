@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cehso2v0kboxv"]
+
+[ext_resource type="Script" uid="uid://dspijidndh6ba" path="res://scenes/weapons/candy_cane_orbit.gd" id="1_us7ng"]
+
+[node name="CandyCaneOrbit" type="Node3D" unique_id=489170109]
+script = ExtResource("1_us7ng")

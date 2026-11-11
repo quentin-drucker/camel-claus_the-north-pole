@@ -13,7 +13,7 @@ extends Resource
 @export_group("Spawning")
 ## Run time (seconds) before this type starts spawning.
 @export var spawn_after: float = 0.0
-## Relative chance among the types that are unlocked.
+## Relative chance among the types that are unlocked (0 = never spawns randomly, e.g. the boss).
 @export var spawn_weight: float = 1.0
 
 @export_group("Look")
@@ -23,3 +23,5 @@ extends Resource
 @export var color: Color = Color("9b4fd1")
 ## Uniform scale of the model or capsule.
 @export var size: float = 1.0
+## Height of the top of the head at size 1 (where an elite's crown sits).
+@export var crown_height: float = 0.75

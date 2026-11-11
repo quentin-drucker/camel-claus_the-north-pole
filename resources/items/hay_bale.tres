@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c1xh2nx0khwfd"]
+
+[ext_resource type="Script" uid="uid://deblhdrwrlk1" path="res://scripts/data/item_data.gd" id="1_hkmrd"]
+
+[resource]
+script = ExtResource("1_hkmrd")
+title = "Hay Bale"
+description = "+40 max HP (and heals it)"
+effect = 3
+amount = 40.0
+color = Color(0.9098039, 0.76862746, 0.5568628, 1)

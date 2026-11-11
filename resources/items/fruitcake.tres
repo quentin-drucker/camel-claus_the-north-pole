@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bjgmbdsarbaq"]
+
+[ext_resource type="Script" uid="uid://deblhdrwrlk1" path="res://scripts/data/item_data.gd" id="1_bef6s"]
+
+[resource]
+script = ExtResource("1_bef6s")
+title = "Fruitcake"
+description = "Hits have a 30% chance to poison:
++60% of the hit as damage over 3 s"
+effect = 4
+amount = 0.3
+color = Color(0.60784316, 0.8784314, 0.65882355, 1)

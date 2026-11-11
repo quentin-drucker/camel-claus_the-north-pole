@@ -1,8 +1,13 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://bmd55xmmq3yld"]
 
 [ext_resource type="Script" uid="uid://01vqbxuebcob" path="res://scripts/data/weapon_data.gd" id="1_1bkck"]
+[ext_resource type="Resource" uid="uid://diav10wp7y7ou" path="res://resources/items/santas_sack.tres" id="1_2yg0s"]
 
 [resource]
 script = ExtResource("1_1bkck")
 damage = 12.0
 cooldown = 0.7
+evolution_item = ExtResource("1_2yg0s")
+evolved_name = "Present Barrage"
+evolved_description = "Gift Toss evolves: +2 gifts per throw,
+gifts pierce 2 enemies, x1.5 damage"

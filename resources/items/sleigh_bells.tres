@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dmwgdha6twgfn"]
+
+[ext_resource type="Script" uid="uid://deblhdrwrlk1" path="res://scripts/data/item_data.gd" id="1_xtxpx"]
+
+[resource]
+script = ExtResource("1_xtxpx")
+title = "Sleigh Bells"
+description = "+20% attack speed
+(Jingle Pulse evolves with this)"
+effect = 1
+amount = 0.2
+color = Color(0.9490196, 0.70980394, 0.23137255, 1)

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bstyopeoe0f1e"]
+
+[ext_resource type="Script" uid="uid://deblhdrwrlk1" path="res://scripts/data/item_data.gd" id="1_kdgxw"]
+
+[resource]
+script = ExtResource("1_kdgxw")
+title = "Christmas Cracker"
+description = "Hits have a 25% chance to go BANG:
+60% damage to enemies nearby"
+effect = 5
+amount = 0.25
+color = Color(1, 0.6039216, 0.627451, 1)

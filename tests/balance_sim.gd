@@ -11,6 +11,8 @@ var _angle: float = 0.0
 var _next_log: float = 30.0
 var _level_times: Array[float] = []
 var _min_hp_pct: float = 100.0
+var _boss_seen: float = -1.0
+var _boss_killed: float = -1.0
 
 
 func _initialize() -> void:
@@ -42,6 +44,10 @@ func _process(delta: float) -> bool:
 		_steer(Vector2(cos(_angle), sin(_angle)))
 	elif _mode == "collect":
 		_steer(_collect_direction())
+	if _gs.boss != null and _boss_seen < 0.0:
+		_boss_seen = _gs.run_time
+	if _boss_seen >= 0.0 and _gs.boss == null and _boss_killed < 0.0:
+		_boss_killed = _gs.run_time
 	_min_hp_pct = minf(_min_hp_pct, _gs.player.hp / _gs.player.max_hp * 100.0)
 	if _gs.run_time >= _next_log:
 		_next_log += 30.0
@@ -53,9 +59,13 @@ func _collect_direction() -> Vector2:
 	var pos: Vector3 = _gs.player.global_position
 	var dir := Vector2(cos(_angle), sin(_angle)) * 0.3  # wander when there's nothing to grab
 	var nearest_sq: float = 15.0 * 15.0
+	for chest: Node3D in get_nodes_in_group(&"chests"):  # chests beat XP
+		if pos.distance_squared_to(chest.global_position) < 25.0 * 25.0:
+			nearest_sq = -1.0
+			dir = Vector2(chest.global_position.x - pos.x, chest.global_position.z - pos.z).normalized()
 	for orb: Node3D in get_nodes_in_group(&"xp_ornaments"):
 		var d_sq: float = pos.distance_squared_to(orb.global_position)
-		if d_sq < nearest_sq:
+		if nearest_sq >= 0.0 and d_sq < nearest_sq:
 			nearest_sq = d_sq
 			dir = Vector2(orb.global_position.x - pos.x, orb.global_position.z - pos.z).normalized()
 	for enemy: Node3D in _gs.enemies:
@@ -84,6 +94,15 @@ func _log_line() -> void:
 
 func _report_end() -> void:
 	_log_line()
+	var p: Node = _gs.player
+	var gear: PackedStringArray = []
+	for w in p.weapons():
+		gear.append("%s Lv%d" % [w.title(), w.level])
+	for item in p.items:
+		gear.append("%s x%d" % [item.title, p.items[item]])
+	print("GEAR " + ", ".join(gear))
+	print("BOSS %s" % ("not reached" if _boss_seen < 0.0 else
+		("killed in %.0fs" % (_boss_killed - _boss_seen) if _boss_killed >= 0.0 else "survived the run")))
 	var per_minute: Array[int] = [0, 0, 0, 0, 0]
 	for t in _level_times:
 		per_minute[mini(int(t / 60.0), 4)] += 1

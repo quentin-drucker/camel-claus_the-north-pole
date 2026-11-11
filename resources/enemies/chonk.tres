@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EnemyData" format=3]
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://dnbofpyu5pi4f"]
 
 [ext_resource type="Script" uid="uid://0f5ks3uclghi" path="res://scripts/data/enemy_data.gd" id="1_8mvb3"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/chonk_model.tscn" id="1_mj0ag"]
 
 [resource]
 script = ExtResource("1_8mvb3")
@@ -12,5 +13,6 @@ xp_value = 4
 radius = 0.7
 spawn_after = 120.0
 spawn_weight = 0.15
+model = ExtResource("1_mj0ag")
 color = Color(0.23137255, 0.47843137, 0.34117648, 1)
-size = 1.8
+crown_height = 1.38

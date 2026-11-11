@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dbdr3r45tvgu2"]
+
+[ext_resource type="Script" uid="uid://deblhdrwrlk1" path="res://scripts/data/item_data.gd" id="1_a1yst"]
+
+[resource]
+script = ExtResource("1_a1yst")
+title = "Naughty List"
+description = "+0.2% damage per kill this run
+(max +60%)"
+effect = 7
+amount = 0.002
+color = Color(1, 0.6039216, 0.627451, 1)

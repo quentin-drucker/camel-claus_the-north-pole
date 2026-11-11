@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://q0u3dy23sl46"]
+
+[ext_resource type="PackedScene" path="res://scenes/enemies/yeti_model.tscn" id="1_al00q"]
+[ext_resource type="Script" uid="uid://0f5ks3uclghi" path="res://scripts/data/enemy_data.gd" id="2_l4t5b"]
+
+[resource]
+script = ExtResource("2_l4t5b")
+display_name = "Grumpy Yeti"
+max_hp = 4500.0
+speed = 2.7
+contact_damage = 30.0
+xp_value = 8
+radius = 1.0
+spawn_weight = 0.0
+model = ExtResource("1_al00q")
+crown_height = 2.4

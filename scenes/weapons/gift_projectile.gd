@@ -1,6 +1,6 @@
 class_name GiftProjectile
 extends Node3D
-## Flies straight; hits the first enemy it touches.
+## Flies straight; hits the first enemy it touches (or the first 1 + `pierce` enemies).
 
 @export var lifetime: float = 1.5
 @export var hit_radius: float = 0.3
@@ -10,6 +10,10 @@ extends Node3D
 var direction: Vector3 = Vector3.FORWARD
 var speed: float = 14.0
 var damage: float = 5.0
+## Extra enemies this gift can pass through.
+var pierce: int = 0
+
+var _already_hit: Array[Enemy] = []
 
 @onready var body: Node3D = $Body
 
@@ -24,8 +28,11 @@ func _process(delta: float) -> void:
 	var pos: Vector3 = global_position
 	for enemy in GameState.enemies:
 		var e_pos: Vector3 = enemy.global_position
-		var reach: float = enemy.data.radius + hit_radius
-		if Vector2(pos.x - e_pos.x, pos.z - e_pos.z).length_squared() < reach * reach:
-			enemy.take_damage(damage)
-			queue_free()
+		var reach: float = enemy.radius + hit_radius
+		if Vector2(pos.x - e_pos.x, pos.z - e_pos.z).length_squared() < reach * reach \
+				and not _already_hit.has(enemy):
+			_already_hit.append(enemy)
+			GameState.player.deal_damage(enemy, damage)
+			if _already_hit.size() > pierce:
+				queue_free()
 			return

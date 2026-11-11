@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b7rvq5oac5nxe"]
+
+[ext_resource type="Script" uid="uid://rbhvyqi7b8k0" path="res://scenes/weapons/jingle_pulse.gd" id="1_g5xow"]
+
+[node name="JinglePulse" type="Node3D" unique_id=1901852080]
+script = ExtResource("1_g5xow")

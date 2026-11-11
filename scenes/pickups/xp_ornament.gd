@@ -15,6 +15,11 @@ func _ready() -> void:
 	add_to_group(&"xp_ornaments")
 
 
+## Fly to Claus from anywhere (Chimney Draft).
+func attract() -> void:
+	_attracted = true
+
+
 func _process(delta: float) -> void:
 	body.rotate_y(2.0 * delta)
 	var player: Player = GameState.player
