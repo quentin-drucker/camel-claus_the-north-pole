@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3]
+
+[ext_resource type="Script" uid="uid://0f5ks3uclghi" path="res://scripts/data/enemy_data.gd" id="1_8mvb3"]
+
+[resource]
+script = ExtResource("1_8mvb3")
+display_name = "Zoomer"
+max_hp = 6.0
+speed = 6.2
+contact_damage = 6.0
+xp_value = 1
+radius = 0.3
+spawn_after = 45.0
+spawn_weight = 0.4
+color = Color(0.18039216, 0.76862746, 0.7137255, 1)
+size = 0.7

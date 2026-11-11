@@ -5,6 +5,9 @@
 [resource]
 script = ExtResource("1_btfa6")
 title = "Extra Hump"
-description = "+25 max HP (and heal 25)"
+description = "+{v} max HP (and heals it)"
 stat = 1
-amount = 25.0
+amount = 20.0
+is_percent = false
+scales_with_rarity = true
+max_level = 5

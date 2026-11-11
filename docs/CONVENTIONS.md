@@ -37,6 +37,11 @@ docs/        devlog, art direction, these conventions
 - Add an autoload only after its script compiles; if it was added while broken, remove and re-add it.
 - A script's `@export` fields can't be set in the same call that attaches the script; prefer `preload()` defaults in the script for data resources.
 - Tests live in `tests/` as `SceneTree` scripts: `godot --headless --path . -s res://tests/<test>.gd` (exit code 1 = failure).
+  `-s` scripts compile before autoloads exist: never use project `class_name`s as types there; `load()` scripts/scenes at runtime.
+- Balance bot: `godot --headless --fixed-fps 60 --path . -s res://tests/balance_sim.gd -- seed=N mode=collect|kite|idle`
+  plays a full run in ~2 s and prints level/HP/enemies. Run ~10 seeds after any tuning change.
+- After changing a data script's fields or defaults, the editor may keep the old script cached; saving a `.tres` through
+  MCP then drops values equal to the *old* defaults. Check the `.tres` text afterwards (or write it explicitly).
 
 ## Web build
 

@@ -7,6 +7,50 @@ Entry format: `## YYYY-MM-DD — short title`, then what changed, why, and what'
 
 ---
 
+## 2026-11-11 — Phase 1.5: balance & systems pass
+
+**Done**
+- Contact damage is now discrete hits (chaser 10, zoomer 6, chonk 20) with 0.75 s invulnerability;
+  Claus blinks while invulnerable. HUD shows HP numbers ("74 / 120") and kills.
+- Enemy types as data: **zoomer** (teal, small, 6.2 m/s — faster than Claus, from 0:45) and
+  **chonk** (green, big, 60 HP, 4 XP, from 2:00). Weighted spawn table. Enemies > 30 m away are
+  recycled to the spawn ring ahead of Claus.
+- Curves instead of straight lines: spawn rate (1.4/s start) and enemy HP both double every 150 s.
+- Upgrades are global stats on the player that every weapon reads (Megabonk-tome style):
+  damage +20%, attack speed +15% (percent, so no runaway), +1 projectile (cap 2), move +10%,
+  pickup +30%, max HP +20. Level cap 5. Cards roll rarity: 75% common, 20% RARE ×1.5, 5% EPIC ×2.
+- XP curve flattened: 5 + 3 per level (was +4). Gift Toss 12 damage vs chaser 10 HP, so early
+  chasers die in one hit and damage picks extend that window.
+- `tests/balance_sim.gd`: a bot that plays a full run headless in ~2 s. `mode=collect` walks to XP
+  and dodges; `idle` stands still; `kite` circles. New `tests/test_upgrades.gd`.
+
+**Balance results (collect bot, seeds 1–10)**: 10/10 win, 12–23 level-ups (median ~21), lowest HP
+8–77% (median ~50%). Standing still dies at ~0:51; circling without collecting XP dies at ~2:42.
+Web build: 300 enemies at ~210 fps in Chrome, 0 console errors.
+
+**Learned**: `-s` test scripts can't use project class names as types (they compile before
+autoloads). The editor's stale script cache dropped `max_hp = 10` from chaser.tres (it equalled
+the old default) — caught by reading the file. Both added to CONVENTIONS.
+
+**Next**: Checkpoint 1.5 — Quentin replays in the browser. Then Phase 2 (visual target).
+
+## 2026-11-11 — Checkpoint 1 feedback, design research, audio direction
+
+**Playtest findings (Quentin):** feels slow; never seemed to take damage; upgrades shallow
+(fire rate runaway, damage weak); gifts are red cubes; no shadows/numbers/sound.
+**Diagnosis:** contact damage works (idle test: 100 → 71.5 HP in 24 s) but enemies (3 m/s) can't
+catch Claus (5 m/s), damage is a silent 10/s trickle, and the HP bar is easy to miss. Flat -0.12 s
+cooldown compounds (5 picks = 4.7× fire rate); +5 damage does nothing until enemy HP > 15 (~1:15).
+Enemy HP only ×3 over the run; no enemy recycling, types, elites or boss.
+**Research:** Megabonk (weapons + tomes + 85 chest items, rarity-scaled offers) and Vampire
+Survivors (capped passives, evolutions). Recommendation: no 1:1 re-skin of Megabonk's roster
+(balance doesn't transfer to 5 min; IP); own ~12-20 item set using genre patterns, rarity rolls,
+level caps, elite chests, 2 evolutions, final boss; curves that double roughly every 90 s.
+**Decided:** audio = cozy jingle-bell chiptune from CC0 packs (`ART_DIRECTION.md`). Web build
+plays audio as samples, so no bus effects; duck music by tweening a MusicDuck bus volume.
+**Next:** Quentin to choose: balance pass before Phase 2? level-ups + elite-chest items +
+evolutions structure? Then write `docs/GAME_DESIGN.md` and update `PLAN.md`.
+
 ## 2026-11-10 — Phase 1: greybox core loop playable
 
 **Done**

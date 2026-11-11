@@ -98,6 +98,12 @@ performance*, not for their characters, UI, logos or assets — everything here 
 
 ## Audio & UI style
 
-- Music mood: TBD
-- SFX character: TBD
+- Music mood: cozy jingle-bell chiptune: bright 8-bit square/triangle leads + sleigh bells, upbeat
+  but not frantic. One loop + an intensity layer that fades in for the final stretch (~3:30).
+  (Quentin, 2026-11-11)
+- SFX character: short, soft-edged chiptune blips; festive (bells, paper rustle, ornament "tink"),
+  never harsh or gory. Hits/pickups get small random pitch variation. (Quentin, 2026-11-11)
+- Audio source: CC0 packs only (e.g. Kenney, OpenGameArt CC0); credit them anyway. OGG for music,
+  WAV for short SFX. Web build plays audio as samples, so no bus effects (reverb/compressor/limiter):
+  balance with bus volume only.
 - UI fonts, colors, panel style: TBD (UI should reuse the palette above)

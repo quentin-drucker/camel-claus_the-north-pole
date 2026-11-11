@@ -6,6 +6,9 @@ signal leveled_up(level: int)
 signal run_ended(won: bool)
 
 const RUN_LENGTH: float = 300.0
+## XP for level 1 -> 2, and how much more each following level needs.
+const XP_BASE: int = 5
+const XP_GROWTH: int = 3
 
 var player: Player
 var enemies: Array[Enemy] = []
@@ -14,6 +17,7 @@ var level: int = 1
 var xp: int = 0
 ## Level-ups earned but not yet picked in the menu (one big XP grab can give several).
 var pending_level_ups: int = 0
+var kills: int = 0
 var is_running: bool = false
 
 
@@ -30,12 +34,13 @@ func start_run() -> void:
 	level = 1
 	xp = 0
 	pending_level_ups = 0
+	kills = 0
 	is_running = true
 	xp_changed.emit(xp, xp_needed())
 
 
 func xp_needed() -> int:
-	return 5 + (level - 1) * 4
+	return XP_BASE + (level - 1) * XP_GROWTH
 
 
 func add_xp(amount: int) -> void:

@@ -4,3 +4,13 @@
 
 [resource]
 script = ExtResource("1_8mvb3")
+display_name = "Chaser"
+max_hp = 10.0
+speed = 3.6
+contact_damage = 10.0
+xp_value = 1
+radius = 0.4
+spawn_after = 0.0
+spawn_weight = 1.0
+color = Color(0.60784316, 0.30980393, 0.81960785, 1)
+size = 1.0

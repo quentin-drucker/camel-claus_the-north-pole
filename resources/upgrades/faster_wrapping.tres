@@ -5,6 +5,9 @@
 [resource]
 script = ExtResource("1_bp5ut")
 title = "Faster Wrapping"
-description = "Gift Toss: fires 0.12 s sooner"
+description = "+{v}% attack speed (all weapons)"
 stat = 4
-amount = 0.12
+amount = 0.15
+is_percent = true
+scales_with_rarity = true
+max_level = 5

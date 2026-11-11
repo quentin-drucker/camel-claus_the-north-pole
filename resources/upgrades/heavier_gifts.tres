@@ -5,6 +5,9 @@
 [resource]
 script = ExtResource("1_kxs0a")
 title = "Heavier Gifts"
-description = "Gift Toss: +5 damage"
+description = "+{v}% damage (all weapons)"
 stat = 3
-amount = 5.0
+amount = 0.2
+is_percent = true
+scales_with_rarity = true
+max_level = 5

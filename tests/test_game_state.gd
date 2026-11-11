@@ -12,7 +12,7 @@ func _initialize() -> void:
 	_check(gs.level == 1 and gs.xp == 4, "4 xp stays level 1")
 	gs.add_xp(1)
 	_check(gs.level == 2 and gs.xp == 0 and gs.pending_level_ups == 1, "5 xp reaches level 2")
-	gs.add_xp(9 + 13 + 2)  # level 2 needs 9, level 3 needs 13
+	gs.add_xp(8 + 11 + 2)  # level 2 needs 8, level 3 needs 11
 	_check(gs.level == 4 and gs.xp == 2 and gs.pending_level_ups == 3, "one big grab gives two levels")
 	_check(level_ups == [2, 3, 4], "leveled_up emitted once per level")
 

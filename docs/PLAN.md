@@ -19,10 +19,10 @@ Roles: **Quentin** = creative director and playtester (approves art, tests feel,
 |------|----------|--------------------------------------|
 | Map | 1 snowfield arena (~120×120 m), tiled snow ground, scattered props, invisible walls | More maps, day/night |
 | Player | Claus: WASD/arrows move, HP, pickup radius | Character select, dash |
-| Enemies | 3 types: **chaser** (basic), **zoomer** (small, fast), **chonk** (slow, tanky) | Mini-boss at 4:00, ranged enemies |
-| Weapons | 3: **Gift Toss** (shoots nearest enemy), **Candy Cane Orbit** (spins around Claus), **Jingle Pulse** (area burst) | Weapon evolutions/synergies |
-| Progression | XP ornaments drop → XP bar → level-up pauses game → pick 1 of 3 upgrades (weapon levels + speed / max HP / pickup radius) | Meta-progression, unlocks |
-| Run | 5:00 timer, spawns ramp up; survive = win, die = lose, restart | Endless mode, score |
+| Enemies | 3 types: **chaser** (basic), **zoomer** (small, faster than Claus), **chonk** (slow, tanky); **elites** at 1:00/2:00/3:00/4:00; **final boss** ~4:30 | Ranged enemies |
+| Weapons | 3: **Gift Toss** (shoots nearest enemy), **Candy Cane Orbit** (spins around Claus), **Jingle Pulse** (area burst); 1–2 **evolutions** (max weapon + matching item) | More weapons |
+| Progression | XP → level-up pauses → pick 1 of 3. Global stat upgrades (apply to every weapon), **level cap 5**, **rarity rolls** (common/rare/epic). **Items** (~10–12, our own designs) from elite chests | Reroll/banish, luck, meta-progression |
+| Run | 5:00 timer with designed beats (see "Five-minute arc"); survive = win, die = lose, restart | Endless mode, score |
 | UI | Title, HUD (HP, XP bar, level, timer), level-up menu, win/lose screen | Settings, pause menu |
 | Audio | ~5 SFX + 1 music loop (source TBD, see Open questions) | Adaptive music |
 | Performance | **300 enemies on screen at 60 fps in Chrome** | 1000+ via MultiMesh |
@@ -30,7 +30,23 @@ Roles: **Quentin** = creative director and playtester (approves art, tests feel,
 
 ## Phases (hackathon budget ~42 h; leave the last ~20% for shipping)
 
-### Phase 0 — Pipeline smoke test (~2 h) ☐ — steps 1–5 done, awaiting Checkpoint 0
+### Five-minute arc (design target, from the 2026-11-11 research — see DEVLOG)
+
+Short run = a deliberate strength: fast levels, few but strong choices, fixed beats, a climax.
+Player power and enemy toughness should both roughly **double every ~90 s**.
+
+| Time | Player | Enemies / events |
+|------|--------|------------------|
+| 0:00–0:45 | Level-ups every ~5–8 s | Chasers only, 1–2 hits to kill |
+| 0:45–2:00 | Build takes shape; 2nd weapon offered | Zoomers join (outrun Claus); **elite 1:00 → chest** |
+| 2:00–3:30 | Commit to a build | Chonks join; elites 2:00/3:00 |
+| 3:30–4:30 | Power peak; evolution | Intensity music layer; elite 4:00 |
+| 4:30–5:00 | Climax | Final boss + spawn surge; survive → sleigh arrives |
+
+Rules: Megabonk / Vampire Survivors are **pattern references only** — no 1:1 copy of their item
+roster, names or numbers (balance doesn't transfer to 5 min; IP). ~20 level-ups and ~5 items per run.
+
+### Phase 0 — Pipeline smoke test (~2 h) ✅ (approved 2026-11-10)
 Prove the **entire** workflow once with throwaway content before building anything real.
 1. ✅ **[Quentin]** Install export templates: Godot → *Editor → Manage Export Templates → Download
    and Install* (~1 GB, one time).
@@ -44,7 +60,7 @@ Prove the **entire** workflow once with throwaway content before building anythi
 5. Commit + push.
 - **Checkpoint 0:** you open the local web build yourself and see the gift box. Workflow proven.
 
-### Phase 1 — Greybox core loop (~8 h) ☐ — steps 1–7 done, awaiting Checkpoint 1
+### Phase 1 — Greybox core loop (~8 h) ✅ (Checkpoint 1 played 2026-11-11 → feedback drove Phase 1.5)
 Primitives only (capsules, boxes, spheres) — fun first, art later.
 1. Player moves on the ground plane; camera follows at the fixed angle.
 2. Enemy spawner rings the player off-screen; enemies walk toward Claus; contact damages.
@@ -58,6 +74,18 @@ Primitives only (capsules, boxes, spheres) — fun first, art later.
    to MultiMesh before adding art.
 - **Checkpoint 1:** you play a full greybox run in the browser and say if it's fun.
 
+### Phase 1.5 — Balance & systems pass (~4 h) ☐ — added 2026-11-11; steps 1–5 done, awaiting Checkpoint 1.5
+Fix what Checkpoint 1 found before spending time on art. Still greybox.
+1. Contact damage you can feel: discrete hits + short invulnerability, blink while hurt, HP numbers.
+2. Enemies: zoomer + chonk as data (greybox colors), spawn table with unlock times; far-away
+   enemies are recycled to the ring ahead of Claus.
+3. Difficulty as curves: enemy HP doubles every ~90 s, spawn rate grows exponentially.
+4. Upgrades: global stats (damage ×, attack speed %, +projectiles) shared by all weapons; level
+   cap 5 (projectiles 2); rarity rolls on cards.
+5. Headless **balance bot** (`tests/balance_sim.gd`) that plays a run and logs level/HP/enemies,
+   to tune XP so a run gives ~20 level-ups.
+- **Checkpoint 1.5:** you replay in the browser: can you get hit, does it ramp, do picks matter?
+
 ### Phase 2 — Visual target (~5 h) ☐
 1. Blender: **Claus** (Santa hat + scarf), **one gift/XP ornament**, **chaser** enemy, **snow
    ground tile**, each baked to pixel textures within `ART_DIRECTION.md` budgets.
@@ -66,7 +94,8 @@ Primitives only (capsules, boxes, spheres) — fun first, art later.
   `ART_DIRECTION.md`. **No more art until this is approved.**
 
 ### Phase 3 — Content + art families (~10 h) ☐
-1. Remaining enemies (zoomer, chonk) and weapons (Candy Cane Orbit, Jingle Pulse) — as data + art.
+1. Art for zoomer + chonk (data exists from 1.5); weapons Candy Cane Orbit, Jingle Pulse.
+   Elites (bigger, tinted, drop a chest) + ~10–12 items + 1–2 evolutions + final boss at ~4:30.
 2. Props: pine trees, snowdrifts, gift piles, candy-cane posts, a blue-and-white camel pennant (original art, no college logo).
 3. Simple animation: bob/waddle vertex shader for enemies, squash-and-stretch tweens for Claus.
 4. Balance pass: spawn curve, damage, XP so a run feels good across 5 minutes.
@@ -119,10 +148,23 @@ assets/models|textures|audio/   imported art;  art_src/ Blender sources
 | Bake (Blender) | Render a procedural material into a flat image texture | Maya Transfer Maps / Arnold bake |
 | Nearest filtering | Texture pixels stay sharp squares instead of blurred | Unreal texture filter "Nearest" |
 
+## Backlog (noted, not scheduled yet — pull into a phase when it fits)
+
+- Phase 2: real gift model replaces the red-cube projectile (chunkier bow, bigger); blob shadows
+  under Claus/enemies/orbs; less repetitive snow pattern.
+- Phase 4: damage numbers, hit flash on enemies, stats panel (damage ×, attack speed, etc.).
+- Phase 5 (must): remove F2 stress test + FPS label; exclude `addons/godot_mcp` from the export;
+  re-check performance on weaker hardware.
+- Check: `AudioStreamRandomizer` pitch variation works in the web build (sample playback).
+- Cosmetic: HUD timer shows 0:01 behind the win screen.
+- Separation uses one radius for all enemies, so big chonks overlap small ones; use per-type radius if it looks bad with art.
+- Rebalance with the balance bot once Phase 3 adds weapons/items/elites (current numbers assume one weapon).
+- Stretch: reroll/banish, luck stat, more items.
+
 ## Open questions (decide before the phase that needs them)
 
 - **Hackathon rules** (before Phase 5): exact deadline + timezone, where to submit, required
   format. AI-generated art is **assumed allowed** (Quentin, 2026-11-10) — re-check if rules say otherwise.
-- **Audio source** (before Phase 4): CC0 packs (e.g. Kenney), generated chiptune SFX, or AI audio?
+- ~~Audio source~~ **Decided** (2026-11-11): CC0 packs, cozy jingle-bell chiptune — see `ART_DIRECTION.md`.
 - ~~Conn College branding~~ **Decided:** no official logo/wordmark; school colors and the Camel only.
 - **Host** (before Phase 5): itch.io (default) vs the hackathon's own site.

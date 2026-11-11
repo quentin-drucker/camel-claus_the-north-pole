@@ -9,6 +9,10 @@ extends Node3D
 var _attracted: bool = false
 
 
+func _ready() -> void:
+	add_to_group(&"xp_ornaments")
+
+
 func _process(delta: float) -> void:
 	var player: Player = GameState.player
 	var to_player: Vector3 = player.global_position - global_position
@@ -18,7 +22,7 @@ func _process(delta: float) -> void:
 		GameState.add_xp(value)
 		queue_free()
 		return
-	if dist < player.pickup_radius:
+	if dist < player.get_pickup_radius():
 		_attracted = true
 	if _attracted:
 		global_position += to_player / dist * minf(attract_speed * delta, dist)

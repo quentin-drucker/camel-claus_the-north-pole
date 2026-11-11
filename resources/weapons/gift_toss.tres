@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_1bkck")
-damage = 10.0
+damage = 12.0
 cooldown = 0.7
