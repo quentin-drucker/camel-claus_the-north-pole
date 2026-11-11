@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://dlj2t2cqo3q7w" path="res://assets/models/prop_pine.glb" id="1"]
+
+[node name="PinePropModel" instance=ExtResource("1")]

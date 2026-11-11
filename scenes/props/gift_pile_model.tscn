@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://bwlq5tl2fj681" path="res://assets/models/prop_gift_pile.glb" id="1"]
+
+[node name="GiftPilePropModel" instance=ExtResource("1")]

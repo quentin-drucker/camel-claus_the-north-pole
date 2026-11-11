@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://ccoqgmkdik0pd" path="res://assets/models/prop_pennant.glb" id="1"]
+
+[node name="PennantPropModel" instance=ExtResource("1")]

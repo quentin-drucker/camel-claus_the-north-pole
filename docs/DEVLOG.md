@@ -7,6 +7,35 @@ Entry format: `## YYYY-MM-DD — short title`, then what changed, why, and what'
 
 ---
 
+## 2026-11-11 — Phase 3: content + art families (awaiting Checkpoint 3)
+
+**Done**
+- Checkpoint 2 approved (Claus, imp, snow).
+- Weapons share a `Weapon` base (level 1–5, reads global stats, damage via `Player.deal_damage` so
+  items proc). New: **Candy Cane Orbit** (canes circle Claus) and **Jingle Pulse** (area burst +
+  knockback). Weapon cards in the level-up pool ("NEW WEAPON" / "Lv N").
+- **Elites** at 1:00/2:00/3:00/4:00 (x1.6 size, x15 HP, gold crown) drop a **gift chest** → pick 1 of 3
+  **items** (11, our own: Spiced Dates, Sleigh Bells, Santa's Sack, Hay Bale, Fruitcake poison, Christmas
+  Cracker explosions, Icicle freeze, Naughty List, Snow Globe cheat-death, Chimney Draft, Lump of Coal).
+- **Evolutions** offered in a chest: Gift Toss Lv5 + Santa's Sack → Present Barrage; Jingle Pulse Lv5 +
+  Sleigh Bells → Carol of the Bells.
+- **Grumpy Yeti** boss at 4:15 (walk/wind-up/charge, HP bar), spawn surge x2 from 4:30.
+- Art (same pipeline): zoomer ice bat, chonk grumpy pine, yeti, crown, chest, candy cane; props (snowy
+  pines also ring the arena edge, drifts, gift piles, cane posts, camel pennants) via MultiMesh.
+- Animation: enemy waddle/bob vertex shader (GPU, phase from world position); Claus hops while walking,
+  breathes when idle, squashes when hit.
+- Debug keys for testing: F3 skips 30 s, F4 gives every weapon at Lv 5 + both evolution items + a chest.
+
+**Balance (bot, random picks)**: XP growth back to +4/level, enemy HP doubles every 130 s, spawns every
+130 s, boss 4500 HP. ~65–75% wins, deaths mostly 4:20–4:55, ~19 level-ups, 5 chests per run.
+Web: ~154 fps with 300 enemies + every weapon evolved + props; 0 console errors.
+
+**Issues**: windowed Godot games crash on this PC right now (stack overflow even for a brand-new empty
+project; editor fine) — environmental, verified via web build instead. Editor-state gotchas (stale
+autoload, stale scene script, UID cache) added to CONVENTIONS.
+
+**Next**: Checkpoint 3 — Quentin plays full runs and lists what feels off. Then Phase 4 (UI, juice, audio).
+
 ## 2026-11-11 — Phase 2: visual target built (awaiting Checkpoint 2)
 
 **Done**

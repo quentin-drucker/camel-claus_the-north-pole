@@ -6,7 +6,10 @@ extends Node3D
 const XP_ORNAMENT: PackedScene = preload("res://scenes/pickups/xp_ornament.tscn")
 const CHEST: PackedScene = preload("res://scenes/pickups/chest.tscn")
 
-## One shared greybox material per EnemyData, so enemies of a type don't each get a copy.
+const WADDLE: Shader = preload("res://assets/materials/enemy_waddle.gdshader")
+
+## One shared material per EnemyData (waddle shader, or greybox tint), so enemies of a type
+## don't each get a copy.
 static var _materials: Dictionary = {}
 
 @export var data: EnemyData = preload("res://resources/enemies/chaser.tres")
@@ -61,6 +64,15 @@ func _ready() -> void:
 		var model: Node3D = data.model.instantiate()
 		model.scale = Vector3.ONE * data.size * _size
 		add_child(model)
+		var mesh_node: MeshInstance3D = model.find_children("*", "MeshInstance3D", true, false)[0]
+		if not _materials.has(data):
+			var waddle := ShaderMaterial.new()
+			waddle.shader = WADDLE
+			waddle.set_shader_parameter(&"albedo_tex", mesh_node.mesh.surface_get_material(0).albedo_texture)
+			# Bigger enemies waddle slower.
+			waddle.set_shader_parameter(&"waddle_speed", 9.0 / maxf(data.radius * 2.5, 1.0))
+			_materials[data] = waddle
+		mesh_node.material_override = _materials[data]
 	else:
 		body.scale = Vector3.ONE * data.size * _size
 		body.position.y *= data.size * _size

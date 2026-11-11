@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://deicpnse5a5fb" path="res://assets/models/prop_drift.glb" id="1"]
+
+[node name="DriftPropModel" instance=ExtResource("1")]

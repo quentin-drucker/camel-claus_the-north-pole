@@ -93,7 +93,7 @@ Fix what Checkpoint 1 found before spending time on art. Still greybox.
 - **Checkpoint 2:** you approve the look (or we iterate). Then fill in "Visual target" in
   `ART_DIRECTION.md`. **No more art until this is approved.**
 
-### Phase 3 — Content + art families (~10 h) ☐
+### Phase 3 — Content + art families (~10 h) ☐ — steps 1–4 done 2026-11-11, awaiting Checkpoint 3
 1. Systems, in order (greybox meshes first, art after):
    a. Weapons share a `Weapon` base (level 1–5, reads global stats); **Candy Cane Orbit** and
       **Jingle Pulse**; weapon cards in the level-up pool (new weapon / level up).
@@ -158,14 +158,17 @@ assets/models|textures|audio/   imported art;  art_src/ Blender sources
 ## Backlog (noted, not scheduled yet — pull into a phase when it fits)
 
 - Phase 4: damage numbers, hit flash on enemies, stats panel (damage ×, attack speed, etc.).
-- Phase 5 (must): remove F2 stress test + FPS label; exclude `addons/godot_mcp` from the export;
+- Phase 5 (must): remove debug keys F2 (stress), F3 (skip 30 s), F4 (all weapons + chest) and the FPS label; exclude `addons/godot_mcp` from the export;
   re-check performance on weaker hardware.
 - Check: `AudioStreamRandomizer` pitch variation works in the web build (sample playback).
 - Cosmetic: HUD timer shows 0:01 behind the win screen.
 - Separation uses one radius for all enemies, so big chonks overlap small ones; use per-type radius if it looks bad with art.
-- Zoomer and chonk are still tinted capsules (art in Phase 3). Old UID warning for `ornament.glb` in
-  exports clears when the editor refreshes its UID cache (harmless: path fallback).
-- Rebalance with the balance bot once Phase 3 adds weapons/items/elites (current numbers assume one weapon).
+- Phase 4 juice for Phase 3 systems: frozen enemies need a visual (ice tint), poison a green tint, item
+  pickup toast, boss entrance banner, chest "open" pop. Owned items/weapons list on the HUD.
+- Bot win rate ~65–75% with random picks (deaths mostly 4:20–4:55 = the climax); re-check with Quentin's
+  playtest. Boss is usually survived, rarely killed (4500 HP).
+- Windowed Godot game launches crash on this PC (stack overflow even for an empty new project; the editor
+  is fine) — environmental, likely driver/overlay; reboot. Web build unaffected. Use the web build to test.
 - Stretch: reroll/banish, luck stat, more items.
 
 ## Open questions (decide before the phase that needs them)

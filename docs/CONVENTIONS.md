@@ -36,6 +36,14 @@ docs/        devlog, art direction, these conventions
 - Scripts written from outside Godot aren't registered until the editor rescans, which it does when its window gets focus. After creating new `.gd` files, focus the Godot window before using their `class_name`s.
 - Changing a **Resource** script's fields from outside: the editor keeps the old property list (focus doesn't fix it). Write those scripts with `godot_files_write` so the editor reloads them, then set `.tres` values with `godot_resource_set`.
 - Add an autoload only after its script compiles; if it was added while broken, remove and re-add it.
+  Rewriting the autoload script from outside can also break it in the editor ("Identifier not found:
+  GameState" everywhere) — same fix: `godot_autoload_edit` remove + add.
+- A scene open in an editor tab keeps the old version of its script's exports; `godot_scene_close` it and
+  set properties again (the tool reopens it).
+- New resources get UIDs in the editor before its UID cache reaches disk; headless runs then warn "invalid
+  UID". Run `godot --headless --path . --import` once before tests/sims.
+- `-s` test scripts: the tree isn't live during `_initialize`, so `_enter_tree` doesn't run — set
+  `GameState.player` by hand.
 - A script's `@export` fields can't be set in the same call that attaches the script; prefer `preload()` defaults in the script for data resources.
 - Tests live in `tests/` as `SceneTree` scripts: `godot --headless --path . -s res://tests/<test>.gd` (exit code 1 = failure).
   `-s` scripts compile before autoloads exist: never use project `class_name`s as types there; `load()` scripts/scenes at runtime.

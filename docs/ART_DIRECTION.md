@@ -98,6 +98,12 @@ performance*, not for their characters, UI, logos or assets — everything here 
   an enemy but still cute; snow better): `art_src/{claus,chaser,gift,ornament}.blend` →
   `assets/models/*.glb` (Claus 634 tris/64 px, chaser 472/64 px, gift 176/32 px, ornament 104/32 px).
   Pipeline: `art_src/tools/pixel_bake.py`. In-game scale: Claus model ×1.25, chaser size 1.3.
+- Phase 3 families (same pipeline, 2026-11-11): zoomer (ice bat), chonk (grumpy walking pine with a
+  face — decorative pines are tall, faceless and snow-heavy so they never read as enemies), Grumpy Yeti
+  boss (836 tris, 128 px), elite gold crown, gift chest (gold box, red ribbon — distinct from red
+  thrown gifts), candy cane; props: snowy pine, snowdrift, muted gift pile, candy-cane post, camel
+  pennant (blue/white flag with an original two-hump camel silhouette, no college logo). Bakes can pass
+  a per-asset `palette=` subset so blended edges can't snap to unrelated colors.
 - Approved seed/reference paths: the four models above + `scenes/main/main.tscn` ground shader.
   New art matches them: chunky primitives, palette-only bake, chibi faces, purple = danger.
 - Required do/don't examples: TBD

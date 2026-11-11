@@ -46,6 +46,9 @@ var items: Dictionary = {}
 var invincible: bool = false
 
 var _invulnerable_left: float = 0.0
+var _base_scale: Vector3
+var _anim_time: float = 0.0
+var _squash: float = 0.0  # 1 right after a hit, eases back to 0
 var _xp_pull_left: float = 0.0
 
 @onready var body: Node3D = $Body
@@ -58,6 +61,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	hp = max_hp
 	body.rotation.y = PI  # start facing the camera (models face -Z)
+	_base_scale = body.scale
 
 
 func _process(delta: float) -> void:
@@ -69,6 +73,7 @@ func _process(delta: float) -> void:
 	if input != Vector2.ZERO:
 		var facing: float = atan2(-velocity.x, -velocity.z)
 		body.rotation.y = lerp_angle(body.rotation.y, facing, 1.0 - exp(-turn_speed * delta))
+	_animate(delta, input != Vector2.ZERO)
 	if _invulnerable_left > 0.0:
 		_invulnerable_left -= delta
 		body.visible = _invulnerable_left <= 0.0 or fmod(_invulnerable_left, 0.1) < 0.05
@@ -77,6 +82,16 @@ func _process(delta: float) -> void:
 		if _xp_pull_left <= 0.0:
 			_xp_pull_left = xp_pull_interval
 			get_tree().call_group(&"xp_ornaments", &"attract")
+
+
+## Hop + squash-and-stretch while walking, slow breathing when idle, squash on hits.
+func _animate(delta: float, moving: bool) -> void:
+	_anim_time += delta * (14.0 if moving else 3.0)
+	_squash = maxf(_squash - delta * 4.0, 0.0)
+	var wave: float = sin(_anim_time)
+	var stretch: float = (absf(wave) * 0.08 if moving else wave * 0.02) - _squash * 0.25
+	body.scale = _base_scale * Vector3(1.0 - stretch * 0.5, 1.0 + stretch, 1.0 - stretch * 0.5)
+	body.position.y = absf(wave) * 0.12 if moving else 0.0
 
 
 func get_pickup_radius() -> float:
@@ -122,6 +137,7 @@ func take_damage(amount: float) -> void:
 		return
 	hp = maxf(hp - amount, 0.0)
 	_invulnerable_left = hurt_invulnerability
+	_squash = 1.0
 	if hp == 0.0 and cheat_deaths > 0:
 		_cheat_death()
 	health_changed.emit(hp, max_hp)

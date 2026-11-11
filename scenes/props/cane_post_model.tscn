@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://b284m32q71l3x" path="res://assets/models/prop_cane_post.glb" id="1"]
+
+[node name="CanePostPropModel" instance=ExtResource("1")]

@@ -9,6 +9,7 @@ const CANE: PackedScene = preload("res://scenes/weapons/candy_cane_model.tscn")
 @export var spin_speed: float = 2.6
 @export var hit_radius: float = 0.5
 @export var rehit_time: float = 0.5
+@export var cane_scale: float = 1.5
 
 var _angle: float = 0.0
 var _canes: Array[Node3D] = []
@@ -23,6 +24,7 @@ func _process(delta: float) -> void:
 	var wanted: int = count()
 	while _canes.size() < wanted:
 		var cane: Node3D = CANE.instantiate()
+		cane.scale = Vector3.ONE * cane_scale
 		add_child(cane)
 		_canes.append(cane)
 	while _canes.size() > wanted:
