@@ -112,9 +112,10 @@ performance*, not for their characters, UI, logos or assets — everything here 
 
 ## Audio & UI style
 
-- Music mood: cozy jingle-bell chiptune: bright 8-bit square/triangle leads + sleigh bells, upbeat
-  but not frantic. One loop + an intensity layer that fades in for the final stretch (~3:30).
-  (Quentin, 2026-11-11)
+- Music mood (revised 2026-11-11 after Quentin found the 8-bit loop harsh): **modern, warm and cozy with
+  a retro flavour** - music box, soft flute-like lead, detuned pads, round bass, soft drums, filtered
+  sleigh bells; no square waves or piercing highs; 112 BPM; 2-minute arrangement (intro, verse, chorus,
+  interlude, chorus) + an intensity layer that fades in at 3:30.
 - SFX character: short, soft-edged chiptune blips; festive (bells, paper rustle, ornament "tink"),
   never harsh or gory. Hits/pickups get small random pitch variation. (Quentin, 2026-11-11)
 - Audio source: CC0 packs (Kenney Interface Sounds + Digital Audio, credited in `assets/CREDITS.md`) for
@@ -125,4 +126,6 @@ performance*, not for their characters, UI, logos or assets — everything here 
   balance with bus volume only.
 - UI style (Quentin, 2026-11-11): **cozy pixel** — chunky CC0 pixel font, dark navy `#22304F` panels with
   gold `#F2B53B` trim and a 2 px border, snow-white `#F4F8FF` text, small pixel icons on cards. Rarity
-  tints: rare = ice `#7FD6F2`, epic = hostile purple `#9B4FD1`, evolution = gold. Palette colors only.
+  tints: rare = ice `#7FD6F2`, epic = hostile purple `#9B4FD1`, evolution = gold. UI-text-only tints
+  (for readability on navy): better `#9BE0A8`, worse `#FF9AA0`, epic tag `#C9A6EC`, item tag `#E8C48E`.
+  Icons: 12x12 pixel art + 1 px navy outline, saved 4x (56 px); HUD shows them at 28 px.

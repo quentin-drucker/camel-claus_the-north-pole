@@ -62,6 +62,16 @@ docs/        devlog, art direction, these conventions
 - Models face Blender **+Y** (= Godot −Z); code turns them with `rotation.y = atan2(-dir.x, -dir.z)`.
 - Characters and pickups get a `BlobShadow` (shared `assets/materials/blob_shadow_mesh.tres`).
 
+## Game structure
+
+- Main scene is `scenes/ui/main_menu.tscn`; scene changes go through the `Transition` autoload (fade).
+- UI text about upgrades/weapons/items/stats comes from `scripts/ui/describe.gd`, which uses the same
+  formulas as gameplay (`WeaponData.damage_at/cooldown_at/count_at/radius_at`). Never hard-code numbers
+  in UI text.
+- Debug-only features check `OS.is_debug_build()` (F2/F3/F4, FPS readout); release exports drop them.
+  Browser tests that need F3/F4 must use a debug export.
+- Tests and the balance bot load `res://scenes/main/main.tscn` directly (no menu).
+
 ## Web build
 
 - Must keep working with the GL Compatibility renderer and Web export.

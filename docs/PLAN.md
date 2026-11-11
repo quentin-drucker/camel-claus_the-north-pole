@@ -108,13 +108,14 @@ Fix what Checkpoint 1 found before spending time on art. Still greybox.
 4. Balance pass: spawn curve, damage, XP so a run feels good across 5 minutes.
 - **Checkpoint 3:** full run with all content; you playtest and list what feels off.
 
-### Phase 4 — UI, juice, audio (~6 h) ☐ — steps 1–3 done 2026-11-11, awaiting Checkpoint 4
+### Phase 4 — UI, juice, audio (~6 h) ✅ (2026-11-11, plus a polish pass: softer music, compact cards,
+evolution visuals/feedback, pause menu with build + stats, main menu scene, fade transitions)
 1. Title screen, HUD, level-up cards with upgrade icons, win/lose screens — using the palette.
 2. Juice: hit flash, damage numbers, small screen shake, pickup pop, death poof particles.
 3. SFX + music loop; audio buses (music / SFX volume).
 - **Checkpoint 4:** feature freeze. From here, only bug fixes.
 
-### Phase 5 — Ship (~6 h, the protected buffer) ☐
+### Phase 5 — Ship (~6 h, the protected buffer) ☐ — 1 done, 2 prepared (`docs/ITCH_PAGE.md`; needs Quentin's itch login), 3 tagged `v1.0-demo`
 1. Final web export; test in Chrome + one other browser; check load time and console errors.
 2. Upload to the host (likely itch.io as an HTML5 game — free, playable in-browser), page with
    pitch, controls, screenshots, credits.
@@ -157,9 +158,8 @@ assets/models|textures|audio/   imported art;  art_src/ Blender sources
 
 ## Backlog (noted, not scheduled yet — pull into a phase when it fits)
 
-- Stretch: stats panel (damage x, attack speed...), pause menu with volume (sliders are on the title only).
-- Phase 5 (must): remove debug keys F2 (stress), F3 (skip 30 s), F4 (all weapons + chest) and the FPS label; exclude `addons/godot_mcp` from the export;
-  re-check performance on weaker hardware.
+- Done (Phase 5): debug keys F2/F3/F4 + FPS readout work only in debug builds (`OS.is_debug_build()`);
+  `addons/godot_mcp` and `tests/` excluded from the export. Still to do: performance on weaker hardware.
 - Check by ear (Claude can't listen): music loop seam, SFX volumes/picks, jingles. Pitch variation uses
   `pitch_scale` per play (no AudioStreamRandomizer).
 - Cosmetic: HUD timer shows 0:01 behind the win screen.

@@ -7,6 +7,39 @@ Entry format: `## YYYY-MM-DD — short title`, then what changed, why, and what'
 
 ---
 
+## 2026-11-11 — Polish pass + Phase 5 (ship prep)
+
+**Polish (Quentin's request, done while he was away)**
+- **Music** rewritten (`make_audio.py`): warm music box / soft lead / pads / round bass, light reverb,
+  low-passed (energy >2 kHz down from 9% to ~0.1%), 112 BPM, 2:09 arrangement with the verse + chorus,
+  seamless loop; plays continuously across menu, runs and restarts; ducks while paused. New evolve jingle.
+- **Icons**: 1 px navy outline (readable on snow), evolved variants for Gift Toss / Jingle Pulse,
+  clearer Chimney Draft.
+- **Level-up / chest cards**: compact header (icon, type tag, name, level), effect with real before >
+  after numbers from the game formulas, evolution hint with progress; borders by type (new weapon gold,
+  weapon upgrade ice, item tan, evolution gold on wood-brown); focus pops the card.
+- **Evolutions**: Present Barrage = gold-wrapped gifts with a star, sparkle trail, gold pop on hit;
+  Carol of the Bells = golden bell over Claus that swings, double gold+ice ring. Acquisition: banner
+  with the evolved icon, evolve jingle, gold/ice burst, shake. "READY" badge + banner when requirements
+  are met. Weapon formulas moved into `WeaponData` (single source for gameplay and UI).
+- **Pause menu** (Esc/P): build grid (icons, level/EVO/READY, details + evolution progress on focus) and
+  stats vs base (green better / red worse / white unchanged, tooltip lists sources); Resume, Settings,
+  Restart run, Main menu.
+- **Main menu scene** (snowy diorama, Claus + critters, snowfall, swaying camera), shared Settings panel
+  (music, sounds, fullscreen), `Transition` fade for every scene change; end screen freezes, fades in,
+  shows the build and offers Play again / Main menu. Snowfall during runs too.
+- F2 "can't take damage" = the stress test's intended god mode; the HUD now says "GOD MODE (F2 debug)".
+
+**Phase 5**
+- Debug keys + FPS readout are debug-build only; export excludes `addons/godot_mcp` and `tests/`
+  (pck 3.6 -> 3.0 MB). Boot splash navy, project name "Camel Claus".
+- Release web build tested in **Chrome and Firefox**: engine up in ~2.2 s locally, 0 console errors,
+  menu -> run -> pause identical in both. Upload zip `build/camel-claus-web.zip` (12.9 MB).
+- `docs/ITCH_PAGE.md`: upload steps + page text; screenshots in `docs/media/`. Tagged `v1.0-demo`.
+
+**Blocked on Quentin**: itch.io upload (needs his account), hackathon submission (deadline/site unknown),
+listening check of music/SFX, test on a weaker machine.
+
 ## 2026-11-11 — Phase 4: UI, juice, audio (awaiting Checkpoint 4)
 
 **Done**
