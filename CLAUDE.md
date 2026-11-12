@@ -2,9 +2,11 @@
 @AGENTS.md
 <!-- END:godot-mcp -->
 
-# Camel Claus (hackathon project)
+# Camel Claus: The North Pole (workflow test game)
 
-Goal: AI-assisted Godot game shipped as a Web (HTML5) build for hackathon submission.
+A finished test of the AI-assisted Godot + Blender workflow, shipped as a Web (HTML5) build on GitHub
+Pages (see `docs/PUBLISHING.md`). Not a hackathon entry: the hackathon gets a separate, differently
+named Camel Claus game in its own project folder.
 
 @docs/CONVENTIONS.md
 

@@ -13,7 +13,11 @@ import bpy
 import os
 from collections import Counter
 
-PROJ = r"C:\Users\qdruc\Projects\Godot\Camel Claus\cc-v-0"
+# Run via exec() in Blender, so __file__ isn't available: the project folder (renamed 2026-11-11 from
+# cc-v-0) is the first of these that exists.
+_ROOTS = [r"C:\Users\qdruc\Projects\Godot\Camel Claus\Camel Claus The North Pole",
+          r"C:\Users\qdruc\Projects\Godot\Camel Claus\cc-v-0"]
+PROJ = next((p for p in _ROOTS if os.path.isdir(p)), _ROOTS[0])
 
 # docs/ART_DIRECTION.md palette (snap targets).
 PALETTE = [
