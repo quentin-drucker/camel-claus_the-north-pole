@@ -7,6 +7,15 @@ Entry format: `## YYYY-MM-DD — short title`, then what changed, why, and what'
 
 ---
 
+## 2026-11-11 — Published on GitHub Pages (v1.1)
+
+- Repo made public by Quentin (now `quentin-drucker/camel-claus_survivors_workflow-test`). Phases 6-7
+  committed as `4ec0df0`, tagged **v1.1**, pushed. Release web build pushed to a `gh-pages` branch
+  (build files only + `.nojekyll`); GitHub Pages serves it at
+  **https://quentin-drucker.github.io/camel-claus_survivors_workflow-test/**. Checked live: all files
+  200 (`index.wasm` 39.5 MB as `application/wasm`), the game boots to the main menu, title "Camel Claus:
+  The North Pole", 0 console errors. Update steps in `docs/PUBLISHING.md`. itch.io: later (Quentin).
+
 ## 2026-11-11 — Esc vs browser fullscreen, demo code, livelier menu scene
 
 - **Esc in browser fullscreen** (Quentin: Esc both paused and left fullscreen). Browsers own Esc in

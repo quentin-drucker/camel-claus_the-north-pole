@@ -58,33 +58,30 @@ path `build/web/index.html`; then zip the *contents* of `build/web/` (not the fo
 7. Updates later: upload the new zip and delete the old one (or use butler:
    `butler push build/web <your-itch-user>/camel-claus:html5`).
 
-## B. GitHub Pages (optional, alongside the source)
+## B. GitHub Pages — live at https://quentin-drucker.github.io/camel-claus_survivors_workflow-test/
 
-The repo is `github.com/quentin-drucker/camel-claus`. `build/` is git-ignored on `main`, so publish the
-build to a separate **`gh-pages`** branch that only holds the web files. `index.wasm` is ~40 MB: too big
-for GitHub's drag-and-drop uploader (25 MB), fine for `git push` (100 MB limit per file).
+Set up 2026-11-11 from the public repo `github.com/quentin-drucker/camel-claus_survivors_workflow-test`
+(renamed from `camel-claus`; the old URL redirects). The **`gh-pages`** branch holds only the web build
+(plus an empty `.nojekyll`); Pages serves it from the branch root. `build/` stays git-ignored on `main`.
+`index.wasm` is ~40 MB: too big for GitHub's drag-and-drop uploader (25 MB), fine for `git push`.
 
-From the project folder, in Git Bash:
+**Update the live build** after a new release export, from the project folder in Git Bash:
 
 ```bash
-# one-time: a separate folder that holds only the gh-pages branch
-git worktree add --orphan -b gh-pages ../camel-claus-pages
+git worktree add ../camel-claus-pages gh-pages     # check out the existing branch next to the project
 cp build/web/* ../camel-claus-pages/
 cd ../camel-claus-pages
-touch .nojekyll            # serve files as-is
 git add -A
-git commit -m "Web build"
-git push -u origin gh-pages
+git commit -m "Web build vX.Y"
+git push
+cd -
+git worktree remove ../camel-claus-pages
 ```
 
-Then on GitHub: repo → **Settings → Pages** → Source **Deploy from a branch** → Branch **gh-pages**,
-folder **/ (root)** → Save. After a minute or two the game is at
-`https://quentin-drucker.github.io/camel-claus/`. (The repository must be public for free GitHub Pages.)
+GitHub rebuilds the site in under a minute (repo → **Settings → Pages** shows the status). If the page
+still shows the old version, hard-refresh (Ctrl+F5): browsers cache the large `.wasm`/`.pck` files.
 
-Updates later: re-export, then `cp build/web/* ../camel-claus-pages/`, and in that folder
-`git add -A && git commit -m "Update web build" && git push`.
+## Before publishing: commit the source
 
-## Before either: commit the source
-
-Phases 6-7 (everything since `v1.0-demo`) are not committed yet. Commit and push `main` first, so the
-published build matches the code on GitHub, and tag it (e.g. `v1.1`).
+Commit and push `main` first, so the published build matches the code on GitHub, and tag the release
+(`v1.1` = the build live since 2026-11-11).
