@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AchievementData" format=3]
+
+[ext_resource type="Script" uid="uid://dg51ame1esmqh" path="res://scripts/data/achievement_data.gd" id="1_a"]
+
+[resource]
+script = ExtResource("1_a")
+id = "workshop_regular"
+title = "Workshop Regular"
+description = "Buy 5 Workshop upgrades"
+stat = "total_workshop_levels"
+target = 5.0
+reward_coins = 50
+unlocks_weapon = ""

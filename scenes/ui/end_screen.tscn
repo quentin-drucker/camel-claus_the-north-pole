@@ -39,10 +39,28 @@ layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
+[node name="Summary" type="RichTextLabel" parent="Center/Panel/VBox" unique_id=1937833150]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(940, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
 [node name="Buttons" type="HBoxContainer" parent="Center/Panel/VBox" unique_id=581498631]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
+
+[node name="EndlessButton" type="Button" parent="Center/Panel/VBox/Buttons" unique_id=2049436673]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(300, 88)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9490196, 0.70980394, 0.23137255, 1)
+theme_override_font_sizes/font_size = 64
+text = "Keep going"
 
 [node name="RestartButton" type="Button" parent="Center/Panel/VBox/Buttons" unique_id=1533289641]
 unique_name_in_owner = true

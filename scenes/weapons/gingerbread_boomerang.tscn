@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://blmnwr2wkd2vs"]
+
+[ext_resource type="Script" uid="uid://dy5p58ohhone2" path="res://scenes/weapons/gingerbread_boomerang.gd" id="1_3kf2n"]
+
+[node name="GingerbreadBoomerang" type="Node3D" unique_id=760414494]
+script = ExtResource("1_3kf2n")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WorkshopData" format=3]
+
+[ext_resource type="Script" uid="uid://d0v13tt13ytm6" path="res://scripts/data/workshop_data.gd" id="1_w"]
+
+[resource]
+script = ExtResource("1_w")
+id = "long_scarf"
+title = "Long Scarf"
+description = "+{v}% pickup reach"
+icon = "magnet_scarf"
+stat = 4
+amount = 0.1
+is_percent = true
+costs = Array[int]([40, 90, 160])

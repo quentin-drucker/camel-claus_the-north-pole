@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CosmeticData" format=3]
+
+[ext_resource type="Script" uid="uid://bgd37brpu4d2n" path="res://scripts/data/cosmetic_data.gd" id="1_c"]
+
+[resource]
+script = ExtResource("1_c")
+id = "skin_cream"
+title = "Cream"
+slot = 0
+price = 0
+swap_from = PackedColorArray(0.9098, 0.7686, 0.5569, 1, 0.7882, 0.5608, 0.3333, 1, 0.5412, 0.3529, 0.2000, 1, 0.3569, 0.2275, 0.1647, 1)
+swap_to = PackedColorArray(0.9569, 0.9725, 1.0000, 1, 0.9098, 0.7686, 0.5569, 1, 0.7882, 0.5608, 0.3333, 1, 0.5412, 0.3529, 0.2000, 1)
+color_options = PackedStringArray()

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://jtcm6f7yde6t"]
+
+[ext_resource type="Script" uid="uid://civbuc80q0rss" path="res://scenes/weapons/ornament_mines.gd" id="1_dlxwv"]
+
+[node name="OrnamentMines" type="Node3D" unique_id=1179817127]
+script = ExtResource("1_dlxwv")

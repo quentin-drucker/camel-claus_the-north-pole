@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://yiyfasy7pn2g"]
+
+[ext_resource type="Script" uid="uid://bbt0hku6djbdi" path="res://scenes/weapons/gingerbread.gd" id="1_c6i0x"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/gingerbread_model.tscn" id="2_t426w"]
+
+[node name="Gingerbread" type="Node3D" unique_id=1122794015]
+script = ExtResource("1_c6i0x")
+
+[node name="Body" parent="." unique_id=802469379 instance=ExtResource("2_t426w")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)

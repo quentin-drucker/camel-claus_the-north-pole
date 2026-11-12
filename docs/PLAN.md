@@ -1,4 +1,4 @@
-# Camel Claus — Demo Plan
+# Camel Claus: The North Pole — Plan
 
 The build plan for the hackathon demo. Claude works through it phase by phase and stops at each
 **Checkpoint** for Quentin's review. Tick boxes as phases finish; log details in `DEVLOG.md`.
@@ -122,6 +122,125 @@ evolution visuals/feedback, pause menu with build + stats, main menu scene, fade
 3. Submit to the hackathon **well before** the deadline. Tag the commit `v1.0-demo`.
 - **Checkpoint 5:** you play the public link on a different device.
 
+### Phase 6 — Roguelite expansion ✅ built 2026-11-11, checkpoints 6.1-6.4 open for Quentin (added from his expansion brief)
+
+**Loop in one line:** *pick 3 weapons, grow them to Lv 5, call Santa to evolve them, bank coins for the next run.*
+Megabonk / Vampire Survivors stay pattern references only (same rule as above).
+
+**Design decisions (resolving the brief's open points)**
+- **Evolution = weapon Lv 5 + a Santa's Sleigh present.** The item requirement (Santa's Sack, Sleigh Bells)
+  is dropped: with a 3-weapon loadout the second key just adds luck. Those two items stay as normal items;
+  "Sleigh Bells" is renamed **Silver Bells** so "Sleigh" only ever means Santa's ability.
+- **Gift chests** (elites, boss) keep giving items only; evolutions leave chests in 6.2 (6.1 keeps the
+  chest as the temporary evolution source so new evolutions are testable before Santa exists).
+- **Max 3 weapons carried** (from 6.1). With loadouts (6.2) the run's pool *is* those 3 weapons.
+- **Santa's Sleigh meter:** kills charge it; thresholds per activation are data (first 8 kills, then
+  ~120 / 220 / 320, +100 after), tuned on the bot's kill curve (≈90 kills @1:00, 410 @3:00, 1000 @5:00)
+  for **3–4 calls per run** (tuned to 8 / 180 / 300 / 420 in 6.2). A full meter **holds** (no stockpiling) until you press **Space**: use it now
+  for a timed blessing, or save it for a Lv 5 weapon. The present lands next to Claus with a snow blast
+  that clears space around it and homes to him after a few seconds, so it is never unreachable.
+- **Santa's present:** Lv 5 weapons → pick which evolves. None → pick 1 of 3 **blessings** (timed, shown
+  with a HUD timer): Hot Cocoa (×2 damage), Reindeer Rush (move + attack speed), Christmas Spirit (×2 XP),
+  Mega Magnet (all XP now + bigger reach), Snow Angel (invulnerable), Blizzard (freeze + damage all on screen).
+- **Ground pickups** (no menu): Christmas Magnet (all XP rushes to Claus), Cookies & Milk (heal 25%),
+  Snow Bomb (pops normal enemies near Claus, freezes the rest, chips elites/boss). Rare, with a per-kind
+  cooldown so they never clutter.
+- **Currency: Christmas Coins**, earned from kills, time survived, elites/boss and a win bonus
+  (scaled so a 2:30 loss still buys something). Shop upgrades are small, capped, multi-step.
+- **Persistence:** one `Profile` autoload (meta: coins, shop levels, unlocks, loadout, achievements,
+  lifetime stats, bests) saved as JSON in `user://profile.json` with a `version` field and defaults for
+  missing keys. `GameState` stays per-run. Stats are counted once, at run end, from `GameState`'s run totals.
+
+**Conflicts flagged (art direction / web)**
+- *Value rule (no white on white snow):* enemy snowballs get a purple `#9B4FD1` core and a purple landing
+  ring (purple = danger); Claus's snowballs are ice-blue `#7FD6F2`, the Snow Bomb is navy with an ice band.
+- *Ornament Mines vs XP ornaments:* mines are green + gold, sit flat and blink; XP stays as it is.
+- *Blizzard event "lower visibility" vs readability:* edge-only white vignette + denser (capped) snowfall,
+  never over the play area's centre.
+- *Web:* `user://` lives in the browser's IndexedDB (per site; clearing site data wipes progress — say so
+  on the itch page). Single-threaded is fine. Space can scroll an itch page if the canvas loses focus, so
+  **E** also calls Santa. New projectiles/mines are capped per weapon; enemy projectiles capped at 30.
+- *Credits:* "Claude" removed from in-game credits (Quentin's call). The itch page keeps an "AI-assisted
+  pipeline" line without the product name — itch.io asks creators to disclose AI-generated assets.
+
+**6.1 — Combat variety (Priority 1)** ✅ built 2026-11-11 (awaiting Checkpoint 6.1; details in DEVLOG)
+1. Credits cleanup. Evolution gate = Lv 5 (item requirement removed), 3-weapon cap.
+2. **Candy Cane Orbit → Peppermint Cyclone:** wider, faster ring of big canes that fling outward as
+   piercing projectiles every few seconds and regrow.
+3. **Snowball Barrage** (lobbed arcs, splash on landing; Lv: damage/count/radius) **→ Avalanche**
+   (bigger snowballs that burst into 4 hopping fragments that splash again).
+4. **Ornament Mines** (dropped where Claus walks, blow up when enemies come close; Lv: damage/cap/radius)
+   **→ Chain Reaction** (a blast sets off nearby mines + a second, wider ring).
+5. **Snowball Lobber** enemy (from 1:15): keeps ~8 m away, winds up with a purple ring under Claus, lobs a
+   slow arc you can sidestep; capped number alive.
+6. Ground pickups: Christmas Magnet first, then Cookies & Milk, Snow Bomb.
+7. Art (pixel_bake pipeline), icons, SFX; weapon-fires test; balance bot ×10.
+- **Checkpoint 6.1:** play the web build: do the new weapons feel distinct, is the Lobber fair, do pickups pop?
+
+**6.2 — Santa & builds (Priority 2)** ✅ built 2026-11-11 (awaiting Checkpoint 6.2; details in DEVLOG)
+1. `Profile` autoload + save file (loadout first). Pre-run **Loadout** screen: 3 of the unlocked weapons,
+   one marked as starter; only those 3 are offered as new weapons.
+2. Santa's Sleigh: meter in the HUD, Space/E, sleigh fly-over (new model), present + snow blast, Santa
+   present screen (evolutions or blessings, more festive than level-ups), blessing timers in the HUD.
+3. Chests stop offering evolutions; texts say "call Santa's Sleigh" instead of "find a chest".
+4. **Reroll** (2/run) and **Banish** (1/run, removes that card for the run) on the level-up screen.
+5. XP + card weights re-tuned with a new bot mode `focus` (commits to its weapons, calls Santa) so a
+   focused build evolves its first weapon around 2:30–3:30 and sometimes a second.
+- **Checkpoint 6.2:** you play several runs with different loadouts.
+
+**6.3 — Meta-progression (Priority 3)** ✅ built 2026-11-11 (awaiting Checkpoint 6.3; details in DEVLOG)
+1. Christmas Coins + run-end payout; **Workshop** shop (Max HP, move, damage, XP, pickup reach, rerolls,
+   banishes — 3–5 small steps each, rising prices).
+2. Weapon unlocks: an achievement makes a weapon *buyable* for 150 coins (Snowball Barrage: 300 lifetime
+   kills; Ornament Mines: defeat an elite; list in `resources/achievements/`).
+3. Achievements (data resources: condition + target + reward), toast that doesn't pause, menu page.
+4. Lifetime stats + personal bests (with the best run's build), statistics page, small best-run line on
+   the main menu.
+5. Main menu: Play (→ loadout) · Workshop · Achievements · Stats · Settings. Results screen: time, kills,
+   damage, build with evolutions, coins earned, new records, new achievements.
+- **Checkpoint 6.3:** progress survives a browser reload; a lost run still feels worth it.
+
+**6.4 — Polish & extras (Priority 4)** ✅ built 2026-11-11 (Blizzard + Gingerbread Boomerang + perf/web check;
+Hard/Endless stay in the backlog; awaiting Checkpoint 6.4)
+1. Blizzard event (once per run, ~2:45: enemies slowed, snow thickens at the edges, music filter).
+2. One more weapon if 6.1–6.3 are solid: **Gingerbread Boomerang** (returns; rewards movement) — picked
+   over Snowflake Shurikens, which would be another straight projectile next to Gift Toss.
+3. More achievements, audio polish, web performance check with every new weapon evolved.
+- Deferred to the backlog: **Hard mode**, **Endless mode** (only after the 5-minute run is balanced).
+- **Checkpoint 6.4:** release candidate; re-export, re-tag.
+
+### Phase 7 — Living world + camel customization ✅ built 2026-11-11 (awaiting Checkpoint 7; details in DEVLOG)
+
+**Design decisions**
+- **Boundary = a snowbank ridge with a forest on it.** A continuous ring of overlapping snowbank pieces
+  (varied size/rotation, so no visible repeat) sits right on the invisible wall (59 m), with 3 jittered
+  rows of pines and some rocks behind it. The wall stays where it was, so collision matches the visuals.
+  Enemies now spawn/recycle inside the arena (they used to be able to appear beyond the wall near edges).
+- **Backdrop = one shared scene** (`scenes/world/backdrop.tscn`) in both the game and the main menu:
+  2 layers of low-poly snowy mountains, a distant tree line (MultiMesh), a soft sky gradient, a moon and
+  a slow aurora ribbon, plus distance fog so far layers fade (atmospheric perspective). The game camera
+  mostly looks down, so it only peeks at it near the edges; the menu camera sees all of it.
+- **Alive, not noisy**: pines and candy-cane posts sway with a vertex shader (phase from world position,
+  so nothing moves in sync — same trick as the enemy waddle), pines near Claus now and then shed a small
+  puff of snow, candy-cane posts glint, gift piles' lights twinkle; **footprints**: one pooled MultiMesh
+  (64 prints), placed per step at the hooves' side, fading out over ~4 s — one draw call, no new nodes.
+  Snow puffs at the hooves while running.
+- **Fullscreen**: the checkbox mirrors the real window/browser state every frame it is visible (Esc in a
+  browser leaves fullscreen without the game being told otherwise). Fullscreen isn't saved on the web
+  (browsers only allow it after a click).
+- **Customization** (cosmetic only, no stats): Claus is split into **body + hat + outfit** pieces; skins
+  recolor the body and colors recolor a hat/outfit with one **palette-swap shader** (swaps palette swatches,
+  so every variant stays inside ART_DIRECTION's palette and nothing needs re-baking). Items are data
+  (`CosmeticData`), saved in Profile, shown in game and on the menu (the menu's Claus *is* the preview).
+  Free from the start: 3 skins, Santa hat and beanie (any color), scarf; others cost 100-300 coins.
+  **Art-direction flag**: no purple accessories (purple = danger) and no all-white skin (the value rule:
+  Claus must pop off the snow) — "Frosty" is ice-blue instead.
+
+**7.1** fullscreen sync · boundary ridge · backdrop · living props · footprints
+**7.2** customization: split model, new hats/outfits, palette swap, Customize screen, coins, persistence
+- **Checkpoint 7:** Quentin plays in the browser: does the edge read as "can't go there", does the menu
+  have depth, is it alive but readable, do cosmetics feel worth earning?
+
 ## Godot structure (follows `CONVENTIONS.md`)
 
 ```
@@ -168,7 +287,12 @@ assets/models|textures|audio/   imported art;  art_src/ Blender sources
   playtest. Boss is usually survived, rarely killed (4500 HP).
 - Windowed Godot game launches crash on this PC (stack overflow even for an empty new project; the editor
   is fine) — environmental, likely driver/overlay; reboot. Web build unaffected. Use the web build to test.
-- Stretch: reroll/banish, luck stat, more items.
+- Stretch: luck stat, more items. (Reroll/banish done in 6.2.)
+- Done after Phase 6: **Endless mode** (Keep going after a win), Settings "Reset progress", the rename.
+- Phase 6 follow-ups (not built): **Hard mode**; a global
+  "Area" stat card (would make Jingle/Snowball/Mines/Boomerang interact more with upgrades, but adds a 7th
+  stat card to the pool); a 7th weapon (Snowflake Shurikens was skipped: too close to Gift Toss).
+- Not checked by eye yet (Claude): the results screen and the music/SFX for Phase 6 (audio by ear).
 
 ## Open questions (decide before the phase that needs them)
 

@@ -12,7 +12,10 @@
 [ext_resource type="Resource" uid="uid://cj1ej7pmxi30f" path="res://resources/upgrades/weapon_candy_cane_orbit.tres" id="10_yjuq2"]
 [ext_resource type="Resource" uid="uid://5ldyqb73lenv" path="res://resources/upgrades/weapon_jingle_pulse.tres" id="11_q8lve"]
 [ext_resource type="Script" uid="uid://deblhdrwrlk1" path="res://scripts/data/item_data.gd" id="12_0o0mn"]
+[ext_resource type="Resource" path="res://resources/upgrades/weapon_snowball_barrage.tres" id="12_q8lve"]
+[ext_resource type="Resource" path="res://resources/upgrades/weapon_ornament_mines.tres" id="13_0o0mn"]
 [ext_resource type="Resource" uid="uid://cfuv4h7tsxj2k" path="res://resources/items/spiced_dates.tres" id="13_2f6tg"]
+[ext_resource type="Resource" path="res://resources/upgrades/weapon_gingerbread_boomerang.tres" id="14_d4b6d"]
 [ext_resource type="Resource" uid="uid://dmwgdha6twgfn" path="res://resources/items/sleigh_bells.tres" id="14_ncni6"]
 [ext_resource type="Resource" uid="uid://diav10wp7y7ou" path="res://resources/items/santas_sack.tres" id="15_d4b6d"]
 [ext_resource type="Resource" uid="uid://c1xh2nx0khwfd" path="res://resources/items/hay_bale.tres" id="16_6of0n"]
@@ -23,12 +26,14 @@
 [ext_resource type="Resource" uid="uid://d2yqn4ipbnwdm" path="res://resources/items/snow_globe.tres" id="21_uqvg2"]
 [ext_resource type="Resource" uid="uid://beq7tks7jw42j" path="res://resources/items/chimney_draft.tres" id="22_7ikhm"]
 [ext_resource type="Resource" uid="uid://b6neu3s1e3yt1" path="res://resources/items/lump_of_coal.tres" id="23_db3im"]
+[ext_resource type="Texture2D" uid="uid://buya0uj3iy8ar" path="res://assets/ui/icons/reroll.png" id="26_2f6tg"]
+[ext_resource type="Texture2D" uid="uid://dpkwote27wrwm" path="res://assets/ui/icons/banish.png" id="27_ncni6"]
 
 [node name="LevelUpMenu" type="CanvasLayer" unique_id=1166969450]
 process_mode = 3
 layer = 10
 script = ExtResource("1_uklwp")
-upgrades = Array[ExtResource("2_jpc1i")]([ExtResource("3_12waf"), ExtResource("4_gs4ci"), ExtResource("5_1ivcs"), ExtResource("6_p7a5o"), ExtResource("7_ynggi"), ExtResource("8_vy0on"), ExtResource("9_jtr4i"), ExtResource("10_yjuq2"), ExtResource("11_q8lve")])
+upgrades = Array[ExtResource("2_jpc1i")]([ExtResource("3_12waf"), ExtResource("4_gs4ci"), ExtResource("5_1ivcs"), ExtResource("6_p7a5o"), ExtResource("7_ynggi"), ExtResource("8_vy0on"), ExtResource("9_jtr4i"), ExtResource("10_yjuq2"), ExtResource("11_q8lve"), ExtResource("12_q8lve"), ExtResource("13_0o0mn"), ExtResource("14_d4b6d")])
 items = Array[ExtResource("12_0o0mn")]([ExtResource("13_2f6tg"), ExtResource("14_ncni6"), ExtResource("15_d4b6d"), ExtResource("16_6of0n"), ExtResource("17_08sey"), ExtResource("18_wro4m"), ExtResource("19_cnus0"), ExtResource("20_6xc1f"), ExtResource("21_uqvg2"), ExtResource("22_7ikhm"), ExtResource("23_db3im")])
 
 [node name="Dim" type="ColorRect" parent="." unique_id=1473839333]
@@ -83,3 +88,27 @@ theme_override_font_sizes/font_size = 48
 autowrap_mode = 3
 icon_alignment = 1
 vertical_icon_alignment = 0
+
+[node name="Tools" type="HBoxContainer" parent="Center/VBox" unique_id=2047201144]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="RerollButton" type="Button" parent="Center/VBox/Tools" unique_id=1967006910]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 56)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Reroll (2)  [R]"
+icon = ExtResource("26_2f6tg")
+
+[node name="BanishButton" type="Button" parent="Center/VBox/Tools" unique_id=839098987]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 56)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+toggle_mode = true
+text = "Banish (1)  [B]"
+icon = ExtResource("27_ncni6")

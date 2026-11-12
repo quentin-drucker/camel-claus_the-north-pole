@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PickupData" format=3]
+
+[ext_resource type="Script" uid="uid://b8hu17a36jilp" path="res://scripts/data/pickup_data.gd" id="1_p"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/snow_bomb_model.tscn" id="2_p"]
+
+[resource]
+script = ExtResource("1_p")
+title = "Snow Bomb"
+kind = 2
+model = ExtResource("2_p")
+drop_chance = 0.003
+cooldown = 35.0
+amount = 7.0

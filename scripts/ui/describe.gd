@@ -14,6 +14,9 @@ const WEAPONS: Array[WeaponData] = [
 	preload("res://resources/weapons/gift_toss.tres"),
 	preload("res://resources/weapons/candy_cane_orbit.tres"),
 	preload("res://resources/weapons/jingle_pulse.tres"),
+	preload("res://resources/weapons/snowball_barrage.tres"),
+	preload("res://resources/weapons/ornament_mines.tres"),
+	preload("res://resources/weapons/gingerbread_boomerang.tres"),
 ]
 
 
@@ -50,6 +53,11 @@ static func weapon_icon(weapon: Weapon) -> Texture2D:
 	return icon(base)
 
 
+static func evolved_icon(weapon: Weapon) -> Texture2D:
+	var base: String = "weapon_" + weapon.scene_file_path.get_file().get_basename()
+	return icon(base + "_evo") if icon(base + "_evo") else icon(base)
+
+
 static func weapon_data_named(display_name: String) -> WeaponData:
 	for data in WEAPONS:
 		if data.display_name == display_name:
@@ -61,46 +69,31 @@ static func sentence(text: String) -> String:
 	return text.left(1).to_upper() + text.substr(1) if text else text
 
 
+## `player` null = base stats (menus outside a run).
 static func weapon_summary(data: WeaponData, level: int, evolved: bool, player: Player) -> String:
-	var parts: PackedStringArray = ["%s dmg" % num(data.damage_at(level, evolved, player.damage_mult))]
+	var dmg_mult: float = player.damage_mult if player else 1.0
+	var atk: float = player.attack_speed_bonus if player else 0.0
+	var extra: int = player.extra_projectiles if player else 0
+	var parts: PackedStringArray = ["%s dmg" % num(data.damage_at(level, evolved, dmg_mult))]
 	if data.show_cooldown:
-		parts.append("every %.2fs" % data.cooldown_at(evolved, player.attack_speed_bonus))
+		parts.append("every %.2fs" % data.cooldown_at(evolved, atk))
 	if data.count_noun != "":
-		var n: int = data.count_at(level, evolved, player.extra_projectiles)
+		var n: int = data.count_at(level, evolved, extra)
 		parts.append("%d %s%s" % [n, data.count_noun, "s" if n != 1 else ""])
 	if data.show_radius:
-		parts.append("%s m reach" % num(data.radius_at(evolved)))
+		parts.append("%s m %s" % [num(data.radius_at(level, evolved)), data.radius_label])
 	return ", ".join(parts)
 
 
-## Requirement line with progress: "Evolves: Lv 3/5 + Santa's Sack (missing)".
-static func evolution_progress(data: WeaponData, level: int, evolved: bool, player: Player) -> String:
-	if data.evolution_item == null:
+## Evolution line with progress: "Evolves at Lv 5 (3/5) > Present Barrage".
+static func evolution_progress(data: WeaponData, level: int, evolved: bool) -> String:
+	if data.evolved_name == "":
 		return c(MUTED, "No evolution")
 	if evolved:
 		return c(GOLD, "EVOLVED into " + data.evolved_name)
-	var lvl_ok: bool = level >= WeaponData.MAX_LEVEL
-	var item_ok: bool = player.items.has(data.evolution_item)
-	var lvl_text: String = c(GOOD if lvl_ok else MUTED, "Lv %d/%d" % [level, WeaponData.MAX_LEVEL])
-	var item_text: String = c(GOOD if item_ok else MUTED, data.evolution_item.title + (" (owned)" if item_ok else " (needed)"))
-	var line: String = "Evolves: %s + %s > %s" % [lvl_text, item_text, data.evolved_name]
-	if lvl_ok and item_ok:
-		line += "\n" + c(GOLD, "READY - open a gift chest!")
-	return line
-
-
-## For an item card: which weapon it evolves, and how close that weapon is.
-static func item_evolution_hint(item: ItemData, player: Player) -> String:
-	for data in WEAPONS:
-		if data.evolution_item != item:
-			continue
-		var owned: Weapon = null
-		for w in player.weapons():
-			if w.data == data:
-				owned = w
-		var status: String = "you don't have it yet" if owned == null else "yours is Lv %d/5" % owned.level
-		return c(GOLD, "Evolves %s at Lv 5 (%s)" % [data.display_name, status])
-	return ""
+	if level < WeaponData.MAX_LEVEL:
+		return "Evolves at %s > %s" % [c(MUTED, "Lv %d/%d" % [level, WeaponData.MAX_LEVEL]), data.evolved_name]
+	return c(GOLD, "READY to evolve into %s - call Santa's Sleigh!" % data.evolved_name)
 
 
 ## Card content for a level-up card. Keys: tag, tag_color, name, level, body, hint.
@@ -125,7 +118,7 @@ static func upgrade_card(player: Player, upgrade: UpgradeData, rarity_name: Stri
 			if n1 != n0:
 				lines.append("%ss %s" % [data.count_noun.capitalize(), change(str(n0), str(n1))])
 			card["body"] = "\n".join(lines)
-		card["hint"] = evolution_progress(data, level + 1, false, player) if data.evolution_item else ""
+		card["hint"] = evolution_progress(data, level + 1, false)
 		return card
 	var amount: float = upgrade.amount * (rarity_mult if upgrade.scales_with_rarity else 1.0)
 	card["tag"] = (rarity_name + " " if rarity_name else "") + "STAT UPGRADE"
@@ -156,12 +149,33 @@ static func upgrade_card(player: Player, upgrade: UpgradeData, rarity_name: Stri
 static func item_card(player: Player, item: ItemData) -> Dictionary:
 	var owned: int = player.items.get(item, 0)
 	return {"tag": "ITEM" + ("  (you have %d)" % owned if owned > 0 else ""), "tag_color": "E8C48E",
-		"name": item.title, "level": "", "body": item.description, "hint": item_evolution_hint(item, player)}
+		"name": item.title, "level": "", "body": item.description, "hint": ""}
 
 
 static func evolution_card(weapon: Weapon) -> Dictionary:
 	return {"tag": "EVOLUTION", "tag_color": GOLD, "name": weapon.data.evolved_name,
 		"level": "", "body": weapon.data.evolved_description, "hint": c(GOLD, "Replaces " + weapon.data.display_name)}
+
+
+static func blessing_card(blessing: BlessingData) -> Dictionary:
+	var lasts: String = "Instant" if blessing.effect == BlessingData.Effect.BLIZZARD 		else "Lasts %d s" % roundi(blessing.duration)
+	return {"tag": "BLESSING", "tag_color": "9BE0A8", "name": blessing.title, "level": "",
+		"body": blessing.description, "hint": c(MUTED, lasts)}
+
+
+## Loadout-screen text for a weapon: what it does, its Lv 1 numbers and what it evolves into.
+static func weapon_preview(card: UpgradeData, unlocked: bool, unlock_hint: String) -> String:
+	var data: WeaponData = weapon_data_named(card.title)
+	var text: String = "[font_size=48]%s[/font_size]
+%s
+%s
+%s" % [card.title,
+		sentence(card.new_description.get_slice(": ", 1)), c(ICE, weapon_summary(data, 1, false, null)),
+		c(GOLD, "Evolves at Lv 5 into %s: " % data.evolved_name) + data.evolved_description]
+	if not unlocked:
+		text += "
+" + c(BAD, "LOCKED: " + unlock_hint)
+	return text
 
 
 ## Pause-menu detail text for an owned weapon.
@@ -171,17 +185,14 @@ static func weapon_details(weapon: Weapon, player: Player) -> String:
 	return "%s
 %s
 %s" % [head, c(ICE, weapon_summary(weapon.data, weapon.level, weapon.evolved, player)),
-		evolution_progress(weapon.data, weapon.level, weapon.evolved, player)]
+		evolution_progress(weapon.data, weapon.level, weapon.evolved)]
 
 
 ## Pause-menu detail text for an owned item.
 static func item_details(item: ItemData, player: Player) -> String:
 	var count: int = player.items.get(item, 0)
-	var text: String = "[font_size=48]%s[/font_size]  %s
+	return "[font_size=48]%s[/font_size]  %s
 %s" % [item.title, c(MUTED, "x%d" % count), item.description]
-	var hint: String = item_evolution_hint(item, player)
-	return text + ("
-" + hint if hint else "")
 
 
 ## Pause-menu stat rows: {name, base, current, cmp (+1 better / 0 same / -1 worse), sources}.

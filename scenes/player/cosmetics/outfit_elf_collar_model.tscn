@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://l6nyoo1rjbwl" path="res://assets/models/outfit_elf_collar.glb" id="1"]
+
+[node name="OutfitElfCollar" instance=ExtResource("1")]

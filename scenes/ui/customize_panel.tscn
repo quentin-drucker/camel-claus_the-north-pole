@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c3ga54rqttevh"]
+
+[ext_resource type="Script" uid="uid://372hjxk5uw8r" path="res://scenes/ui/customize_panel.gd" id="1_vahdp"]
+
+[node name="CustomizePanel" type="PanelContainer" unique_id=1105747866]
+script = ExtResource("1_vahdp")

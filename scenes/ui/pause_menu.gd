@@ -5,7 +5,15 @@ extends CanvasLayer
 
 const MAIN_SCENE: String = "res://scenes/main/main.tscn"
 const MENU_SCENE: String = "res://scenes/ui/main_menu.tscn"
-const SLOT_SIZE: Vector2 = Vector2(72, 88)
+const SLOT_SIZE: Vector2 = Vector2(72, 80)  # 3 rows of a huge Endless build must still fit 720 px
+## Leaving fullscreen mid-run opens the pause menu: where the browser keeps Esc for itself (Firefox,
+## Safari, iframes like itch.io) that Esc exits fullscreen and may or may not reach the game, so the
+## run never keeps going behind the player's back. The same Esc arriving a moment later must not close
+## the menu again, hence the short guard.
+const FULLSCREEN_ESC_GUARD: float = 0.4
+
+var _was_fullscreen: bool = false
+var _opened_by_fullscreen_at: float = -10.0
 
 @onready var main_panel: Control = %MainPanel
 @onready var build_grid: GridContainer = %BuildGrid
@@ -34,8 +42,20 @@ func _ready() -> void:
 	menu_button.pressed.connect(_leave.bind(MENU_SCENE))
 
 
+func _process(_delta: float) -> void:
+	var mode: DisplayServer.WindowMode = DisplayServer.window_get_mode()
+	var full: bool = mode == DisplayServer.WINDOW_MODE_FULLSCREEN or mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
+	if _was_fullscreen and not full and not visible and GameState.is_running and not get_tree().paused:
+		_open()
+		_opened_by_fullscreen_at = Time.get_ticks_msec() / 1000.0
+	_was_fullscreen = full
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_action_pressed("pause"):
+		return
+	if Time.get_ticks_msec() / 1000.0 - _opened_by_fullscreen_at < FULLSCREEN_ESC_GUARD:
+		get_viewport().set_input_as_handled()  # the Esc that just left fullscreen already paused us
 		return
 	if visible:
 		if settings.visible:

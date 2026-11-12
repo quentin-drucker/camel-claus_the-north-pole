@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://cfp4t1rq7d5kx"]
+
+[ext_resource type="Script" uid="uid://0f5ks3uclghi" path="res://scripts/data/enemy_data.gd" id="1_lb"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/lobber_model.tscn" id="2_lb"]
+
+[resource]
+script = ExtResource("1_lb")
+display_name = "Snowball Lobber"
+max_hp = 26.0
+speed = 3.0
+contact_damage = 8.0
+xp_value = 3
+spawn_after = 75.0
+spawn_weight = 0.15
+max_alive = 6
+keep_distance = 10.0
+throw_interval = 3.2
+throw_range = 14.0
+model = ExtResource("2_lb")
+color = Color(0.30588236, 0.41568628, 0.61960787, 1)
+size = 1.1
+crown_height = 1.3

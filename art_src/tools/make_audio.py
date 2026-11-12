@@ -309,3 +309,20 @@ if __name__ == "__main__":
     write(os.path.join(sfx, "jingle_boss.wav"),
           jingle(["A2", "C3", "E3", "D#3"], step=0.2, hold=1.6, chord=["A2", "C3", "E3"], bells=False, voice=bass, vol=0.8))
     write(os.path.join(sfx, "sfx_jingle_pulse.wav"), sleigh(int(0.35 * SR)) * 0.8 + pluck(freq("E6"), int(0.35 * SR), 0.12) * 0.3)
+    # Phase 6.1 SFX (appended after the RNG users above so the existing renders stay identical).
+    t = np.arange(int(0.3 * SR)) / SR
+    thump = np.sin(2 * np.pi * (90 + 120 * np.exp(-t * 30)) * t) * np.exp(-t * 20)
+    write(os.path.join(sfx, "sfx_splash.wav"), smooth_noise(len(t), 10) * np.exp(-t * 16) * 1.6 + thump * 0.6, peak_db=-6.0)
+    write(os.path.join(sfx, "sfx_mine.wav"), pluck(freq("A6"), int(0.2 * SR), 0.05) + 0.5 * pluck(freq("E6"), int(0.2 * SR), 0.04), peak_db=-8.0)
+    write(os.path.join(sfx, "sfx_magnet.wav"), jingle(["C5", "E5", "G5", "C6", "E6", "G6"], step=0.045, hold=0.6, vol=0.45))
+    write(os.path.join(sfx, "sfx_heal.wav"), jingle(["G5", "C6"], step=0.12, hold=0.8, chord=["C4", "E4", "G4"], bells=False, voice=lead, vol=0.4))
+    t = np.arange(int(0.32 * SR)) / SR
+    write(os.path.join(sfx, "sfx_lob.wav"), (smooth_noise(len(t), 6) - smooth_noise(len(t), 30)) * np.sin(np.pi * t / t[-1]) ** 2, peak_db=-8.0)
+    # Phase 6.2: Santa's Sleigh fly-by (bells + the public-domain "Jingle Bells" motif) and meter-ready chime.
+    flyby = jingle(["E5", "E5", "E5", "E5", "E5", "E5", "E5", "G5", "C5", "D5", "E5"], step=0.12, hold=0.9, vol=0.4)
+    for i in range(14):
+        j = int(i * 0.1 * SR)
+        sig = sleigh() * 0.25
+        flyby[j:j + len(sig)] += sig[:len(flyby) - j]
+    write(os.path.join(sfx, "sfx_sleigh.wav"), flyby)
+    write(os.path.join(sfx, "sfx_santa_ready.wav"), jingle(["G5", "C6", "E6"], step=0.08, hold=0.7, vol=0.45), peak_db=-5.0)

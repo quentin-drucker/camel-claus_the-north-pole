@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://d1ln6o7yf4n4r"]
+
+[ext_resource type="Script" uid="uid://cq14ygaw4mx8j" path="res://scenes/pickups/pickup.gd" id="1_itxnx"]
+[ext_resource type="PlaneMesh" uid="uid://cipog1wx2opgw" path="res://assets/materials/blob_shadow_mesh.tres" id="2_0oso7"]
+
+[node name="Pickup" type="Node3D" unique_id=1407771979]
+script = ExtResource("1_itxnx")
+
+[node name="BlobShadow" type="MeshInstance3D" parent="." unique_id=133540370]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0.02, 0)
+cast_shadow = 0
+mesh = ExtResource("2_0oso7")

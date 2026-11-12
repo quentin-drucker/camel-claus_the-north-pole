@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c0xmh5g1bqgi1"]
+
+[ext_resource type="Script" uid="uid://ddd6ukv27ci6d" path="res://scenes/ui/loadout_panel.gd" id="1_4ut10"]
+
+[node name="LoadoutPanel" type="PanelContainer" unique_id=1377887406]
+script = ExtResource("1_4ut10")

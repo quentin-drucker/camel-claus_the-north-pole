@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://cxyut0bp176eb" path="res://assets/models/magnet.glb" id="1"]
+
+[node name="MagnetModel" instance=ExtResource("1")]

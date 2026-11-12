@@ -7,6 +7,9 @@ extends Node3D
 signal health_changed(hp: float, max_hp: float)
 signal died
 
+## Weapons Claus can carry in one run (level-ups stop offering new ones once his hands are full).
+const MAX_WEAPONS: int = 3
+
 @export var base_speed: float = 5.0
 @export var max_hp: float = 100.0
 @export var base_pickup_radius: float = 2.5
@@ -44,6 +47,10 @@ var xp_pull: bool = false
 var upgrade_levels: Dictionary = {}
 ## ItemData -> copies owned.
 var items: Dictionary = {}
+## Active Santa blessings: BlessingData -> seconds left (HUD timers).
+var blessings: Dictionary = {}
+## Hot Cocoa's damage multiplier (1 = none); kept apart from damage_mult so it doubles everything.
+var blessing_damage: float = 1.0
 ## ponytail: debug-only god mode for the stress test (F2); remove before ship.
 var invincible: bool = false
 
@@ -52,6 +59,8 @@ var _base_scale: Vector3
 var _anim_time: float = 0.0
 var _squash: float = 0.0  # 1 right after a hit, eases back to 0
 var _xp_pull_left: float = 0.0
+var _shielded: int = 0
+var _shield_fx_left: float = 0.0
 
 @onready var body: Node3D = $Body
 
@@ -63,6 +72,11 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	base_max_hp = max_hp
 	hp = max_hp
+	# The run's starting weapon (picked on the loadout screen).
+	var card: UpgradeData = Profile.weapon_card(GameState.starter)
+	if card:
+		add_child(card.weapon_scene.instantiate())
+	Profile.apply_workshop(self)  # permanent Workshop bonuses (after base_max_hp, so they show as gains)
 	GameState.weapon_evolved.connect(_on_weapon_evolved)
 	body.rotation.y = PI  # start facing the camera (models face -Z)
 	_base_scale = body.scale
@@ -81,6 +95,7 @@ func _process(delta: float) -> void:
 	if _invulnerable_left > 0.0:
 		_invulnerable_left -= delta
 		body.visible = _invulnerable_left <= 0.0 or fmod(_invulnerable_left, 0.1) < 0.05
+	_tick_blessings(delta)
 	if xp_pull:
 		_xp_pull_left -= delta
 		if _xp_pull_left <= 0.0:
@@ -128,10 +143,11 @@ func find_weapon(scene: PackedScene) -> Weapon:
 
 
 func deal_damage(enemy: Enemy, amount: float, can_proc: bool = true) -> void:
-	var dmg: float = amount * (1.0 + minf(GameState.kills * damage_per_kill, 0.6))
+	var dmg: float = amount * (1.0 + minf(GameState.kills * damage_per_kill, 0.6)) * blessing_damage
 	if enemy.is_elite or enemy.is_boss:
 		dmg *= 1.0 + elite_damage_bonus
 	var pos: Vector3 = enemy.global_position
+	GameState.damage_dealt += minf(dmg, maxf(enemy.hp, 0.0))
 	enemy.take_damage(dmg)
 	DamageNumber.spawn(pos, dmg, Color("F4F8FF") if can_proc else Color("F2B53B"))
 	if not can_proc:
@@ -152,8 +168,9 @@ func deal_damage(enemy: Enemy, amount: float, can_proc: bool = true) -> void:
 
 
 func take_damage(amount: float) -> void:
-	if hp <= 0.0 or invincible or _invulnerable_left > 0.0:
+	if hp <= 0.0 or invincible or _invulnerable_left > 0.0 or _shielded > 0:
 		return
+	GameState.damage_taken += minf(amount, hp)
 	hp = maxf(hp - amount, 0.0)
 	_invulnerable_left = hurt_invulnerability
 	_squash = 1.0
@@ -240,6 +257,70 @@ func evolvable_weapons() -> Array[Weapon]:
 	var found: Array[Weapon] = []
 	found.assign(weapons().filter(func(w: Weapon) -> bool: return w.can_evolve()))
 	return found
+
+
+## Santa's blessing: instant effects happen now; timed ones refresh if already active.
+func bless(blessing: BlessingData) -> void:
+	match blessing.effect:
+		BlessingData.Effect.MAGNET:
+			get_tree().call_group(&"xp_ornaments", &"attract")
+			Audio.play(&"magnet")
+		BlessingData.Effect.BLIZZARD:
+			_blizzard(blessing)
+			return
+	Burst.spawn(Burst.GOLD, global_position, 3.0)
+	if not blessings.has(blessing):
+		_blessing_apply(blessing, 1.0)
+	blessings[blessing] = blessing.duration
+
+
+func _tick_blessings(delta: float) -> void:
+	for blessing: BlessingData in blessings.keys():
+		blessings[blessing] -= delta
+		if blessings[blessing] <= 0.0:
+			blessings.erase(blessing)
+			_blessing_apply(blessing, -1.0)
+	if _shielded > 0:  # Snow Angel: a soft ice ring every half second
+		_shield_fx_left -= delta
+		if _shield_fx_left <= 0.0:
+			_shield_fx_left = 0.5
+			Burst.spawn(Burst.ICE, global_position, 1.4)
+
+
+## Add (on = 1) or take back (on = -1) a timed blessing's bonus.
+func _blessing_apply(blessing: BlessingData, on: float) -> void:
+	var a: float = blessing.amount * on
+	match blessing.effect:
+		BlessingData.Effect.DAMAGE:
+			blessing_damage += a
+		BlessingData.Effect.RUSH:
+			move_speed_bonus += a
+			attack_speed_bonus += a
+		BlessingData.Effect.XP:
+			GameState.xp_mult += a
+		BlessingData.Effect.MAGNET:
+			pickup_bonus += a
+		BlessingData.Effect.SHIELD:
+			_shielded += int(on)
+
+
+func _blizzard(blessing: BlessingData) -> void:
+	for enemy: Enemy in GameState.enemies.duplicate():
+		if enemy.global_position.distance_to(global_position) > 18.0:
+			continue
+		var big: bool = enemy.is_elite or enemy.is_boss
+		deal_damage(enemy, enemy.max_hp * (0.05 if big else blessing.amount), false)
+		enemy.freeze(blessing.duration)
+	Burst.spawn(Burst.ICE, global_position, 9.0)
+	Burst.spawn(Burst.ICE, global_position, 14.0)
+	Poof.spawn(global_position, Color("F4F8FF"), 30, 8.0)
+	Audio.play(&"freeze")
+	get_tree().call_group(&"camera", &"shake", 0.5)
+
+
+func heal(amount: float) -> void:
+	hp = minf(hp + amount, max_hp)
+	health_changed.emit(hp, max_hp)
 
 
 func _add_max_hp(amount: float) -> void:

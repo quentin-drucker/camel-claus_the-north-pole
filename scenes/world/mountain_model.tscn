@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://cpjemkh6d8n0m" path="res://assets/models/mountain.glb" id="1"]
+
+[node name="MountainModel" instance=ExtResource("1")]

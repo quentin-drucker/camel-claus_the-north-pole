@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CosmeticData" format=3]
+
+[ext_resource type="Script" uid="uid://bgd37brpu4d2n" path="res://scripts/data/cosmetic_data.gd" id="1_c"]
+
+[resource]
+script = ExtResource("1_c")
+id = "skin_classic"
+title = "Classic Tan"
+slot = 0
+price = 0
+swap_from = PackedColorArray()
+swap_to = PackedColorArray()
+color_options = PackedStringArray()

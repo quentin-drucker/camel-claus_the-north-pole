@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d3vk44upno6q5"]
 
 [ext_resource type="Script" uid="uid://sxtjyjd7hixo" path="res://scenes/ui/hud.gd" id="1_0mwgc"]
+[ext_resource type="Texture2D" uid="uid://dga00fhv6qd13" path="res://assets/ui/icons/santa_sleigh.png" id="2_hqnrr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mwgc"]
 bg_color = Color(0.8509804, 0.20392157, 0.24705882, 1)
@@ -136,3 +137,56 @@ offset_bottom = -8.0
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
+
+[node name="SantaPanel" type="VBoxContainer" parent="." unique_id=207146320]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -130.0
+offset_right = 380.0
+offset_bottom = -14.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Blessings" type="HBoxContainer" parent="SantaPanel" unique_id=354482256]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="SantaRow" type="HBoxContainer" parent="SantaPanel" unique_id=751512824]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="SantaIcon" type="TextureRect" parent="SantaPanel/SantaRow" unique_id=1807061232]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("2_hqnrr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SantaText" type="VBoxContainer" parent="SantaPanel/SantaRow" unique_id=1144645424]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="SantaLabel" type="Label" parent="SantaPanel/SantaRow/SantaText" unique_id=1346872153]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Santa's Sleigh 0/8"
+
+[node name="SantaBar" type="ProgressBar" parent="SantaPanel/SantaRow/SantaText" unique_id=1030680201]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 14)
+layout_mode = 2
+max_value = 8.0
+show_percentage = false

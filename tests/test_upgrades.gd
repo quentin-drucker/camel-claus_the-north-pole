@@ -28,14 +28,13 @@ func _initialize() -> void:
 	player.apply_upgrade(cane_card)
 	_check(player.upgrade_level(cane_card) == 2, "weapon card adds then levels the weapon")
 
-	# Items stack; evolution needs weapon Lv 5 + its item.
-	var sack: Resource = load("res://resources/items/santas_sack.tres")
+	# Evolution needs weapon Lv 5 (no item since Phase 6); items stack.
 	var gift_card: Resource = load("res://resources/upgrades/weapon_gift_toss.tres")
-	for i in 4:
+	for i in 4:  # this player never ran _ready(), so the first card adds Gift Toss at Lv 1
 		player.apply_upgrade(gift_card)
-	_check(player.evolvable_weapons().is_empty(), "no evolution without the item")
-	player.add_item(sack)
-	_check(player.evolvable_weapons().size() == 1, "Gift Toss Lv 5 + Santa's Sack can evolve")
+	_check(player.evolvable_weapons().is_empty(), "Gift Toss Lv 4 can't evolve yet")
+	player.apply_upgrade(gift_card)
+	_check(player.evolvable_weapons().size() == 1, "Gift Toss Lv 5 can evolve")
 	var cracker: Resource = load("res://resources/items/christmas_cracker.tres")
 	player.add_item(cracker)
 	player.add_item(cracker)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BlessingData" format=3]
+
+[ext_resource type="Script" uid="uid://d11vbmnl3cixx" path="res://scripts/data/blessing_data.gd" id="1_b"]
+
+[resource]
+script = ExtResource("1_b")
+title = "Hot Cocoa"
+description = "Double damage from every weapon"
+effect = 0
+amount = 1.0
+duration = 20.0

@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://vaih1g1taxxq" path="res://assets/models/ornament_mine.glb" id="1"]
+
+[node name="OrnamentMineModel" instance=ExtResource("1")]

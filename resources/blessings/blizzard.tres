@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BlessingData" format=3]
+
+[ext_resource type="Script" uid="uid://d11vbmnl3cixx" path="res://scripts/data/blessing_data.gd" id="1_b"]
+
+[resource]
+script = ExtResource("1_b")
+title = "Blizzard"
+description = "Freezes every critter around Claus and bites off 30% of their HP"
+effect = 5
+amount = 0.3
+duration = 4.0

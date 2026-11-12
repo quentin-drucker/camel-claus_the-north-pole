@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CosmeticData" format=3]
+
+[ext_resource type="Script" uid="uid://bgd37brpu4d2n" path="res://scripts/data/cosmetic_data.gd" id="1_c"]
+[ext_resource type="PackedScene" path="res://scenes/player/cosmetics/outfit_scarf_model.tscn" id="2_m"]
+
+[resource]
+script = ExtResource("1_c")
+id = "outfit_scarf"
+title = "Cozy Scarf"
+slot = 2
+model = ExtResource("2_m")
+price = 0
+swap_from = PackedColorArray(0.3059, 0.4157, 0.6196, 1, 0.1333, 0.1882, 0.3098, 1)
+swap_to = PackedColorArray()
+color_options = PackedStringArray("blue", "red", "green", "gold")

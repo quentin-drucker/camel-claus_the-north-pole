@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://c3lpub10njorm" path="res://assets/models/enemy_snowball.glb" id="1"]
+
+[node name="EnemySnowballModel" instance=ExtResource("1")]

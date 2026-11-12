@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bcu3flxgsyf2o" path="res://scenes/main/main.gd" id="1_hujxm"]
 [ext_resource type="Script" uid="uid://oj1kv1bhe6ly" path="res://scenes/main/game_camera.gd" id="2_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://bpvtgglcboef8" path="res://scenes/player/player.tscn" id="3_b1x3f"]
+[ext_resource type="Environment" uid="uid://dr2t3p5sej2c" path="res://assets/materials/world_environment.tres" id="3_th5th"]
 [ext_resource type="Shader" uid="uid://d3wyjpfsycgfn" path="res://assets/materials/snow_ground.gdshader" id="3_yyfjg"]
 [ext_resource type="Script" uid="uid://d0e7w16185t2i" path="res://scenes/enemies/enemy_spawner.gd" id="4_a8run"]
 [ext_resource type="Script" uid="uid://buvexj1nkps10" path="res://scenes/props/prop_scatter.gd" id="4_b1x3f"]
@@ -10,13 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://mgoyfhilii5d" path="res://scenes/ui/level_up_menu.tscn" id="6_blune"]
 [ext_resource type="PackedScene" uid="uid://bb5xa4w3sxlm2" path="res://scenes/ui/end_screen.tscn" id="7_th5th"]
 [ext_resource type="PackedScene" uid="uid://v513l42md5hr" path="res://scenes/ui/pause_menu.tscn" id="10_a8run"]
-
-[sub_resource type="Environment" id="Environment_vom5j"]
-background_mode = 1
-background_color = Color(0.56078434, 0.6627451, 0.81960785, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.7882353, 0.85490197, 0.9411765, 1)
-ambient_light_energy = 0.6
+[ext_resource type="Script" uid="uid://bvjq22m3h2h7m" path="res://scenes/santa/santa_sleigh.gd" id="11_ouso4"]
+[ext_resource type="Script" uid="uid://qxqgh3honb1e" path="res://scenes/main/blizzard_event.gd" id="12_blune"]
+[ext_resource type="PackedScene" uid="uid://c1p818vk15n4j" path="res://scenes/world/backdrop.tscn" id="14_7smn1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b1x3f"]
 render_priority = 0
@@ -30,8 +27,8 @@ shader_parameter/drift_scale = 0.12
 shader_parameter/mid_threshold = 0.6
 shader_parameter/dark_threshold = 0.76
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ou6is"]
-size = Vector2(120, 120)
+[sub_resource type="PlaneMesh" id="PlaneMesh_7smn1"]
+size = Vector2(700, 700)
 
 [node name="Main" type="Node3D" unique_id=1986345608]
 script = ExtResource("1_hujxm")
@@ -46,13 +43,14 @@ target = NodePath("../Player")
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=20958010]
 transform = Transform3D(0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
 light_energy = 0.9
+sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=726272162]
-environment = SubResource("Environment_vom5j")
+environment = ExtResource("3_th5th")
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=227383403]
 material_override = SubResource("ShaderMaterial_b1x3f")
-mesh = SubResource("PlaneMesh_ou6is")
+mesh = SubResource("PlaneMesh_7smn1")
 
 [node name="Props" type="Node3D" parent="." unique_id=1102930468]
 script = ExtResource("4_b1x3f")
@@ -70,3 +68,11 @@ spawn_rate_start = 1.4
 [node name="EndScreen" parent="." unique_id=1987390613 instance=ExtResource("7_th5th")]
 
 [node name="PauseMenu" parent="." unique_id=1626184259 instance=ExtResource("10_a8run")]
+
+[node name="SantaSleigh" type="Node3D" parent="." unique_id=256500654]
+script = ExtResource("11_ouso4")
+
+[node name="BlizzardEvent" type="Node" parent="." unique_id=1043173575]
+script = ExtResource("12_blune")
+
+[node name="Backdrop" parent="." unique_id=1188099731 instance=ExtResource("14_7smn1")]

@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://687wyw14lpys" path="res://assets/models/cookies_milk.glb" id="1"]
+
+[node name="CookiesMilkModel" instance=ExtResource("1")]

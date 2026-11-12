@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://nerysol4ivg7" path="res://assets/models/lobber.glb" id="1"]
+
+[node name="LobberModel" instance=ExtResource("1")]

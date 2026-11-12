@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bkklah148p6vd"]
 
-[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_8g5eo"]
+[ext_resource type="Script" uid="uid://qwmog1nhb638" path="res://scenes/ui/main_menu.gd" id="1_8g5eo"]
 [ext_resource type="Shader" uid="uid://d3wyjpfsycgfn" path="res://assets/materials/snow_ground.gdshader" id="2_7suek"]
+[ext_resource type="Environment" uid="uid://dr2t3p5sej2c" path="res://assets/materials/world_environment.tres" id="2_n4uci"]
 [ext_resource type="Script" uid="uid://buvexj1nkps10" path="res://scenes/props/prop_scatter.gd" id="3_otr3d"]
 [ext_resource type="PackedScene" path="res://scenes/player/claus_model.tscn" id="4_8ekit"]
 [ext_resource type="PlaneMesh" uid="uid://cipog1wx2opgw" path="res://assets/materials/blob_shadow_mesh.tres" id="5_n4uci"]
@@ -10,13 +11,12 @@
 [ext_resource type="PackedScene" path="res://scenes/enemies/zoomer_model.tscn" id="8_y2j7i"]
 [ext_resource type="PackedScene" uid="uid://gwhhvi0063kj" path="res://scenes/effects/snowfall.tscn" id="9_y1h5l"]
 [ext_resource type="PackedScene" uid="uid://dsm3o623jhbjx" path="res://scenes/ui/settings_panel.tscn" id="10_pw24t"]
-
-[sub_resource type="Environment" id="Environment_5dct7"]
-background_mode = 1
-background_color = Color(0.56078434, 0.6627451, 0.81960785, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.7882353, 0.85490197, 0.9411765, 1)
-ambient_light_energy = 0.6
+[ext_resource type="PackedScene" uid="uid://c0xmh5g1bqgi1" path="res://scenes/ui/loadout_panel.tscn" id="11_7suek"]
+[ext_resource type="PackedScene" uid="uid://6gfwsn0i7a0i" path="res://scenes/ui/meta_panel.tscn" id="12_otr3d"]
+[ext_resource type="PackedScene" uid="uid://c3ga54rqttevh" path="res://scenes/ui/customize_panel.tscn" id="13_8ekit"]
+[ext_resource type="PackedScene" uid="uid://c1p818vk15n4j" path="res://scenes/world/backdrop.tscn" id="15_877pj"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/yeti_model.tscn" id="16_y2j7i"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/lobber_model.tscn" id="17_y1h5l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qilvv"]
 render_priority = 0
@@ -30,8 +30,8 @@ shader_parameter/drift_scale = 0.12
 shader_parameter/mid_threshold = 0.6
 shader_parameter/dark_threshold = 0.76
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_jbte4"]
-size = Vector2(120, 120)
+[sub_resource type="PlaneMesh" id="PlaneMesh_877pj"]
+size = Vector2(700, 700)
 
 [node name="MainMenu" type="Node3D" unique_id=2103550237]
 script = ExtResource("1_8g5eo")
@@ -46,13 +46,14 @@ fov = 40.0
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=864387027]
 transform = Transform3D(0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
 light_energy = 0.9
+sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=422947852]
-environment = SubResource("Environment_5dct7")
+environment = ExtResource("2_n4uci")
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=296105176]
 material_override = SubResource("ShaderMaterial_qilvv")
-mesh = SubResource("PlaneMesh_jbte4")
+mesh = SubResource("PlaneMesh_877pj")
 
 [node name="Props" type="Node3D" parent="." unique_id=612452582]
 script = ExtResource("3_otr3d")
@@ -86,9 +87,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 8, -1)
 unique_name_in_owner = true
 anchors_preset = -1
 anchor_left = 0.05
-anchor_top = 0.1
+anchor_top = 0.04
 anchor_right = 0.05
-anchor_bottom = 0.1
+anchor_bottom = 0.04
 
 [node name="VBox" type="VBoxContainer" parent="UI/MenuBox" unique_id=1347400714]
 layout_mode = 2
@@ -98,42 +99,90 @@ theme_override_constants/separation = 14
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9490196, 0.70980394, 0.23137255, 1)
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 96
 text = "CAMEL CLAUS"
+
+[node name="Subtitle" type="Label" parent="UI/MenuBox/VBox" unique_id=1986281454]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.49803922, 0.8392157, 0.9490196, 1)
+theme_override_font_sizes/font_size = 48
+text = "THE NORTH POLE"
 
 [node name="Tagline" type="Label" parent="UI/MenuBox/VBox" unique_id=1427123910]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7882353, 0.85490197, 0.9411765, 1)
-text = "Lost at the North Pole.
-Survive 5 minutes!"
+theme_override_font_sizes/font_size = 32
+text = "Lost camel. Angry critters. Survive 5 minutes!"
+
+[node name="BestLabel" type="Label" parent="UI/MenuBox/VBox" unique_id=1064256513]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9490196, 0.70980394, 0.23137255, 1)
+theme_override_font_sizes/font_size = 32
+text = "Best run: -"
 
 [node name="PlayButton" type="Button" parent="UI/MenuBox/VBox" unique_id=243263061]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(360, 88)
+custom_minimum_size = Vector2(360, 72)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 64
 text = "Play"
 
-[node name="SettingsButton" type="Button" parent="UI/MenuBox/VBox" unique_id=1719320006]
+[node name="MetaRow" type="HBoxContainer" parent="UI/MenuBox/VBox" unique_id=398245152]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="WorkshopButton" type="Button" parent="UI/MenuBox/VBox/MetaRow" unique_id=1569390646]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(360, 72)
+custom_minimum_size = Vector2(170, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Workshop"
+
+[node name="AchievementsButton" type="Button" parent="UI/MenuBox/VBox/MetaRow" unique_id=1327490336]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Achievements"
+
+[node name="StatsButton" type="Button" parent="UI/MenuBox/VBox/MetaRow" unique_id=670794758]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Stats"
+
+[node name="CustomizeButton" type="Button" parent="UI/MenuBox/VBox" unique_id=930515435]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 56)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "Customize Camel"
+
+[node name="SettingsButton" type="Button" parent="UI/MenuBox/VBox" unique_id=1719320006]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 56)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="UI/MenuBox/VBox" unique_id=328104069]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(360, 72)
+custom_minimum_size = Vector2(360, 56)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
 text = "Quit"
 
 [node name="Controls" type="Label" parent="UI/MenuBox/VBox" unique_id=204311141]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.56078434, 0.6627451, 0.81960785, 1)
 theme_override_font_sizes/font_size = 32
-text = "Move: WASD / arrows   Pause: Esc"
+text = "Move: WASD / arrows   Santa: Space   Pause: Esc / P"
 
 [node name="Credits" type="Label" parent="UI" unique_id=1320516157]
 anchors_preset = 12
@@ -143,7 +192,7 @@ anchor_bottom = 1.0
 offset_top = -48.0
 offset_bottom = -12.0
 theme_override_font_sizes/font_size = 32
-text = "Made with Godot, Blender & Claude  -  font & sounds by Kenney (CC0)"
+text = "Made with Godot & Blender  -  font & sounds by Kenney (CC0)"
 horizontal_alignment = 1
 
 [node name="SettingsCenter" type="CenterContainer" parent="UI" unique_id=2055798154]
@@ -156,3 +205,64 @@ mouse_filter = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+
+[node name="LoadoutCenter" type="CenterContainer" parent="UI" unique_id=1595574630]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LoadoutPanel" parent="UI/LoadoutCenter" unique_id=1377887406 instance=ExtResource("11_7suek")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="MetaCenter" type="CenterContainer" parent="UI" unique_id=8020286]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="WorkshopPanel" parent="UI/MetaCenter" unique_id=1418556573 instance=ExtResource("12_otr3d")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="AchievementsPanel" parent="UI/MetaCenter" unique_id=1391529032 instance=ExtResource("12_otr3d")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+page = 1
+
+[node name="StatsPanel" parent="UI/MetaCenter" unique_id=1283898327 instance=ExtResource("12_otr3d")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+page = 2
+
+[node name="CustomizePanel" parent="UI" unique_id=1105747866 instance=ExtResource("13_8ekit")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.06
+anchor_right = 0.05
+anchor_bottom = 0.06
+
+[node name="Backdrop" parent="." unique_id=1188099731 instance=ExtResource("15_877pj")]
+
+[node name="Yeti" parent="." unique_id=348485129 instance=ExtResource("16_y2j7i")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.6, 0, -8.5)
+
+[node name="YetiShadow" type="MeshInstance3D" parent="." unique_id=1766451968]
+transform = Transform3D(3.2, 0, 0, 0, 1, 0, 0, 0, 3.2, -0.6, 0.02, -8.5)
+cast_shadow = 0
+mesh = ExtResource("5_n4uci")
+
+[node name="Lobber" parent="." unique_id=321389180 instance=ExtResource("17_y1h5l")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 3.1, 0, -5.2)
+
+[node name="LobberShadow" type="MeshInstance3D" parent="." unique_id=1723308826]
+transform = Transform3D(1.1, 0, 0, 0, 1, 0, 0, 0, 1.1, 3.1, 0.02, -5.2)
+cast_shadow = 0
+mesh = ExtResource("5_n4uci")

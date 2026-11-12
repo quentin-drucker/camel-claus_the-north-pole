@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_l4t5b")
 display_name = "Grumpy Yeti"
-max_hp = 4500.0
+max_hp = 6000.0
 speed = 2.7
 contact_damage = 30.0
 xp_value = 8

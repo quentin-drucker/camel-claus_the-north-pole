@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://by44sdksgvehn" path="res://assets/models/claus_body.glb" id="1"]
+
+[node name="ClausBody" instance=ExtResource("1")]

@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://bou0t0nu5esjr" path="res://assets/models/rock.glb" id="1"]
+
+[node name="RockModel" instance=ExtResource("1")]

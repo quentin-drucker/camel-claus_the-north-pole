@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3]
+
+[ext_resource type="Script" uid="uid://c4n4m808bru7f" path="res://scripts/data/upgrade_data.gd" id="1_u"]
+[ext_resource type="PackedScene" uid="uid://jtcm6f7yde6t" path="res://scenes/weapons/ornament_mines.tscn" id="2_w"]
+
+[resource]
+script = ExtResource("1_u")
+title = "Ornament Mines"
+description = "+30% mine damage, +8% blast (+1 mine at Lv 3 and Lv 5)"
+stat = 6
+scales_with_rarity = false
+weapon_scene = ExtResource("2_w")
+new_description = "Ornament Mines: Claus drops ornaments behind him that blow up when critters come close"

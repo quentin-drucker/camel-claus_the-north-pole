@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://bn46ftxhqrwpn"]
 
-[ext_resource type="Resource" uid="uid://dmwgdha6twgfn" path="res://resources/items/sleigh_bells.tres" id="1_nnmhn"]
 [ext_resource type="Script" uid="uid://01vqbxuebcob" path="res://scripts/data/weapon_data.gd" id="2_hg56h"]
 
 [resource]
@@ -12,8 +11,8 @@ attack_range = 3.2
 show_radius = true
 level_damage_bonus = 0.3
 count_every_levels = 0
-evolution_item = ExtResource("1_nnmhn")
+level_area_bonus = 0.05
 evolved_name = "Carol of the Bells"
-evolved_description = "Jingle Pulse evolves: 40% bigger, pulses 30% more often, x1.5 damage"
+evolved_description = "A golden bell rings a double shockwave: 40% bigger, 30% more often, x1.5 damage"
 evolved_area_mult = 1.4
 evolved_cooldown_mult = 0.7

@@ -11,6 +11,7 @@ const ENEMY: PackedScene = preload("res://scenes/enemies/enemy.tscn")
 	preload("res://resources/enemies/chaser.tres"),
 	preload("res://resources/enemies/zoomer.tres"),
 	preload("res://resources/enemies/chonk.tres"),
+	preload("res://resources/enemies/lobber.tres"),
 ]
 ## Distance from the player where enemies appear (just outside the camera view).
 @export var spawn_radius: float = 18.0
@@ -19,13 +20,15 @@ const ENEMY: PackedScene = preload("res://scenes/enemies/enemy.tscn")
 ## Enemies per second at 0:00; doubles every `spawn_rate_doubling_time` seconds.
 @export var spawn_rate_start: float = 1.0
 @export var spawn_rate_doubling_time: float = 130.0
-## Enemy HP doubles every this many seconds (x4.9 by 5:00 at 130 s).
-@export var hp_doubling_time: float = 130.0
+## Enemy HP doubles every this many seconds (x6.1 by 5:00 at 115 s).
+@export var hp_doubling_time: float = 115.0
 @export var max_enemies: int = 400
 ## Enemies closer than this push each other apart.
 @export var separation_radius: float = 0.8
 @export var separation_strength: float = 8.0
 @export var stress_test_count: int = 300
+## Enemies spawn and recycle inside this square (the boundary ridge starts at ~59 m).
+@export var arena_limit: float = 58.0
 
 @export_group("Beats")
 ## Run times (s) when an elite spawns; it drops a gift chest.
@@ -36,11 +39,19 @@ const ENEMY: PackedScene = preload("res://scenes/enemies/enemy.tscn")
 @export var boss_time: float = 255.0
 ## From this time on, spawn rate is multiplied by `surge_mult`.
 @export var surge_time: float = 270.0
-@export var surge_mult: float = 2.0
+@export var surge_mult: float = 2.5
 
 var _spawn_budget: float = 0.0
 var _next_elite: int = 0
 var _boss_spawned: bool = false
+## Endless mode: next elite / Yeti times and how many Yetis came so far (each has double the HP).
+@export_group("Endless")
+@export var endless_elite_every: float = 40.0
+@export var endless_boss_every: float = 120.0
+@export var endless_doubling_time: float = 60.0
+var _next_endless_elite: float = 300.0
+var _next_endless_boss: float = 360.0
+var _endless_bosses: int = 0
 
 
 func _process(delta: float) -> void:
@@ -48,6 +59,10 @@ func _process(delta: float) -> void:
 		return
 	var t: float = GameState.run_time
 	var hp_mult: float = pow(2.0, t / hp_doubling_time)
+	if GameState.endless:  # past 5:00 HP also doubles every minute and hits grow +100% per minute
+		var extra: float = (t - GameState.RUN_LENGTH) / endless_doubling_time
+		hp_mult *= pow(2.0, extra)
+		GameState.enemy_damage_mult = 1.0 + extra
 	var rate: float = spawn_rate_start * pow(2.0, t / spawn_rate_doubling_time)
 	if t >= surge_time:
 		rate *= surge_mult
@@ -65,7 +80,22 @@ func _process(delta: float) -> void:
 		Audio.play(&"boss")
 		Audio.duck(2.0)
 		get_tree().call_group(&"camera", &"shake", 0.5)
+	if GameState.endless:
+		_endless_beats(t, hp_mult)
 	_move_enemies(delta)
+
+
+func _endless_beats(t: float, hp_mult: float) -> void:
+	if t >= _next_endless_elite:
+		_next_endless_elite += endless_elite_every
+		_spawn(_pick_type(t), hp_mult * elite_hp_mult, elite_size, true)
+	if t >= _next_endless_boss and GameState.boss == null:
+		_next_endless_boss += endless_boss_every
+		_endless_bosses += 1
+		_spawn(boss_data, pow(2.0, _endless_bosses), 1.0, false, true)
+		Audio.play(&"boss")
+		Audio.duck(2.0)
+		get_tree().call_group(&"camera", &"shake", 0.5)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -83,7 +113,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _pick_type(t: float) -> EnemyData:
 	var unlocked: Array[EnemyData] = enemy_types.filter(
-		func(d: EnemyData) -> bool: return t >= d.spawn_after and d.spawn_weight > 0.0
+		func(d: EnemyData) -> bool:
+			return t >= d.spawn_after and d.spawn_weight > 0.0 and (d.max_alive == 0 or _alive(d) < d.max_alive)
 	)
 	var roll: float = randf() * unlocked.reduce(func(sum: float, d: EnemyData) -> float: return sum + d.spawn_weight, 0.0)
 	for d in unlocked:
@@ -91,6 +122,10 @@ func _pick_type(t: float) -> EnemyData:
 		if roll <= 0.0:
 			return d
 	return unlocked[0]
+
+
+func _alive(type: EnemyData) -> int:
+	return GameState.enemies.reduce(func(n: int, e: Enemy) -> int: return n + int(e.data == type), 0)
 
 
 func _spawn(type: EnemyData, hp_mult: float, size_mult: float = 1.0, elite: bool = false, boss: bool = false) -> void:
@@ -101,7 +136,18 @@ func _spawn(type: EnemyData, hp_mult: float, size_mult: float = 1.0, elite: bool
 
 
 func _ring_position(angle: float) -> Vector3:
-	return GameState.player.global_position + Vector3(cos(angle), 0.0, sin(angle)) * spawn_radius
+	# Near an edge part of the ring lies past the boundary ridge: try other angles around Claus first
+	# (clamping would drop enemies right next to him when he hugs the wall), clamp only as a last resort.
+	var claus: Vector3 = GameState.player.global_position
+	var pos: Vector3 = claus
+	for attempt in 8:
+		var a: float = angle if attempt == 0 else randf() * TAU
+		pos = claus + Vector3(cos(a), 0.0, sin(a)) * spawn_radius
+		if absf(pos.x) <= arena_limit and absf(pos.z) <= arena_limit:
+			return pos
+	pos.x = clampf(pos.x, -arena_limit, arena_limit)
+	pos.z = clampf(pos.z, -arena_limit, arena_limit)
+	return pos
 
 
 func _cell(pos: Vector3) -> Vector2i:
@@ -141,7 +187,11 @@ func _move_enemies(delta: float) -> void:
 			var angle: float = heading + randf_range(-1.0, 1.0) if moving else randf() * TAU
 			enemy.global_position = _ring_position(angle)
 			continue
-		var velocity: Vector3 = to_player / maxf(dist, 0.001) * enemy.data.speed * enemy.speed_mult
+		var chase: float = 1.0
+		var keep: float = enemy.data.keep_distance
+		if keep > 0.0 and dist < keep:  # ranged: hold position, back off if Claus walks in
+			chase = -0.6 if dist < keep - 2.0 else 0.0
+		var velocity: Vector3 = to_player / maxf(dist, 0.001) * enemy.data.speed * enemy.speed_mult * chase * GameState.enemy_speed_mult
 		var push: Vector3 = Vector3.ZERO
 		var cell: Vector2i = _cell(pos)
 		for dx in range(-1, 2):
@@ -157,7 +207,7 @@ func _move_enemies(delta: float) -> void:
 		enemy.global_position = pos + (velocity + push * separation_strength) * delta
 		enemy.rotation.y = atan2(-to_player.x, -to_player.z)  # models face -Z: look at Claus
 		if dist < enemy.radius + player.body_radius:
-			player.take_damage(enemy.contact_damage)
+			player.take_damage(enemy.contact_damage * GameState.enemy_damage_mult)
 
 	# Poison after the loop: a death erases the enemy from GameState.enemies.
 	for enemy in poisoned:

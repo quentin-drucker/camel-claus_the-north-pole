@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://wufydqiduj2j" path="res://assets/models/hat_antlers.glb" id="1"]
+
+[node name="HatAntlers" instance=ExtResource("1")]

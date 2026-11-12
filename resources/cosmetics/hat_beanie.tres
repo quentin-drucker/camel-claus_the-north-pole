@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CosmeticData" format=3]
+
+[ext_resource type="Script" uid="uid://bgd37brpu4d2n" path="res://scripts/data/cosmetic_data.gd" id="1_c"]
+[ext_resource type="PackedScene" path="res://scenes/player/cosmetics/hat_beanie_model.tscn" id="2_m"]
+
+[resource]
+script = ExtResource("1_c")
+id = "hat_beanie"
+title = "Bobble Beanie"
+slot = 1
+model = ExtResource("2_m")
+price = 0
+swap_from = PackedColorArray(0.8510, 0.2039, 0.2471, 1, 0.5569, 0.1216, 0.1804, 1)
+swap_to = PackedColorArray()
+color_options = PackedStringArray("red", "green", "blue", "gold", "ice")

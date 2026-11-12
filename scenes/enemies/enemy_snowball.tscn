@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bonc2r0ha22x1"]
+
+[ext_resource type="Script" uid="uid://cmc40qr3ljfml" path="res://scenes/enemies/enemy_snowball.gd" id="1_63epx"]
+[ext_resource type="PlaneMesh" path="res://assets/materials/warning_ring_mesh.tres" id="2_4tgdr"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy_snowball_model.tscn" id="3_a3iv7"]
+
+[node name="EnemySnowball" type="Node3D" unique_id=990882225]
+script = ExtResource("1_63epx")
+
+[node name="Marker" type="MeshInstance3D" parent="." unique_id=1172137867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+cast_shadow = 0
+mesh = ExtResource("2_4tgdr")
+
+[node name="Body" parent="." unique_id=924660132 instance=ExtResource("3_a3iv7")]

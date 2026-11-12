@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AchievementData" format=3]
+
+[ext_resource type="Script" uid="uid://dg51ame1esmqh" path="res://scripts/data/achievement_data.gd" id="1_a"]
+
+[resource]
+script = ExtResource("1_a")
+id = "crown_collector"
+title = "Crown Collector"
+description = "Defeat a crowned elite"
+stat = "total_elites"
+target = 1.0
+reward_coins = 30
+unlocks_weapon = "ornament_mines"

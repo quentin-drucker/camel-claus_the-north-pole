@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AchievementData" format=3]
+
+[ext_resource type="Script" uid="uid://dg51ame1esmqh" path="res://scripts/data/achievement_data.gd" id="1_a"]
+
+[resource]
+script = ExtResource("1_a")
+id = "hands_full"
+title = "Hands Full"
+description = "Carry 3 weapons in one run"
+stat = "run_weapons"
+target = 3.0
+reward_coins = 25
+unlocks_weapon = ""

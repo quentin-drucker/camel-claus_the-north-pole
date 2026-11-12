@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dsm3o623jhbjx"]
 
-[ext_resource type="Script" path="res://scenes/ui/settings_panel.gd" id="1_dbor5"]
+[ext_resource type="Script" uid="uid://b8r5xa8b143vt" path="res://scenes/ui/settings_panel.gd" id="1_dbor5"]
 
 [node name="SettingsPanel" type="PanelContainer" unique_id=1838671791]
 process_mode = 3
@@ -57,6 +57,14 @@ text = "Fullscreen"
 [node name="Fullscreen" type="CheckButton" parent="VBox/Grid" unique_id=1117955654]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="VBox" unique_id=441807832]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6039216, 0.627451, 1)
+theme_override_font_sizes/font_size = 32
+text = "Reset progress"
 
 [node name="BackButton" type="Button" parent="VBox" unique_id=852201741]
 unique_name_in_owner = true

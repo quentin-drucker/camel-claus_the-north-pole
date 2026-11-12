@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CosmeticData" format=3]
+
+[ext_resource type="Script" uid="uid://bgd37brpu4d2n" path="res://scripts/data/cosmetic_data.gd" id="1_c"]
+
+[resource]
+script = ExtResource("1_c")
+id = "skin_frosty"
+title = "Frosty"
+slot = 0
+price = 120
+swap_from = PackedColorArray(0.9098, 0.7686, 0.5569, 1, 0.7882, 0.5608, 0.3333, 1, 0.5412, 0.3529, 0.2000, 1, 0.3569, 0.2275, 0.1647, 1)
+swap_to = PackedColorArray(0.7882, 0.8549, 0.9412, 1, 0.5608, 0.6627, 0.8196, 1, 0.3059, 0.4157, 0.6196, 1, 0.1333, 0.1882, 0.3098, 1)
+color_options = PackedStringArray()

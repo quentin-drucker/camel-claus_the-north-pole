@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BlessingData" format=3]
+
+[ext_resource type="Script" uid="uid://d11vbmnl3cixx" path="res://scripts/data/blessing_data.gd" id="1_b"]
+
+[resource]
+script = ExtResource("1_b")
+title = "Reindeer Rush"
+description = "+50% move speed and attack speed"
+effect = 1
+amount = 0.5
+duration = 20.0

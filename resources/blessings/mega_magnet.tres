@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BlessingData" format=3]
+
+[ext_resource type="Script" uid="uid://d11vbmnl3cixx" path="res://scripts/data/blessing_data.gd" id="1_b"]
+
+[resource]
+script = ExtResource("1_b")
+title = "Mega Magnet"
+description = "Every ornament flies to Claus now, and triple pickup reach"
+effect = 3
+amount = 2.0
+duration = 25.0

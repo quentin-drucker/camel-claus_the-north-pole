@@ -18,6 +18,13 @@ const SFX: Dictionary = {
 	&"click": ["sfx_click.ogg", -6.0, 0.03, 2],
 	&"menu": ["sfx_menu.ogg", -8.0, 0.1, 1],
 	&"charge": ["sfx_charge.ogg", -6.0, 0.5, 1],
+	&"splash": ["sfx_splash.wav", -10.0, 0.06, 3],
+	&"mine": ["sfx_mine.wav", -12.0, 0.1, 2],
+	&"magnet": ["sfx_magnet.wav", -4.0, 0.5, 1],
+	&"heal": ["sfx_heal.wav", -6.0, 0.3, 1],
+	&"lob": ["sfx_lob.wav", -10.0, 0.15, 2],
+	&"sleigh": ["sfx_sleigh.wav", -3.0, 1.0, 1],
+	&"santa_ready": ["sfx_santa_ready.wav", -5.0, 1.0, 1],
 	&"levelup": ["jingle_levelup.wav", -4.0, 0.2, 1],
 	&"chest": ["jingle_chest.wav", -4.0, 0.2, 1],
 	&"evolve": ["jingle_evolve.wav", -2.0, 0.5, 1],
@@ -38,6 +45,8 @@ var _drive_target_db: float = SILENT_DB
 var _duck_db: float = 0.0
 var _duck_until: float = 0.0
 var _pause_duck: bool = false
+## Extra dip while the Blizzard event howls (dB, 0 = none).
+var blizzard_db: float = 0.0
 var _xp_combo: int = 0
 var _xp_last: float = -10.0
 
@@ -111,7 +120,7 @@ func set_paused_duck(on: bool) -> void:
 
 func _process(delta: float) -> void:
 	var now: float = Time.get_ticks_msec() / 1000.0
-	var duck_db: float = -10.0 if now < _duck_until else (-8.0 if _pause_duck else 0.0)
+	var duck_db: float = -10.0 if now < _duck_until else (-8.0 if _pause_duck else blizzard_db)
 	_duck_db = move_toward(_duck_db, duck_db, delta * 40.0)
 	_drive_db = move_toward(_drive_db, _drive_target_db, delta * 20.0)  # ~3 s fade in
 	_music_base.volume_db = _duck_db

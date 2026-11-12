@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://caciqs8f4mcvw"]
+
+[ext_resource type="Script" uid="uid://c05ul3xau0m5w" path="res://scenes/weapons/ornament_mine.gd" id="1_7rnib"]
+[ext_resource type="PlaneMesh" uid="uid://cipog1wx2opgw" path="res://assets/materials/blob_shadow_mesh.tres" id="2_515nj"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/ornament_mine_model.tscn" id="3_mgx1d"]
+
+[node name="OrnamentMine" type="Node3D" unique_id=715389368]
+script = ExtResource("1_7rnib")
+
+[node name="BlobShadow" type="MeshInstance3D" parent="." unique_id=2006214914]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 0.65, 0, 0.02, 0)
+cast_shadow = 0
+mesh = ExtResource("2_515nj")
+
+[node name="Body" parent="." unique_id=1070545938 instance=ExtResource("3_mgx1d")]

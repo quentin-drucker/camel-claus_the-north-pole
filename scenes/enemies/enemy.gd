@@ -1,10 +1,12 @@
 class_name Enemy
 extends Node3D
 ## One enemy. Movement is done in bulk by EnemySpawner; this holds HP, status effects and death.
-## Elites (bigger, crowned) and the boss drop a gift chest.
+## Elites (bigger, crowned) and the boss drop a gift chest. Ranged types (EnemyData.throw_interval)
+## lob snowballs at Claus; the spawner keeps them at their `keep_distance`.
 
 const XP_ORNAMENT: PackedScene = preload("res://scenes/pickups/xp_ornament.tscn")
 const CHEST: PackedScene = preload("res://scenes/pickups/chest.tscn")
+const SNOWBALL: PackedScene = preload("res://scenes/enemies/enemy_snowball.tscn")
 
 const WADDLE: Shader = preload("res://assets/materials/enemy_waddle.gdshader")
 
@@ -40,6 +42,7 @@ var _mesh_node: MeshInstance3D
 var _look: StringName = &"normal"
 var _flash_left: float = 0.0
 var _charge_timer: float = 0.0
+var _throw_left: float = 0.0
 
 
 func _enter_tree() -> void:
@@ -101,13 +104,22 @@ func _ready() -> void:
 	$Crown.visible = is_elite
 	$Crown.position.y = data.crown_height * data.size * _size
 	$Crown.scale = Vector3.ONE * data.size * _size * 1.2
-	set_process(is_boss)
+	# Ready to throw soon after arriving (they used to die before their first throw), but not in sync.
+	_throw_left = randf_range(0.3, 1.0)
+	set_process(is_boss or data.throw_interval > 0.0)
 	if is_boss:
 		GameState.boss = self
 
 
 func _process(delta: float) -> void:
-	# Boss: walk 4 s, stop and wind up 0.7 s, then charge at 3.5x speed for 0.9 s.
+	if is_boss:
+		_boss_charge(delta)
+	else:
+		_ranged_attack(delta)
+
+
+## Walk 4 s, stop and wind up 0.7 s, then charge at 3.5x speed for 0.9 s.
+func _boss_charge(delta: float) -> void:
 	_charge_timer += delta
 	if _charge_timer < 4.0:
 		speed_mult = 1.0
@@ -121,6 +133,28 @@ func _process(delta: float) -> void:
 		scale = Vector3.ONE
 	else:
 		_charge_timer = 0.0
+
+
+## Lob a snowball at where Claus stands now (EnemySnowball does the wind-up, ring and flight).
+func _ranged_attack(delta: float) -> void:
+	if frozen_left > 0.0:
+		return
+	_throw_left -= delta
+	if _throw_left > 0.0:
+		return
+	var target: Vector3 = GameState.player.global_position
+	if global_position.distance_to(target) > data.throw_range:
+		return
+	_throw_left = data.throw_interval * randf_range(0.85, 1.15)
+	if EnemySnowball.alive >= EnemySnowball.MAX_ALIVE:
+		return
+	var ball: EnemySnowball = SNOWBALL.instantiate()
+	ball.thrower = self
+	ball.damage = data.throw_damage * GameState.enemy_damage_mult
+	ball.windup = data.throw_windup
+	ball.flight = data.throw_flight
+	get_parent().add_child(ball)
+	ball.global_position = Vector3(target.x, 0.0, target.z)
 
 
 ## Called by EnemySpawner every frame: swap to the material for the current status (only on change).
@@ -161,7 +195,7 @@ func freeze(duration: float) -> void:
 
 func _die() -> void:
 	GameState.enemies.erase(self)
-	GameState.kills += 1
+	GameState.register_kill(self)
 	Audio.play(&"pop")
 	var big: bool = is_elite or is_boss
 	Poof.spawn(global_position, Color("F4F8FF"), 16 if big else 6, 5.0 if big else 3.0)
@@ -174,6 +208,7 @@ func _die() -> void:
 		get_parent().add_child(ornament)
 		var scatter: Vector3 = Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)) * (1.5 if is_boss else 0.0)
 		ornament.global_position = Vector3(global_position.x, 0.0, global_position.z) + scatter
+	Pickup.try_drop(global_position, get_parent())
 	if is_elite or is_boss:
 		var chest: Node3D = CHEST.instantiate()
 		get_parent().add_child(chest)

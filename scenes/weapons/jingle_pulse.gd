@@ -37,21 +37,21 @@ func _process(delta: float) -> void:
 	if _cooldown_left > 0.0:
 		return
 	_cooldown_left = cooldown()
-	var radius: float = data.radius_at(evolved)
+	var reach: float = radius()
 	var origin: Vector3 = global_position
 	var dmg: float = damage()
 	for enemy: Enemy in GameState.enemies.duplicate():
 		var away: Vector3 = enemy.global_position - origin
 		away.y = 0.0
-		if away.length() > radius + enemy.radius:
+		if away.length() > reach + enemy.radius:
 			continue
 		if not enemy.is_boss:
 			enemy.global_position += away.normalized() * knockback
 		GameState.player.deal_damage(enemy, dmg)
-	Burst.spawn(Burst.GOLD, origin, radius)
+	Burst.spawn(Burst.GOLD, origin, reach)
 	Audio.play(&"pulse", 1.25 if evolved else 1.0)
 	if _bell:
-		get_tree().create_timer(0.12, false).timeout.connect(func() -> void: Burst.spawn(Burst.ICE, origin, radius * 0.7))
+		get_tree().create_timer(0.12, false).timeout.connect(func() -> void: Burst.spawn(Burst.ICE, origin, reach * 0.7))
 		var swing: Tween = create_tween()
 		swing.tween_property(_bell, "rotation:z", 0.5, 0.08)
 		swing.tween_property(_bell, "rotation:z", -0.35, 0.14)

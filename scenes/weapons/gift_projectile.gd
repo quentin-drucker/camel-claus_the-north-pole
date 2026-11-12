@@ -2,6 +2,7 @@ class_name GiftProjectile
 extends Node3D
 ## Flies straight; hits the first enemy it touches (or the first 1 + `pierce` enemies).
 ## Evolved (Present Barrage): gold-wrapped model, sparkle trail, gold pop on each hit.
+## Other weapons reuse it with their own `body_scene` (Peppermint Cyclone's flung canes).
 
 const EVO_MODEL: PackedScene = preload("res://scenes/weapons/gift_evo_model.tscn")
 
@@ -16,6 +17,13 @@ var damage: float = 5.0
 ## Extra enemies this gift can pass through.
 var pierce: int = 0
 var evolved: bool = false
+## Replaces the gift model (scaled by `body_scale`); empty = the gift.
+var body_scene: PackedScene
+var body_scale: float = 1.0
+## Sparkle trail color; alpha 0 = no trail.
+var trail_color: Color = Color(0, 0, 0, 0)
+## Ring flashed on each hit; null = none.
+var hit_burst: Mesh
 
 var _already_hit: Array[Enemy] = []
 
@@ -23,27 +31,19 @@ var _already_hit: Array[Enemy] = []
 
 
 func _ready() -> void:
-	if not evolved:
-		return
-	var old: Node3D = body
-	body = EVO_MODEL.instantiate()
-	body.position = old.position
-	add_child(body)
-	old.queue_free()
-	var trail := CPUParticles3D.new()
-	trail.amount = 6
-	trail.lifetime = 0.3
-	trail.local_coords = false
-	trail.mesh = Poof.cube_mesh()
-	trail.color = Color("F2B53B")
-	trail.direction = Vector3.UP
-	trail.spread = 180.0
-	trail.initial_velocity_min = 0.2
-	trail.initial_velocity_max = 0.6
-	trail.gravity = Vector3.ZERO
-	trail.scale_amount_min = 0.3
-	trail.scale_amount_max = 0.6
-	add_child(trail)
+	if evolved:
+		body_scene = EVO_MODEL
+		trail_color = Color("F2B53B")
+		hit_burst = Burst.GOLD
+	if body_scene:
+		var old: Node3D = body
+		body = body_scene.instantiate()
+		body.position = old.position
+		body.scale = Vector3.ONE * body_scale
+		add_child(body)
+		old.queue_free()
+	if trail_color.a > 0.0:
+		add_child(Poof.trail(trail_color))
 
 
 func _process(delta: float) -> void:
@@ -61,8 +61,8 @@ func _process(delta: float) -> void:
 				and not _already_hit.has(enemy):
 			_already_hit.append(enemy)
 			GameState.player.deal_damage(enemy, damage)
-			if evolved:
-				Burst.spawn(Burst.GOLD, e_pos, 0.7)
+			if hit_burst:
+				Burst.spawn(hit_burst, e_pos, 0.7)
 			if _already_hit.size() > pierce:
 				queue_free()
 			return

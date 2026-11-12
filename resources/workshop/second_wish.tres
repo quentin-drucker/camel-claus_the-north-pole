@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WorkshopData" format=3]
+
+[ext_resource type="Script" uid="uid://d0v13tt13ytm6" path="res://scripts/data/workshop_data.gd" id="1_w"]
+
+[resource]
+script = ExtResource("1_w")
+id = "second_wish"
+title = "Second Wish"
+description = "+{v} reroll per run"
+icon = "reroll"
+stat = 5
+amount = 1.0
+is_percent = false
+costs = Array[int]([80, 180, 320])

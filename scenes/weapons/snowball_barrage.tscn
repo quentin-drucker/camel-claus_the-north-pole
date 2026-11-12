@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://pl0wyknskt7l"]
+
+[ext_resource type="Script" uid="uid://cwpxd8js0f64i" path="res://scenes/weapons/snowball_barrage.gd" id="1_5ua5p"]
+
+[node name="SnowballBarrage" type="Node3D" unique_id=1259789438]
+script = ExtResource("1_5ua5p")

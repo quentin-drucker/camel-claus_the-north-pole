@@ -104,6 +104,34 @@ performance*, not for their characters, UI, logos or assets — everything here 
   thrown gifts), candy cane; props: snowy pine, snowdrift, muted gift pile, candy-cane post, camel
   pennant (blue/white flag with an original two-hump camel silhouette, no college logo). Bakes can pass
   a per-asset `palette=` subset so blended edges can't snap to unrelated colors.
+- Phase 6.1 (2026-11-11, same pipeline, not yet reviewed by Quentin): `snowball` (ice-blue, Claus's
+  weapon), `enemy_snowball` (snow + purple bands: anything hostile in the air carries purple),
+  `ornament_mine` (green bauble + gold studs, bigger than XP so the two never get confused), pickups
+  `magnet` (red horseshoe), `cookies_milk` (on a red plate so it pops off the snow), `snow_bomb` (navy +
+  ice band + gold fuse), and the **Snowball Lobber** enemy (navy imp holding a purple-banded snowball
+  overhead; silhouette = "ranged"). Warning rings for enemy attacks are purple outlines
+  (`assets/materials/warning_ring_mesh.tres`), mostly transparent inside so they never hide the ground.
+- Phase 6.2-6.4 (2026-11-11, same pipeline, not yet reviewed by Quentin): Santa's `sleigh` (red body,
+  gold runners and rails, gift sack, one reindeer with a red nose; 628 tris, 128 px; flies 3.2 m up,
+  offset toward the camera so it crosses the middle of the screen), `santa_present` (green box, red ribbon,
+  gold star: distinct from red thrown gifts and the gold chest), `gingerbread` (flat cookie man with white
+  icing and red buttons, lies flat so it reads while spinning). Blizzard event: white frost only at the
+  screen edges (radial gradient, middle stays clear), never full-screen fog.
+- UI additions follow the cozy-pixel style: Santa's present screen uses a warm wood-brown backdrop
+  `#5B3A2A` to feel special; blessing cards have a pine-green border; achievement toast = navy panel +
+  trophy icon in the bottom-right corner; new icons (blessings, sleigh, present, reroll, banish, coin,
+  trophy, lock, new weapons and evolutions) are 12x12 + navy outline like the rest.
+- Phase 7 (2026-11-11, not yet reviewed by Quentin): **Claus is now body + hat + outfit pieces**
+  (`art_src/claus_parts.blend` keeps the original split; new pieces in `art_src/hat_*.blend`,
+  `outfit_*.blend`), all modelled in Claus's own space (head top z 1.07 at y 0.40, neck ring y 0.25 z 0.52,
+  torso box +-0.26 x -0.34..0.28 x 0.19..0.53) so they attach with no offsets. Recolors use
+  `palette_swap.gdshader` on exact swatches: camel swatches `#E8C48E #C98F55 #8A5A33 #5B3A2A` for skins,
+  each piece's main pair for colors (red `#D9343F/#8E1F2E`, green `#3E9A5B/#1F5A43`, blue `#4E6A9E/#22304F`,
+  gold `#F2B53B/#C98F55`, ice `#7FD6F2/#4E6A9E`). **Rules**: no purple cosmetics (purple = danger); the
+  Cream skin is the lightest allowed (still warm against the snow, keeps dark eyes and the blob shadow).
+  World: `rock` (blue-grey boulders + snow caps), `mountain` (54 tris, used 2-5x scale far away);
+  boundary = snowbank ridge + rocks + 3 pine rows; sky gradient + depth fog from 60 m (atmospheric
+  perspective) + pixel moon/stars + faint aurora; props sway via vertex shader (no skeletal rigs).
 - Approved seed/reference paths: the four models above + `scenes/main/main.tscn` ground shader.
   New art matches them: chunky primitives, palette-only bake, chibi faces, purple = danger.
 - Required do/don't examples: TBD

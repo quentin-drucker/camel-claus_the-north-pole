@@ -42,11 +42,38 @@ docs/        devlog, art direction, these conventions
   GameState" everywhere) — same fix: `godot_autoload_edit` remove + add.
 - A scene open in an editor tab keeps the old version of its script's exports; `godot_scene_close` it and
   set properties again (the tool reopens it).
+- Headless `--import` runs while the editor is open can leave the UID cache stale: every autoload then
+  shows "Unrecognized UID" and `root.get_node("Profile")` is null in `-s` tests. Rerun `--import`.
 - New resources get UIDs in the editor before its UID cache reaches disk; headless runs then warn "invalid
   UID". Run `godot --headless --path . --import` once before tests/sims.
 - `-s` test scripts: the tree isn't live during `_initialize`, so `_enter_tree` doesn't run — set
   `GameState.player` by hand.
 - A script's `@export` fields can't be set in the same call that attaches the script; prefer `preload()` defaults in the script for data resources.
+- A freed node compares equal to `null`: use `is_instance_valid()` (and a separate flag if you need to
+  know it existed), never `node == null`, to tell "gone" from "never set".
+- Never pass possibly-freed nodes to a typed lambda (`filter(func(m: Mine) ...)` errors "Cannot convert
+  argument 1 from Object to Object"); loop and check `is_instance_valid()` instead.
+- Don't `git stash` while the editor is open: it swaps files under open scene tabs. If it happens, close
+  those tabs with `godot_scene_close` (discard) so a stale copy can't be saved back.
+- Headless windows are square (1280x1280): `test_text_fit.gd` letterboxes the root to the 1280x720 design
+  canvas (`content_scale_aspect = KEEP`); any new layout test must do the same or height bugs hide.
+- Cosmetics are data: a piece = a model in Claus's space (see ART_DIRECTION) + wrapper scene in
+  `scenes/player/cosmetics/` + a `CosmeticData` .tres + its line in `Profile.COSMETICS`. Recolors only
+  swap palette swatches (`palette_swap.gdshader`); never bake a variant texture.
+- After changing UI layout, fonts or any name/description text, run `tests/test_text_fit.gd` (catches cut-off text).
+- `tests/test_weapons.gd` (`--fixed-fps 60`) checks every weapon fires and that its evolution hits harder;
+  add each new weapon scene to its `WEAPONS` list. Tests that kill enemies must free `LevelUpMenu`
+  first, or a level-up pauses the tree mid-test.
+- `tests/test_santa.gd` (`--fixed-fps 60`) covers the meter, sleigh/present flow, blessings, loadout pool,
+  reroll/banish. Scene tests end with a 180 s watchdog so a script error fails instead of hanging.
+- Tests and the balance bot must never write the real `user://profile.json`: set
+  `Profile.save_path = "user://test_scratch_profile.json"` in `_initialize()` (the results screen records
+  every run), and change `Profile.data` in memory after the first frame (when `Profile._ready()` has loaded).
+- Meta content is data: a Workshop upgrade = a `WorkshopData` .tres + its line in `Profile.WORKSHOP`; an
+  achievement = an `AchievementData` .tres (stat key from `Profile.progress()`) + its line in
+  `Profile.ACHIEVEMENTS`. New save fields go in `Profile.DEFAULTS` (old saves get them automatically).
+- `GameState.start_run()` runs in `main.gd`'s `_enter_tree()` (before any child's `_ready()`), so scene
+  children can read the run's loadout in `_ready()`.
 - Tests live in `tests/` as `SceneTree` scripts: `godot --headless --path . -s res://tests/<test>.gd` (exit code 1 = failure).
   `-s` scripts compile before autoloads exist: never use project `class_name`s as types there; `load()` scripts/scenes at runtime.
 - Balance bot: `godot --headless --fixed-fps 60 --path . -s res://tests/balance_sim.gd -- seed=N mode=collect|kite|idle`
@@ -68,9 +95,16 @@ docs/        devlog, art direction, these conventions
 - UI text about upgrades/weapons/items/stats comes from `scripts/ui/describe.gd`, which uses the same
   formulas as gameplay (`WeaponData.damage_at/cooldown_at/count_at/radius_at`). Never hard-code numbers
   in UI text.
+- Exception: the `DemoCode` autoload (type "hohoho") works in release builds on purpose, for live demos.
 - Debug-only features check `OS.is_debug_build()` (F2/F3/F4, FPS readout); release exports drop them.
   Browser tests that need F3/F4 must use a debug export.
 - Tests and the balance bot load `res://scenes/main/main.tscn` directly (no menu).
+- Balance bot modes: `collect` (random picks, calls Santa at once), `focus` (builds on purpose, saves the
+  meter for evolutions, rerolls), `kite`, `idle`; `loadout=a,b,c starter=a` picks the run's weapons.
+- Weapons are listed once, in `Profile.WEAPON_CARDS` (id = scene file name). A new weapon needs: scene +
+  script (extends `Weapon`), a `WeaponData` .tres (with evolution fields), an `UpgradeData` weapon card, the
+  card in `LevelUpMenu.upgrades` and `Profile.WEAPON_CARDS`, `Describe.WEAPONS`, icons `weapon_<id>` and
+  `weapon_<id>_evo`, and an entry in `tests/test_weapons.gd`.
 
 ## Web build
 

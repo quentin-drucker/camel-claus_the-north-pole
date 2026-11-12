@@ -8,8 +8,12 @@ const INTENSITY_TIME: float = 210.0
 var _intense: bool = false
 
 
-func _ready() -> void:
+func _enter_tree() -> void:
+	# Before any child's _ready(): the Player reads the run's starting weapon from GameState.
 	GameState.start_run()
+
+
+func _ready() -> void:
 	Audio.play_music()
 
 
@@ -28,6 +32,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		if upgrade.stat == UpgradeData.Stat.WEAPON:
 			while player.upgrade_level(upgrade) < upgrade.max_level:
 				player.apply_upgrade(upgrade)
-	player.add_item(preload("res://resources/items/santas_sack.tres"))
-	player.add_item(preload("res://resources/items/sleigh_bells.tres"))
 	GameState.add_chest()

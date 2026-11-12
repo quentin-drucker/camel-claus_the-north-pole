@@ -1,6 +1,6 @@
 class_name Weapon
 extends Node3D
-## Base for Claus's weapons: level 1-5, an optional evolution, and the player's global stats.
+## Base for Claus's weapons: level 1-5, an evolution at level 5, and the player's global stats.
 ## Numbers come from WeaponData's formulas (shared with the UI). Subclasses attack in _process and
 ## deal damage through Player.deal_damage() so items proc. evolve() triggers the evolution look.
 
@@ -28,9 +28,12 @@ func count() -> int:
 	return data.count_at(level, evolved, GameState.player.extra_projectiles)
 
 
+func radius() -> float:
+	return data.radius_at(level, evolved)
+
+
 func can_evolve() -> bool:
-	return not evolved and level >= WeaponData.MAX_LEVEL and data.evolution_item != null \
-		and GameState.player.items.has(data.evolution_item)
+	return not evolved and level >= WeaponData.MAX_LEVEL and data.evolved_name != ""
 
 
 func evolve() -> void:

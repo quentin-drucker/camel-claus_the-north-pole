@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WorkshopData" format=3]
+
+[ext_resource type="Script" uid="uid://d0v13tt13ytm6" path="res://scripts/data/workshop_data.gd" id="1_w"]
+
+[resource]
+script = ExtResource("1_w")
+id = "cozy_sweater"
+title = "Cozy Sweater"
+description = "+{v} max HP"
+icon = "extra_hump"
+stat = 0
+amount = 10.0
+is_percent = false
+costs = Array[int]([40, 80, 140, 220, 320])

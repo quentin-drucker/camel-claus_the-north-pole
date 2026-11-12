@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3]
+
+[ext_resource type="Script" uid="uid://c4n4m808bru7f" path="res://scripts/data/upgrade_data.gd" id="1_u"]
+[ext_resource type="PackedScene" uid="uid://pl0wyknskt7l" path="res://scenes/weapons/snowball_barrage.tscn" id="2_w"]
+
+[resource]
+script = ExtResource("1_u")
+title = "Snowball Barrage"
+description = "+25% snowball damage, +10% splash (+1 snowball at Lv 3 and Lv 5)"
+stat = 6
+scales_with_rarity = false
+weapon_scene = ExtResource("2_w")
+new_description = "Snowball Barrage: lobs snowballs over the crowd that splash where they land"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3]
+
+[ext_resource type="Script" uid="uid://01vqbxuebcob" path="res://scripts/data/weapon_data.gd" id="1_om"]
+
+[resource]
+script = ExtResource("1_om")
+display_name = "Ornament Mines"
+damage = 26.0
+cooldown = 0.9
+projectile_count = 4
+attack_range = 2.0
+count_noun = "mine"
+show_radius = true
+radius_label = "blast"
+level_damage_bonus = 0.3
+level_area_bonus = 0.08
+evolved_name = "Chain Reaction"
+evolved_description = "+2 mines; each blast sets off nearby mines and rings out a second, wider blast"
+evolved_extra_count = 2
+evolved_area_mult = 1.2

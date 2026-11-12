@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3]
+
+[ext_resource type="Script" uid="uid://c4n4m808bru7f" path="res://scripts/data/upgrade_data.gd" id="1_u"]
+[ext_resource type="PackedScene" uid="uid://blmnwr2wkd2vs" path="res://scenes/weapons/gingerbread_boomerang.tscn" id="2_w"]
+
+[resource]
+script = ExtResource("1_u")
+title = "Gingerbread Boomerang"
+description = "+25% cookie damage, +6% throw (+1 cookie at Lv 3 and Lv 5)"
+stat = 6
+scales_with_rarity = false
+weapon_scene = ExtResource("2_w")
+new_description = "Gingerbread Boomerang: cookies fly out and back, hitting critters both ways"

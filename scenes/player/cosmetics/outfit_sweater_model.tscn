@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://clf5bux6ck5ib" path="res://assets/models/outfit_sweater.glb" id="1"]
+
+[node name="OutfitSweater" instance=ExtResource("1")]

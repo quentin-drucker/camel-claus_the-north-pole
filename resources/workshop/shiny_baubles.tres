@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WorkshopData" format=3]
+
+[ext_resource type="Script" uid="uid://d0v13tt13ytm6" path="res://scripts/data/workshop_data.gd" id="1_w"]
+
+[resource]
+script = ExtResource("1_w")
+id = "shiny_baubles"
+title = "Shiny Baubles"
+description = "+{v}% XP"
+icon = "christmas_spirit"
+stat = 3
+amount = 0.05
+is_percent = true
+costs = Array[int]([50, 110, 190, 290])

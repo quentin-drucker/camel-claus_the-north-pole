@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AchievementData" format=3]
+
+[ext_resource type="Script" uid="uid://dg51ame1esmqh" path="res://scripts/data/achievement_data.gd" id="1_a"]
+
+[resource]
+script = ExtResource("1_a")
+id = "endless_night"
+title = "Endless Night"
+description = "Keep going in Endless mode until 8:00"
+stat = "run_seconds"
+target = 480.0
+reward_coins = 100

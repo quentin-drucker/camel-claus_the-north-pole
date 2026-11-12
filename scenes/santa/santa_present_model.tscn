@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://cyfiw6h3h2352" path="res://assets/models/santa_present.glb" id="1"]
+
+[node name="SantaPresentModel" instance=ExtResource("1")]

@@ -17,6 +17,25 @@ static func cube_mesh() -> BoxMesh:
 	return _cube
 
 
+## Little sparkle trail of cubes left behind a moving node (add it as a child).
+static func trail(tint: Color, count: int = 6) -> CPUParticles3D:
+	var particles := CPUParticles3D.new()
+	particles.amount = count
+	particles.lifetime = 0.3
+	particles.local_coords = false
+	particles.mesh = cube_mesh()
+	particles.color = tint
+	particles.direction = Vector3.UP
+	particles.spread = 180.0
+	particles.initial_velocity_min = 0.2
+	particles.initial_velocity_max = 0.6
+	particles.gravity = Vector3.ZERO
+	particles.scale_amount_min = 0.3
+	particles.scale_amount_max = 0.6
+	particles.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	return particles
+
+
 static func spawn(pos: Vector3, tint: Color = Color("F4F8FF"), count: int = 8, speed: float = 3.0) -> void:
 	var poof := Poof.new()
 	poof.amount = count
