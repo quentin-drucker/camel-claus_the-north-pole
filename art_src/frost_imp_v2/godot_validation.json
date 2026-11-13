@@ -1,0 +1,32 @@
+[
+  {
+    "run_id": "991ae501",
+    "running": false,
+    "exit_code": 0,
+    "errors": 0,
+    "warnings": 0,
+    "lines": [],
+    "next": 0,
+    "more": false,
+    "dropped": 0
+  },
+  {
+    "run_id": "991ae501",
+    "running": false,
+    "exit_code": 0,
+    "errors": 0,
+    "warnings": 0,
+    "lines": [
+      "0 Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "1 OpenGL API 3.3.0 NVIDIA 592.00 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 5080 Laptop GPU",
+      "2 ",
+      "3 FROST_IMP_CAPTURE review result=0 renderer=gl_compatibility",
+      "4 FROST_IMP_METRICS primitives=18394.0 draws=22.0",
+      "5 FROST_IMP_CAPTURE crowd result=0 renderer=gl_compatibility",
+      "6 FROST_IMP_METRICS primitives=346058.0 draws=207.0"
+    ],
+    "next": 7,
+    "more": false,
+    "dropped": 0
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "triangles": 3450,
+  "exported_vertices_with_uv_splits": 3462,
+  "meshes": 1,
+  "surfaces": 1,
+  "materials": 1,
+  "embedded_images": 1,
+  "rig": false,
+  "godot_bounds_min": [
+    -0.24627402424812317,
+    0.0,
+    -0.1815507709980011
+  ],
+  "godot_bounds_max": [
+    0.24627402424812317,
+    0.699999988079071,
+    0.14043724536895752
+  ],
+  "uv_area_fraction": 0.4407836331537762,
+  "collapsed_uv_triangles": 0,
+  "finite_buffers": true,
+  "normalized_normals": true,
+  "file_bytes": 517532
+}

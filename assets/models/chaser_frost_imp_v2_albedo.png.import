@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dalbgvg8g6s0e"
-path="res://.godot/imported/chaser_chaser_albedo.png-4a4e4af8dec8e0a84ee816840122fab6.ctex"
+uid="uid://d3uhdqf81nn5k"
+path="res://.godot/imported/chaser_frost_imp_v2_albedo.png-0caf1a299e5c886b66c684a2f1ded246.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "ca5016147949fa5df669a60381f3c493"
+"md5": "09aced0f98750e571197a178d6e2e6f5"
 }
 
 [deps]
 
-source_file="res://assets/models/chaser_chaser_albedo.png"
-dest_files=["res://.godot/imported/chaser_chaser_albedo.png-4a4e4af8dec8e0a84ee816840122fab6.ctex"]
+source_file="res://assets/models/chaser_frost_imp_v2_albedo.png"
+dest_files=["res://.godot/imported/chaser_frost_imp_v2_albedo.png-0caf1a299e5c886b66c684a2f1ded246.ctex"]
 
 [params]
 
@@ -26,7 +26,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

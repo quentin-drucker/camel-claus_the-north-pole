@@ -7,6 +7,37 @@ Entry format: `## YYYY-MM-DD — short title`, then what changed, why, and what'
 
 ---
 
+## 2026-11-13 — New Frost Imp shipped as the production Chaser
+
+- Replaced `assets/models/chaser.glb` with the approved sculpted Frost Imp while preserving its UID,
+  wrapper scene, gameplay scale, collision/data and shared GPU waddle animation.
+- Re-rendered `assets/ui/renders/chaser.png` as a transparent 96x96 portrait from the same baked model;
+  this updates the Snowball Fight achievement stamp and the HUD bonk icon together.
+- Refreshed Godot imports: one baked 512x512 lossless albedo with mipmaps, no imported animation or
+  light baking. Removed the old extracted Chaser texture.
+- Verified the GLB buffers (3,450 triangles, one mesh/surface/material, valid packed UVs, no rig), then
+  ran the review scene and live main scene through Godot 4.7.2 Compatibility with zero runtime errors
+  or warnings. Release Web export and GitHub Pages publication follow in this change.
+
+
+## 2026-11-13 — Sculpted Frost Imp model and baked asset review
+
+- Built the user's approved furry Frost Imp concept as a new asset, preserving the current Chaser.
+  Continuous remeshed/decimated body, shaped muzzle, curved horns, swept fur locks and expressive eyes.
+- Export: 3,450 triangles, one surface/material, one packed 512x512 albedo, 0.70 m height,
+  ground-center origin, Blender +Y / Godot -Z forward, no rig. Procedural painted-color and
+  occlusion source materials are baked into a real UV atlas; none are required at runtime.
+- Added source/rebuild script, editable Blender files, UV layout, GLB validation and rendered previews.
+- Created the standalone `frost_imp_review.tscn` using Godot MCP scene/node tools. It compares front,
+  elevated and small views and offers a 100-instance view with the existing waddle shader.
+- Checked through `godot_run_start` in process mode and `godot_run_output` at error level:
+  zero errors/warnings in the successful review. 100 instances rendered with the Compatibility
+  renderer: 346,058 total primitives and 207 draw calls including shadows and review UI.
+  This is a local render check, not a Web gameplay FPS claim.
+- Updated ART_DIRECTION with the user's expanded palette/gradient permission and provisional
+  higher-detail enemy budget. Model acceptance and live-game replacement remain for user review.
+
+
 ## 2026-11-13 — Loadout clarity, one look per cosmetic, settings toggles, title hat
 
 - **Loadout:** players didn't know what to do there. Now two numbered steps ("1. Pack up to 3 weapons" with

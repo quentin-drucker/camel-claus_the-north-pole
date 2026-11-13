@@ -13,6 +13,29 @@ performance*, not for their characters, UI, logos or assets — everything here 
 
 ## Game frame
 
+### Approved Frost Imp direction update (2026-11-13)
+
+For the new Frost Imp, this section supersedes the older primitive-shape, tiny-texture,
+palette-only rules below. Existing assets retain their current contracts until revised.
+
+- Reference: `art/concepts/frost-imp/frost-imp-approved-sculpted.png`. The user approved a
+  cohesive sculpted creature: shaped muzzle and cheeks, integrated limbs, heavy brows,
+  curved horns and broad swept fur locks. Simple major forms must not look like attached primitives.
+- The original palette is a baseline. Harmonious intermediate colors, painted gradients,
+  fur strokes and baked shading are allowed. Keep purple hostile eyes, cool body colors and matte surfaces.
+- Working common-enemy target for this fidelity: **2,500-3,500 triangles**, one mesh surface,
+  one material and one **512x512 albedo**. No skeleton, normal map or runtime procedural texture.
+  The completed review asset has **3,450 triangles** and is **0.70 m** tall, with a ground-center pivot.
+- Texture filtering may be linear for close inspection; the current enemy waddle shader uses
+  nearest filtering. The review checks that exact shader too. Texture import is lossless with
+  mipmaps available; the old strict palette-snapping pipeline is not used for this asset.
+- Deliverables: `assets/models/chaser.glb`, `art_src/frost_imp_v2/`, and
+  `scenes/enemies/frost_imp_review.tscn`. This model is now the production Chaser while retaining
+  the existing wrapper, enemy data and GPU waddle animation. Do not treat this as approval to replace
+  every other enemy.
+- Budget is provisional for Web. 100 copies = 345,000 model triangles. The standalone
+  Compatibility-renderer review succeeded with 100 copies; it is not a browser gameplay benchmark.
+
 - Player fantasy: Claus, the Connecticut College Camel (school colors blue + white), lost at the North Pole, survives ever-growing waves of
   winter creatures, powered up by scattered Christmas gifts.
 - Core verbs: move, survive, collect (XP and gifts), choose upgrades. Attacks fire automatically.

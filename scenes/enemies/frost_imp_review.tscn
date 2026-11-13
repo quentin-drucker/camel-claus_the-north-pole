@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dat82cr8j5ujx"]
+
+[ext_resource type="Script" uid="uid://cmvek1cqamme0" path="res://scenes/enemies/frost_imp_review.gd" id="1_d3kab"]
+
+[node name="FrostImpReview" type="Node3D" unique_id=1648389200]
+script = ExtResource("1_d3kab")

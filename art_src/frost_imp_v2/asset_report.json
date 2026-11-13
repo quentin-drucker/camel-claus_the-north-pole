@@ -1,0 +1,16 @@
+{
+  "triangles": 3450,
+  "vertices": 1835,
+  "materials": 1,
+  "texture": [
+    512,
+    512
+  ],
+  "height_m": 0.7,
+  "rig": false,
+  "blender_forward": "+Y",
+  "godot_forward": "-Z",
+  "origin": "ground center",
+  "source": "C:\\Users\\qdruc\\Projects\\Godot\\Camel Claus\\Camel Claus The North Pole\\art_src\\frost_imp_v2\\frost_imp_v2.blend",
+  "glb": "C:\\Users\\qdruc\\Projects\\Godot\\Camel Claus\\Camel Claus The North Pole\\assets\\models\\chaser.glb"
+}
