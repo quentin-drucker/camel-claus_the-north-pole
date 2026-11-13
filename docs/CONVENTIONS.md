@@ -58,8 +58,9 @@ docs/        devlog, art direction, these conventions
 - Headless windows are square (1280x1280): `test_text_fit.gd` letterboxes the root to the 1280x720 design
   canvas (`content_scale_aspect = KEEP`); any new layout test must do the same or height bugs hide.
 - Cosmetics are data: a piece = a model in Claus's space (see ART_DIRECTION) + wrapper scene in
-  `scenes/player/cosmetics/` + a `CosmeticData` .tres + its line in `Profile.COSMETICS`. Recolors only
-  swap palette swatches (`palette_swap.gdshader`); never bake a variant texture.
+  `scenes/player/cosmetics/` + a `CosmeticData` .tres + its line in `Profile.COSMETICS`. Skins recolor the
+  body by swapping palette swatches (`palette_swap.gdshader`); hats and outfits keep their own baked
+  look (two-swatch recolors left the default color showing through), so a new color = a new piece.
 - After changing UI layout, fonts or any name/description text, run `tests/test_text_fit.gd` (catches cut-off text).
 - `tests/test_weapons.gd` (`--fixed-fps 60`) checks every weapon fires and that its evolution hits harder;
   add each new weapon scene to its `WEAPONS` list. Tests that kill enemies must free `LevelUpMenu`

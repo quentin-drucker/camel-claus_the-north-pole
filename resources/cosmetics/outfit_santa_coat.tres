@@ -13,6 +13,4 @@ picture = ExtResource("9_pic")
 slot = 2
 model = ExtResource("2_m")
 price = 180
-swap_from = PackedColorArray(0.851, 0.2039, 0.2471, 1, 0.5569, 0.1216, 0.1804, 1)
 swap_to = PackedColorArray()
-color_options = PackedStringArray("red", "green", "blue")

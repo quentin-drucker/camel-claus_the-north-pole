@@ -11,6 +11,4 @@ title = "Bobble Beanie"
 description = "Knitted by an elf who ran out of red."
 picture = ExtResource("9_pic")
 model = ExtResource("2_m")
-swap_from = PackedColorArray(0.851, 0.2039, 0.2471, 1, 0.5569, 0.1216, 0.1804, 1)
 swap_to = PackedColorArray()
-color_options = PackedStringArray("red", "green", "blue", "gold", "ice")

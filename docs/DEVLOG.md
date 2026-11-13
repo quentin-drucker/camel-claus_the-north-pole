@@ -7,6 +7,23 @@ Entry format: `## YYYY-MM-DD — short title`, then what changed, why, and what'
 
 ---
 
+## 2026-11-13 — Loadout clarity, one look per cosmetic, settings toggles, title hat
+
+- **Loadout:** players didn't know what to do there. Now two numbered steps ("1. Pack up to 3 weapons" with
+  a packed counter; "2. Choose your starting weapon"), each with one help line; cards wear Starter /
+  Packed / Locked tags on their border, slots say "Starts with you" / "Joins at level-ups", and a sentence
+  by Start run says what will happen.
+- **Customize:** picking a hat/outfit color left the default color showing (the baked shading has more
+  shades than the two-swatch swap). Removed recolors: every hat and outfit has one look; skins still
+  recolor the body (every fur shade is in their swap list). Old saves drop `hat_color` / `outfit_color`.
+- **Settings:** the On/Off switches showed Godot's default grey toggles (right-to-left CheckButtons use the
+  `*_mirrored` icons, which the theme didn't set); now the sweater-button switch like the hybrid, plus
+  chevron arrows on Interface size and the knit plate (`PlateTightKnit`).
+- **Title:** the menu's Santa hat sits 10 px higher, on top of the C.
+- Guide (`art_reference/GUI_Style_Guide`) updated: loadout layout, keycap hints, toggle/selector details,
+  one look per cosmetic, new roles/helpers, and lessons (prototype parity check, mirrored icons, recolors).
+- Checks: all suites 0 failed; text fit 122 screens, 0 problems.
+
 ## 2026-11-13 — Phase 8 pass 2: the game now matches the approved A+ hybrid screen by screen
 
 Quentin played the GitHub Pages build and found many gaps against the approved HTML hybrid (settings,

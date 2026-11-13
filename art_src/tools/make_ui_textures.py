@@ -439,6 +439,17 @@ def check_boxes() -> None:
         save(img, "check_on" if done else "check_off")
 
 
+def chevrons() -> None:
+    """Snow chevrons for the selector arrows (Settings > Interface size), with a dark drop."""
+    for name, pts in (("left", [(9, 2), (4, 7), (9, 12)]), ("right", [(5, 2), (10, 7), (5, 12)])):
+        s = 4
+        big = Image.new("RGBA", (16 * s, 16 * s), (0, 0, 0, 0))
+        d = ImageDraw.Draw(big)
+        for off, color in ((1, DARK), (0, SNOW)):
+            d.line([((x + 0.5) * s, (y + 0.5 + off) * s) for x, y in pts], fill=rgba(color), width=3 * s, joint="curve")
+        save(big.resize((16, 16), Image.LANCZOS), f"icon_chevron_{name}")
+
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     plate("plate", PLATE, STEEL, knit=False)
@@ -462,3 +473,4 @@ if __name__ == "__main__":
     close_icon()
     tick_icon()
     check_boxes()
+    chevrons()

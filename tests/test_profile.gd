@@ -102,10 +102,9 @@ func _initialize() -> void:
 	_check(not profile.buy_cosmetic(frosty), "can't buy twice")
 	profile.equip(frosty)
 	profile.buy_cosmetic(elf)
-	profile.equip(elf, "blue")
-	_check(profile.equipped(0) == frosty and profile.equipped(1) == elf and profile.equipped_color(1) == "blue", "wearing Frosty + blue elf hat")
-	profile.equip(elf, "purple")
-	_check(profile.equipped_color(1) == "blue", "colors outside the item's options are ignored")
+	profile.equip(elf)
+	_check(profile.equipped(0) == frosty and profile.equipped(1) == elf, "wearing Frosty + elf hat")
+	_check(not profile.data["look"].has("hat_color"), "pieces keep their own colors (no recolor saved)")
 	profile.data["look"]["hat"] = "hat_unknown"
 	profile.save()
 	profile.load_profile()

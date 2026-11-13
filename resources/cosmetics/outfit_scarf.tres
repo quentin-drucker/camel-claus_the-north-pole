@@ -12,6 +12,4 @@ description = "Blue and white, the school colors."
 picture = ExtResource("9_pic")
 slot = 2
 model = ExtResource("2_m")
-swap_from = PackedColorArray(0.3059, 0.4157, 0.6196, 1, 0.1333, 0.1882, 0.3098, 1)
 swap_to = PackedColorArray()
-color_options = PackedStringArray("blue", "red", "green", "gold")

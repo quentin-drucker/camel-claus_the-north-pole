@@ -22,6 +22,7 @@ var _size_value: Label
 
 
 func _ready() -> void:
+	theme_type_variation = &"PlateTightKnit"  # the hybrid's settings plate has the knit behind it
 	var column := VBoxContainer.new()
 	column.add_theme_constant_override(&"separation", 0)
 	add_child(column)
@@ -41,13 +42,12 @@ func _ready() -> void:
 	fullscreen = _toggle_row(body, "Fullscreen", _is_fullscreen(), func(on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if on else DisplayServer.WINDOW_MODE_WINDOWED))
 	var size_row := _row(body, "Interface size")
-	var smaller := _arrow("<", -1)
-	size_row.add_child(smaller)
+	size_row.add_child(_arrow(preload("res://assets/ui/tin/icon_chevron_left.png"), -1))
 	_size_value = Tin.label("", &"GoldLabel")
 	_size_value.custom_minimum_size = Vector2(120, 0)
 	_size_value.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	size_row.add_child(_size_value)
-	size_row.add_child(_arrow(">", 1))
+	size_row.add_child(_arrow(preload("res://assets/ui/tin/icon_chevron_right.png"), 1))
 	_show_size()
 
 	body.add_child(Tin.label("Gameplay", &"SubLabel"))
@@ -137,11 +137,13 @@ func _toggle_row(parent: Control, text: String, on: bool, on_toggle: Callable) -
 	return toggle
 
 
-func _arrow(text: String, step: int) -> Button:
+func _arrow(chevron: Texture2D, step: int) -> Button:
 	var b := Button.new()
-	b.text = text
+	b.icon = chevron
+	b.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	b.tooltip_text = "Smaller" if step < 0 else "Larger"
 	b.theme_type_variation = &"SmallButton"
-	b.custom_minimum_size = Vector2(48, 40)
+	b.custom_minimum_size = Vector2(44, 42)
 	b.mouse_entered.connect(b.grab_focus)
 	b.pressed.connect(func() -> void:
 		Audio.play(&"click")

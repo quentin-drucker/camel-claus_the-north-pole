@@ -7,6 +7,4 @@ script = ExtResource("1_c")
 id = "hat_none"
 title = "No hat"
 description = "Let the humps breathe."
-swap_from = PackedColorArray()
 swap_to = PackedColorArray()
-color_options = PackedStringArray()

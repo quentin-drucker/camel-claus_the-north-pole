@@ -80,7 +80,7 @@ const COSMETICS: Array[CosmeticData] = [
 ]
 ## The original Claus: tan, red Santa hat, blue-and-white scarf ("Default look" restores it).
 const DEFAULT_LOOK: Dictionary = {
-	"skin": "skin_classic", "hat": "hat_santa", "hat_color": "red", "outfit": "outfit_scarf", "outfit_color": "blue",
+	"skin": "skin_classic", "hat": "hat_santa", "outfit": "outfit_scarf",
 }
 const SLOT_KEYS: Array[String] = ["skin", "hat", "outfit"]
 
@@ -116,7 +116,7 @@ const DEFAULTS: Dictionary = {
 	"bests": {},  # personal bests (BEST_LABELS keys) + "build": weapon titles of the most-kills run
 	"seen_combos": [],  # sorted loadout ids already played ("Mix and Match")
 	"cosmetics_owned": [],  # bought cosmetic ids (free ones are always owned)
-	"look": DEFAULT_LOOK,  # equipped cosmetic per slot + chosen colors
+	"look": DEFAULT_LOOK,  # equipped cosmetic id per slot
 	"seen_intro": false,  # the Knit + Tin intro plays in full once, then as a short sting
 	"top_runs": [],  # main menu "Best runs": up to TOP_RUNS of {time, level, kills}, longest first
 }
@@ -198,6 +198,8 @@ func _sanitize() -> void:
 		var b: Dictionary = data["bests"]
 		data["top_runs"] = [{"time": int(b["time"]), "level": int(b.get("level", 1)), "kills": int(b.get("kills", 0))}]
 	data["coins"] = maxi(int(data["coins"]), 0)
+	for key: String in ["hat_color", "outfit_color"]:  # recolors were removed; old saves drop them
+		data["look"].erase(key)
 	for key: String in DEFAULT_LOOK:  # unknown or unowned pieces fall back to the default look
 		if not data["look"].has(key):
 			data["look"][key] = DEFAULT_LOOK[key]
@@ -321,24 +323,16 @@ func buy_cosmetic(item: CosmeticData) -> bool:
 	return true
 
 
-## The equipped item for a slot and its chosen color name ("" for skins / no color options).
+## The equipped item for a slot.
 func equipped(slot: CosmeticData.Slot) -> CosmeticData:
 	return cosmetic(data["look"][SLOT_KEYS[slot]])
 
 
-func equipped_color(slot: CosmeticData.Slot) -> String:
-	return data["look"].get(SLOT_KEYS[slot] + "_color", "")
-
-
-## Wear an owned item (and optionally a color from its options). Saves and tells Claus to redress.
-func equip(item: CosmeticData, color: String = "") -> void:
+## Wear an owned item. Saves and tells Claus to redress.
+func equip(item: CosmeticData) -> void:
 	if not owns_cosmetic(item):
 		return
-	var key: String = SLOT_KEYS[item.slot]
-	data["look"][key] = item.id
-	if item.slot != CosmeticData.Slot.SKIN:
-		var keep: String = equipped_color(item.slot)
-		data["look"][key + "_color"] = color if color in item.color_options 			else (keep if keep in item.color_options else (item.color_options[0] if not item.color_options.is_empty() else ""))
+	data["look"][SLOT_KEYS[item.slot]] = item.id
 	save()
 
 

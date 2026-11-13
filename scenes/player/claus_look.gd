@@ -26,18 +26,18 @@ func dress() -> void:
 	for piece in _pieces:
 		piece.queue_free()
 	_pieces.clear()
-	_add(BODY, Profile.equipped(CosmeticData.Slot.SKIN), "")
+	_add(BODY, Profile.equipped(CosmeticData.Slot.SKIN))
 	for slot: CosmeticData.Slot in [CosmeticData.Slot.HAT, CosmeticData.Slot.OUTFIT]:
 		var item: CosmeticData = Profile.equipped(slot)
 		if item and item.model:
-			_add(item.model, item, Profile.equipped_color(slot))
+			_add(item.model, item)
 
 
-func _add(scene: PackedScene, item: CosmeticData, color: String) -> void:
+func _add(scene: PackedScene, item: CosmeticData) -> void:
 	var piece: Node3D = scene.instantiate()
 	add_child(piece)
 	_pieces.append(piece)
-	var targets: PackedColorArray = item.swap_targets(color) if item else PackedColorArray()
+	var targets: PackedColorArray = item.swap_targets() if item else PackedColorArray()
 	if targets.is_empty():
 		return  # its baked colors as they are
 	var from: PackedColorArray = item.swap_from.slice(0, targets.size())

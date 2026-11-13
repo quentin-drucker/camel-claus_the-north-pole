@@ -10,4 +10,3 @@ description = "The tan Claus was born with."
 slot = 0
 swap_from = PackedColorArray()
 swap_to = PackedColorArray()
-color_options = PackedStringArray()

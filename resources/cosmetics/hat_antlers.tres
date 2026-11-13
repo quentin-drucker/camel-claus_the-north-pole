@@ -12,6 +12,4 @@ description = "Comes with a red nose. Camels love it."
 picture = ExtResource("9_pic")
 model = ExtResource("2_m")
 price = 150
-swap_from = PackedColorArray()
 swap_to = PackedColorArray()
-color_options = PackedStringArray()

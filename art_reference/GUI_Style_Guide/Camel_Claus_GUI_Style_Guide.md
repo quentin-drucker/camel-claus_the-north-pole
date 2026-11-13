@@ -187,8 +187,10 @@ display face. Goal/achievement progress: 8 px green with the count above-right.
 ### 4.7 Settings controls
 Slider: 14 px dark track with steel hairline, **yarn-striped fill** (red/white at 115°), knob = **sewn wooden
 sweater button** (32 px: wood face, darker rim, four holes, white thread cross). Toggle: 58×30 track, 24 px
-sweater-button knob that rolls 90° as it slides; track turns `toggle-on` with knit texture. Selector: two
-small slab arrow buttons around a gold value that flips in.
+sweater-button knob that rolls 90° as it slides; track turns `toggle-on` with knit texture; the switch comes
+**first**, then "On"/"Off" in Tiny5 to its right. Selector: two small square slabs with **snow chevron
+icons** (not "<" text) around a gold value that flips in. The settings plate itself is the knit plate
+(`PlateTightKnit`), with the header band and close X.
 
 ### 4.8 Tabs
 Display face 18–19, each with its own count (Tiny5 13) and a 5 px progress bar (`tab-progress`). Active tab
@@ -225,8 +227,10 @@ Tiny5, white 24 (crit 34 gold `#FFD64F`), 2 px dark outline, pop up 1.2× then d
   36; joke tagline (Tiny5 17, `title-gold`, click for another) at y 176; slab stack centered from y 236,
   Play first as the big gold primary; **Next goals** = three knit cards with stamp icons on the left
   (x 32, y 150, 300 wide); **Best runs** plate right (x 958, y 150, 290 wide, own row highlighted
-  `done-row`); small slabs (Settings, Credits, Quit) bottom-left; coins top-right; control hints bottom
-  center; version bottom-right. Live 3D diorama behind with a soft dark radial veil behind the center
+  `done-row`); small slabs (Settings, Stats, Credits, Quit) bottom-left; Workshop carries a red count badge (upgrades
+  you can afford); coins top-right; **control hints bottom center as snow keycaps (navy text) on a dark
+  bar with a steel border** (`HintBar` + `KeyCap`): plain small text there was too low-contrast to read as
+  controls; version bottom-right. Credits is a plate page (made with, art/music, sounds, music, fonts). Live 3D diorama behind with a soft dark radial veil behind the center
   column. A postmark sits beside the logo subtitle.
 - **Level up:** 800 px modal plate centered, header "Level up!" + luggage tag; three offer rows; help line;
   Reroll / Banish slabs with counts above. Behind: the game dimmed 50%, slow gold rays (50 s/turn) and a
@@ -237,13 +241,22 @@ Tiny5, white 24 (crit 34 gold `#FFD64F`), 2 px dark outline, pop up 1.2× then d
   their rarity color, "×n" stacks); boss bar under the timer when a boss is up.
 - **Pause:** three plates: Your build (weapons with level pips + evolution target, item grid) · Paused (run
   numbers, Resume primary, Settings, Restart run, Main menu) · Stats (grouped two-column list).
-- **Settings:** 640 px plate centered; groups Sound / Display / Gameplay; Reset progress (danger, confirm
-  twice) left, Back (primary) right.
+- **Settings:** 640 px knit plate centered, header band + close X; groups Sound (sliders + %) / Display
+  (Fullscreen, Interface size selector) / Gameplay (Screen shake, Damage numbers, Reduce motion); Reset
+  progress (danger, confirm twice) left, Back (primary) right.
 - **Achievements:** frame with header "Achievements 6 / 18" + total bar + coins earned + close; tabs with
   per-category progress; the list is a **postcard** (paper, airmail border, "Camel Post · North Pole 90°N"
   label, ruled lines); completed first, each with a stamp, progress bar, reward or "Delivered ✓" + postmark.
-- **Customize:** left plate with tabs (Hats / Outfits / Skins) and a grid of knit nameplate tiles; Claus
-  preview center on a pedestal; detail plate right (name, line of flavor, Equip / Buy primary).
+- **Customize:** left knit plate with tabs (Hats / Outfits / Skins) and a grid of knit **picture** tiles
+  (render of the piece, name strip, coin price when locked, gold plate = worn; skins show a fur-swatch
+  ring); Claus preview center (the menu camera moves in); detail plate right (name, line of flavor,
+  Equip / Buy primary / Equipped). **Each hat and outfit has exactly one look** (its baked colors): no
+  recolor swatches (see §13).
+- **Loadout (Play):** two numbered steps so first-timers know what to do. "1. Pack up to 3 weapons" + one
+  help line + "n / 3 packed"; weapon cards wear a tag on their top border (Starter gold, Packed ice,
+  Locked muted). "2. Choose your starting weapon" + one help line; three wide slots (icon + name) with a
+  caption under each ("Starts with you" gold / "Joins at level-ups"). A plain sentence by Start run says
+  what will happen ("You start with X. Y and Z can appear when you level up.").
 - **Results:** postcard header, then three plates: Damage table · Summary (portrait, stats, inventory
   stamps, rewards, Keep going / Play again / Main menu) · Unlocked.
 
@@ -296,21 +309,26 @@ later launches play the same timeline at double speed as a ~2 s sting (Profile `
   - text: `TitleLabel` 36, `HeaderLabel` 27, `TagLabel` 20 (+ `TagCommon/Rare/Epic/Evo`), `GoalTitle`,
     `SubtitleLabel`, `LogoLabel` 76, `LogoBigLabel` 112, `BannerLabel`, `MutedLabel`, `SmallLabel`,
     `GoldLabel`, `GoodLabel`, `StatLabel`, `BigNumber`, `KeyLabel`, `HudLabel`, `HudSmall`, `HudTimer`,
-    `HudLevel`, `InkLabel`, `InkSmall`, `InkTitle`, `PostRedLabel`, `ToastTitle`, `SmallRich`, `InkRich`;
+    `HudLevel`, `InkLabel`, `InkSmall`, `InkTitle`, `PostRedLabel`, `ToastTitle`, `SmallRich`, `InkRich`,
+    `SubLabel` (section headings), `NameLabel` (names in lists), `TabName`, `BadLabel`, `BadgeLabel`,
+    `KeyCapLabel`, `HintLabel`;
   - buttons: `PrimaryButton`, `BigPrimaryButton`, `RerollButton`, `DangerButton`, `SmallButton`,
-    `TabButton`, `KnitTileButton`, `RowCommon/Rare/Epic/Evo`, `CardCommon/Rare/Evo`;
+    `TabButton`, `KnitTileButton`, `RowCommon/Rare/Epic/Evo`, `CardCommon/Rare/Evo`, `CloseButton`;
   - panels: `PanelContainer` (plate), `PlateTight` (for panels with a header), `PlateKnit`, `PinePlate`,
     `HeaderBand` (pine band **with the Fair Isle trim baked into its 9-slice**, edges tiled),
     `KnitCard`, `TileCommon/Rare/Epic/Evo`, `TileHud`, `StampCommon/Rare/Epic/Evo`, `PaperPanel`,
-    `AirmailPanel`, `DarkBox`, `DoneRow`, `LuggageTag`;
+    `AirmailPanel`, `DarkBox`, `DoneRow`, `LuggageTag`, `PlateTightKnit`, `KeyCap`, `HintBar`, `Badge`,
+    `Pill`, `PillRed`;
   - bars: `HpBar`, `XpBar`, `GoodBar`, `TabProgress`, `BossBar`, `SantaBar`; plus `HSlider` (yarn fill,
-    sweater-button grabber) and `CheckButton`/`CheckBox` (sweater-button switch icons, `icon_max_width` 0).
+    sweater-button grabber) and `CheckButton`/`CheckBox` (sweater-button switch icons, also as the
+    `*_mirrored` icons, `icon_max_width` 0).
 - **StyleBoxTexture 9-slices** from generated PNGs (nearest filter is the project default; default 2D import
   is already lossless without mipmaps). Knit plates use `AXIS_STRETCH_MODE_TILE_FIT` so the knit tiles.
   Buttons use expand margins so the dark ring and drop sit outside the click area; the pressed state moves
   the slab and its text down 4 px.
-- **Helpers:** `Tin` (`scripts/ui/tin.gd`) builds header bands, stamps (optionally postmarked), tiles,
-  labels, bars and the postmark slam for UI made in code.
+- **Helpers:** `Tin` (`scripts/ui/tin.gd`) builds header bands (`header(title, extra, on_close)` adds the
+  red close X), stamps (optionally postmarked), tiles, labels, bars, coin counters (`coin()`), keycaps
+  (`keycap()`, `key_hint()`), thousands separators (`num()`) and the postmark slam for UI made in code.
 - **Focus brackets:** the `FocusBrackets` autoload (CanvasLayer 99) draws four L's around the hovered,
   else focused, button/range/`brackets`-meta control; menus make buttons grab focus on hover.
 - **Knitted curtain:** the `Transition` autoload (CanvasLayer 100) owns a knit TextureRect with a Fair Isle
@@ -339,6 +357,10 @@ a font check (5 vs S, 0 vs O), (6) confirm the HUD has no texture behind numbers
 ## 10. Do / don't
 
 - **Do** keep one gold primary button per screen; put counts above action buttons; show before → after.
+- **Do** tell the player what to do on any screen with a choice: one plain help line, and **numbered steps**
+  when there are two decisions (the loadout). Status belongs on the item itself (a tag on the card), and a
+  sentence by the confirm button says what will happen.
+- **Do** show keyboard controls as keycaps (snow key, navy text) on a dark bar, never as plain small text.
 - **Do** use stamps/postmarks only for things the player *earned*; use knit for comfort spaces (settings,
   wardrobe, transitions).
 - **Don't** put knit or stamps on the HUD, under numbers, or behind long text.
@@ -356,7 +378,7 @@ a font check (5 vs S, 0 vs O), (6) confirm the HUD has no texture behind numbers
 
 | Piece | Where |
 |---|---|
-| Texture generator (plates, buttons, rows, tiles, stamps, airmail, postmarks, knobs, knit, rays, yarn) | `art_src/tools/make_ui_textures.py` → `assets/ui/tin/` |
+| Texture generator (plates, buttons, rows, tiles, stamps, airmail, postmarks, knobs, knit, rays, yarn, keycap, close X, tick, checkboxes, chevrons) | `art_src/tools/make_ui_textures.py` → `assets/ui/tin/` |
 | Theme builder (all roles above) | `art_src/tools/build_ui_theme.gd` → `assets/ui/workshop_tin_theme.tres` |
 | One-off migration (clear old per-node overrides, assign roles) | `art_src/tools/apply_tin_roles.gd` |
 | UI builders | `scripts/ui/tin.gd` (`class_name Tin`) |
@@ -365,7 +387,8 @@ a font check (5 vs S, 0 vs O), (6) confirm the HUD has no texture behind numbers
 | Intro | `scenes/ui/splash.tscn`, `splash.gd` (main scene) |
 | Web loading page | `art_src/tools/make_web_shell.py` → `web/shell.html` (Web preset custom shell) |
 | Screens | `scenes/ui/main_menu`, `level_up_menu`, `hud`, `pause_menu`, `settings_panel`, `meta_panel` (Workshop, Achievements postcard, Stats), `customize_panel`, `loadout_panel`, `end_screen` (postcard) |
-| Layout test | `tests/test_text_fit.gd` (136 screens at 1280×720; meta `decor` skips deliberate overhangs) |
+| Layout test | `tests/test_text_fit.gd` (122 screens at 1280×720; meta `decor` skips deliberate overhangs) |
+| Achievement / cosmetic pictures | `AchievementData.icon`, `CosmeticData.picture` (renders in `assets/ui/renders/`, 96 px) |
 
 **Order that worked:** fonts → textures → theme → set project theme → brackets + curtain → screens one by
 one (menu, level up, HUD, pause, settings, meta, customize, loadout, results) → intro → web shell → tests →
@@ -386,5 +409,16 @@ web export checked in a browser.
 - **Scale "slam" animations** must size their box to the text first, or the scaled box leaves the screen.
 - **Scenes saved by a headless script can lose their UID header**; other scenes then warn "invalid UID".
   Restore the UID, run `--import`, and prefer editing through the editor.
+- **Check the build against the approved prototype screen by screen** (open the capture next to the
+  game): the first in-game pass missed whole features (Credits, tabs, icons, settings rows, keycaps)
+  because only the look was ported, not the content. Use the prototype's content list as the checklist.
+- **A right-to-left CheckButton draws the `*_mirrored` icons.** Flipping a toggle so the switch comes before
+  its text (`layout_direction = RTL`) showed Godot's default grey switch until the theme set
+  `checked_mirrored` / `unchecked_mirrored` too.
+- **Don't palette-swap baked pieces with a two-color swap.** A baked texture has more shades than the two
+  swatches, so a "green Santa hat" kept a red cone: the default color showed through. Give each piece one
+  look (its own model + texture); keep palette swaps for skins whose every fur shade is listed.
+- **Give every list item its own picture.** One shared trophy for all achievements read as "icons not
+  loading"; per-goal pictures (item icons or enemy renders) fixed it.
 - **Pixel fonts:** check digits (Pixelify's 5 looked like S; Tiny5's doesn't). Ornate blackletter is for
   titles only; New Rocker reads at 19 px and up.

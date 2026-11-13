@@ -247,6 +247,8 @@ func panels() -> void:
 	t.set_stylebox(&"panel", "Panel", plate)
 	t.set_type_variation("PlateTight", &"PanelContainer")  # panels with a HeaderBand on top
 	t.set_stylebox(&"panel", "PlateTight", sbt("plate", [22, 22, 22, 29], [8, 8, 8, 10], [0, 0, 0, 7]))
+	t.set_type_variation("PlateTightKnit", &"PanelContainer")  # PlateTight with the knit (settings, customize)
+	t.set_stylebox(&"panel", "PlateTightKnit", sbt("plate_knit", [22, 22, 22, 29], [8, 8, 8, 10], [0, 0, 0, 7], true))
 	t.set_type_variation("PinePlate", &"PanelContainer")  # intro subtitle plate
 	t.set_stylebox(&"panel", "PinePlate", sbt("plate_pine", [22, 22, 22, 29], [34, 8, 34, 12], [0, 0, 0, 7]))
 	t.set_type_variation("PlateKnit", &"PanelContainer")
@@ -336,6 +338,11 @@ func controls() -> void:
 		t.set_icon(&"unchecked", type, tex("toggle_off"))
 		t.set_icon(&"checked_disabled", type, tex("toggle_on"))
 		t.set_icon(&"unchecked_disabled", type, tex("toggle_off"))
+		# Right-to-left toggles (switch first, then "On"/"Off") draw the *_mirrored icons: same art.
+		t.set_icon(&"checked_mirrored", type, tex("toggle_on"))
+		t.set_icon(&"unchecked_mirrored", type, tex("toggle_off"))
+		t.set_icon(&"checked_disabled_mirrored", type, tex("toggle_on"))
+		t.set_icon(&"unchecked_disabled_mirrored", type, tex("toggle_off"))
 		for state in [&"normal", &"hover", &"pressed", &"hover_pressed", &"disabled", &"focus"]:
 			t.set_stylebox(state, type, StyleBoxEmpty.new())
 		t.set_font(&"font", type, tiny5)

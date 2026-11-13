@@ -7,3 +7,9 @@
 
 # Export output
 /build/
+
+# External style references (not from this game)
+/art_reference/Camel_Claus_Retro_Style_References/
+
+# Unused old title screen
+/scenes/ui/title_screen.tscn
