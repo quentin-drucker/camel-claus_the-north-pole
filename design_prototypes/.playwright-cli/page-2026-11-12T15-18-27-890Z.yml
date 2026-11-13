@@ -1,0 +1,156 @@
+- generic [active] [ref=f28e1]:
+  - generic [ref=f28e2]:
+    - banner [ref=f28e3]:
+      - generic [ref=f28e4]:
+        - generic [ref=f28e5]: Camel Claus
+        - generic [ref=f28e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f28e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [ref=f28e8] [cursor=pointer]:
+          - generic [ref=f28e14]: A Workshop Tin
+          - generic [ref=f28e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [selected] [ref=f28e16] [cursor=pointer]:
+          - generic [ref=f28e22]: B Ugly Sweater
+          - generic [ref=f28e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f28e24] [cursor=pointer]:
+          - generic [ref=f28e30]: C Northern Lights
+          - generic [ref=f28e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f28e32] [cursor=pointer]:
+          - generic [ref=f28e38]: D Polar Expedition
+          - generic [ref=f28e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f28e40] [cursor=pointer]:
+          - generic [ref=f28e46]: E 8-Bit Holiday
+          - generic [ref=f28e47]: Retro holiday arcade
+      - generic [ref=f28e48]:
+        - button "Compare all five" [ref=f28e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f28e50] [cursor=pointer]
+        - link "Splash screens" [ref=f28e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f28e52]:
+      - tab "Main menu" [ref=f28e53] [cursor=pointer]
+      - tab "Level up" [ref=f28e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f28e55] [cursor=pointer]
+      - tab "Pause + build" [selected] [ref=f28e56] [cursor=pointer]
+      - tab "Settings" [ref=f28e57] [cursor=pointer]
+      - tab "Achievements" [ref=f28e58] [cursor=pointer]
+      - tab "Customize" [ref=f28e59] [cursor=pointer]
+      - tab "Results" [ref=f28e60] [cursor=pointer]
+      - tab "Components" [ref=f28e61] [cursor=pointer]
+  - main [ref=f28e62]:
+    - generic [ref=f28e69]:
+      - generic [ref=f28e70]:
+        - heading "Your build" [level=3] [ref=f28e72]
+        - generic [ref=f28e73]:
+          - generic [ref=f28e76]:
+            - generic [ref=f28e77]: Gift Toss
+            - generic [ref=f28e78]: 18 dmg, every 1.08 s, 2 gifts
+            - generic [ref=f28e79]: Lv 4/5 → Present Barrage
+          - generic [ref=f28e88]:
+            - generic [ref=f28e89]: Candy Cane Orbit
+            - generic [ref=f28e90]: 11 dmg, 2 canes, 1.6 m reach
+            - generic [ref=f28e91]: Lv 2/5 → Peppermint Cyclone
+          - generic [ref=f28e100]:
+            - generic [ref=f28e101]: Snowball Barrage
+            - generic [ref=f28e102]: 16 dmg, every 2.40 s, 1.2 m splash
+            - generic [ref=f28e103]: Lv 1/5 → Avalanche
+          - heading "Items" [level=4] [ref=f28e110]
+          - generic [ref=f28e111]:
+            - generic [ref=f28e112]: ×2
+            - generic [ref=f28e114]: ×1
+            - generic [ref=f28e116]: ×1
+            - generic [ref=f28e118]: ×3
+            - generic [ref=f28e120]: ×1
+            - generic [ref=f28e122]: ×1
+            - generic [ref=f28e124]: ×2
+      - generic [ref=f28e126]:
+        - heading "Paused" [level=2] [ref=f28e128]
+        - generic [ref=f28e129]:
+          - generic [ref=f28e130]:
+            - generic [ref=f28e131]:
+              - generic [ref=f28e132]: 3:42
+              - text: Time
+            - generic [ref=f28e133]:
+              - generic [ref=f28e134]: "9"
+              - text: Level
+            - generic [ref=f28e135]:
+              - generic [ref=f28e136]: "322"
+              - text: Bonks
+            - generic [ref=f28e137]:
+              - generic [ref=f28e138]: "216"
+              - text: Coins
+          - navigation [ref=f28e139]:
+            - button "Resume" [ref=f28e140] [cursor=pointer]
+            - button "Settings" [ref=f28e142] [cursor=pointer]
+            - button "Restart run" [ref=f28e144] [cursor=pointer]
+            - button "Main menu" [ref=f28e146] [cursor=pointer]
+      - generic [ref=f28e148]:
+        - heading "Stats" [level=3] [ref=f28e150]
+        - generic [ref=f28e152]:
+          - generic [ref=f28e153]:
+            - term [ref=f28e154]: Max HP
+            - definition [ref=f28e155]: "150"
+            - term [ref=f28e156]: HP regen
+            - definition [ref=f28e157]: 0.5 / s
+            - term [ref=f28e158]: Move speed
+            - definition [ref=f28e159]: 5.5 m/s
+            - term [ref=f28e160]: Pickup reach
+            - definition [ref=f28e161]: 3.3 m
+          - generic [ref=f28e162]:
+            - term [ref=f28e163]: Damage
+            - definition [ref=f28e164]: ×1.45
+            - term [ref=f28e165]: Attack speed
+            - definition [ref=f28e166]: +30%
+            - term [ref=f28e167]: Extra projectiles
+            - definition [ref=f28e168]: "+1"
+            - term [ref=f28e169]: Damage to elites
+            - definition [ref=f28e170]: +40%
+          - generic [ref=f28e171]:
+            - term [ref=f28e172]: XP gain
+            - definition [ref=f28e173]: ×1.00
+            - term [ref=f28e174]: Coin gain
+            - definition [ref=f28e175]: ×1.10
+            - term [ref=f28e176]: Rerolls left
+            - definition [ref=f28e177]: "2"
+            - term [ref=f28e178]: Banishes left
+            - definition [ref=f28e179]: "1"
+    - generic [ref=f28e180]:
+      - generic [ref=f28e181]: Try it
+      - generic [ref=f28e182]: Hover items for tooltips
+      - button "Resume" [ref=f28e183] [cursor=pointer]
+      - generic [ref=f28e184]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f28e185]:
+      - generic [ref=f28e186]:
+        - heading "B. Ugly Sweater" [level=2] [ref=f28e187]
+        - paragraph [ref=f28e188]: "Claus's own wardrobe as the interface: knitted panels with Fair Isle camel bands, stitched seams, wooden toggle buttons, and menus that hang and sway like ornaments."
+        - generic [ref=f28e189]:
+          - text: "Pairs with splash B:"
+          - link "open the matching intro" [ref=f28e190] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=b
+      - generic [ref=f28e191]:
+        - generic [ref=f28e192]:
+          - generic "#8E1F2E" [ref=f28e193]
+          - generic "#D9343F" [ref=f28e195]
+          - generic "#1F5A43" [ref=f28e197]
+          - generic "#F4F8FF" [ref=f28e199]
+          - generic "#E8C48E" [ref=f28e201]
+          - generic "#5B3A2A" [ref=f28e203]
+        - generic [ref=f28e205]:
+          - generic [ref=f28e206]:
+            - text: Camel Claus
+            - generic [ref=f28e207]: Jacquard 24, display
+          - generic [ref=f28e208]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f28e209]: Grandstander, UI text
+      - generic [ref=f28e210]:
+        - generic [ref=f28e211]:
+          - heading "Strengths" [level=3] [ref=f28e212]
+          - list [ref=f28e213]:
+            - listitem [ref=f28e214]: The most unique to this game; nobody else has a knitted UI
+            - listitem [ref=f28e215]: Warm and cozy, matching the music direction
+            - listitem [ref=f28e216]: The pattern bands come straight from cosmetics (sweater, scarf)
+        - generic [ref=f28e217]:
+          - heading "Watch out for" [level=3] [ref=f28e218]
+          - list [ref=f28e219]:
+            - listitem [ref=f28e220]: Busiest look; texture must stay off the HUD
+            - listitem [ref=f28e221]: Swaying panels need tuning so they don't feel sluggish
+    - group [ref=f28e222]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f28e223] [cursor=pointer]

@@ -1,0 +1,156 @@
+- generic [active] [ref=f6e1]:
+  - generic [ref=f6e2]:
+    - banner [ref=f6e3]:
+      - generic [ref=f6e4]:
+        - generic [ref=f6e5]: Camel Claus
+        - generic [ref=f6e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f6e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [selected] [ref=f6e8] [cursor=pointer]:
+          - generic [ref=f6e14]: A Workshop Tin
+          - generic [ref=f6e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f6e16] [cursor=pointer]:
+          - generic [ref=f6e22]: B Ugly Sweater
+          - generic [ref=f6e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f6e24] [cursor=pointer]:
+          - generic [ref=f6e30]: C Northern Lights
+          - generic [ref=f6e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f6e32] [cursor=pointer]:
+          - generic [ref=f6e38]: D Polar Expedition
+          - generic [ref=f6e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f6e40] [cursor=pointer]:
+          - generic [ref=f6e46]: E 8-Bit Holiday
+          - generic [ref=f6e47]: Retro holiday arcade
+      - generic [ref=f6e48]:
+        - button "Compare all five" [ref=f6e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f6e50] [cursor=pointer]
+        - link "Splash screens" [ref=f6e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f6e52]:
+      - tab "Main menu" [ref=f6e53] [cursor=pointer]
+      - tab "Level up" [ref=f6e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f6e55] [cursor=pointer]
+      - tab "Pause + build" [selected] [ref=f6e56] [cursor=pointer]
+      - tab "Settings" [ref=f6e57] [cursor=pointer]
+      - tab "Achievements" [ref=f6e58] [cursor=pointer]
+      - tab "Customize" [ref=f6e59] [cursor=pointer]
+      - tab "Results" [ref=f6e60] [cursor=pointer]
+      - tab "Components" [ref=f6e61] [cursor=pointer]
+  - main [ref=f6e62]:
+    - generic [ref=f6e69]:
+      - generic [ref=f6e70]:
+        - heading "Your build" [level=3] [ref=f6e72]
+        - generic [ref=f6e73]:
+          - generic [ref=f6e76]:
+            - generic [ref=f6e77]: Gift Toss
+            - generic [ref=f6e78]: 18 dmg, every 1.08 s, 2 gifts
+            - generic [ref=f6e79]: Lv 4/5 → Present Barrage
+          - generic [ref=f6e88]:
+            - generic [ref=f6e89]: Candy Cane Orbit
+            - generic [ref=f6e90]: 11 dmg, 2 canes, 1.6 m reach
+            - generic [ref=f6e91]: Lv 2/5 → Peppermint Cyclone
+          - generic [ref=f6e100]:
+            - generic [ref=f6e101]: Snowball Barrage
+            - generic [ref=f6e102]: 16 dmg, every 2.40 s, 1.2 m splash
+            - generic [ref=f6e103]: Lv 1/5 → Avalanche
+          - heading "Items" [level=4] [ref=f6e110]
+          - generic [ref=f6e111]:
+            - generic [ref=f6e112]: ×2
+            - generic [ref=f6e114]: ×1
+            - generic [ref=f6e116]: ×1
+            - generic [ref=f6e118]: ×3
+            - generic [ref=f6e120]: ×1
+            - generic [ref=f6e122]: ×1
+            - generic [ref=f6e124]: ×2
+      - generic [ref=f6e126]:
+        - heading "Paused" [level=2] [ref=f6e128]
+        - generic [ref=f6e129]:
+          - generic [ref=f6e130]:
+            - generic [ref=f6e131]:
+              - generic [ref=f6e132]: 3:42
+              - text: Time
+            - generic [ref=f6e133]:
+              - generic [ref=f6e134]: "9"
+              - text: Level
+            - generic [ref=f6e135]:
+              - generic [ref=f6e136]: "322"
+              - text: Bonks
+            - generic [ref=f6e137]:
+              - generic [ref=f6e138]: "216"
+              - text: Coins
+          - navigation [ref=f6e139]:
+            - button "Resume" [ref=f6e140] [cursor=pointer]
+            - button "Settings" [ref=f6e142] [cursor=pointer]
+            - button "Restart run" [ref=f6e144] [cursor=pointer]
+            - button "Main menu" [ref=f6e146] [cursor=pointer]
+      - generic [ref=f6e148]:
+        - heading "Stats" [level=3] [ref=f6e150]
+        - generic [ref=f6e152]:
+          - generic [ref=f6e153]:
+            - term [ref=f6e154]: Max HP
+            - definition [ref=f6e155]: "150"
+            - term [ref=f6e156]: HP regen
+            - definition [ref=f6e157]: 0.5 / s
+            - term [ref=f6e158]: Move speed
+            - definition [ref=f6e159]: 5.5 m/s
+            - term [ref=f6e160]: Pickup reach
+            - definition [ref=f6e161]: 3.3 m
+          - generic [ref=f6e162]:
+            - term [ref=f6e163]: Damage
+            - definition [ref=f6e164]: ×1.45
+            - term [ref=f6e165]: Attack speed
+            - definition [ref=f6e166]: +30%
+            - term [ref=f6e167]: Extra projectiles
+            - definition [ref=f6e168]: "+1"
+            - term [ref=f6e169]: Damage to elites
+            - definition [ref=f6e170]: +40%
+          - generic [ref=f6e171]:
+            - term [ref=f6e172]: XP gain
+            - definition [ref=f6e173]: ×1.00
+            - term [ref=f6e174]: Coin gain
+            - definition [ref=f6e175]: ×1.10
+            - term [ref=f6e176]: Rerolls left
+            - definition [ref=f6e177]: "2"
+            - term [ref=f6e178]: Banishes left
+            - definition [ref=f6e179]: "1"
+    - generic [ref=f6e180]:
+      - generic [ref=f6e181]: Try it
+      - generic [ref=f6e182]: Hover items for tooltips
+      - button "Resume" [ref=f6e183] [cursor=pointer]
+      - generic [ref=f6e184]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f6e185]:
+      - generic [ref=f6e186]:
+        - heading "A. Workshop Tin" [level=2] [ref=f6e187]
+        - paragraph [ref=f6e188]: "The closest to Megabonk: riveted enamel plates from Santa's toy workshop, slab buttons with a pressable lip, and corner brackets that jump to whatever is focused."
+        - generic [ref=f6e189]:
+          - text: "Pairs with splash A:"
+          - link "open the matching intro" [ref=f6e190] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=a
+      - generic [ref=f6e191]:
+        - generic [ref=f6e192]:
+          - generic "#1A2438" [ref=f6e193]
+          - generic "#22304F" [ref=f6e195]
+          - generic "#1F5A43" [ref=f6e197]
+          - generic "#F2B53B" [ref=f6e199]
+          - generic "#F4F8FF" [ref=f6e201]
+          - generic "#D9343F" [ref=f6e203]
+        - generic [ref=f6e205]:
+          - generic [ref=f6e206]:
+            - text: Camel Claus
+            - generic [ref=f6e207]: Bowlby One, logo
+          - generic [ref=f6e208]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f6e209]: Jacquarda Bastarda 9, UI text
+      - generic [ref=f6e210]:
+        - generic [ref=f6e211]:
+          - heading "Strengths" [level=3] [ref=f6e212]
+          - list [ref=f6e213]:
+            - listitem [ref=f6e214]: Instantly readable at a glance; the most proven layout for this genre
+            - listitem [ref=f6e215]: Slab buttons and brackets feel great with mouse and gamepad
+            - listitem [ref=f6e216]: "Cheapest to build in Godot: one 9-slice StyleBox plus a bracket node"
+        - generic [ref=f6e217]:
+          - heading "Watch out for" [level=3] [ref=f6e218]
+          - list [ref=f6e219]:
+            - listitem [ref=f6e220]: The closest to Megabonk; needs its own logo and motifs to avoid feeling borrowed
+            - listitem [ref=f6e221]: Blackletter pixel text needs 18 px or more to stay legible
+    - group [ref=f6e222]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f6e223] [cursor=pointer]

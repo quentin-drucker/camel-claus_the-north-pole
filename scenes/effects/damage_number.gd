@@ -2,7 +2,7 @@ class_name DamageNumber
 extends Label3D
 ## Floating damage number: rises and fades, then frees itself. Capped so big fights stay readable.
 
-const FONT: FontFile = preload("res://assets/fonts/kenney_pixel.ttf")
+const FONT: FontFile = preload("res://assets/fonts/Tiny5.ttf")  # style guide 4.14: Tiny5, dark outline
 const MAX_ALIVE: int = 40
 
 static var _alive: int = 0
@@ -20,9 +20,9 @@ static func spawn(pos: Vector3, amount: float, color: Color = Color("F4F8FF")) -
 
 func _init() -> void:
 	font = FONT
-	font_size = 48
+	font_size = 30
 	outline_size = 10
-	outline_modulate = Color("22304F")
+	outline_modulate = Color("0D1322")
 	billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	no_depth_test = true
 	fixed_size = true

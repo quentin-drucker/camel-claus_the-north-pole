@@ -1,0 +1,122 @@
+- generic [active] [ref=f19e1]:
+  - generic [ref=f19e2]:
+    - banner [ref=f19e3]:
+      - generic [ref=f19e4]:
+        - generic [ref=f19e5]: Camel Claus
+        - generic [ref=f19e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f19e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [ref=f19e8] [cursor=pointer]:
+          - generic [ref=f19e14]: A Workshop Tin
+          - generic [ref=f19e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f19e16] [cursor=pointer]:
+          - generic [ref=f19e22]: B Ugly Sweater
+          - generic [ref=f19e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f19e24] [cursor=pointer]:
+          - generic [ref=f19e30]: C Northern Lights
+          - generic [ref=f19e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f19e32] [cursor=pointer]:
+          - generic [ref=f19e38]: D Polar Expedition
+          - generic [ref=f19e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [selected] [ref=f19e40] [cursor=pointer]:
+          - generic [ref=f19e46]: E 8-Bit Holiday
+          - generic [ref=f19e47]: Retro holiday arcade
+      - generic [ref=f19e48]:
+        - button "Compare all five" [ref=f19e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f19e50] [cursor=pointer]
+        - link "Splash screens" [ref=f19e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f19e52]:
+      - tab "Main menu" [selected] [ref=f19e53] [cursor=pointer]
+      - tab "Level up" [ref=f19e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f19e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f19e56] [cursor=pointer]
+      - tab "Settings" [ref=f19e57] [cursor=pointer]
+      - tab "Achievements" [ref=f19e58] [cursor=pointer]
+      - tab "Customize" [ref=f19e59] [cursor=pointer]
+      - tab "Results" [ref=f19e60] [cursor=pointer]
+      - tab "Components" [ref=f19e61] [cursor=pointer]
+  - main [ref=f19e62]:
+    - generic [ref=f19e67]:
+      - heading "Camel Claus The North Pole" [level=1] [ref=f19e69]:
+        - generic [ref=f19e70]: Camel Claus
+        - generic [ref=f19e71]: The North Pole
+      - paragraph [ref=f19e72] [cursor=pointer]: Lost camel. Angry critters. Survive 5 minutes!
+      - navigation [ref=f19e73]:
+        - button "Play" [ref=f19e74] [cursor=pointer]
+        - button "Workshop 3" [ref=f19e76] [cursor=pointer]:
+          - generic [ref=f19e77]: Workshop
+          - generic [ref=f19e78]: "3"
+        - button "Achievements" [ref=f19e79] [cursor=pointer]
+        - button "Customize Claus" [ref=f19e81] [cursor=pointer]
+      - navigation [ref=f19e83]:
+        - button "Settings" [ref=f19e84] [cursor=pointer]
+        - button "Credits" [ref=f19e86] [cursor=pointer]
+        - button "Quit" [ref=f19e88] [cursor=pointer]
+      - generic [ref=f19e90]:
+        - heading "Best runs NEW!" [level=3] [ref=f19e92]
+        - table [ref=f19e94]:
+          - rowgroup [ref=f19e95]:
+            - row [ref=f19e96]:
+              - cell "1." [ref=f19e97]
+              - cell "5:00" [ref=f19e98]
+              - cell "Lv 14" [ref=f19e99]
+              - cell "1,042 bonks" [ref=f19e100]
+            - row [ref=f19e101]:
+              - cell "2." [ref=f19e102]
+              - cell "4:12" [ref=f19e103]
+              - cell "Lv 11" [ref=f19e104]
+              - cell "688 bonks" [ref=f19e105]
+            - row [ref=f19e106]:
+              - cell "3." [ref=f19e107]
+              - cell "3:05" [ref=f19e108]
+              - cell "Lv 9" [ref=f19e109]
+              - cell "371 bonks" [ref=f19e110]
+      - generic [ref=f19e111]: 1,240
+      - generic [ref=f19e114]:
+        - generic [ref=f19e115]: WASDMove
+        - generic [ref=f19e116]: SpaceCall Santa
+        - generic [ref=f19e117]: EscPause
+      - generic [ref=f19e118]: v1.1
+    - generic [ref=f19e119]:
+      - generic [ref=f19e120]: Try it
+      - generic [ref=f19e121]: Click the tagline for another joke
+      - button "Play" [ref=f19e122] [cursor=pointer]
+      - button "Customize" [ref=f19e123] [cursor=pointer]
+      - generic [ref=f19e124]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f19e125]:
+      - generic [ref=f19e126]:
+        - heading "E. 8-Bit Holiday" [level=2] [ref=f19e127]
+        - paragraph [ref=f19e128]: "Today's cozy-pixel UI grown up: stepped pixel frames, gift-wrap patterns, an arcade cursor, and frame-by-frame motion with modern spacing and hierarchy."
+        - generic [ref=f19e129]:
+          - text: "Pairs with splash E:"
+          - link "open the matching intro" [ref=f19e130] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=e
+      - generic [ref=f19e131]:
+        - generic [ref=f19e132]:
+          - generic "#141D33" [ref=f19e133]
+          - generic "#22304F" [ref=f19e135]
+          - generic "#F2B53B" [ref=f19e137]
+          - generic "#D9343F" [ref=f19e139]
+          - generic "#7FD6F2" [ref=f19e141]
+          - generic "#3E9A5B" [ref=f19e143]
+        - generic [ref=f19e145]:
+          - generic [ref=f19e146]:
+            - text: Camel Claus
+            - generic [ref=f19e147]: Kenney Mini Square, display
+          - generic [ref=f19e148]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f19e149]: Kenney Pixel, UI text
+      - generic [ref=f19e150]:
+        - generic [ref=f19e151]:
+          - heading "Strengths" [level=3] [ref=f19e152]
+          - list [ref=f19e153]:
+            - listitem [ref=f19e154]: The smallest jump from the current game; uses its fonts and icons
+            - listitem [ref=f19e155]: Pixel-perfect at 720p; the icons already match
+            - listitem [ref=f19e156]: Frame-stepped motion is the cheapest to animate
+        - generic [ref=f19e157]:
+          - heading "Watch out for" [level=3] [ref=f19e158]
+          - list [ref=f19e159]:
+            - listitem [ref=f19e160]: The most nostalgic, so it needs the modern spacing to avoid looking dated
+            - listitem [ref=f19e161]: Pixel fonts limit size choices (whole multiples only)
+    - group [ref=f19e162]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f19e163] [cursor=pointer]

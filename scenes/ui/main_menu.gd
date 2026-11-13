@@ -10,6 +10,8 @@ const SLEIGH: PackedScene = preload("res://scenes/santa/sleigh_model.tscn")
 const STOMP_EVERY: float = 6.5
 const WINDUP_EVERY: float = 4.2
 const SLEIGH_EVERY: float = 12.0
+## Unfinished achievements shown as "next goals" cards on the left.
+const GOALS_SHOWN: int = 3
 
 var _time: float = 0.0
 var _yeti_scale: Vector3
@@ -30,7 +32,8 @@ var _sleigh_left: float = 3.0
 @onready var settings: Control = %SettingsPanel
 @onready var loadout: Control = %LoadoutPanel
 @onready var best_label: Label = %BestLabel
-@onready var workshop_button: Button = %WorkshopButton
+@onready var coins_label: Label = %Coins
+@onready var goals: VBoxContainer = %Goals
 @onready var meta_pages: Dictionary = {%WorkshopButton: %WorkshopPanel, %AchievementsButton: %AchievementsPanel,
 	%StatsButton: %StatsPanel, %CustomizeButton: %CustomizePanel}
 
@@ -80,22 +83,62 @@ func _ready() -> void:
 			button.grab_focus())
 	_refresh_meta()
 	for button: Button in [play_button, settings_button, quit_button] + meta_pages.keys():
-		button.mouse_entered.connect(button.grab_focus)
-		button.focus_entered.connect(_pop.bind(button, 1.06))
-		button.focus_exited.connect(_pop.bind(button, 1.0))
+		button.mouse_entered.connect(button.grab_focus)  # hover = focus, so the brackets agree
 	play_button.grab_focus()
 
 
-## Best-run line and coin count on the Workshop button (Profile may have changed after a run or purchase).
+## Best run, coins and the next three goals (Profile may have changed after a run or purchase).
 func _refresh_meta() -> void:
 	var bests: Dictionary = Profile.data["bests"]
 	if bests.is_empty():
-		best_label.text = "Best run: none yet - good luck!"
+		best_label.text = "None yet - good luck!"
 	else:
 		var t: int = int(bests.get("time", 0))
-		best_label.text = "Best run: %d:%02d  -  %d kills  -  %d evolved" % [
+		best_label.text = "Time  %d:%02d\nBonks  %d\nEvolved  %d" % [
 			floori(t / 60.0), t % 60, int(bests.get("kills", 0)), int(bests.get("evolutions", 0))]
-	workshop_button.text = "Workshop  %d" % Profile.coins()
+	coins_label.text = str(Profile.coins())
+	_fill_goals()
+
+
+## Megabonk-style quest cards: knit card, trophy stamp, gold title, description, progress bar + count.
+func _fill_goals() -> void:
+	for child in goals.get_children():
+		child.queue_free()
+	var p: Dictionary = Profile.progress()
+	var shown: int = 0
+	for goal: AchievementData in Profile.ACHIEVEMENTS:
+		if shown >= GOALS_SHOWN or Profile.has_achievement(goal.id):
+			continue
+		shown += 1
+		var value: float = minf(float(p.get(goal.stat, 0.0)), goal.target)
+		var card := PanelContainer.new()
+		card.theme_type_variation = &"KnitCard"
+		card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override(&"separation", 12)
+		card.add_child(row)
+		row.add_child(Tin.stamp(Describe.icon("trophy"), "common", 28))
+		var text := VBoxContainer.new()
+		text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		text.add_theme_constant_override(&"separation", 2)
+		row.add_child(text)
+		text.add_child(Tin.label(goal.title, &"GoalTitle"))
+		text.add_child(Tin.label(goal.description, &"SmallLabel", true))
+		var meter := HBoxContainer.new()
+		meter.add_theme_constant_override(&"separation", 8)
+		text.add_child(meter)
+		var bar := Tin.bar(&"GoodBar", value, goal.target, 8)
+		bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		meter.add_child(bar)
+		meter.add_child(Tin.label("%s / %s" % [_goal_num(goal, value), _goal_num(goal, goal.target)], &"SmallLabel"))
+		goals.add_child(card)
+
+
+func _goal_num(goal: AchievementData, v: float) -> String:
+	if goal.stat.ends_with("seconds"):
+		return "%d:%02d" % [floori(v / 60.0), int(v) % 60]
+	return str(int(v))
 
 
 func _process(delta: float) -> void:
@@ -145,7 +188,3 @@ func _fly_sleigh() -> void:
 	tween.tween_property(sleigh, "position", to, 6.0)
 	tween.tween_callback(sleigh.queue_free)
 
-
-func _pop(button: Button, to_scale: float) -> void:
-	button.pivot_offset = button.size / 2.0
-	create_tween().tween_property(button, "scale", Vector2.ONE * to_scale, 0.08)

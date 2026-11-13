@@ -1,0 +1,116 @@
+- generic [active] [ref=f23e1]:
+  - generic [ref=f23e2]:
+    - banner [ref=f23e3]:
+      - generic [ref=f23e4]:
+        - generic [ref=f23e5]: Camel Claus
+        - generic [ref=f23e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f23e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [selected] [ref=f23e8] [cursor=pointer]:
+          - generic [ref=f23e14]: A Workshop Tin
+          - generic [ref=f23e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f23e16] [cursor=pointer]:
+          - generic [ref=f23e22]: B Ugly Sweater
+          - generic [ref=f23e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f23e24] [cursor=pointer]:
+          - generic [ref=f23e30]: C Northern Lights
+          - generic [ref=f23e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f23e32] [cursor=pointer]:
+          - generic [ref=f23e38]: D Polar Expedition
+          - generic [ref=f23e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f23e40] [cursor=pointer]:
+          - generic [ref=f23e46]: E 8-Bit Holiday
+          - generic [ref=f23e47]: Retro holiday arcade
+      - generic [ref=f23e48]:
+        - button "Compare all five" [ref=f23e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f23e50] [cursor=pointer]
+        - link "Splash screens" [ref=f23e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f23e52]:
+      - tab "Main menu" [ref=f23e53] [cursor=pointer]
+      - tab "Level up" [ref=f23e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f23e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f23e56] [cursor=pointer]
+      - tab "Settings" [selected] [ref=f23e57] [cursor=pointer]
+      - tab "Achievements" [ref=f23e58] [cursor=pointer]
+      - tab "Customize" [ref=f23e59] [cursor=pointer]
+      - tab "Results" [ref=f23e60] [cursor=pointer]
+      - tab "Components" [ref=f23e61] [cursor=pointer]
+  - main [ref=f23e62]:
+    - generic [ref=f23e69]:
+      - generic [ref=f23e70]:
+        - heading "Settings" [level=2] [ref=f23e71]
+        - button "Close" [ref=f23e72] [cursor=pointer]
+      - generic [ref=f23e75]:
+        - heading "Sound" [level=4] [ref=f23e76]
+        - generic [ref=f23e77]:
+          - generic [ref=f23e78]: Music
+          - slider "Music" [ref=f23e79]
+          - status [ref=f23e83]: 70%
+        - generic [ref=f23e84]:
+          - generic [ref=f23e85]: Sounds
+          - slider "Sounds" [ref=f23e86]
+          - status [ref=f23e90]: 85%
+        - heading "Display" [level=4] [ref=f23e91]
+        - generic [ref=f23e92]:
+          - generic [ref=f23e93]: Fullscreen
+          - switch "Off" [ref=f23e94] [cursor=pointer]
+        - generic [ref=f23e98]:
+          - generic [ref=f23e99]: Interface size
+          - generic [ref=f23e100]:
+            - button "Smaller" [ref=f23e101] [cursor=pointer]
+            - generic [ref=f23e104]: Medium
+            - button "Larger" [ref=f23e105] [cursor=pointer]
+        - heading "Gameplay" [level=4] [ref=f23e108]
+        - generic [ref=f23e109]:
+          - generic [ref=f23e110]: Screen shake
+          - switch "On" [checked] [ref=f23e111] [cursor=pointer]
+        - generic [ref=f23e115]:
+          - generic [ref=f23e116]: Damage numbers
+          - switch "On" [checked] [ref=f23e117] [cursor=pointer]
+        - generic [ref=f23e121]:
+          - generic [ref=f23e122]: Reduce motion
+          - switch "Off" [ref=f23e123] [cursor=pointer]
+      - generic [ref=f23e127]:
+        - button "Reset progress" [ref=f23e128] [cursor=pointer]
+        - button "Back" [ref=f23e130] [cursor=pointer]
+    - generic [ref=f23e132]:
+      - generic [ref=f23e133]: Try it
+      - generic [ref=f23e134]: Drag sliders, flip toggles, use arrows
+      - generic [ref=f23e135]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f23e136]:
+      - generic [ref=f23e137]:
+        - heading "A. Workshop Tin" [level=2] [ref=f23e138]
+        - paragraph [ref=f23e139]: "The closest to Megabonk: riveted enamel plates from Santa's toy workshop, slab buttons with a pressable lip, and corner brackets that jump to whatever is focused."
+        - generic [ref=f23e140]:
+          - text: "Pairs with splash A:"
+          - link "open the matching intro" [ref=f23e141] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=a
+      - generic [ref=f23e142]:
+        - generic [ref=f23e143]:
+          - generic "#1A2438" [ref=f23e144]
+          - generic "#22304F" [ref=f23e146]
+          - generic "#1F5A43" [ref=f23e148]
+          - generic "#F2B53B" [ref=f23e150]
+          - generic "#F4F8FF" [ref=f23e152]
+          - generic "#D9343F" [ref=f23e154]
+        - generic [ref=f23e156]:
+          - generic [ref=f23e157]:
+            - text: Camel Claus
+            - generic [ref=f23e158]: Bowlby One, logo
+          - generic [ref=f23e159]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f23e160]: Jacquarda Bastarda 9, UI text
+      - generic [ref=f23e161]:
+        - generic [ref=f23e162]:
+          - heading "Strengths" [level=3] [ref=f23e163]
+          - list [ref=f23e164]:
+            - listitem [ref=f23e165]: Instantly readable at a glance; the most proven layout for this genre
+            - listitem [ref=f23e166]: Slab buttons and brackets feel great with mouse and gamepad
+            - listitem [ref=f23e167]: "Cheapest to build in Godot: one 9-slice StyleBox plus a bracket node"
+        - generic [ref=f23e168]:
+          - heading "Watch out for" [level=3] [ref=f23e169]
+          - list [ref=f23e170]:
+            - listitem [ref=f23e171]: The closest to Megabonk; needs its own logo and motifs to avoid feeling borrowed
+            - listitem [ref=f23e172]: Blackletter pixel text needs 18 px or more to stay legible
+    - group [ref=f23e173]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f23e174] [cursor=pointer]

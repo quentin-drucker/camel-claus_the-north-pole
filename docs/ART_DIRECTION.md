@@ -152,8 +152,14 @@ performance*, not for their characters, UI, logos or assets — everything here 
   own 8-bit arrangement — fits the all-AI pipeline). OGG for music,
   WAV for short SFX. Web build plays audio as samples, so no bus effects (reverb/compressor/limiter):
   balance with bus volume only.
-- UI style (Quentin, 2026-11-11): **cozy pixel** — chunky CC0 pixel font, dark navy `#22304F` panels with
-  gold `#F2B53B` trim and a 2 px border, snow-white `#F4F8FF` text, small pixel icons on cards. Rarity
-  tints: rare = ice `#7FD6F2`, epic = hostile purple `#9B4FD1`, evolution = gold. UI-text-only tints
-  (for readability on navy): better `#9BE0A8`, worse `#FF9AA0`, epic tag `#C9A6EC`, item tag `#E8C48E`.
-  Icons: 12x12 pixel art + 1 px navy outline, saved 4x (56 px); HUD shows them at 28 px.
+- UI style (changed 2026-11-12, was "cozy pixel"): **"Workshop Tin" A+ hybrid**, approved by Quentin in HTML.
+  The full spec (tokens, every component, screen layouts, motion, intro, Godot recipe) is
+  `art_reference/GUI_Style_Guide/Camel_Claus_GUI_Style_Guide.md`; read it before any UI work. In short:
+  Megabonk-style riveted navy plates (`#1A2438`, pine header band `#1F5A43`, brass rivets), slab buttons with a
+  pressable lip (one gold `#F2B53B` primary per screen), white corner brackets for the selection, rarity rows
+  for upgrades, a bare outlined HUD. Accent layers: **knit** (Fair Isle camel trim under headers, knit behind
+  cards, sewn sweater-button knobs, knitted-curtain transition, "Knit + Tin" intro) and **North Pole post**
+  (stamps, postmarks, airmail toast, luggage tag, postcard achievements/results). Never knit or stamps on the HUD.
+  Fonts (OFL): **New Rocker** titles/buttons (chosen by Quentin), **Tiny5** body/numbers, **Bowlby One** logo.
+  Rarity: rare = ice `#7FD6F2`, epic = purple `#9B4FD1`, evolution = gold; purple stays danger/epic only.
+  Icons: unchanged 12x12 pixel art + 1 px navy outline, saved 4x (56 px).

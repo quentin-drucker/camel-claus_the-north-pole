@@ -1,0 +1,319 @@
+- generic [ref=f56e1]:
+  - generic [ref=f56e2]:
+    - banner [ref=f56e3]:
+      - generic [ref=f56e4]:
+        - generic [ref=f56e5]: Camel Claus
+        - generic [ref=f56e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f56e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [ref=f56e8] [cursor=pointer]:
+          - generic [ref=f56e14]: A Workshop Tin
+          - generic [ref=f56e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f56e16] [cursor=pointer]:
+          - generic [ref=f56e22]: B Ugly Sweater
+          - generic [ref=f56e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f56e24] [cursor=pointer]:
+          - generic [ref=f56e30]: C Northern Lights
+          - generic [ref=f56e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f56e32] [cursor=pointer]:
+          - generic [ref=f56e38]: D Polar Expedition
+          - generic [ref=f56e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f56e40] [cursor=pointer]:
+          - generic [ref=f56e46]: E 8-Bit Holiday
+          - generic [ref=f56e47]: Retro holiday arcade
+      - generic [ref=f56e48]:
+        - button "Compare all five" [pressed] [ref=f56e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f56e50] [cursor=pointer]
+        - link "Splash screens" [ref=f56e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f56e52]:
+      - tab "Main menu" [ref=f56e53] [cursor=pointer]
+      - tab "Level up" [active] [selected] [ref=f56e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f56e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f56e56] [cursor=pointer]
+      - tab "Settings" [ref=f56e57] [cursor=pointer]
+      - tab "Achievements" [ref=f56e58] [cursor=pointer]
+      - tab "Customize" [ref=f56e59] [cursor=pointer]
+      - tab "Results" [ref=f56e60] [cursor=pointer]
+      - tab "Components" [ref=f56e61] [cursor=pointer]
+  - main [ref=f56e62]:
+    - generic [ref=f56e63]:
+      - figure [ref=f56e313]:
+        - button "A Workshop TinMegabonk-style arcade" [ref=f56e315] [cursor=pointer]
+        - dialog "Level up" [ref=f56e484]:
+          - generic [ref=f56e485]:
+            - heading "Level up!" [level=2] [ref=f56e486]
+            - generic [ref=f56e487]: Lv 9 → 10
+          - generic [ref=f56e488]:
+            - button "Common Gift Toss Damage 18→23 Gifts per throw 2→3 Ready to evolve into Present Barrage Lv 4 → 5 1" [ref=f56e489] [cursor=pointer]:
+              - generic [ref=f56e490]: Common
+              - generic [ref=f56e492]:
+                - generic [ref=f56e493]: Gift Toss
+                - generic [ref=f56e494]: Damage 18→23
+                - generic [ref=f56e495]: Gifts per throw 2→3
+                - generic [ref=f56e496]: Ready to evolve into Present Barrage
+              - generic [ref=f56e497]: Lv 4 → 5
+              - generic [ref=f56e498]: "1"
+            - button "Rare Extra Hump Max HP 130→160 Also heals 30 HP right away Lv 2 → 3 2" [ref=f56e499] [cursor=pointer]:
+              - generic [ref=f56e500]: Rare
+              - generic [ref=f56e502]:
+                - generic [ref=f56e503]: Extra Hump
+                - generic [ref=f56e504]: Max HP 130→160
+                - generic [ref=f56e505]: Also heals 30 HP right away
+              - generic [ref=f56e506]: Lv 2 → 3
+              - generic [ref=f56e507]: "2"
+            - button "Epic Jingle Pulse Damage —→14 A jingling burst hits and pushes back everything near Claus New 3" [ref=f56e508] [cursor=pointer]:
+              - generic [ref=f56e509]: Epic
+              - generic [ref=f56e511]:
+                - generic [ref=f56e512]: Jingle Pulse
+                - generic [ref=f56e513]: Damage —→14
+                - generic [ref=f56e514]: A jingling burst hits and pushes back everything near Claus
+              - generic [ref=f56e515]: New
+              - generic [ref=f56e516]: "3"
+          - paragraph [ref=f56e517]: Click, press 1–3, or use arrows and Enter.
+          - generic [ref=f56e518]:
+            - button "2 Reroll R" [ref=f56e519] [cursor=pointer]:
+              - generic [ref=f56e520]: "2"
+              - generic [ref=f56e521]: Reroll
+              - generic [ref=f56e522]: R
+            - button "1 Banish B" [ref=f56e523] [cursor=pointer]:
+              - generic [ref=f56e524]: "1"
+              - generic [ref=f56e525]: Banish
+              - generic [ref=f56e526]: B
+      - figure [ref=f56e338]:
+        - button "B Ugly SweaterCozy knitted Christmas" [ref=f56e340] [cursor=pointer]
+        - dialog "Level up" [ref=f56e529]:
+          - generic [ref=f56e530]:
+            - heading "Level up!" [level=2] [ref=f56e531]
+            - generic [ref=f56e532]: Lv 9 → 10
+          - generic [ref=f56e533]:
+            - button "Common Weapon upgrade Gift Toss Damage 18→23 Gifts per throw 2→3 Ready to evolve into Present Barrage Lv 4 → 5 1" [ref=f56e534] [cursor=pointer]:
+              - generic [ref=f56e535]: Common
+              - generic [ref=f56e537]:
+                - generic [ref=f56e538]: Weapon upgrade
+                - generic [ref=f56e539]: Gift Toss
+                - generic [ref=f56e540]: Damage 18→23
+                - generic [ref=f56e541]: Gifts per throw 2→3
+                - generic [ref=f56e542]: Ready to evolve into Present Barrage
+              - generic [ref=f56e543]: Lv 4 → 5
+              - generic [ref=f56e544]: "1"
+            - button "Rare Stat upgrade Extra Hump Max HP 130→160 Also heals 30 HP right away Lv 2 → 3 2" [ref=f56e545] [cursor=pointer]:
+              - generic [ref=f56e546]: Rare
+              - generic [ref=f56e548]:
+                - generic [ref=f56e549]: Stat upgrade
+                - generic [ref=f56e550]: Extra Hump
+                - generic [ref=f56e551]: Max HP 130→160
+                - generic [ref=f56e552]: Also heals 30 HP right away
+              - generic [ref=f56e553]: Lv 2 → 3
+              - generic [ref=f56e554]: "2"
+            - button "Epic New weapon Jingle Pulse Damage —→14 A jingling burst hits and pushes back everything near Claus New 3" [ref=f56e555] [cursor=pointer]:
+              - generic [ref=f56e556]: Epic
+              - generic [ref=f56e558]:
+                - generic [ref=f56e559]: New weapon
+                - generic [ref=f56e560]: Jingle Pulse
+                - generic [ref=f56e561]: Damage —→14
+                - generic [ref=f56e562]: A jingling burst hits and pushes back everything near Claus
+              - generic [ref=f56e563]: New
+              - generic [ref=f56e564]: "3"
+          - paragraph [ref=f56e565]: Click, press 1–3, or use arrows and Enter.
+          - generic [ref=f56e566]:
+            - button "2 Reroll R" [ref=f56e567] [cursor=pointer]:
+              - generic [ref=f56e568]: "2"
+              - generic [ref=f56e569]: Reroll
+              - generic [ref=f56e570]: R
+            - button "1 Banish B" [ref=f56e571] [cursor=pointer]:
+              - generic [ref=f56e572]: "1"
+              - generic [ref=f56e573]: Banish
+              - generic [ref=f56e574]: B
+      - figure [ref=f56e363]:
+        - button "C Northern LightsFrosted North Pole fantasy" [ref=f56e365] [cursor=pointer]
+        - dialog "Level up" [ref=f56e577]:
+          - generic [ref=f56e578]:
+            - heading "Level up!" [level=2] [ref=f56e579]
+            - generic [ref=f56e580]: Lv 9 → 10
+          - generic [ref=f56e581]:
+            - button "Common Weapon upgrade Gift Toss Damage 18→23 Gifts per throw 2→3 Ready to evolve into Present Barrage Lv 4 → 5 1" [ref=f56e582] [cursor=pointer]:
+              - generic [ref=f56e583]: Common
+              - generic [ref=f56e585]:
+                - generic [ref=f56e586]: Weapon upgrade
+                - generic [ref=f56e587]: Gift Toss
+                - generic [ref=f56e588]: Damage 18→23
+                - generic [ref=f56e589]: Gifts per throw 2→3
+                - generic [ref=f56e590]: Ready to evolve into Present Barrage
+              - generic [ref=f56e591]: Lv 4 → 5
+              - generic [ref=f56e592]: "1"
+            - button "Rare Stat upgrade Extra Hump Max HP 130→160 Also heals 30 HP right away Lv 2 → 3 2" [ref=f56e593] [cursor=pointer]:
+              - generic [ref=f56e594]: Rare
+              - generic [ref=f56e596]:
+                - generic [ref=f56e597]: Stat upgrade
+                - generic [ref=f56e598]: Extra Hump
+                - generic [ref=f56e599]: Max HP 130→160
+                - generic [ref=f56e600]: Also heals 30 HP right away
+              - generic [ref=f56e601]: Lv 2 → 3
+              - generic [ref=f56e602]: "2"
+            - button "Epic New weapon Jingle Pulse Damage —→14 A jingling burst hits and pushes back everything near Claus New 3" [ref=f56e603] [cursor=pointer]:
+              - generic [ref=f56e604]: Epic
+              - generic [ref=f56e606]:
+                - generic [ref=f56e607]: New weapon
+                - generic [ref=f56e608]: Jingle Pulse
+                - generic [ref=f56e609]: Damage —→14
+                - generic [ref=f56e610]: A jingling burst hits and pushes back everything near Claus
+              - generic [ref=f56e611]: New
+              - generic [ref=f56e612]: "3"
+          - paragraph [ref=f56e613]: Click, press 1–3, or use arrows and Enter.
+          - generic [ref=f56e614]:
+            - button "2 Reroll R" [ref=f56e615] [cursor=pointer]:
+              - generic [ref=f56e616]: "2"
+              - generic [ref=f56e617]: Reroll
+              - generic [ref=f56e618]: R
+            - button "1 Banish B" [ref=f56e619] [cursor=pointer]:
+              - generic [ref=f56e620]: "1"
+              - generic [ref=f56e621]: Banish
+              - generic [ref=f56e622]: B
+      - figure [ref=f56e388]:
+        - button "D Polar ExpeditionModern indie roguelite" [ref=f56e390] [cursor=pointer]
+        - dialog "Level up" [ref=f56e625]:
+          - generic [ref=f56e626]:
+            - heading "Level up!" [level=2] [ref=f56e627]
+            - generic [ref=f56e628]: Lv 9 → 10
+          - generic [ref=f56e629]:
+            - button "Weapon upgrade Gift Toss Damage 18 → 23 Gifts per throw 2 → 3 Ready to evolve into Present Barrage Lv 4 → 5 1" [ref=f56e630] [cursor=pointer]:
+              - generic [ref=f56e632]:
+                - generic [ref=f56e633]: Weapon upgrade
+                - generic [ref=f56e634]: Gift Toss
+                - generic [ref=f56e635]:
+                  - generic [ref=f56e636]: Damage
+                  - generic [ref=f56e637]: "18"
+                  - generic [ref=f56e638]: →
+                  - generic [ref=f56e639]: "23"
+                - generic [ref=f56e640]:
+                  - generic [ref=f56e641]: Gifts per throw
+                  - generic [ref=f56e642]: "2"
+                  - generic [ref=f56e643]: →
+                  - generic [ref=f56e644]: "3"
+                - generic [ref=f56e645]: Ready to evolve into Present Barrage
+              - generic [ref=f56e646]: Lv 4 → 5
+              - generic [ref=f56e647]: "1"
+            - button "Rare Stat upgrade Extra Hump Max HP 130 → 160 Also heals 30 HP right away Lv 2 → 3 2" [ref=f56e648] [cursor=pointer]:
+              - generic [ref=f56e649]: Rare
+              - generic [ref=f56e651]:
+                - generic [ref=f56e652]: Stat upgrade
+                - generic [ref=f56e653]: Extra Hump
+                - generic [ref=f56e654]:
+                  - generic [ref=f56e655]: Max HP
+                  - generic [ref=f56e656]: "130"
+                  - generic [ref=f56e657]: →
+                  - generic [ref=f56e658]: "160"
+                - generic [ref=f56e659]: Also heals 30 HP right away
+              - generic [ref=f56e660]: Lv 2 → 3
+              - generic [ref=f56e661]: "2"
+            - button "Epic New weapon Jingle Pulse Damage — → 14 A jingling burst hits and pushes back everything near Claus New 3" [ref=f56e662] [cursor=pointer]:
+              - generic [ref=f56e663]: Epic
+              - generic [ref=f56e665]:
+                - generic [ref=f56e666]: New weapon
+                - generic [ref=f56e667]: Jingle Pulse
+                - generic [ref=f56e668]:
+                  - generic [ref=f56e669]: Damage
+                  - generic [ref=f56e670]: —
+                  - generic [ref=f56e671]: →
+                  - generic [ref=f56e672]: "14"
+                - generic [ref=f56e673]: A jingling burst hits and pushes back everything near Claus
+              - generic [ref=f56e674]: New
+              - generic [ref=f56e675]: "3"
+          - paragraph [ref=f56e676]: Click, press 1–3, or use arrows and Enter.
+          - generic [ref=f56e677]:
+            - button "2 Reroll R" [ref=f56e678] [cursor=pointer]:
+              - generic [ref=f56e679]: "2"
+              - generic [ref=f56e680]: Reroll
+              - generic [ref=f56e681]: R
+            - button "1 Banish B" [ref=f56e682] [cursor=pointer]:
+              - generic [ref=f56e683]: "1"
+              - generic [ref=f56e684]: Banish
+              - generic [ref=f56e685]: B
+      - figure [ref=f56e413]:
+        - button "E 8-Bit HolidayRetro holiday arcade" [ref=f56e415] [cursor=pointer]
+        - dialog "Level up" [ref=f56e688]:
+          - generic [ref=f56e689]:
+            - heading "Level up!" [level=2] [ref=f56e690]
+            - generic [ref=f56e691]: Lv 9 → 10
+          - generic [ref=f56e692]:
+            - button "Common Weapon upgrade Gift Toss Damage 18→23 Gifts per throw 2→3 Ready to evolve into Present Barrage Lv 4 → 5 1" [ref=f56e693] [cursor=pointer]:
+              - generic [ref=f56e694]: Common
+              - generic [ref=f56e696]:
+                - generic [ref=f56e697]: Weapon upgrade
+                - generic [ref=f56e698]: Gift Toss
+                - generic [ref=f56e699]: Damage 18→23
+                - generic [ref=f56e700]: Gifts per throw 2→3
+                - generic [ref=f56e701]: Ready to evolve into Present Barrage
+              - generic [ref=f56e702]: Lv 4 → 5
+              - generic [ref=f56e703]: "1"
+            - button "Rare Stat upgrade Extra Hump Max HP 130→160 Also heals 30 HP right away Lv 2 → 3 2" [ref=f56e704] [cursor=pointer]:
+              - generic [ref=f56e705]: Rare
+              - generic [ref=f56e707]:
+                - generic [ref=f56e708]: Stat upgrade
+                - generic [ref=f56e709]: Extra Hump
+                - generic [ref=f56e710]: Max HP 130→160
+                - generic [ref=f56e711]: Also heals 30 HP right away
+              - generic [ref=f56e712]: Lv 2 → 3
+              - generic [ref=f56e713]: "2"
+            - button "Epic New weapon Jingle Pulse Damage —→14 A jingling burst hits and pushes back everything near Claus New 3" [ref=f56e714] [cursor=pointer]:
+              - generic [ref=f56e715]: Epic
+              - generic [ref=f56e717]:
+                - generic [ref=f56e718]: New weapon
+                - generic [ref=f56e719]: Jingle Pulse
+                - generic [ref=f56e720]: Damage —→14
+                - generic [ref=f56e721]: A jingling burst hits and pushes back everything near Claus
+              - generic [ref=f56e722]: New
+              - generic [ref=f56e723]: "3"
+          - paragraph [ref=f56e724]: Click, press 1–3, or use arrows and Enter.
+          - generic [ref=f56e725]:
+            - button "2 Reroll R" [ref=f56e726] [cursor=pointer]:
+              - generic [ref=f56e727]: "2"
+              - generic [ref=f56e728]: Reroll
+              - generic [ref=f56e729]: R
+            - button "1 Banish B" [ref=f56e730] [cursor=pointer]:
+              - generic [ref=f56e731]: "1"
+              - generic [ref=f56e732]: Banish
+              - generic [ref=f56e733]: B
+    - generic [ref=f56e142]:
+      - generic [ref=f56e734]: Try it
+      - generic [ref=f56e735]: Pick a card (1–3)
+      - button "Reroll (R)" [ref=f56e736] [cursor=pointer]
+      - button "Banish (B)" [ref=f56e737] [cursor=pointer]
+      - generic [ref=f56e738]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f56e148]:
+      - generic [ref=f56e446]:
+        - heading "A. Workshop Tin" [level=2] [ref=f56e447]
+        - paragraph [ref=f56e448]: "The closest to Megabonk: riveted enamel plates from Santa's toy workshop, slab buttons with a pressable lip, and corner brackets that jump to whatever is focused."
+        - generic [ref=f56e449]:
+          - text: "Pairs with splash A:"
+          - link "open the matching intro" [ref=f56e450] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=a
+      - generic [ref=f56e451]:
+        - generic [ref=f56e452]:
+          - generic "#1A2438" [ref=f56e453]
+          - generic "#22304F" [ref=f56e455]
+          - generic "#1F5A43" [ref=f56e457]
+          - generic "#F2B53B" [ref=f56e459]
+          - generic "#F4F8FF" [ref=f56e461]
+          - generic "#D9343F" [ref=f56e463]
+        - generic [ref=f56e465]:
+          - generic [ref=f56e466]:
+            - text: Camel Claus
+            - generic [ref=f56e467]: Bowlby One, logo
+          - generic [ref=f56e468]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f56e469]: Jacquarda Bastarda 9, UI text
+      - generic [ref=f56e470]:
+        - generic [ref=f56e471]:
+          - heading "Strengths" [level=3] [ref=f56e472]
+          - list [ref=f56e473]:
+            - listitem [ref=f56e474]: Instantly readable at a glance; the most proven layout for this genre
+            - listitem [ref=f56e475]: Slab buttons and brackets feel great with mouse and gamepad
+            - listitem [ref=f56e476]: "Cheapest to build in Godot: one 9-slice StyleBox plus a bracket node"
+        - generic [ref=f56e477]:
+          - heading "Watch out for" [level=3] [ref=f56e478]
+          - list [ref=f56e479]:
+            - listitem [ref=f56e480]: The closest to Megabonk; needs its own logo and motifs to avoid feeling borrowed
+            - listitem [ref=f56e481]: Blackletter pixel text needs 18 px or more to stay legible
+    - group [ref=f56e185]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f56e186] [cursor=pointer]

@@ -1,0 +1,167 @@
+- generic [active] [ref=f33e1]:
+  - generic [ref=f33e2]:
+    - banner [ref=f33e3]:
+      - generic [ref=f33e4]:
+        - generic [ref=f33e5]: Camel Claus
+        - generic [ref=f33e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f33e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [ref=f33e8] [cursor=pointer]:
+          - generic [ref=f33e14]: A Workshop Tin
+          - generic [ref=f33e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [selected] [ref=f33e16] [cursor=pointer]:
+          - generic [ref=f33e22]: B Ugly Sweater
+          - generic [ref=f33e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f33e24] [cursor=pointer]:
+          - generic [ref=f33e30]: C Northern Lights
+          - generic [ref=f33e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f33e32] [cursor=pointer]:
+          - generic [ref=f33e38]: D Polar Expedition
+          - generic [ref=f33e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f33e40] [cursor=pointer]:
+          - generic [ref=f33e46]: E 8-Bit Holiday
+          - generic [ref=f33e47]: Retro holiday arcade
+      - generic [ref=f33e48]:
+        - button "Compare all five" [ref=f33e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f33e50] [cursor=pointer]
+        - link "Splash screens" [ref=f33e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f33e52]:
+      - tab "Main menu" [ref=f33e53] [cursor=pointer]
+      - tab "Level up" [ref=f33e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f33e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f33e56] [cursor=pointer]
+      - tab "Settings" [ref=f33e57] [cursor=pointer]
+      - tab "Achievements" [ref=f33e58] [cursor=pointer]
+      - tab "Customize" [ref=f33e59] [cursor=pointer]
+      - tab "Results" [ref=f33e60] [cursor=pointer]
+      - tab "Components" [selected] [ref=f33e61] [cursor=pointer]
+  - main [ref=f33e62]:
+    - generic [ref=f33e69]:
+      - generic [ref=f33e70]:
+        - heading "Buttons" [level=3] [ref=f33e72]
+        - generic [ref=f33e73]:
+          - generic [ref=f33e74]:
+            - generic [ref=f33e75]:
+              - button "Play" [ref=f33e76] [cursor=pointer]
+              - generic [ref=f33e78]: Idle
+            - generic [ref=f33e79]:
+              - button "Play" [ref=f33e80] [cursor=pointer]
+              - generic [ref=f33e82]: Hover
+            - generic [ref=f33e83]:
+              - button "Play" [ref=f33e84] [cursor=pointer]
+              - generic [ref=f33e86]: Pressed
+            - generic [ref=f33e87]:
+              - button "Play" [disabled] [ref=f33e88]
+              - generic [ref=f33e90]: Disabled
+          - generic [ref=f33e91]:
+            - generic [ref=f33e92]:
+              - button "Settings" [ref=f33e93] [cursor=pointer]
+              - generic [ref=f33e95]: Idle
+            - generic [ref=f33e96]:
+              - button "Settings" [ref=f33e97] [cursor=pointer]
+              - generic [ref=f33e99]: Hover
+            - generic [ref=f33e100]:
+              - button "Settings" [ref=f33e101] [cursor=pointer]
+              - generic [ref=f33e103]: Pressed
+            - generic [ref=f33e104]:
+              - button "Settings" [disabled] [ref=f33e105]
+              - generic [ref=f33e107]: Disabled
+          - generic [ref=f33e108]:
+            - button "2 Reroll R" [ref=f33e109] [cursor=pointer]:
+              - generic [ref=f33e110]: "2"
+              - generic [ref=f33e111]: Reroll
+              - generic [ref=f33e112]: R
+            - button "1 Banish B" [ref=f33e113] [cursor=pointer]:
+              - generic [ref=f33e114]: "1"
+              - generic [ref=f33e115]: Banish
+              - generic [ref=f33e116]: B
+            - button "Reset progress" [ref=f33e117] [cursor=pointer]
+            - button "Try me" [ref=f33e119] [cursor=pointer]
+      - generic [ref=f33e121]:
+        - heading "Rarity and tiles" [level=3] [ref=f33e123]
+        - generic [ref=f33e124]:
+          - generic [ref=f33e125]: Common
+          - generic [ref=f33e128]: Rare
+          - generic [ref=f33e131]: Epic
+          - generic [ref=f33e134]: Evolution
+          - generic [ref=f33e137]: Locked
+          - generic [ref=f33e140]:
+            - generic [ref=f33e141]: Lv 4
+            - generic [ref=f33e143]: With level
+          - generic [ref=f33e144]:
+            - generic [ref=f33e145]: ×2
+            - generic [ref=f33e147]: Stacked
+      - generic [ref=f33e148]:
+        - heading "Meters" [level=3] [ref=f33e150]
+        - generic [ref=f33e151]:
+          - generic [ref=f33e152]:
+            - generic [ref=f33e153]: Health
+            - generic [ref=f33e154]: 118 / 150
+          - generic [ref=f33e157]: Experience
+          - generic [ref=f33e161]: Santa's Sleigh
+          - generic [ref=f33e165]:
+            - generic [ref=f33e166]: Boss
+            - generic [ref=f33e167]: 3,360 / 4,800
+      - generic [ref=f33e170]:
+        - heading "Feedback" [level=3] [ref=f33e172]
+        - generic [ref=f33e173]:
+          - generic [ref=f33e174]:
+            - generic [ref=f33e175]:
+              - generic [ref=f33e176]: Achievement unlocked
+              - generic [ref=f33e177]: Blizzard of Bonks
+            - generic [ref=f33e178]: "+60"
+          - generic: The Grumpy Yeti approaches!
+          - generic [ref=f33e180]:
+            - generic [ref=f33e181]: Christmas Cracker ×3
+            - generic [ref=f33e182]: "Hits have a 25% chance to go BANG: 60% damage to enemies nearby"
+          - generic [ref=f33e183]:
+            - generic: "14"
+            - generic: "38"
+            - generic: "+30"
+            - generic: Frozen
+          - generic [ref=f33e184]:
+            - generic [ref=f33e185]: R
+            - generic [ref=f33e186]: B
+            - generic [ref=f33e187]: Space
+            - generic [ref=f33e188]: Esc
+    - generic [ref=f33e189]:
+      - generic [ref=f33e190]: Try it
+      - generic [ref=f33e191]: Hover tiles for tooltips; click “Try me”
+      - generic [ref=f33e192]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f33e193]:
+      - generic [ref=f33e194]:
+        - heading "B. Ugly Sweater" [level=2] [ref=f33e195]
+        - paragraph [ref=f33e196]: "Claus's own wardrobe as the interface: knitted panels with Fair Isle camel bands, stitched seams, wooden toggle buttons, and menus that hang and sway like ornaments."
+        - generic [ref=f33e197]:
+          - text: "Pairs with splash B:"
+          - link "open the matching intro" [ref=f33e198] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=b
+      - generic [ref=f33e199]:
+        - generic [ref=f33e200]:
+          - generic "#8E1F2E" [ref=f33e201]
+          - generic "#D9343F" [ref=f33e203]
+          - generic "#1F5A43" [ref=f33e205]
+          - generic "#F4F8FF" [ref=f33e207]
+          - generic "#E8C48E" [ref=f33e209]
+          - generic "#5B3A2A" [ref=f33e211]
+        - generic [ref=f33e213]:
+          - generic [ref=f33e214]:
+            - text: Camel Claus
+            - generic [ref=f33e215]: Jacquard 24, display
+          - generic [ref=f33e216]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f33e217]: Grandstander, UI text
+      - generic [ref=f33e218]:
+        - generic [ref=f33e219]:
+          - heading "Strengths" [level=3] [ref=f33e220]
+          - list [ref=f33e221]:
+            - listitem [ref=f33e222]: The most unique to this game; nobody else has a knitted UI
+            - listitem [ref=f33e223]: Warm and cozy, matching the music direction
+            - listitem [ref=f33e224]: The pattern bands come straight from cosmetics (sweater, scarf)
+        - generic [ref=f33e225]:
+          - heading "Watch out for" [level=3] [ref=f33e226]
+          - list [ref=f33e227]:
+            - listitem [ref=f33e228]: Busiest look; texture must stay off the HUD
+            - listitem [ref=f33e229]: Swaying panels need tuning so they don't feel sluggish
+    - group [ref=f33e230]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f33e231] [cursor=pointer]

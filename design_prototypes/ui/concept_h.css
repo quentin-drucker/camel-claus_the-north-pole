@@ -1,0 +1,181 @@
+/* A+ Hybrid: concept A untouched underneath (every A rule still applies), plus additions from
+   B (knit texture, Fair Isle trim, sweater buttons, knitted-curtain wipe) and D (stamps, postmarks, airmail, postcard).
+   Every selector is scoped to [data-x="h"], so plain A never changes.
+   Godot: knit + band = 2 tiling textures; stamp = one 9-slice; postmark = one texture (font baked in); curtain = Tween. */
+
+[data-c="a"][data-x="h"] {
+  --display: "New Rocker", serif;
+  --knit: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='16'%3E%3Cpath d='M1 0q6 4 6 12q-6-4-6-12z' fill='%23fff' fill-opacity='.07'/%3E%3Cpath d='M13 0q-6 4-6 12q6-4 6-12z' fill='%23000' fill-opacity='.2'/%3E%3C/svg%3E");
+  --fairisle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='26' shape-rendering='crispEdges'%3E%3Cg fill='%23F4F8FF'%3E%3Crect x='0' y='0' width='2' height='2'/%3E%3Crect x='2' y='24' width='2' height='2'/%3E%3Crect x='4' y='0' width='2' height='2'/%3E%3Crect x='6' y='24' width='2' height='2'/%3E%3Crect x='8' y='0' width='2' height='2'/%3E%3Crect x='10' y='24' width='2' height='2'/%3E%3Crect x='12' y='0' width='2' height='2'/%3E%3Crect x='14' y='24' width='2' height='2'/%3E%3Crect x='16' y='0' width='2' height='2'/%3E%3Crect x='18' y='24' width='2' height='2'/%3E%3Crect x='20' y='0' width='2' height='2'/%3E%3Crect x='22' y='24' width='2' height='2'/%3E%3Crect x='24' y='0' width='2' height='2'/%3E%3Crect x='26' y='24' width='2' height='2'/%3E%3Crect x='28' y='0' width='2' height='2'/%3E%3Crect x='30' y='24' width='2' height='2'/%3E%3Crect x='32' y='0' width='2' height='2'/%3E%3Crect x='34' y='24' width='2' height='2'/%3E%3Crect x='36' y='0' width='2' height='2'/%3E%3Crect x='38' y='24' width='2' height='2'/%3E%3Crect x='40' y='0' width='2' height='2'/%3E%3Crect x='42' y='24' width='2' height='2'/%3E%3Crect x='44' y='0' width='2' height='2'/%3E%3Crect x='46' y='24' width='2' height='2'/%3E%3Crect x='48' y='0' width='2' height='2'/%3E%3Crect x='50' y='24' width='2' height='2'/%3E%3Crect x='26' y='4' width='2' height='2'/%3E%3Crect x='28' y='4' width='2' height='2'/%3E%3Crect x='8' y='6' width='2' height='2'/%3E%3Crect x='10' y='6' width='2' height='2'/%3E%3Crect x='16' y='6' width='2' height='2'/%3E%3Crect x='18' y='6' width='2' height='2'/%3E%3Crect x='26' y='6' width='2' height='2'/%3E%3Crect x='28' y='6' width='2' height='2'/%3E%3Crect x='30' y='6' width='2' height='2'/%3E%3Crect x='6' y='8' width='2' height='2'/%3E%3Crect x='8' y='8' width='2' height='2'/%3E%3Crect x='10' y='8' width='2' height='2'/%3E%3Crect x='12' y='8' width='2' height='2'/%3E%3Crect x='14' y='8' width='2' height='2'/%3E%3Crect x='16' y='8' width='2' height='2'/%3E%3Crect x='18' y='8' width='2' height='2'/%3E%3Crect x='20' y='8' width='2' height='2'/%3E%3Crect x='26' y='8' width='2' height='2'/%3E%3Crect x='4' y='10' width='2' height='2'/%3E%3Crect x='6' y='10' width='2' height='2'/%3E%3Crect x='8' y='10' width='2' height='2'/%3E%3Crect x='10' y='10' width='2' height='2'/%3E%3Crect x='12' y='10' width='2' height='2'/%3E%3Crect x='14' y='10' width='2' height='2'/%3E%3Crect x='16' y='10' width='2' height='2'/%3E%3Crect x='18' y='10' width='2' height='2'/%3E%3Crect x='20' y='10' width='2' height='2'/%3E%3Crect x='22' y='10' width='2' height='2'/%3E%3Crect x='24' y='10' width='2' height='2'/%3E%3Crect x='26' y='10' width='2' height='2'/%3E%3Crect x='4' y='12' width='2' height='2'/%3E%3Crect x='6' y='12' width='2' height='2'/%3E%3Crect x='8' y='12' width='2' height='2'/%3E%3Crect x='10' y='12' width='2' height='2'/%3E%3Crect x='12' y='12' width='2' height='2'/%3E%3Crect x='14' y='12' width='2' height='2'/%3E%3Crect x='16' y='12' width='2' height='2'/%3E%3Crect x='18' y='12' width='2' height='2'/%3E%3Crect x='20' y='12' width='2' height='2'/%3E%3Crect x='22' y='12' width='2' height='2'/%3E%3Crect x='24' y='12' width='2' height='2'/%3E%3Crect x='6' y='14' width='2' height='2'/%3E%3Crect x='8' y='14' width='2' height='2'/%3E%3Crect x='10' y='14' width='2' height='2'/%3E%3Crect x='12' y='14' width='2' height='2'/%3E%3Crect x='14' y='14' width='2' height='2'/%3E%3Crect x='16' y='14' width='2' height='2'/%3E%3Crect x='18' y='14' width='2' height='2'/%3E%3Crect x='20' y='14' width='2' height='2'/%3E%3Crect x='22' y='14' width='2' height='2'/%3E%3Crect x='6' y='16' width='2' height='2'/%3E%3Crect x='10' y='16' width='2' height='2'/%3E%3Crect x='20' y='16' width='2' height='2'/%3E%3Crect x='24' y='16' width='2' height='2'/%3E%3Crect x='6' y='18' width='2' height='2'/%3E%3Crect x='10' y='18' width='2' height='2'/%3E%3Crect x='20' y='18' width='2' height='2'/%3E%3Crect x='24' y='18' width='2' height='2'/%3E%3Crect x='42' y='6' width='2' height='2'/%3E%3Crect x='40' y='8' width='2' height='2'/%3E%3Crect x='44' y='8' width='2' height='2'/%3E%3Crect x='38' y='10' width='2' height='2'/%3E%3Crect x='42' y='10' width='2' height='2'/%3E%3Crect x='46' y='10' width='2' height='2'/%3E%3Crect x='40' y='12' width='2' height='2'/%3E%3Crect x='44' y='12' width='2' height='2'/%3E%3Crect x='42' y='14' width='2' height='2'/%3E%3C/g%3E%3C/svg%3E");
+  --pm-round: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23000' stroke-width='3.2'%3E%3Ccircle cx='50' cy='50' r='46'/%3E%3Ccircle cx='50' cy='50' r='29' stroke-width='2.2'/%3E%3C/g%3E%3Cdefs%3E%3Cpath id='t' d='M 13 50 A 37 37 0 0 1 87 50'/%3E%3Cpath id='b' d='M 9 50 A 41 41 0 0 0 91 50'/%3E%3C/defs%3E%3Cg font-family='Arial Black%2C Arial%2C sans-serif' font-weight='900' fill='%23000'%3E%3Ctext font-size='12' letter-spacing='2.2'%3E%3CtextPath href='%23t' startOffset='50%25' text-anchor='middle'%3ENORTH POLE%3C/textPath%3E%3C/text%3E%3Ctext font-size='10' letter-spacing='2'%3E%3CtextPath href='%23b' startOffset='50%25' text-anchor='middle'%3ECAMEL POST%3C/textPath%3E%3C/text%3E%3Ctext x='50' y='48' font-size='13' text-anchor='middle'%3EDEC 25%3C/text%3E%3Ctext x='50' y='62' font-size='10' text-anchor='middle'%3E90%C2%B0 N%3C/text%3E%3C/g%3E%3C/svg%3E");
+  --pm-wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3E%3Cg fill='none' stroke='%23000' stroke-width='3.2'%3E%3Ccircle cx='50' cy='50' r='46'/%3E%3Ccircle cx='50' cy='50' r='29' stroke-width='2.2'/%3E%3C/g%3E%3Cdefs%3E%3Cpath id='t' d='M 13 50 A 37 37 0 0 1 87 50'/%3E%3Cpath id='b' d='M 9 50 A 41 41 0 0 0 91 50'/%3E%3C/defs%3E%3Cg font-family='Arial Black%2C Arial%2C sans-serif' font-weight='900' fill='%23000'%3E%3Ctext font-size='12' letter-spacing='2.2'%3E%3CtextPath href='%23t' startOffset='50%25' text-anchor='middle'%3ENORTH POLE%3C/textPath%3E%3C/text%3E%3Ctext font-size='10' letter-spacing='2'%3E%3CtextPath href='%23b' startOffset='50%25' text-anchor='middle'%3ECAMEL POST%3C/textPath%3E%3C/text%3E%3Ctext x='50' y='48' font-size='13' text-anchor='middle'%3EDEC 25%3C/text%3E%3Ctext x='50' y='62' font-size='10' text-anchor='middle'%3E90%C2%B0 N%3C/text%3E%3C/g%3E%3Cpath d='M98 32 q12.5 -7 25 0 t25 0 t25 0 t25 0' fill='none' stroke='%23000' stroke-width='3.4'/%3E%3Cpath d='M98 50 q12.5 -7 25 0 t25 0 t25 0 t25 0' fill='none' stroke='%23000' stroke-width='3.4'/%3E%3Cpath d='M98 68 q12.5 -7 25 0 t25 0 t25 0 t25 0' fill='none' stroke='%23000' stroke-width='3.4'/%3E%3C/svg%3E");
+  --paper: #F4F8FF; --postink: #22304F; --knit-red: #8E1F2E; --wood: #C98F55;
+  --airmail: repeating-linear-gradient(-45deg, #D9343F 0 9px, #F4F8FF 9px 15px, #3A5B9C 15px 24px, #F4F8FF 24px 30px);
+}
+[data-c="a"][data-x="h"][data-font="grenze"] { --display: "Grenze Gotisch", serif; }
+[data-c="a"][data-x="h"][data-font="germania"] { --display: "Germania One", sans-serif; }
+[data-c="a"][data-x="h"][data-font="pixel"] { --display: "Jacquarda Bastarda 9", serif; }
+[data-c="a"][data-x="h"][data-font="grenze"] :is(.panel-head, .btn, .logo-sub, .offer-name, .offer-rarity, .goal-text b, .tab-name, .ach-text b, .cu-title, .cu-name, .boss-name, .tip-name, .toast-text b, .sub, .pz-w-text b, .unlock b, .res-pills .res-best, .pc-greet) { font-weight: 700; }
+/* the smooth blackletters read a size smaller than the pixel one, so give small labels a little more room */
+[data-c="a"][data-x="h"]:not([data-font="pixel"]) :is(.btn-small, .cu-name, .tab-name) { font-size: 19px; letter-spacing: .01em; }
+[data-c="a"][data-x="h"]:not([data-font="pixel"]) .offer-rarity { font-size: 20px; }
+
+/* ---------- B: Fair Isle camel trim under every panel header (the "sweater cuff") ---------- */
+[data-c="a"][data-x="h"] .panel-head { position: relative; }
+[data-c="a"][data-x="h"] .panel-head::after {
+  content: ""; position: absolute; left: 0; right: 0; top: calc(100% + 5px); height: 18px;
+  background: var(--fairisle) 3px 50% / auto 18px repeat-x, var(--knit), var(--knit-red);
+  box-shadow: 0 3px 0 var(--dark);
+}
+[data-c="a"][data-x="h"] .panel-head + * { margin-top: 18px; }
+[data-c="a"][data-x="h"] .ach .panel-head ~ .tabs { margin-top: 20px; }
+
+/* ---------- B: knit texture behind cards (not panels, not the HUD) ---------- */
+[data-c="a"][data-x="h"] :is(.offer, .goal, .cu-tile) {
+  background:
+    var(--rivet) left 6px top 6px / 12px 12px no-repeat, var(--rivet) right 6px top 6px / 12px 12px no-repeat,
+    var(--rivet) left 6px bottom 6px / 12px 12px no-repeat, var(--rivet) right 6px bottom 6px / 12px 12px no-repeat,
+    var(--knit), var(--plate-fill, var(--plate));
+}
+[data-c="a"][data-x="h"] .ach-row { background: var(--knit), var(--plate-fill); }
+[data-c="a"][data-x="h"] .set .panel-body { background: var(--knit); }
+
+/* ---------- B: sewn sweater buttons on sliders and toggles ---------- */
+[data-c="a"][data-x="h"] .slider-fill { background: repeating-linear-gradient(115deg, #D9343F 0 6px, #F4F8FF 6px 9px); box-shadow: inset 0 3px 0 rgb(255 255 255 / .25); }
+[data-c="a"][data-x="h"] :is(.slider-knob, .toggle-knob), [data-c="a"][data-x="h"] .toggle.on .toggle-knob {
+  border-radius: 50%;
+  background:
+    linear-gradient(45deg, transparent 44%, #F4F8FF 44% 56%, transparent 56%) center / 11px 11px no-repeat,
+    linear-gradient(-45deg, transparent 44%, #F4F8FF 44% 56%, transparent 56%) center / 11px 11px no-repeat,
+    radial-gradient(circle at 37% 37%, #3E2619 0 2.1px, transparent 2.6px), radial-gradient(circle at 63% 37%, #3E2619 0 2.1px, transparent 2.6px),
+    radial-gradient(circle at 37% 63%, #3E2619 0 2.1px, transparent 2.6px), radial-gradient(circle at 63% 63%, #3E2619 0 2.1px, transparent 2.6px),
+    radial-gradient(circle, #D9A56A 0 46%, #8A5A33 49% 57%, #C98F55 60%);
+  box-shadow: 0 0 0 2px var(--dark), 0 3px 0 2px var(--dark);
+}
+[data-c="a"][data-x="h"] .slider-knob { width: 32px; height: 32px; }
+[data-c="a"][data-x="h"] .toggle-knob { width: 24px; height: 24px; top: 3px; left: 3px; }
+[data-c="a"][data-x="h"] .toggle.on .toggle-knob { transform: translateX(28px) rotate(90deg); }
+[data-c="a"][data-x="h"] .toggle.on .toggle-track { background: var(--knit), #2E8A4A; }
+[data-c="a"][data-x="h"] .slider.is-sel .slider-knob { animation: h-wobble .4s ease-out; }
+@keyframes h-wobble { 30% { rotate: -14deg; } 65% { rotate: 8deg; } }
+
+/* ---------- D: postage stamps for reward icons ---------- */
+[data-c="a"][data-x="h"] :is(.goal .tile, .ach-row .tile, .kit-stamp .tile, .tile.kit-stamp-done) {
+  --stamp: #D9343F;
+  background:
+    linear-gradient(#DCE6F5 0 0) center / calc(100% - 16px) calc(100% - 16px) no-repeat,
+    linear-gradient(var(--stamp) 0 0) center / calc(100% - 11px) calc(100% - 11px) no-repeat,
+    linear-gradient(var(--paper) 0 0) center / calc(100% - 7px) calc(100% - 7px) no-repeat,
+    radial-gradient(circle, transparent 2.2px, var(--paper) 2.7px) -3px -3px / 6.5px 6.5px;
+  box-shadow: none; filter: drop-shadow(1px 3px 0 rgb(13 19 34 / .6));
+}
+[data-c="a"][data-x="h"] :is(.goal .tile, .ach-row .tile, .kit-stamp .tile, .tile.kit-stamp-done)[data-r="rare"] { --stamp: #3A8FBF; }
+[data-c="a"][data-x="h"] :is(.goal .tile, .ach-row .tile, .kit-stamp .tile, .tile.kit-stamp-done)[data-r="epic"] { --stamp: #7B3FB0; }
+[data-c="a"][data-x="h"] :is(.goal .tile, .ach-row .tile, .kit-stamp .tile, .tile.kit-stamp-done)[data-r="evo"] { --stamp: #E0A22A; }
+[data-c="a"][data-x="h"] .goal .tile { width: 54px; height: 60px; rotate: -3deg; }
+[data-c="a"][data-x="h"] .goal:nth-child(2) .tile { rotate: 2deg; }
+[data-c="a"][data-x="h"] .goal .tile > img, [data-c="a"][data-x="h"] .ach-row .tile > img { width: 32px; height: 32px; }
+[data-c="a"][data-x="h"] .ach-row .tile { width: 52px; height: 58px; }
+[data-c="a"][data-x="h"] .ach-row:not(.done) .tile > img { filter: grayscale(.4); opacity: .8; }
+/* postmark ink over finished stamps */
+[data-c="a"][data-x="h"] :is(.ach-row.done .tile, .tile.kit-stamp-done)::after {
+  content: ""; position: absolute; right: -16px; bottom: -10px; width: 46px; height: 46px; rotate: -16deg;
+  background: rgb(34 48 79 / .78); -webkit-mask: var(--pm-round) center / contain no-repeat; mask: var(--pm-round) center / contain no-repeat;
+}
+[data-c="a"][data-x="h"] .ach-row.done:nth-child(even) .tile::after { rotate: 12deg; right: -14px; }
+
+/* ---------- D: postmark on the main menu, stamped across the logo plate ---------- */
+[data-c="a"][data-x="h"] .pm-menu {
+  position: absolute; left: 846px; top: 86px; width: 150px; height: 85px; rotate: -9deg; pointer-events: none;
+  background: rgb(34 48 79 / .55); -webkit-mask: var(--pm-wave) center / contain no-repeat; mask: var(--pm-wave) center / contain no-repeat;
+}
+
+/* ---------- D: luggage-tag level badge on the level-up panel ---------- */
+[data-c="a"][data-x="h"] .lu-lv {
+  position: relative; color: var(--postink); text-shadow: none; font-size: 18px; background: var(--paper);
+  padding: 5px 14px 6px 28px; clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%);
+  filter: drop-shadow(0 3px 0 var(--dark));
+}
+[data-c="a"][data-x="h"] .lu-lv::before { content: ""; position: absolute; left: 13px; top: 50%; width: 8px; height: 8px; margin-top: -4px; border-radius: 50%; background: var(--band-c, #1F5A43); box-shadow: inset 0 0 0 2px #8A5A33; }
+/* picking an upgrade stamps it */
+[data-c="a"][data-x="h"] .offer.picked::before {
+  content: ""; position: absolute; right: 190px; top: 50%; width: 112px; height: 112px; margin-top: -56px; z-index: 3; rotate: -14deg;
+  background: rgb(244 248 255 / .9); -webkit-mask: var(--pm-round) center / contain no-repeat; mask: var(--pm-round) center / contain no-repeat;
+  animation: h-stamp .32s cubic-bezier(.2, 1.6, .4, 1) both;
+}
+@keyframes h-stamp { from { scale: 2.4; opacity: 0; } }
+
+/* ---------- D: airmail toast ("mail from the North Pole") ---------- */
+[data-c="a"][data-x="h"] .toast {
+  background: var(--paper); color: var(--postink); border: 7px solid transparent; border-image: var(--airmail) 7;
+  box-shadow: 0 0 0 2px var(--dark), 0 6px 0 2px rgb(13 19 34 / .5); padding: 10px 18px 10px 12px;
+}
+[data-c="a"][data-x="h"] .toast-text b { color: #C42F3A; text-shadow: none; }
+[data-c="a"][data-x="h"] .toast .coin { color: var(--postink); font-weight: 700; }
+
+/* ---------- D: the results screen is a postcard ---------- */
+[data-c="a"][data-x="h"] .res-head.postcard {
+  position: relative; display: flex; align-items: center; justify-content: space-between; text-align: left; height: 168px;
+  padding: 0 210px 0 40px; background: radial-gradient(circle at 12% 120%, rgb(143 169 209 / .2) 0 30%, transparent 31%), var(--paper);
+  border: 10px solid transparent; border-image: var(--airmail) 10; box-shadow: 0 0 0 3px var(--dark), 0 8px 0 3px rgb(13 19 34 / .5);
+  rotate: -.6deg;
+}
+[data-c="a"][data-x="h"] .pc-text { display: flex; flex-direction: column; }
+[data-c="a"][data-x="h"] .pc-greet { font: 30px/1 var(--display); color: #C42F3A; margin-left: 4px; }
+[data-c="a"][data-x="h"] .pc-big {
+  font: 84px/1 var(--logo); margin: 2px 0 0; letter-spacing: .01em;
+  background: url("../assets/screens/cc_proto_menu_clean.png") 12% 28% / 900px auto; -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-text-stroke: 3px var(--postink); paint-order: stroke fill; text-shadow: none;
+  filter: drop-shadow(4px 5px 0 var(--postink));
+}
+[data-c="a"][data-x="h"] .postcard .res-pills { justify-content: flex-start; margin-top: 8px; }
+[data-c="a"][data-x="h"] .postcard .res-pills span { background: var(--postink); text-shadow: none; }
+[data-c="a"][data-x="h"] .postcard .res-pills .res-best { background: #C42F3A; }
+[data-c="a"][data-x="h"] .pc-stamp {
+  position: absolute; right: 34px; top: 14px; width: 112px; height: 128px; rotate: 4deg; display: grid; place-items: center;
+  background:
+    linear-gradient(#BFE3F5 0 0) center / calc(100% - 18px) calc(100% - 18px) no-repeat,
+    linear-gradient(#D9343F 0 0) center / calc(100% - 12px) calc(100% - 12px) no-repeat,
+    linear-gradient(var(--paper) 0 0) center / calc(100% - 8px) calc(100% - 8px) no-repeat,
+    radial-gradient(circle, transparent 2.6px, var(--paper) 3.1px) -4px -4px / 8px 8px;
+  filter: drop-shadow(2px 3px 0 rgb(13 19 34 / .55));
+}
+[data-c="a"][data-x="h"] .pc-stamp img { height: 92px; margin-top: -8px; }
+[data-c="a"][data-x="h"] .pc-stamp b { position: absolute; right: 14px; bottom: 11px; font: 16px "Tiny5", sans-serif; color: #fff; text-shadow: 1px 1px 0 var(--postink); }
+[data-c="a"][data-x="h"] .pm-res {
+  position: absolute; right: 96px; top: 60px; width: 200px; height: 100px; rotate: -12deg;
+  background: rgb(34 48 79 / .7); -webkit-mask: var(--pm-wave) center / contain no-repeat; mask: var(--pm-wave) center / contain no-repeat;
+}
+[data-c="a"][data-x="h"] .scr.enter .postcard { animation: h-card .5s cubic-bezier(.2, 1.3, .4, 1) both; }
+@keyframes h-card { from { opacity: 0; translate: 0 -40px; rotate: -5deg; } }
+[data-c="a"][data-x="h"] .scr.enter .pm-res { animation: h-stamp .3s .45s cubic-bezier(.2, 1.6, .4, 1) both; }
+
+/* ---------- B: the knitted-curtain wipe replaces A's shutters ---------- */
+[data-c="a"][data-x="h"].wiping .wipe::after { animation: none; display: none; }
+[data-c="a"][data-x="h"] .wipe::before {
+  height: 760px; bottom: auto; transform: translateY(-104%); box-shadow: none; border-radius: 0 0 30px 30px;
+  background: var(--fairisle) 0 calc(100% - 56px) / auto 28px repeat-x, var(--knit), var(--knit-red);
+}
+[data-c="a"][data-x="h"] .wipe::after { display: none; }
+[data-c="a"][data-x="h"].wiping .wipe::before { animation: h-curtain .7s cubic-bezier(.6, 0, .3, 1) both; }
+@keyframes h-curtain { 0% { transform: translateY(-104%); } 38%, 52% { transform: translateY(-20px); } 100% { transform: translateY(-104%); } }
+
+/* ---------- D: the achievements list is a postcard (A's frame, header and tabs stay) ---------- */
+[data-c="a"][data-x="h"] .ach-list {
+  position: relative; margin: 0 18px 18px; padding: 34px 22px 16px; gap: 0; color: var(--postink);
+  background: linear-gradient(90deg, transparent calc(100% - 222px), rgb(34 48 79 / .14) calc(100% - 222px) calc(100% - 220px), transparent calc(100% - 220px)), var(--paper);
+  border: 10px solid transparent; border-image: var(--airmail) 10; box-shadow: 0 0 0 3px var(--dark);
+}
+[data-c="a"][data-x="h"] .ach-list::before { content: "Camel Post  ·  North Pole 90°N"; position: absolute; left: 22px; top: 8px; font: 15px "Tiny5", sans-serif; color: #C42F3A; letter-spacing: .04em; }
+[data-c="a"][data-x="h"] .ach-row { background: none; box-shadow: none; border-bottom: 2px dashed rgb(34 48 79 / .25); padding: 9px 6px 9px 4px; border-radius: 0; }
+[data-c="a"][data-x="h"] .ach-row.done { background: linear-gradient(90deg, rgb(58 143 191 / .12), transparent 70%); }
+[data-c="a"][data-x="h"] .ach-text b { color: var(--postink); text-shadow: none; font-size: 22px; }
+[data-c="a"][data-x="h"] .ach-text span { color: #4E6A9E; }
+[data-c="a"][data-x="h"] .ach-num { color: var(--postink); }
+[data-c="a"][data-x="h"] .bar-ach { background: #DCE6F5; box-shadow: 0 0 0 2px var(--postink); --bar-fill: #3E9A5B; }
+[data-c="a"][data-x="h"] .ach-reward .coin { color: var(--postink); font-weight: 700; }
+[data-c="a"][data-x="h"] .ach-row.done .ach-reward::before { content: "Delivered"; font: 18px var(--display); color: #3A8FBF; margin-right: 6px; rotate: -6deg; }
+[data-c="a"][data-x="h"] .ach-row.done .tick { stroke: #3A8FBF; filter: none; }
+[data-c="a"][data-x="h"] .ach-row { grid-template-columns: 58px 1fr 190px 110px; }
+[data-c="a"][data-x="h"] .kit .banner span { font-size: 30px; }
+[data-c="a"][data-x="h"] .kit-tiles { row-gap: 12px; }

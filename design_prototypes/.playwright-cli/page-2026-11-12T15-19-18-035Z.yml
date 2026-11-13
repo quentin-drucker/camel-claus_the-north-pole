@@ -1,0 +1,161 @@
+- generic [active] [ref=f44e1]:
+  - generic [ref=f44e2]:
+    - banner [ref=f44e3]:
+      - generic [ref=f44e4]:
+        - generic [ref=f44e5]: Camel Claus
+        - generic [ref=f44e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f44e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [ref=f44e8] [cursor=pointer]:
+          - generic [ref=f44e14]: A Workshop Tin
+          - generic [ref=f44e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f44e16] [cursor=pointer]:
+          - generic [ref=f44e22]: B Ugly Sweater
+          - generic [ref=f44e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f44e24] [cursor=pointer]:
+          - generic [ref=f44e30]: C Northern Lights
+          - generic [ref=f44e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [selected] [ref=f44e32] [cursor=pointer]:
+          - generic [ref=f44e38]: D Polar Expedition
+          - generic [ref=f44e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f44e40] [cursor=pointer]:
+          - generic [ref=f44e46]: E 8-Bit Holiday
+          - generic [ref=f44e47]: Retro holiday arcade
+      - generic [ref=f44e48]:
+        - button "Compare all five" [ref=f44e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f44e50] [cursor=pointer]
+        - link "Splash screens" [ref=f44e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f44e52]:
+      - tab "Main menu" [ref=f44e53] [cursor=pointer]
+      - tab "Level up" [ref=f44e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f44e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f44e56] [cursor=pointer]
+      - tab "Settings" [ref=f44e57] [cursor=pointer]
+      - tab "Achievements" [ref=f44e58] [cursor=pointer]
+      - tab "Customize" [ref=f44e59] [cursor=pointer]
+      - tab "Results" [selected] [ref=f44e60] [cursor=pointer]
+      - tab "Components" [ref=f44e61] [cursor=pointer]
+  - main [ref=f44e62]:
+    - generic [ref=f44e69]:
+      - generic [ref=f44e70]:
+        - heading "You survived the North Pole!" [level=2] [ref=f44e71]
+        - generic [ref=f44e72]:
+          - generic [ref=f44e73]: 5:00 survived
+          - generic [ref=f44e74]: Lv 14 reached
+          - generic [ref=f44e75]: New best run
+      - generic [ref=f44e76]:
+        - heading "Damage" [level=3] [ref=f44e78]
+        - table [ref=f44e80]:
+          - rowgroup [ref=f44e81]:
+            - row [ref=f44e82]:
+              - columnheader "Source" [ref=f44e83]
+              - columnheader "Lv" [ref=f44e84]
+              - columnheader "Damage" [ref=f44e85]
+              - columnheader "DPS" [ref=f44e86]
+          - rowgroup [ref=f44e87]:
+            - row [ref=f44e88]:
+              - cell "Present Barrage" [ref=f44e89]
+              - cell "5" [ref=f44e92]
+              - cell "1,656" [ref=f44e93]
+              - cell "161" [ref=f44e94]
+            - row [ref=f44e95]:
+              - cell "Candy Cane Orbit" [ref=f44e96]
+              - cell "4" [ref=f44e99]
+              - cell "788" [ref=f44e100]
+              - cell "76" [ref=f44e101]
+            - row [ref=f44e102]:
+              - cell "Snowball Barrage" [ref=f44e103]
+              - cell "3" [ref=f44e106]
+              - cell "324" [ref=f44e107]
+              - cell "31" [ref=f44e108]
+            - row [ref=f44e109]:
+              - cell "Fruitcake poison" [ref=f44e110]
+              - cell "1" [ref=f44e113]
+              - cell "107" [ref=f44e114]
+              - cell "10" [ref=f44e115]
+            - row [ref=f44e116]:
+              - cell "Christmas Cracker" [ref=f44e117]
+              - cell "3" [ref=f44e120]
+              - cell "94" [ref=f44e121]
+              - cell "9" [ref=f44e122]
+      - generic [ref=f44e123]:
+        - heading "Summary" [level=3] [ref=f44e125]
+        - generic [ref=f44e126]:
+          - generic [ref=f44e128]:
+            - generic [ref=f44e129]: Bonks 36
+            - generic [ref=f44e130]: Time 5:00
+            - generic [ref=f44e131]: Level 14
+          - heading "Inventory" [level=4] [ref=f44e132]
+          - generic [ref=f44e133]:
+            - generic [ref=f44e134]: ×2
+            - generic [ref=f44e136]: ×1
+            - generic [ref=f44e138]: ×1
+            - generic [ref=f44e140]: ×3
+            - generic [ref=f44e142]: ×1
+            - generic [ref=f44e144]: ×1
+            - generic [ref=f44e146]: ×2
+          - generic [ref=f44e148]:
+            - generic [ref=f44e149]: 2 achievements unlocked
+            - generic [ref=f44e150]: +186 coins
+          - generic [ref=f44e152]:
+            - button "Keep going (Endless)" [ref=f44e153] [cursor=pointer]
+            - button "Play again" [ref=f44e155] [cursor=pointer]
+            - button "Main menu" [ref=f44e157] [cursor=pointer]
+      - generic [ref=f44e159]:
+        - heading "Unlocked" [level=3] [ref=f44e161]
+        - generic [ref=f44e162]:
+          - generic [ref=f44e163]:
+            - generic [ref=f44e164]:
+              - generic [ref=f44e165]: Blizzard of Bonks
+              - text: Achievement
+            - generic [ref=f44e166]: "+60"
+          - generic [ref=f44e168]:
+            - generic [ref=f44e169]:
+              - generic [ref=f44e170]: Snow Survivor
+              - text: Achievement
+            - generic [ref=f44e171]: "+60"
+          - generic [ref=f44e174]:
+            - generic [ref=f44e175]: Yeti Tamer
+            - text: Defeat the Grumpy Yeti
+    - generic [ref=f44e177]:
+      - generic [ref=f44e178]: Try it
+      - generic [ref=f44e179]: Numbers count up on entry
+      - button "Replay entry" [ref=f44e180] [cursor=pointer]
+      - generic [ref=f44e181]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f44e182]:
+      - generic [ref=f44e183]:
+        - heading "D. Polar Expedition" [level=2] [ref=f44e184]
+        - paragraph [ref=f44e185]: "Claus is lost, so the UI is his field kit: crisp white survey sheets, navy ink, candy-cane signal tape, slanted buttons and big confident numbers."
+        - generic [ref=f44e186]:
+          - text: "Pairs with splash D:"
+          - link "open the matching intro" [ref=f44e187] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=d
+      - generic [ref=f44e188]:
+        - generic [ref=f44e189]:
+          - generic "#F4F8FF" [ref=f44e190]
+          - generic "#22304F" [ref=f44e192]
+          - generic "#D9343F" [ref=f44e194]
+          - generic "#8FA9D1" [ref=f44e196]
+          - generic "#F2B53B" [ref=f44e198]
+          - generic "#141D33" [ref=f44e200]
+        - generic [ref=f44e202]:
+          - generic [ref=f44e203]:
+            - text: Camel Claus
+            - generic [ref=f44e204]: Barlow Condensed, display
+          - generic [ref=f44e205]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f44e206]: Barlow, UI text
+      - generic [ref=f44e207]:
+        - generic [ref=f44e208]:
+          - heading "Strengths" [level=3] [ref=f44e209]
+          - list [ref=f44e210]:
+            - listitem [ref=f44e211]: The sharpest hierarchy and densest information
+            - listitem [ref=f44e212]: Scales cleanly to any resolution (no pixel fonts)
+            - listitem [ref=f44e213]: "Its own story: the lost-explorer framing"
+        - generic [ref=f44e214]:
+          - heading "Watch out for" [level=3] [ref=f44e215]
+          - list [ref=f44e216]:
+            - listitem [ref=f44e217]: White panels are bright over the snow and need dark HUD variants
+            - listitem [ref=f44e218]: The least overtly Christmassy
+    - group [ref=f44e219]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f44e220] [cursor=pointer]

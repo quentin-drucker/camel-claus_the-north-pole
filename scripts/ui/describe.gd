@@ -166,7 +166,7 @@ static func blessing_card(blessing: BlessingData) -> Dictionary:
 ## Loadout-screen text for a weapon: what it does, its Lv 1 numbers and what it evolves into.
 static func weapon_preview(card: UpgradeData, unlocked: bool, unlock_hint: String) -> String:
 	var data: WeaponData = weapon_data_named(card.title)
-	var text: String = "[font_size=48]%s[/font_size]
+	var text: String = "[b][font_size=32]%s[/font_size][/b]
 %s
 %s
 %s" % [card.title,
@@ -180,7 +180,7 @@ static func weapon_preview(card: UpgradeData, unlocked: bool, unlock_hint: Strin
 
 ## Pause-menu detail text for an owned weapon.
 static func weapon_details(weapon: Weapon, player: Player) -> String:
-	var head: String = "[font_size=48]%s[/font_size]  %s" % [weapon.title(),
+	var head: String = "[b][font_size=26]%s[/font_size][/b]  %s" % [weapon.title(),
 		c(GOLD, "EVOLVED") if weapon.evolved else c(MUTED, "Lv %d/%d" % [weapon.level, WeaponData.MAX_LEVEL])]
 	return "%s
 %s
@@ -191,7 +191,7 @@ static func weapon_details(weapon: Weapon, player: Player) -> String:
 ## Pause-menu detail text for an owned item.
 static func item_details(item: ItemData, player: Player) -> String:
 	var count: int = player.items.get(item, 0)
-	return "[font_size=48]%s[/font_size]  %s
+	return "[b][font_size=26]%s[/font_size][/b]  %s
 %s" % [item.title, c(MUTED, "x%d" % count), item.description]
 
 

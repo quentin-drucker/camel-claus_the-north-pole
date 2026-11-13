@@ -1,0 +1,104 @@
+- generic [active] [ref=f43e1]:
+  - generic [ref=f43e2]:
+    - banner [ref=f43e3]:
+      - generic [ref=f43e4]:
+        - generic [ref=f43e5]: Camel Claus
+        - generic [ref=f43e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f43e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [ref=f43e8] [cursor=pointer]:
+          - generic [ref=f43e14]: A Workshop Tin
+          - generic [ref=f43e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f43e16] [cursor=pointer]:
+          - generic [ref=f43e22]: B Ugly Sweater
+          - generic [ref=f43e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f43e24] [cursor=pointer]:
+          - generic [ref=f43e30]: C Northern Lights
+          - generic [ref=f43e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [selected] [ref=f43e32] [cursor=pointer]:
+          - generic [ref=f43e38]: D Polar Expedition
+          - generic [ref=f43e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f43e40] [cursor=pointer]:
+          - generic [ref=f43e46]: E 8-Bit Holiday
+          - generic [ref=f43e47]: Retro holiday arcade
+      - generic [ref=f43e48]:
+        - button "Compare all five" [ref=f43e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f43e50] [cursor=pointer]
+        - link "Splash screens" [ref=f43e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f43e52]:
+      - tab "Main menu" [ref=f43e53] [cursor=pointer]
+      - tab "Level up" [ref=f43e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f43e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f43e56] [cursor=pointer]
+      - tab "Settings" [ref=f43e57] [cursor=pointer]
+      - tab "Achievements" [ref=f43e58] [cursor=pointer]
+      - tab "Customize" [selected] [ref=f43e59] [cursor=pointer]
+      - tab "Results" [ref=f43e60] [cursor=pointer]
+      - tab "Components" [ref=f43e61] [cursor=pointer]
+  - main [ref=f43e62]:
+    - generic [ref=f43e67]:
+      - generic [ref=f43e69]:
+        - generic [ref=f43e70]:
+          - heading "Customize Claus" [level=2] [ref=f43e71]
+          - button "Close" [ref=f43e72] [cursor=pointer]
+        - tablist [ref=f43e75]:
+          - tab "Hats" [selected] [ref=f43e76] [cursor=pointer]
+          - tab "Outfits" [ref=f43e78] [cursor=pointer]
+          - tab "Skins" [ref=f43e80] [cursor=pointer]
+        - generic [ref=f43e82]:
+          - button "Santa Hat Worn" [ref=f43e83] [cursor=pointer]:
+            - generic [ref=f43e85]: Santa Hat
+            - text: Worn
+          - button "Bobble Beanie" [ref=f43e86] [cursor=pointer]
+          - button "Elf Hat" [ref=f43e89] [cursor=pointer]
+          - button "Reindeer Antlers 150" [ref=f43e92] [cursor=pointer]:
+            - generic [ref=f43e94]: Reindeer Antlers
+            - generic [ref=f43e95]: "150"
+          - button "No hat" [ref=f43e98] [cursor=pointer]
+      - img "Claus preview" [ref=f43e104]
+      - generic [ref=f43e106]:
+        - heading "Santa Hat" [level=3] [ref=f43e107]
+        - paragraph [ref=f43e108]: Claus's classic. Bobble included.
+        - button "Equipped" [disabled] [ref=f43e110]
+      - generic [ref=f43e112]: 1,240
+    - generic [ref=f43e115]:
+      - generic [ref=f43e116]: Try it
+      - generic [ref=f43e117]: Pick a hat, outfit or skin, then Equip
+      - generic [ref=f43e118]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f43e119]:
+      - generic [ref=f43e120]:
+        - heading "D. Polar Expedition" [level=2] [ref=f43e121]
+        - paragraph [ref=f43e122]: "Claus is lost, so the UI is his field kit: crisp white survey sheets, navy ink, candy-cane signal tape, slanted buttons and big confident numbers."
+        - generic [ref=f43e123]:
+          - text: "Pairs with splash D:"
+          - link "open the matching intro" [ref=f43e124] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=d
+      - generic [ref=f43e125]:
+        - generic [ref=f43e126]:
+          - generic "#F4F8FF" [ref=f43e127]
+          - generic "#22304F" [ref=f43e129]
+          - generic "#D9343F" [ref=f43e131]
+          - generic "#8FA9D1" [ref=f43e133]
+          - generic "#F2B53B" [ref=f43e135]
+          - generic "#141D33" [ref=f43e137]
+        - generic [ref=f43e139]:
+          - generic [ref=f43e140]:
+            - text: Camel Claus
+            - generic [ref=f43e141]: Barlow Condensed, display
+          - generic [ref=f43e142]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f43e143]: Barlow, UI text
+      - generic [ref=f43e144]:
+        - generic [ref=f43e145]:
+          - heading "Strengths" [level=3] [ref=f43e146]
+          - list [ref=f43e147]:
+            - listitem [ref=f43e148]: The sharpest hierarchy and densest information
+            - listitem [ref=f43e149]: Scales cleanly to any resolution (no pixel fonts)
+            - listitem [ref=f43e150]: "Its own story: the lost-explorer framing"
+        - generic [ref=f43e151]:
+          - heading "Watch out for" [level=3] [ref=f43e152]
+          - list [ref=f43e153]:
+            - listitem [ref=f43e154]: White panels are bright over the snow and need dark HUD variants
+            - listitem [ref=f43e155]: The least overtly Christmassy
+    - group [ref=f43e156]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f43e157] [cursor=pointer]

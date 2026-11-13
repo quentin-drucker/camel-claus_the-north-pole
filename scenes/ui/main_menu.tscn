@@ -11,9 +11,12 @@
 [ext_resource type="PackedScene" path="res://scenes/enemies/zoomer_model.tscn" id="8_y2j7i"]
 [ext_resource type="PackedScene" uid="uid://gwhhvi0063kj" path="res://scenes/effects/snowfall.tscn" id="9_y1h5l"]
 [ext_resource type="PackedScene" uid="uid://dsm3o623jhbjx" path="res://scenes/ui/settings_panel.tscn" id="10_pw24t"]
+[ext_resource type="Texture2D" uid="uid://de12flotymirs" path="res://assets/ui/hat_santa.png" id="11_5dct7"]
 [ext_resource type="PackedScene" uid="uid://c0xmh5g1bqgi1" path="res://scenes/ui/loadout_panel.tscn" id="11_7suek"]
 [ext_resource type="PackedScene" uid="uid://6gfwsn0i7a0i" path="res://scenes/ui/meta_panel.tscn" id="12_otr3d"]
+[ext_resource type="Texture2D" uid="uid://cx6kos8nljilp" path="res://assets/ui/icons/coin.png" id="12_qilvv"]
 [ext_resource type="PackedScene" uid="uid://c3ga54rqttevh" path="res://scenes/ui/customize_panel.tscn" id="13_8ekit"]
+[ext_resource type="Texture2D" uid="uid://dsj6na7ri0u5w" path="res://assets/ui/tin/postmark_wavy.png" id="13_jbte4"]
 [ext_resource type="PackedScene" uid="uid://c1p818vk15n4j" path="res://scenes/world/backdrop.tscn" id="15_877pj"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/yeti_model.tscn" id="16_y2j7i"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/lobber_model.tscn" id="17_y1h5l"]
@@ -83,117 +86,230 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 8, -1)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=227091140]
 
-[node name="MenuBox" type="PanelContainer" parent="UI" unique_id=314736548]
+[node name="MenuBox" type="Control" parent="UI" unique_id=1022072247]
 unique_name_in_owner = true
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.04
-anchor_right = 0.05
-anchor_bottom = 0.04
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="VBox" type="VBoxContainer" parent="UI/MenuBox" unique_id=1347400714]
-layout_mode = 2
-theme_override_constants/separation = 14
+[node name="Logo" type="VBoxContainer" parent="UI/MenuBox" unique_id=105839149]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 14.0
+offset_bottom = 200.0
+mouse_filter = 2
+theme_override_constants/separation = 0
 
-[node name="Title" type="Label" parent="UI/MenuBox/VBox" unique_id=2121355255]
+[node name="Title" type="Label" parent="UI/MenuBox/Logo" unique_id=1780657393]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9490196, 0.70980394, 0.23137255, 1)
-theme_override_font_sizes/font_size = 96
-text = "CAMEL CLAUS"
+size_flags_horizontal = 4
+theme_type_variation = &"LogoLabel"
+text = "Camel Claus"
+horizontal_alignment = 1
 
-[node name="Subtitle" type="Label" parent="UI/MenuBox/VBox" unique_id=1986281454]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.49803922, 0.8392157, 0.9490196, 1)
-theme_override_font_sizes/font_size = 48
-text = "THE NORTH POLE"
+[node name="Hat" type="TextureRect" parent="UI/MenuBox/Logo/Title" unique_id=1252327852]
+texture_filter = 2
+layout_mode = 0
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 46.0
+offset_bottom = 71.0
+rotation = -0.52
+pivot_offset = Vector2(35, 40)
+mouse_filter = 2
+texture = ExtResource("11_5dct7")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Tagline" type="Label" parent="UI/MenuBox/VBox" unique_id=1427123910]
+[node name="Subtitle" type="Label" parent="UI/MenuBox/Logo" unique_id=1674383461]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7882353, 0.85490197, 0.9411765, 1)
-theme_override_font_sizes/font_size = 32
+theme_type_variation = &"SubtitleLabel"
+text = "The North Pole"
+horizontal_alignment = 1
+
+[node name="Tagline" type="Label" parent="UI/MenuBox/Logo" unique_id=1972462048]
+layout_mode = 2
+theme_type_variation = &"GoldLabel"
+theme_override_colors/font_color = Color(1, 0.8392157, 0.30980393, 1)
 text = "Lost camel. Angry critters. Survive 5 minutes!"
+horizontal_alignment = 1
 
-[node name="BestLabel" type="Label" parent="UI/MenuBox/VBox" unique_id=1064256513]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9490196, 0.70980394, 0.23137255, 1)
-theme_override_font_sizes/font_size = 32
-text = "Best run: -"
+[node name="Buttons" type="VBoxContainer" parent="UI/MenuBox" unique_id=345149954]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 236.0
+offset_right = 200.0
+offset_bottom = 560.0
+mouse_filter = 2
+theme_override_constants/separation = 20
 
-[node name="PlayButton" type="Button" parent="UI/MenuBox/VBox" unique_id=243263061]
+[node name="PlayButton" type="Button" parent="UI/MenuBox/Buttons" unique_id=1425167304]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(360, 72)
+custom_minimum_size = Vector2(230, 66)
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 64
+size_flags_horizontal = 4
+theme_type_variation = &"BigPrimaryButton"
 text = "Play"
 
-[node name="MetaRow" type="HBoxContainer" parent="UI/MenuBox/VBox" unique_id=398245152]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="WorkshopButton" type="Button" parent="UI/MenuBox/VBox/MetaRow" unique_id=1569390646]
+[node name="WorkshopButton" type="Button" parent="UI/MenuBox/Buttons" unique_id=1667472243]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(170, 64)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+size_flags_horizontal = 4
 text = "Workshop"
 
-[node name="AchievementsButton" type="Button" parent="UI/MenuBox/VBox/MetaRow" unique_id=1327490336]
+[node name="AchievementsButton" type="Button" parent="UI/MenuBox/Buttons" unique_id=981074586]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(210, 64)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+size_flags_horizontal = 4
 text = "Achievements"
 
-[node name="StatsButton" type="Button" parent="UI/MenuBox/VBox/MetaRow" unique_id=670794758]
+[node name="CustomizeButton" type="Button" parent="UI/MenuBox/Buttons" unique_id=401483397]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 64)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Stats"
+size_flags_horizontal = 4
+text = "Customize Claus"
 
-[node name="CustomizeButton" type="Button" parent="UI/MenuBox/VBox" unique_id=930515435]
+[node name="Side" type="VBoxContainer" parent="UI/MenuBox" unique_id=1081821476]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -200.0
+offset_right = 240.0
+offset_bottom = -40.0
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="SettingsButton" type="Button" parent="UI/MenuBox/Side" unique_id=76017875]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(360, 56)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 32
-text = "Customize Camel"
-
-[node name="SettingsButton" type="Button" parent="UI/MenuBox/VBox" unique_id=1719320006]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(360, 56)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 32
+theme_type_variation = &"SmallButton"
 text = "Settings"
+alignment = 0
 
-[node name="QuitButton" type="Button" parent="UI/MenuBox/VBox" unique_id=328104069]
+[node name="StatsButton" type="Button" parent="UI/MenuBox/Side" unique_id=1130557174]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(360, 56)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 32
-text = "Quit"
+theme_type_variation = &"SmallButton"
+text = "Stats"
+alignment = 0
 
-[node name="Controls" type="Label" parent="UI/MenuBox/VBox" unique_id=204311141]
+[node name="QuitButton" type="Button" parent="UI/MenuBox/Side" unique_id=1211706527]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.56078434, 0.6627451, 0.81960785, 1)
-theme_override_font_sizes/font_size = 32
-text = "Move: WASD / arrows   Santa: Space   Pause: Esc / P"
+size_flags_horizontal = 0
+theme_type_variation = &"SmallButton"
+text = "Quit"
+alignment = 0
 
-[node name="Credits" type="Label" parent="UI" unique_id=1320516157]
-anchors_preset = 12
+[node name="Goals" type="VBoxContainer" parent="UI/MenuBox" unique_id=1159800469]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 32.0
+offset_top = 150.0
+offset_right = 332.0
+offset_bottom = 520.0
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="Best" type="PanelContainer" parent="UI/MenuBox" unique_id=469986306]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -322.0
+offset_top = 150.0
+offset_right = -32.0
+offset_bottom = 290.0
+mouse_filter = 2
+theme_type_variation = &"PlateTight"
+
+[node name="VBox" type="VBoxContainer" parent="UI/MenuBox/Best" unique_id=414427289]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Header" type="PanelContainer" parent="UI/MenuBox/Best/VBox" unique_id=383430542]
+layout_mode = 2
+theme_type_variation = &"HeaderBand"
+
+[node name="Title" type="Label" parent="UI/MenuBox/Best/VBox/Header" unique_id=1622679449]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Best run"
+
+[node name="Body" type="MarginContainer" parent="UI/MenuBox/Best/VBox" unique_id=957358966]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="BestLabel" type="Label" parent="UI/MenuBox/Best/VBox/Body" unique_id=89048227]
+unique_name_in_owner = true
+layout_mode = 2
+text = "-"
+
+[node name="Wallet" type="HBoxContainer" parent="UI/MenuBox" unique_id=850827360]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_top = 22.0
+offset_right = -32.0
+offset_bottom = 62.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="Coin" type="TextureRect" parent="UI/MenuBox/Wallet" unique_id=702273687]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_qilvv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Coins" type="Label" parent="UI/MenuBox/Wallet" unique_id=960113152]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+text = "0"
+
+[node name="Controls" type="Label" parent="UI/MenuBox" unique_id=1696971742]
+layout_mode = 0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -48.0
-offset_bottom = -12.0
-theme_override_font_sizes/font_size = 32
-text = "Made with Godot & Blender  -  font & sounds by Kenney (CC0)"
+offset_top = -40.0
+offset_bottom = -18.0
+theme_type_variation = &"SmallLabel"
+text = "Move: WASD / arrows   Santa: Space   Pause: Esc / P"
 horizontal_alignment = 1
+
+[node name="Postmark" type="TextureRect" parent="UI/MenuBox" unique_id=1353055050]
+modulate = Color(0.133, 0.188, 0.31, 0.5)
+layout_mode = 0
+offset_left = 808.0
+offset_top = 96.0
+offset_right = 958.0
+offset_bottom = 171.0
+rotation = -0.16
+mouse_filter = 2
+texture = ExtResource("13_jbte4")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SettingsCenter" type="CenterContainer" parent="UI" unique_id=2055798154]
 anchors_preset = 15
@@ -248,6 +364,20 @@ anchor_left = 0.05
 anchor_top = 0.06
 anchor_right = 0.05
 anchor_bottom = 0.06
+
+[node name="Credits" type="Label" parent="UI" unique_id=626648406]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -22.0
+offset_right = -14.0
+offset_bottom = -4.0
+theme_type_variation = &"SmallLabel"
+text = "Made with Godot & Blender  -  sounds: Kenney (CC0)  -  fonts: OFL"
+horizontal_alignment = 2
 
 [node name="Backdrop" parent="." unique_id=1188099731 instance=ExtResource("15_877pj")]
 

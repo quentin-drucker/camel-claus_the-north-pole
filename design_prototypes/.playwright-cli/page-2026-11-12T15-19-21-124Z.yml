@@ -1,0 +1,167 @@
+- generic [active] [ref=f45e1]:
+  - generic [ref=f45e2]:
+    - banner [ref=f45e3]:
+      - generic [ref=f45e4]:
+        - generic [ref=f45e5]: Camel Claus
+        - generic [ref=f45e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f45e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [ref=f45e8] [cursor=pointer]:
+          - generic [ref=f45e14]: A Workshop Tin
+          - generic [ref=f45e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f45e16] [cursor=pointer]:
+          - generic [ref=f45e22]: B Ugly Sweater
+          - generic [ref=f45e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f45e24] [cursor=pointer]:
+          - generic [ref=f45e30]: C Northern Lights
+          - generic [ref=f45e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [selected] [ref=f45e32] [cursor=pointer]:
+          - generic [ref=f45e38]: D Polar Expedition
+          - generic [ref=f45e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f45e40] [cursor=pointer]:
+          - generic [ref=f45e46]: E 8-Bit Holiday
+          - generic [ref=f45e47]: Retro holiday arcade
+      - generic [ref=f45e48]:
+        - button "Compare all five" [ref=f45e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f45e50] [cursor=pointer]
+        - link "Splash screens" [ref=f45e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f45e52]:
+      - tab "Main menu" [ref=f45e53] [cursor=pointer]
+      - tab "Level up" [ref=f45e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f45e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f45e56] [cursor=pointer]
+      - tab "Settings" [ref=f45e57] [cursor=pointer]
+      - tab "Achievements" [ref=f45e58] [cursor=pointer]
+      - tab "Customize" [ref=f45e59] [cursor=pointer]
+      - tab "Results" [ref=f45e60] [cursor=pointer]
+      - tab "Components" [selected] [ref=f45e61] [cursor=pointer]
+  - main [ref=f45e62]:
+    - generic [ref=f45e69]:
+      - generic [ref=f45e70]:
+        - heading "Buttons" [level=3] [ref=f45e72]
+        - generic [ref=f45e73]:
+          - generic [ref=f45e74]:
+            - generic [ref=f45e75]:
+              - button "Play" [ref=f45e76] [cursor=pointer]
+              - generic [ref=f45e78]: Idle
+            - generic [ref=f45e79]:
+              - button "Play" [ref=f45e80] [cursor=pointer]
+              - generic [ref=f45e82]: Hover
+            - generic [ref=f45e83]:
+              - button "Play" [ref=f45e84] [cursor=pointer]
+              - generic [ref=f45e86]: Pressed
+            - generic [ref=f45e87]:
+              - button "Play" [disabled] [ref=f45e88]
+              - generic [ref=f45e90]: Disabled
+          - generic [ref=f45e91]:
+            - generic [ref=f45e92]:
+              - button "Settings" [ref=f45e93] [cursor=pointer]
+              - generic [ref=f45e95]: Idle
+            - generic [ref=f45e96]:
+              - button "Settings" [ref=f45e97] [cursor=pointer]
+              - generic [ref=f45e99]: Hover
+            - generic [ref=f45e100]:
+              - button "Settings" [ref=f45e101] [cursor=pointer]
+              - generic [ref=f45e103]: Pressed
+            - generic [ref=f45e104]:
+              - button "Settings" [disabled] [ref=f45e105]
+              - generic [ref=f45e107]: Disabled
+          - generic [ref=f45e108]:
+            - button "2 Reroll R" [ref=f45e109] [cursor=pointer]:
+              - generic [ref=f45e110]: "2"
+              - generic [ref=f45e111]: Reroll
+              - generic [ref=f45e112]: R
+            - button "1 Banish B" [ref=f45e113] [cursor=pointer]:
+              - generic [ref=f45e114]: "1"
+              - generic [ref=f45e115]: Banish
+              - generic [ref=f45e116]: B
+            - button "Reset progress" [ref=f45e117] [cursor=pointer]
+            - button "Try me" [ref=f45e119] [cursor=pointer]
+      - generic [ref=f45e121]:
+        - heading "Rarity and tiles" [level=3] [ref=f45e123]
+        - generic [ref=f45e124]:
+          - generic [ref=f45e125]: Common
+          - generic [ref=f45e128]: Rare
+          - generic [ref=f45e131]: Epic
+          - generic [ref=f45e134]: Evolution
+          - generic [ref=f45e137]: Locked
+          - generic [ref=f45e140]:
+            - generic [ref=f45e141]: Lv 4
+            - generic [ref=f45e143]: With level
+          - generic [ref=f45e144]:
+            - generic [ref=f45e145]: ×2
+            - generic [ref=f45e147]: Stacked
+      - generic [ref=f45e148]:
+        - heading "Meters" [level=3] [ref=f45e150]
+        - generic [ref=f45e151]:
+          - generic [ref=f45e152]:
+            - generic [ref=f45e153]: Health
+            - generic [ref=f45e154]: 118 / 150
+          - generic [ref=f45e157]: Experience
+          - generic [ref=f45e161]: Santa's Sleigh
+          - generic [ref=f45e165]:
+            - generic [ref=f45e166]: Boss
+            - generic [ref=f45e167]: 3,360 / 4,800
+      - generic [ref=f45e170]:
+        - heading "Feedback" [level=3] [ref=f45e172]
+        - generic [ref=f45e173]:
+          - generic [ref=f45e174]:
+            - generic [ref=f45e175]:
+              - generic [ref=f45e176]: Achievement unlocked
+              - generic [ref=f45e177]: Blizzard of Bonks
+            - generic [ref=f45e178]: "+60"
+          - generic: The Grumpy Yeti approaches!
+          - generic [ref=f45e180]:
+            - generic [ref=f45e181]: Christmas Cracker ×3
+            - generic [ref=f45e182]: "Hits have a 25% chance to go BANG: 60% damage to enemies nearby"
+          - generic [ref=f45e183]:
+            - generic: "14"
+            - generic: "38"
+            - generic: "+30"
+            - generic: Frozen
+          - generic [ref=f45e184]:
+            - generic [ref=f45e185]: R
+            - generic [ref=f45e186]: B
+            - generic [ref=f45e187]: Space
+            - generic [ref=f45e188]: Esc
+    - generic [ref=f45e189]:
+      - generic [ref=f45e190]: Try it
+      - generic [ref=f45e191]: Hover tiles for tooltips; click “Try me”
+      - generic [ref=f45e192]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f45e193]:
+      - generic [ref=f45e194]:
+        - heading "D. Polar Expedition" [level=2] [ref=f45e195]
+        - paragraph [ref=f45e196]: "Claus is lost, so the UI is his field kit: crisp white survey sheets, navy ink, candy-cane signal tape, slanted buttons and big confident numbers."
+        - generic [ref=f45e197]:
+          - text: "Pairs with splash D:"
+          - link "open the matching intro" [ref=f45e198] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=d
+      - generic [ref=f45e199]:
+        - generic [ref=f45e200]:
+          - generic "#F4F8FF" [ref=f45e201]
+          - generic "#22304F" [ref=f45e203]
+          - generic "#D9343F" [ref=f45e205]
+          - generic "#8FA9D1" [ref=f45e207]
+          - generic "#F2B53B" [ref=f45e209]
+          - generic "#141D33" [ref=f45e211]
+        - generic [ref=f45e213]:
+          - generic [ref=f45e214]:
+            - text: Camel Claus
+            - generic [ref=f45e215]: Barlow Condensed, display
+          - generic [ref=f45e216]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f45e217]: Barlow, UI text
+      - generic [ref=f45e218]:
+        - generic [ref=f45e219]:
+          - heading "Strengths" [level=3] [ref=f45e220]
+          - list [ref=f45e221]:
+            - listitem [ref=f45e222]: The sharpest hierarchy and densest information
+            - listitem [ref=f45e223]: Scales cleanly to any resolution (no pixel fonts)
+            - listitem [ref=f45e224]: "Its own story: the lost-explorer framing"
+        - generic [ref=f45e225]:
+          - heading "Watch out for" [level=3] [ref=f45e226]
+          - list [ref=f45e227]:
+            - listitem [ref=f45e228]: White panels are bright over the snow and need dark HUD variants
+            - listitem [ref=f45e229]: The least overtly Christmassy
+    - group [ref=f45e230]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f45e231] [cursor=pointer]

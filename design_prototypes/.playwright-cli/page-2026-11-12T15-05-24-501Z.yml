@@ -1,0 +1,135 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]: Camel Claus
+        - generic [ref=e6]: UI direction prototypes
+      - tablist "Design concept" [ref=e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [selected] [ref=e8] [cursor=pointer]:
+          - generic [ref=e14]: A Workshop Tin
+          - generic [ref=e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=e16] [cursor=pointer]:
+          - generic [ref=e22]: B Ugly Sweater
+          - generic [ref=e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=e24] [cursor=pointer]:
+          - generic [ref=e30]: C Northern Lights
+          - generic [ref=e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=e32] [cursor=pointer]:
+          - generic [ref=e38]: D Polar Expedition
+          - generic [ref=e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=e40] [cursor=pointer]:
+          - generic [ref=e46]: E 8-Bit Holiday
+          - generic [ref=e47]: Retro holiday arcade
+      - generic [ref=e48]:
+        - button "Compare all five" [ref=e49] [cursor=pointer]
+        - button "Reduce motion" [ref=e50] [cursor=pointer]
+        - link "Splash screens" [ref=e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=e52]:
+      - tab "Main menu" [selected] [ref=e53] [cursor=pointer]
+      - tab "Level up" [ref=e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=e55] [cursor=pointer]
+      - tab "Pause + build" [ref=e56] [cursor=pointer]
+      - tab "Settings" [ref=e57] [cursor=pointer]
+      - tab "Achievements" [ref=e58] [cursor=pointer]
+      - tab "Customize" [ref=e59] [cursor=pointer]
+      - tab "Results" [ref=e60] [cursor=pointer]
+      - tab "Components" [ref=e61] [cursor=pointer]
+  - main [ref=e62]:
+    - generic [ref=e67]:
+      - heading "Camel Claus The North Pole" [level=1] [ref=e69]:
+        - generic [ref=e70]: Camel Claus
+        - generic [ref=e71]: The North Pole
+      - paragraph [ref=e72] [cursor=pointer]: Lost camel. Angry critters. Survive 5 minutes!
+      - navigation [ref=e73]:
+        - button "Play" [ref=e74] [cursor=pointer]
+        - button "Workshop 3" [ref=e76] [cursor=pointer]:
+          - generic [ref=e77]: Workshop
+          - generic [ref=e78]: "3"
+        - button "Achievements" [ref=e79] [cursor=pointer]
+        - button "Customize Claus" [ref=e81] [cursor=pointer]
+      - navigation [ref=e83]:
+        - button "Settings" [ref=e84] [cursor=pointer]
+        - button "Credits" [ref=e86] [cursor=pointer]
+        - button "Quit" [ref=e88] [cursor=pointer]
+      - generic [ref=e91]:
+        - generic [ref=e94]:
+          - generic [ref=e95]: Snow Survivor
+          - generic [ref=e96]: Survive the full 5 minutes
+          - generic [ref=e97]: 0 / 1
+        - generic [ref=e101]:
+          - generic [ref=e102]: Not a Scratch
+          - generic [ref=e103]: Survive 5 minutes without taking damage
+          - generic [ref=e104]: 0 / 1
+        - generic [ref=e108]:
+          - generic [ref=e109]: Endless Night
+          - generic [ref=e110]: Keep going in Endless mode until 8:00
+          - generic [ref=e111]: 0:00 / 8:00
+      - generic [ref=e113]:
+        - heading "Best runs" [level=3] [ref=e115]
+        - table [ref=e117]:
+          - rowgroup [ref=e118]:
+            - row [ref=e119]:
+              - cell "1" [ref=e120]
+              - cell "5:00" [ref=e121]
+              - cell "Lv 14" [ref=e122]
+              - cell "1,042 bonks" [ref=e123]
+            - row [ref=e124]:
+              - cell "2" [ref=e125]
+              - cell "4:12" [ref=e126]
+              - cell "Lv 11" [ref=e127]
+              - cell "688 bonks" [ref=e128]
+            - row [ref=e129]:
+              - cell "3" [ref=e130]
+              - cell "3:05" [ref=e131]
+              - cell "Lv 9" [ref=e132]
+              - cell "371 bonks" [ref=e133]
+      - generic [ref=e134]: 1,240
+      - generic [ref=e137]:
+        - generic [ref=e138]: WASDMove
+        - generic [ref=e139]: SpaceCall Santa
+        - generic [ref=e140]: EscPause
+      - generic [ref=e141]: v1.1
+    - generic [ref=e142]:
+      - generic [ref=e143]: Try it
+      - generic [ref=e144]: Click the tagline for another joke
+      - button "Play" [ref=e145] [cursor=pointer]
+      - button "Customize" [ref=e146] [cursor=pointer]
+      - generic [ref=e147]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=e148]:
+      - generic [ref=e149]:
+        - heading "A. Workshop Tin" [level=2] [ref=e150]
+        - paragraph [ref=e151]: "The closest to Megabonk: riveted enamel plates from Santa's toy workshop, slab buttons with a pressable lip, and corner brackets that jump to whatever is focused."
+        - generic [ref=e152]:
+          - text: "Pairs with splash A:"
+          - link "open the matching intro" [ref=e153] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=a
+      - generic [ref=e154]:
+        - generic [ref=e155]:
+          - generic "#1A2438" [ref=e156]
+          - generic "#22304F" [ref=e158]
+          - generic "#1F5A43" [ref=e160]
+          - generic "#F2B53B" [ref=e162]
+          - generic "#F4F8FF" [ref=e164]
+          - generic "#D9343F" [ref=e166]
+        - generic [ref=e168]:
+          - generic [ref=e169]:
+            - text: Camel Claus
+            - generic [ref=e170]: Bowlby One, logo
+          - generic [ref=e171]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=e172]: Jacquarda Bastarda 9, UI text
+      - generic [ref=e173]:
+        - generic [ref=e174]:
+          - heading "Strengths" [level=3] [ref=e175]
+          - list [ref=e176]:
+            - listitem [ref=e177]: Instantly readable at a glance; the most proven layout for this genre
+            - listitem [ref=e178]: Slab buttons and brackets feel great with mouse and gamepad
+            - listitem [ref=e179]: "Cheapest to build in Godot: one 9-slice StyleBox plus a bracket node"
+        - generic [ref=e180]:
+          - heading "Watch out for" [level=3] [ref=e181]
+          - list [ref=e182]:
+            - listitem [ref=e183]: The closest to Megabonk; needs its own logo and motifs to avoid feeling borrowed
+            - listitem [ref=e184]: Blackletter pixel text needs 18 px or more to stay legible
+    - group [ref=e185]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=e186] [cursor=pointer]

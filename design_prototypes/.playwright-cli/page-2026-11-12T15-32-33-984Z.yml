@@ -1,0 +1,169 @@
+- generic [active] [ref=f93e1]:
+  - generic [ref=f93e2]:
+    - banner [ref=f93e3]:
+      - generic [ref=f93e4]:
+        - generic [ref=f93e5]: Camel Claus
+        - generic [ref=f93e6]: Splash and intro prototypes
+      - tablist "Splash concept" [ref=f93e7]:
+        - tab "A Bonk! with Workshop Tin" [ref=f93e8] [cursor=pointer]:
+          - generic [ref=f93e14]: A Bonk!
+          - generic [ref=f93e15]: with Workshop Tin
+        - tab "B Knit One, Purl Claus with Ugly Sweater" [ref=f93e16] [cursor=pointer]:
+          - generic [ref=f93e22]: B Knit One, Purl Claus
+          - generic [ref=f93e23]: with Ugly Sweater
+        - tab "C Snow Globe with Northern Lights" [ref=f93e24] [cursor=pointer]:
+          - generic [ref=f93e30]: C Snow Globe
+          - generic [ref=f93e31]: with Northern Lights
+        - tab "D Footprints with Polar Expedition" [selected] [ref=f93e32] [cursor=pointer]:
+          - generic [ref=f93e38]: D Footprints
+          - generic [ref=f93e39]: with Polar Expedition
+        - tab "E Sleigh Flyby with 8-Bit Holiday" [ref=f93e40] [cursor=pointer]:
+          - generic [ref=f93e46]: E Sleigh Flyby
+          - generic [ref=f93e47]: with 8-Bit Holiday
+      - link "UI showcase" [ref=f93e49] [cursor=pointer]:
+        - /url: camel_claus_ui_showcase.html
+    - generic [ref=f93e50]:
+      - button "Replay from page load" [ref=f93e51] [cursor=pointer]
+      - button "Replay intro only" [ref=f93e52] [cursor=pointer]
+      - button "Show main menu" [ref=f93e53] [cursor=pointer]
+      - generic [ref=f93e54] [cursor=pointer]:
+        - checkbox "Include web loading" [checked] [ref=f93e55]
+        - text: Include web loading
+      - generic [ref=f93e56] [cursor=pointer]:
+        - checkbox "Slow connection (9 s)" [ref=f93e57]
+        - text: Slow connection (9 s)
+      - generic [ref=f93e58] [cursor=pointer]:
+        - checkbox "Reduce motion" [ref=f93e59]
+        - text: Reduce motion
+  - main [ref=f93e60]:
+    - generic [ref=f93e63] [cursor=pointer]:
+      - generic [ref=f93e64]:
+        - generic [ref=f93e65]: Locating Claus
+        - generic [ref=f93e66]: 66.84°N
+        - generic [ref=f93e68]:
+          - generic [ref=f93e69]: 0.5 / 39.5 MB
+          - generic [ref=f93e70]: 1%
+      - generic: Click or press any key to skip
+      - generic: "1. Web page: HTML/JS loader while the .wasm and .pck download"
+    - generic [ref=f93e71]:
+      - generic [ref=f93e72]:
+        - generic [ref=f93e73]: 1. Web page loading
+        - text: HTML/JS loader, before Godot exists
+      - generic [ref=f93e75]:
+        - generic [ref=f93e76]: 2. Engine start
+        - text: Boot splash = bg colour
+      - generic [ref=f93e77]:
+        - generic [ref=f93e78]: 3. Intro scene
+        - text: Godot AnimationPlayer, skippable
+      - generic [ref=f93e79]:
+        - generic [ref=f93e80]: 4. Main menu
+        - text: Paired UI concept
+    - generic [ref=f93e81]:
+      - generic [ref=f93e82]:
+        - heading "D. Footprints" [level=2] [ref=f93e83]
+        - paragraph [ref=f93e84]: Loading counts up the latitude, from the Arctic Circle to 90°N. Then hoofprints track across the snow to Claus, a map pin drops on him ('You are here') and the title lands like a field-guide cover.
+        - paragraph [ref=f93e85]:
+          - text: "Designed with UI concept D, Polar Expedition:"
+          - link "open it" [ref=f93e86] [cursor=pointer]:
+            - /url: camel_claus_ui_showcase.html?c=d&s=menu
+          - text: . The intro ends on that concept's live main menu.
+      - generic [ref=f93e87]:
+        - heading "Beats (seconds)" [level=3] [ref=f93e88]
+        - list [ref=f93e89]:
+          - listitem [ref=f93e90]: "webLatitude counts up with real progress: 66.56°N (Arctic Circle) to 90.00°N"
+          - listitem [ref=f93e91]: 0.217 hoofprints stamp across the snow along a curve (like footprints.gd)
+          - listitem [ref=f93e92]: 1.75Claus pops in at the end of the trail
+          - listitem [ref=f93e93]: 2.0A red map pin drops; "You are here" tag snaps in
+          - listitem [ref=f93e94]: 2.35Title slams in from the left, then signal tape and coordinates
+          - listitem [ref=f93e95]: outA navy and candy-cane swipe crosses to the menu
+      - generic [ref=f93e96]:
+        - heading "Building it in Godot" [level=3] [ref=f93e97]
+        - list [ref=f93e98]:
+          - listitem [ref=f93e99]: The prints reuse the existing footprint decal, spawned along a Curve2D (or Path3D) by a method track, one per 0.085 s.
+          - listitem [ref=f93e100]: The paper background is one flat colour plus a contour-line shader, which makes it very cheap.
+          - listitem [ref=f93e101]: The HTML loader shows the same latitude counter, so the intro picks up mid-sentence.
+    - generic [ref=f93e102]:
+      - heading "Recommended startup chain for the web build" [level=2] [ref=f93e103]
+      - generic [ref=f93e104]:
+        - generic [ref=f93e105]:
+          - generic [ref=f93e106]: 0–3 s (depends on network)
+          - generic [ref=f93e107]: Custom HTML shell
+          - text: Shown instantly from
+          - code [ref=f93e108]: index.html
+          - text: . It shows the concept's loader, driven by Godot's real
+          - code [ref=f93e109]: onProgress(current, total)
+          - text: . Only CSS and a few KB of inline SVG/PNG, so it appears in the first paint. Its background colour is the boot colour.
+        - generic [ref=f93e110]:
+          - generic [ref=f93e111]: ~0.3–0.6 s
+          - generic [ref=f93e112]: Engine boot
+          - code [ref=f93e113]: boot_splash/show_image = false
+          - text: and
+          - code [ref=f93e114]: boot_splash/bg_color
+          - text: = the same colour. The canvas fades in over the loader, so you never see a white or black flash.
+        - generic [ref=f93e115]:
+          - generic [ref=f93e116]: 3–4.5 s, skippable
+          - generic [ref=f93e117]: splash.tscn
+          - text: The main scene. AnimationPlayer intro whose first frame is the loader's last frame. It loads the menu with
+          - code [ref=f93e118]: ResourceLoader.load_threaded_request
+          - text: while it plays (sync fallback on web).
+        - generic [ref=f93e119]:
+          - generic [ref=f93e120]: then
+          - generic [ref=f93e121]: main_menu.tscn
+          - text: Reached through the existing
+          - code [ref=f93e122]: Transition
+          - text: autoload, using the concept's own wipe (shutter, curtain, dive, swipe, iris).
+      - generic [ref=f93e123]:
+        - generic [ref=f93e124]:
+          - heading "Why a combination, not one or the other" [level=3] [ref=f93e125]
+          - list [ref=f93e126]:
+            - listitem [ref=f93e127]:
+              - text: "The web loader is unavoidable:"
+              - code [ref=f93e128]: index.wasm
+              - text: is 39.5 MB, and until it downloads and compiles nothing from Godot can draw. Godot's default shell only shows a bare progress bar. A custom shell (
+              - code [ref=f93e129]: html/custom_html_shell
+              - text: ) gives the first 1–10 s a designed look at almost no cost.
+            - listitem [ref=f93e130]: "The Godot intro is where character animation belongs: it can use the real models, the menu diorama and the game's own shaders, and it's the same on desktop builds."
+            - listitem [ref=f93e131]:
+              - text: "The demo's advice holds here: turn off the boot-splash image, match"
+              - code [ref=f93e132]: bg_color
+              - text: to the first frame, make
+              - code [ref=f93e133]: splash.tscn
+              - text: the main scene, use AnimationPlayer's
+              - code [ref=f93e134]: animation_finished
+              - text: to move on, and
+              - generic [ref=f93e135]:
+                - text: don't
+                - code [ref=f93e136]: preload()
+                - text: the menu
+              - text: in the splash (that would block its first frame).
+            - listitem [ref=f93e137]:
+              - text: Keep the intro under 4.5 s, skippable on any key, click or tap. Show it in full on first launch only; on later visits play a 1-second logo sting (save a flag in
+              - code [ref=f93e138]: Profile
+              - text: ).
+        - generic [ref=f93e139]:
+          - heading "Not seeing it while developing" [level=3] [ref=f93e140]
+          - list [ref=f93e141]:
+            - listitem [ref=f93e142]:
+              - text: In
+              - code [ref=f93e143]: splash.gd
+              - text: ":"
+              - code [ref=f93e144]: "if not OS.has_feature(\"template\"): get_tree().change_scene_to_file.call_deferred(MENU)"
+              - text: . The
+              - code [ref=f93e145]: template
+              - text: feature is true only in exported builds, so F5 in the editor goes straight to the menu while every export shows the intro.
+            - listitem [ref=f93e146]:
+              - text: Add a project setting such as
+              - code [ref=f93e147]: camel_claus/always_show_intro
+              - text: to force it on when you're working on the intro itself (or use F6 on
+              - code [ref=f93e148]: splash.tscn
+              - text: ", which always plays it)."
+            - listitem [ref=f93e149]:
+              - text: Tests and the balance bot already load
+              - code [ref=f93e150]: main.tscn
+              - text: directly, so they're unaffected.
+            - listitem [ref=f93e151]:
+              - text: "Reduced motion: honour a Settings toggle and, on web,"
+              - code [ref=f93e152]: prefers-reduced-motion
+              - text: (read in the HTML shell and passed to Godot via
+              - code [ref=f93e153]: JavaScriptBridge
+              - text: ). It shows the final frame for 1 s, then crossfades.

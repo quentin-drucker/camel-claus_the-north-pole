@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://bywoyceodqb4"]
+
+[ext_resource type="Texture2D" uid="uid://dwj5d1i7gttda" path="res://assets/ui/tin/knit_red.png" id="1_poid3"]
+[ext_resource type="Script" uid="uid://bdobuxjdau5ob" path="res://scenes/ui/splash.gd" id="1_rtpub"]
+[ext_resource type="Texture2D" uid="uid://uy5vyudiyidg" path="res://assets/ui/tin/fair_isle_big.png" id="2_rtpub"]
+[ext_resource type="Texture2D" uid="uid://cr457e11bqbvc" path="res://assets/ui/tin/yarn_ball.png" id="3_c8odm"]
+[ext_resource type="Texture2D" uid="uid://bapjvjy2ttql5" path="res://assets/ui/claus_3q.png" id="4_7hs7m"]
+[ext_resource type="Texture2D" uid="uid://de12flotymirs" path="res://assets/ui/hat_santa.png" id="5_5hyso"]
+
+[node name="Splash" type="Control" unique_id=241963464]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rtpub")
+
+[node name="Knit" type="TextureRect" parent="." unique_id=76132731]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("1_poid3")
+stretch_mode = 1
+
+[node name="BandTop" type="TextureRect" parent="." unique_id=962679441]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 26.0
+offset_bottom = 56.0
+mouse_filter = 2
+texture = ExtResource("2_rtpub")
+stretch_mode = 1
+
+[node name="BandBottom" type="TextureRect" parent="." unique_id=1991418259]
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+offset_bottom = -26.0
+mouse_filter = 2
+texture = ExtResource("2_rtpub")
+stretch_mode = 1
+
+[node name="LogoClip" type="Control" parent="." unique_id=1525620223]
+unique_name_in_owner = true
+clip_contents = true
+anchors_preset = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -640.0
+offset_top = 92.0
+offset_right = 640.0
+offset_bottom = 92.0
+mouse_filter = 2
+
+[node name="Logo" type="Label" parent="LogoClip" unique_id=2121842180]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 160.0
+theme_type_variation = &"LogoBigLabel"
+text = "Camel Claus"
+horizontal_alignment = 1
+
+[node name="Needles" type="Control" parent="." unique_id=1096476456]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -270.0
+offset_top = 92.0
+offset_right = 270.0
+offset_bottom = 108.0
+mouse_filter = 2
+
+[node name="NeedleA" type="ColorRect" parent="Needles" unique_id=783630909]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 540.0
+offset_bottom = 8.0
+rotation = 0.1
+pivot_offset = Vector2(270, 4)
+mouse_filter = 2
+color = Color(0.8509804, 0.64705884, 0.41568628, 1)
+
+[node name="NeedleB" type="ColorRect" parent="Needles" unique_id=2023185436]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 6.0
+offset_right = 540.0
+offset_bottom = 14.0
+rotation = -0.1
+pivot_offset = Vector2(270, 4)
+mouse_filter = 2
+color = Color(0.7882353, 0.56078434, 0.33333334, 1)
+
+[node name="Plate" type="PanelContainer" parent="." unique_id=903764947]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.0
+offset_top = 262.0
+offset_right = 170.0
+offset_bottom = 326.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_type_variation = &"PinePlate"
+
+[node name="Subtitle" type="Label" parent="Plate" unique_id=1979761704]
+layout_mode = 2
+theme_type_variation = &"SubtitleLabel"
+text = "The North Pole"
+horizontal_alignment = 1
+
+[node name="YarnLine" type="ColorRect" parent="." unique_id=1078494616]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -104.0
+offset_bottom = -101.0
+mouse_filter = 2
+color = Color(0.957, 0.902, 0.831, 0.8)
+
+[node name="YarnBall" type="TextureRect" parent="." unique_id=842905263]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -136.0
+offset_right = -56.0
+offset_bottom = -72.0
+pivot_offset = Vector2(32, 32)
+mouse_filter = 2
+texture = ExtResource("3_c8odm")
+
+[node name="Claus" type="TextureRect" parent="." unique_id=1664319226]
+unique_name_in_owner = true
+texture_filter = 2
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -390.0
+offset_right = 130.0
+offset_bottom = -70.0
+pivot_offset = Vector2(130, 320)
+mouse_filter = 2
+texture = ExtResource("4_7hs7m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Hat" type="TextureRect" parent="." unique_id=395444201]
+unique_name_in_owner = true
+texture_filter = 2
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -432.0
+offset_top = 60.0
+offset_right = -332.0
+offset_bottom = 172.0
+rotation = -0.35
+pivot_offset = Vector2(50, 100)
+mouse_filter = 2
+texture = ExtResource("5_5hyso")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Press" type="Label" parent="." unique_id=1251282110]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_bottom = -4.0
+theme_type_variation = &"HudSmall"
+text = "Press any key"
+horizontal_alignment = 1

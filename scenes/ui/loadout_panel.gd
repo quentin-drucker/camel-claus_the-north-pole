@@ -26,12 +26,11 @@ func _ready() -> void:
 	add_child(column)
 	var title := Label.new()
 	title.text = "Pick your loadout"
-	title.add_theme_font_size_override(&"font_size", 64)
+	title.theme_type_variation = &"TitleLabel"
 	title.add_theme_color_override(&"font_color", Color("F2B53B"))
 	column.add_child(title)
 	var help := Label.new()
 	help.text = "Up to 3 weapons. You start with the gold one; the rest come from level-ups."
-	help.add_theme_font_size_override(&"font_size", 32)
 	help.add_theme_color_override(&"font_color", Color("8FA9D1"))
 	column.add_child(help)
 
@@ -50,7 +49,6 @@ func _ready() -> void:
 	_details = RichTextLabel.new()
 	_details.bbcode_enabled = true
 	_details.custom_minimum_size = Vector2(0, 150)
-	_details.add_theme_font_size_override(&"normal_font_size", 32)
 	_details.scroll_active = false
 	column.add_child(_details)
 
@@ -59,7 +57,7 @@ func _ready() -> void:
 	column.add_child(slot_row)
 	var slots_label := Label.new()
 	slots_label.text = "Run:"
-	slots_label.add_theme_font_size_override(&"font_size", 48)
+	slots_label.theme_type_variation = &"HeaderLabel"
 	slot_row.add_child(slots_label)
 	for i in Profile.LOADOUT_SIZE:
 		var slot := _icon_button(null, "", SLOT_SIZE)
@@ -74,12 +72,13 @@ func _ready() -> void:
 	column.add_child(buttons)
 	var back := Button.new()
 	back.text = "Back"
-	back.custom_minimum_size = Vector2(200, 64)
+	back.custom_minimum_size = Vector2(150, 0)
 	back.pressed.connect(close)
 	buttons.add_child(back)
 	_start_button = Button.new()
 	_start_button.text = "Start run"
-	_start_button.custom_minimum_size = Vector2(260, 64)
+	_start_button.theme_type_variation = &"PrimaryButton"
+	_start_button.custom_minimum_size = Vector2(220, 0)
 	_start_button.pressed.connect(_start)
 	buttons.add_child(_start_button)
 
@@ -105,7 +104,6 @@ func _icon_button(icon: Texture2D, text: String, size: Vector2) -> Button:
 	button.text = text
 	button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
-	button.add_theme_font_size_override(&"font_size", 32)
 	button.add_theme_constant_override(&"icon_max_width", 56)
 	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART  # long names take two lines
 	return button
@@ -147,16 +145,14 @@ func _refresh() -> void:
 		var slot: Button = _slots[i]
 		var id: String = _picked[i] if i < _picked.size() else ""
 		slot.icon = Describe.icon_for(Profile.weapon_card(id)) if id else null
-		slot.text = ("START" if id == _starter else "level-ups") if id else "(empty)"
+		slot.text = ("Start" if id == _starter else "Level-ups") if id else "(empty)"
 		slot.disabled = id == ""
 		_border(slot, Color("F2B53B") if id != "" and id == _starter else Color("4E6A9E"), 4 if id == _starter else 2)
 
 
-func _border(button: Button, color: Color, width: int) -> void:
-	var style: StyleBoxFlat = ThemeDB.get_project_theme().get_stylebox(&"normal", &"Button").duplicate()
-	style.border_color = color
-	style.set_border_width_all(width)
-	button.add_theme_stylebox_override(&"normal", style)
+## Card plate by role (style guide): gold = starter, ice = picked, plain = not picked.
+func _border(button: Button, color: Color, _width: int) -> void:
+	button.theme_type_variation = &"CardEvo" if color == Color("F2B53B") else (&"CardRare" if color == Color("7FD6F2") else &"CardCommon")
 
 
 func _show_details(card: UpgradeData) -> void:

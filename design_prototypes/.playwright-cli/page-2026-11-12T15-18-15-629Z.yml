@@ -1,0 +1,204 @@
+- generic [active] [ref=f24e1]:
+  - generic [ref=f24e2]:
+    - banner [ref=f24e3]:
+      - generic [ref=f24e4]:
+        - generic [ref=f24e5]: Camel Claus
+        - generic [ref=f24e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f24e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [selected] [ref=f24e8] [cursor=pointer]:
+          - generic [ref=f24e14]: A Workshop Tin
+          - generic [ref=f24e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f24e16] [cursor=pointer]:
+          - generic [ref=f24e22]: B Ugly Sweater
+          - generic [ref=f24e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f24e24] [cursor=pointer]:
+          - generic [ref=f24e30]: C Northern Lights
+          - generic [ref=f24e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f24e32] [cursor=pointer]:
+          - generic [ref=f24e38]: D Polar Expedition
+          - generic [ref=f24e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f24e40] [cursor=pointer]:
+          - generic [ref=f24e46]: E 8-Bit Holiday
+          - generic [ref=f24e47]: Retro holiday arcade
+      - generic [ref=f24e48]:
+        - button "Compare all five" [ref=f24e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f24e50] [cursor=pointer]
+        - link "Splash screens" [ref=f24e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f24e52]:
+      - tab "Main menu" [ref=f24e53] [cursor=pointer]
+      - tab "Level up" [ref=f24e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f24e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f24e56] [cursor=pointer]
+      - tab "Settings" [ref=f24e57] [cursor=pointer]
+      - tab "Achievements" [selected] [ref=f24e58] [cursor=pointer]
+      - tab "Customize" [ref=f24e59] [cursor=pointer]
+      - tab "Results" [ref=f24e60] [cursor=pointer]
+      - tab "Components" [ref=f24e61] [cursor=pointer]
+  - main [ref=f24e62]:
+    - generic [ref=f24e69]:
+      - generic [ref=f24e70]:
+        - heading "Achievements" [level=2] [ref=f24e71]
+        - generic [ref=f24e72]: 6 / 18
+        - generic [ref=f24e75]: +1,240 earned
+        - button "Close" [ref=f24e77] [cursor=pointer]
+      - tablist [ref=f24e80]:
+        - tab "All 6 / 18" [selected] [ref=f24e81] [cursor=pointer]:
+          - generic [ref=f24e82]: All
+          - generic [ref=f24e83]: 6 / 18
+        - tab "Survival 2 / 5" [ref=f24e86] [cursor=pointer]:
+          - generic [ref=f24e87]: Survival
+          - generic [ref=f24e88]: 2 / 5
+        - tab "Bonks 2 / 5" [ref=f24e91] [cursor=pointer]:
+          - generic [ref=f24e92]: Bonks
+          - generic [ref=f24e93]: 2 / 5
+        - tab "Santa 1 / 4" [ref=f24e96] [cursor=pointer]:
+          - generic [ref=f24e97]: Santa
+          - generic [ref=f24e98]: 1 / 4
+        - tab "Collection 1 / 4" [ref=f24e101] [cursor=pointer]:
+          - generic [ref=f24e102]: Collection
+          - generic [ref=f24e103]: 1 / 4
+      - generic [ref=f24e106]:
+        - generic [ref=f24e107]:
+          - generic [ref=f24e109]:
+            - generic [ref=f24e110]: Snow Day
+            - generic [ref=f24e111]: Finish your first run
+          - generic [ref=f24e112]: 1 / 1
+        - generic [ref=f24e119]:
+          - generic [ref=f24e121]:
+            - generic [ref=f24e122]: Sweet Tooth
+            - generic [ref=f24e123]: Survive 3 minutes in one run
+          - generic [ref=f24e124]: 3:00 / 3:00
+        - generic [ref=f24e131]:
+          - generic [ref=f24e133]:
+            - generic [ref=f24e134]: Snowball Fight
+            - generic [ref=f24e135]: Bonk 100 critters in one run
+          - generic [ref=f24e136]: 100 / 100
+        - generic [ref=f24e143]:
+          - generic [ref=f24e145]:
+            - generic [ref=f24e146]: Crown Collector
+            - generic [ref=f24e147]: Defeat a crowned elite
+          - generic [ref=f24e148]: 1 / 1
+        - generic [ref=f24e155]:
+          - generic [ref=f24e157]:
+            - generic [ref=f24e158]: Evolution!
+            - generic [ref=f24e159]: Evolve a weapon with Santa's present
+          - generic [ref=f24e160]: 1 / 1
+        - generic [ref=f24e167]:
+          - generic [ref=f24e169]:
+            - generic [ref=f24e170]: Hands Full
+            - generic [ref=f24e171]: Carry 3 weapons in one run
+          - generic [ref=f24e172]: 3 / 3
+        - generic [ref=f24e179]:
+          - generic [ref=f24e181]:
+            - generic [ref=f24e182]: Snow Survivor
+            - generic [ref=f24e183]: Survive the full 5 minutes
+          - generic [ref=f24e184]: 0 / 1
+          - generic [ref=f24e187]: "60"
+        - generic [ref=f24e190]:
+          - generic [ref=f24e192]:
+            - generic [ref=f24e193]: Not a Scratch
+            - generic [ref=f24e194]: Survive 5 minutes without taking damage
+          - generic [ref=f24e195]: 0 / 1
+          - generic [ref=f24e198]: "300"
+        - generic [ref=f24e201]:
+          - generic [ref=f24e203]:
+            - generic [ref=f24e204]: Endless Night
+            - generic [ref=f24e205]: Keep going in Endless mode until 8:00
+          - generic [ref=f24e206]: 0:00 / 8:00
+          - generic [ref=f24e209]: "100"
+        - generic [ref=f24e212]:
+          - generic [ref=f24e214]:
+            - generic [ref=f24e215]: Critter Control
+            - generic [ref=f24e216]: Bonk 300 critters in total
+          - generic [ref=f24e217]: 212 / 300
+          - generic [ref=f24e221]: "30"
+        - generic [ref=f24e224]:
+          - generic [ref=f24e226]:
+            - generic [ref=f24e227]: Blizzard of Bonks
+            - generic [ref=f24e228]: Bonk 1000 critters in one run
+          - generic [ref=f24e229]: 322 / 1,000
+          - generic [ref=f24e233]: "60"
+        - generic [ref=f24e236]:
+          - generic [ref=f24e238]:
+            - generic [ref=f24e239]: Yeti Tamer
+            - generic [ref=f24e240]: Defeat the Grumpy Yeti
+          - generic [ref=f24e241]: 0 / 1
+          - generic [ref=f24e244]: "80"
+        - generic [ref=f24e247]:
+          - generic [ref=f24e249]:
+            - generic [ref=f24e250]: Double Evolution
+            - generic [ref=f24e251]: Evolve 2 weapons in one run
+          - generic [ref=f24e252]: 1 / 2
+          - generic [ref=f24e256]: "80"
+        - generic [ref=f24e259]:
+          - generic [ref=f24e261]:
+            - generic [ref=f24e262]: Full Sleigh
+            - generic [ref=f24e263]: Evolve 3 weapons in one run
+          - generic [ref=f24e264]: 1 / 3
+          - generic [ref=f24e268]: "120"
+        - generic [ref=f24e271]:
+          - generic [ref=f24e273]:
+            - generic [ref=f24e274]: Santa's Favourite
+            - generic [ref=f24e275]: Call Santa's Sleigh 4 times in one run
+          - generic [ref=f24e276]: 2 / 4
+          - generic [ref=f24e280]: "40"
+        - generic [ref=f24e283]:
+          - generic [ref=f24e285]:
+            - generic [ref=f24e286]: Mix and Match
+            - generic [ref=f24e287]: Play 3 different loadouts
+          - generic [ref=f24e288]: 2 / 3
+          - generic [ref=f24e292]: "40"
+        - generic [ref=f24e295]:
+          - generic [ref=f24e297]:
+            - generic [ref=f24e298]: Collector
+            - generic [ref=f24e299]: Unlock every weapon
+          - generic [ref=f24e300]: 4 / 6
+          - generic [ref=f24e304]: "100"
+        - generic [ref=f24e307]:
+          - generic [ref=f24e309]:
+            - generic [ref=f24e310]: Workshop Regular
+            - generic [ref=f24e311]: Buy 5 Workshop upgrades
+          - generic [ref=f24e312]: 3 / 5
+          - generic [ref=f24e316]: "50"
+    - generic [ref=f24e319]:
+      - generic [ref=f24e320]: Try it
+      - generic [ref=f24e321]: Switch tabs
+      - generic [ref=f24e322]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f24e323]:
+      - generic [ref=f24e324]:
+        - heading "A. Workshop Tin" [level=2] [ref=f24e325]
+        - paragraph [ref=f24e326]: "The closest to Megabonk: riveted enamel plates from Santa's toy workshop, slab buttons with a pressable lip, and corner brackets that jump to whatever is focused."
+        - generic [ref=f24e327]:
+          - text: "Pairs with splash A:"
+          - link "open the matching intro" [ref=f24e328] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=a
+      - generic [ref=f24e329]:
+        - generic [ref=f24e330]:
+          - generic "#1A2438" [ref=f24e331]
+          - generic "#22304F" [ref=f24e333]
+          - generic "#1F5A43" [ref=f24e335]
+          - generic "#F2B53B" [ref=f24e337]
+          - generic "#F4F8FF" [ref=f24e339]
+          - generic "#D9343F" [ref=f24e341]
+        - generic [ref=f24e343]:
+          - generic [ref=f24e344]:
+            - text: Camel Claus
+            - generic [ref=f24e345]: Bowlby One, logo
+          - generic [ref=f24e346]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f24e347]: Jacquarda Bastarda 9, UI text
+      - generic [ref=f24e348]:
+        - generic [ref=f24e349]:
+          - heading "Strengths" [level=3] [ref=f24e350]
+          - list [ref=f24e351]:
+            - listitem [ref=f24e352]: Instantly readable at a glance; the most proven layout for this genre
+            - listitem [ref=f24e353]: Slab buttons and brackets feel great with mouse and gamepad
+            - listitem [ref=f24e354]: "Cheapest to build in Godot: one 9-slice StyleBox plus a bracket node"
+        - generic [ref=f24e355]:
+          - heading "Watch out for" [level=3] [ref=f24e356]
+          - list [ref=f24e357]:
+            - listitem [ref=f24e358]: The closest to Megabonk; needs its own logo and motifs to avoid feeling borrowed
+            - listitem [ref=f24e359]: Blackletter pixel text needs 18 px or more to stay legible
+    - group [ref=f24e360]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f24e361] [cursor=pointer]

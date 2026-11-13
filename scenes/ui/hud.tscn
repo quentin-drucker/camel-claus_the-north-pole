@@ -1,192 +1,237 @@
 [gd_scene format=3 uid="uid://d3vk44upno6q5"]
 
 [ext_resource type="Script" uid="uid://sxtjyjd7hixo" path="res://scenes/ui/hud.gd" id="1_0mwgc"]
+[ext_resource type="Texture2D" uid="uid://b2sdi1v5h1ro2" path="res://assets/ui/icons/naughty_list.png" id="2_bo48s"]
 [ext_resource type="Texture2D" uid="uid://dga00fhv6qd13" path="res://assets/ui/icons/santa_sleigh.png" id="2_hqnrr"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mwgc"]
-bg_color = Color(0.8509804, 0.20392157, 0.24705882, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqnrr"]
-bg_color = Color(0.60784316, 0.30980393, 0.81960785, 1)
 
 [node name="HUD" type="CanvasLayer" unique_id=1847177649]
 script = ExtResource("1_0mwgc")
 
-[node name="Margin" type="MarginContainer" parent="." unique_id=959841318]
-anchors_preset = 15
+[node name="XpBar" type="ProgressBar" parent="." unique_id=1613537323]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 11.0
+mouse_filter = 2
+theme_type_variation = &"XpBar"
+show_percentage = false
+
+[node name="TopLeft" type="VBoxContainer" parent="." unique_id=204971716]
+offset_left = 20.0
+offset_top = 24.0
+offset_right = 330.0
+offset_bottom = 300.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Counters" type="HBoxContainer" parent="TopLeft" unique_id=219417]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="KillsIcon" type="TextureRect" parent="TopLeft/Counters" unique_id=659882860]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_bo48s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KillsLabel" type="Label" parent="TopLeft/Counters" unique_id=461770446]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+text = "0"
+
+[node name="HpBar" type="ProgressBar" parent="TopLeft" unique_id=1976294582]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(270, 28)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_type_variation = &"HpBar"
+show_percentage = false
+
+[node name="HpLabel" type="Label" parent="TopLeft/HpBar" unique_id=310341395]
+unique_name_in_owner = true
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 12
-
-[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=1481690879]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="XpBar" type="ProgressBar" parent="Margin/VBox" unique_id=63347540]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-show_percentage = false
-
-[node name="TopRow" type="HBoxContainer" parent="Margin/VBox" unique_id=1007714652]
-layout_mode = 2
-
-[node name="HpBar" type="ProgressBar" parent="Margin/VBox/TopRow" unique_id=896533156]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(260, 28)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/fill = SubResource("StyleBoxFlat_0mwgc")
-show_percentage = false
-
-[node name="HpLabel" type="Label" parent="Margin/VBox/TopRow" unique_id=1488232778]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(170, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.95686275, 0.972549, 1, 1)
-theme_override_font_sizes/font_size = 48
+theme_type_variation = &"HudSmall"
 text = "100 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="Margin/VBox/TopRow" unique_id=1158201793]
+[node name="Owned" type="HBoxContainer" parent="TopLeft" unique_id=759723552]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9490196, 0.70980394, 0.23137255, 1)
-theme_override_font_sizes/font_size = 48
-text = "Lv 1"
-
-[node name="Spacer" type="Control" parent="Margin/VBox/TopRow" unique_id=857468123]
-layout_mode = 2
-size_flags_horizontal = 3
 mouse_filter = 2
+theme_override_constants/separation = 8
 
-[node name="TimerLabel" type="Label" parent="Margin/VBox/TopRow" unique_id=2106703601]
+[node name="FpsLabel" type="Label" parent="TopLeft" unique_id=1047080880]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.95686275, 0.972549, 1, 1)
-theme_override_font_sizes/font_size = 96
+theme_type_variation = &"HudSmall"
+
+[node name="TimerLabel" type="Label" parent="." unique_id=1629161290]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 18.0
+offset_right = 120.0
+offset_bottom = 72.0
+theme_type_variation = &"HudTimer"
 text = "5:00"
+horizontal_alignment = 1
 
-[node name="Owned" type="HBoxContainer" parent="Margin/VBox" unique_id=1431760456]
+[node name="LevelLabel" type="Label" parent="." unique_id=1795532505]
 unique_name_in_owner = true
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 6
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_top = 20.0
+offset_right = -24.0
+offset_bottom = 66.0
+theme_type_variation = &"HudLevel"
+text = "Lv 1"
+horizontal_alignment = 2
 
-[node name="FpsLabel" type="Label" parent="Margin/VBox" unique_id=2039340649]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.30588236, 0.41568628, 0.61960787, 1)
-theme_override_font_sizes/font_size = 32
-
-[node name="BossPanel" type="VBoxContainer" parent="." unique_id=154783695]
+[node name="BossPanel" type="VBoxContainer" parent="." unique_id=2075912731]
 unique_name_in_owner = true
 visible = false
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 1.0
-anchor_right = 0.7
-anchor_bottom = 1.0
-offset_top = -100.0
-offset_bottom = -20.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 80.0
+offset_right = 300.0
+offset_bottom = 140.0
 mouse_filter = 2
+theme_override_constants/separation = 4
 
-[node name="BossName" type="Label" parent="BossPanel" unique_id=1605148578]
+[node name="BossName" type="Label" parent="BossPanel" unique_id=1540741427]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.95686275, 0.972549, 1, 1)
-theme_override_font_sizes/font_size = 48
+theme_type_variation = &"HeaderLabel"
+theme_override_colors/font_color = Color(0.9019608, 0.8, 1, 1)
 text = "Grumpy Yeti"
 horizontal_alignment = 1
 
-[node name="BossBar" type="ProgressBar" parent="BossPanel" unique_id=363855200]
+[node name="BossBar" type="ProgressBar" parent="BossPanel" unique_id=49389682]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 18)
+custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_hqnrr")
-value = 100.0
+mouse_filter = 2
+theme_type_variation = &"BossBar"
 show_percentage = false
 
-[node name="Banner" type="Label" parent="." unique_id=1865731438]
+[node name="Banner" type="Label" parent="." unique_id=175223148]
 unique_name_in_owner = true
 visible = false
 anchors_preset = -1
-anchor_top = 0.28
+anchor_top = 0.32
 anchor_right = 1.0
-anchor_bottom = 0.28
-theme_override_colors/font_color = Color(0.9490196, 0.70980394, 0.23137255, 1)
-theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 96
-text = "THE GRUMPY YETI APPROACHES!"
+anchor_bottom = 0.32
+offset_left = 40.0
+offset_top = -34.0
+offset_right = -40.0
+offset_bottom = 34.0
+theme_type_variation = &"BannerLabel"
+text = "The Grumpy Yeti approaches!"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="BannerIcon" type="TextureRect" parent="." unique_id=439283950]
+[node name="BannerIcon" type="TextureRect" parent="." unique_id=1643664821]
 unique_name_in_owner = true
 visible = false
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.28
+anchor_top = 0.32
 anchor_right = 0.5
-anchor_bottom = 0.28
-offset_left = -56.0
-offset_top = -120.0
-offset_right = 56.0
-offset_bottom = -8.0
+anchor_bottom = 0.32
+offset_left = -48.0
+offset_top = -140.0
+offset_right = 48.0
+offset_bottom = -44.0
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SantaPanel" type="VBoxContainer" parent="." unique_id=207146320]
+[node name="SantaPanel" type="VBoxContainer" parent="." unique_id=1799470544]
 unique_name_in_owner = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
-offset_top = -130.0
-offset_right = 380.0
-offset_bottom = -14.0
-grow_vertical = 0
+offset_top = -140.0
+offset_right = 400.0
+offset_bottom = -20.0
 mouse_filter = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 8
 alignment = 2
 
-[node name="Blessings" type="HBoxContainer" parent="SantaPanel" unique_id=354482256]
+[node name="Blessings" type="HBoxContainer" parent="SantaPanel" unique_id=1497101225]
 unique_name_in_owner = true
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 10
-
-[node name="SantaRow" type="HBoxContainer" parent="SantaPanel" unique_id=751512824]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="SantaIcon" type="TextureRect" parent="SantaPanel/SantaRow" unique_id=1807061232]
+[node name="SantaBox" type="PanelContainer" parent="SantaPanel" unique_id=165464192]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_type_variation = &"DarkBox"
+
+[node name="SantaRow" type="HBoxContainer" parent="SantaPanel/SantaBox" unique_id=410161637]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SantaIcon" type="TextureRect" parent="SantaPanel/SantaBox/SantaRow" unique_id=205640628]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_hqnrr")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SantaText" type="VBoxContainer" parent="SantaPanel/SantaRow" unique_id=1144645424]
+[node name="SantaText" type="VBoxContainer" parent="SantaPanel/SantaBox/SantaRow" unique_id=21351403]
 layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="SantaLabel" type="Label" parent="SantaPanel/SantaRow/SantaText" unique_id=1346872153]
+[node name="SantaLabel" type="Label" parent="SantaPanel/SantaBox/SantaRow/SantaText" unique_id=1497483296]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_type_variation = &"HudSmall"
 text = "Santa's Sleigh 0/8"
 
-[node name="SantaBar" type="ProgressBar" parent="SantaPanel/SantaRow/SantaText" unique_id=1030680201]
+[node name="SantaBar" type="ProgressBar" parent="SantaPanel/SantaBox/SantaRow/SantaText" unique_id=181383451]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(260, 14)
+custom_minimum_size = Vector2(220, 10)
 layout_mode = 2
-max_value = 8.0
+mouse_filter = 2
+theme_type_variation = &"SantaBar"
 show_percentage = false
+
+[node name="Items" type="HBoxContainer" parent="." unique_id=1941735219]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -70.0
+offset_right = 250.0
+offset_bottom = -18.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 1

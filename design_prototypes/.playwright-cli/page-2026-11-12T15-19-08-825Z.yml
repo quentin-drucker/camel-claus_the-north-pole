@@ -1,0 +1,116 @@
+- generic [active] [ref=f41e1]:
+  - generic [ref=f41e2]:
+    - banner [ref=f41e3]:
+      - generic [ref=f41e4]:
+        - generic [ref=f41e5]: Camel Claus
+        - generic [ref=f41e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f41e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [ref=f41e8] [cursor=pointer]:
+          - generic [ref=f41e14]: A Workshop Tin
+          - generic [ref=f41e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f41e16] [cursor=pointer]:
+          - generic [ref=f41e22]: B Ugly Sweater
+          - generic [ref=f41e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f41e24] [cursor=pointer]:
+          - generic [ref=f41e30]: C Northern Lights
+          - generic [ref=f41e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [selected] [ref=f41e32] [cursor=pointer]:
+          - generic [ref=f41e38]: D Polar Expedition
+          - generic [ref=f41e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f41e40] [cursor=pointer]:
+          - generic [ref=f41e46]: E 8-Bit Holiday
+          - generic [ref=f41e47]: Retro holiday arcade
+      - generic [ref=f41e48]:
+        - button "Compare all five" [ref=f41e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f41e50] [cursor=pointer]
+        - link "Splash screens" [ref=f41e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f41e52]:
+      - tab "Main menu" [ref=f41e53] [cursor=pointer]
+      - tab "Level up" [ref=f41e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f41e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f41e56] [cursor=pointer]
+      - tab "Settings" [selected] [ref=f41e57] [cursor=pointer]
+      - tab "Achievements" [ref=f41e58] [cursor=pointer]
+      - tab "Customize" [ref=f41e59] [cursor=pointer]
+      - tab "Results" [ref=f41e60] [cursor=pointer]
+      - tab "Components" [ref=f41e61] [cursor=pointer]
+  - main [ref=f41e62]:
+    - generic [ref=f41e69]:
+      - generic [ref=f41e70]:
+        - heading "Settings" [level=2] [ref=f41e71]
+        - button "Close" [ref=f41e72] [cursor=pointer]
+      - generic [ref=f41e75]:
+        - heading "Sound" [level=4] [ref=f41e76]
+        - generic [ref=f41e77]:
+          - generic [ref=f41e78]: Music
+          - slider "Music" [ref=f41e79]
+          - status [ref=f41e83]: 70%
+        - generic [ref=f41e84]:
+          - generic [ref=f41e85]: Sounds
+          - slider "Sounds" [ref=f41e86]
+          - status [ref=f41e90]: 85%
+        - heading "Display" [level=4] [ref=f41e91]
+        - generic [ref=f41e92]:
+          - generic [ref=f41e93]: Fullscreen
+          - switch "Off" [ref=f41e94] [cursor=pointer]
+        - generic [ref=f41e98]:
+          - generic [ref=f41e99]: Interface size
+          - generic [ref=f41e100]:
+            - button "Smaller" [ref=f41e101] [cursor=pointer]
+            - generic [ref=f41e104]: Medium
+            - button "Larger" [ref=f41e105] [cursor=pointer]
+        - heading "Gameplay" [level=4] [ref=f41e108]
+        - generic [ref=f41e109]:
+          - generic [ref=f41e110]: Screen shake
+          - switch "On" [checked] [ref=f41e111] [cursor=pointer]
+        - generic [ref=f41e115]:
+          - generic [ref=f41e116]: Damage numbers
+          - switch "On" [checked] [ref=f41e117] [cursor=pointer]
+        - generic [ref=f41e121]:
+          - generic [ref=f41e122]: Reduce motion
+          - switch "Off" [ref=f41e123] [cursor=pointer]
+      - generic [ref=f41e127]:
+        - button "Reset progress" [ref=f41e128] [cursor=pointer]
+        - button "Back" [ref=f41e130] [cursor=pointer]
+    - generic [ref=f41e132]:
+      - generic [ref=f41e133]: Try it
+      - generic [ref=f41e134]: Drag sliders, flip toggles, use arrows
+      - generic [ref=f41e135]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f41e136]:
+      - generic [ref=f41e137]:
+        - heading "D. Polar Expedition" [level=2] [ref=f41e138]
+        - paragraph [ref=f41e139]: "Claus is lost, so the UI is his field kit: crisp white survey sheets, navy ink, candy-cane signal tape, slanted buttons and big confident numbers."
+        - generic [ref=f41e140]:
+          - text: "Pairs with splash D:"
+          - link "open the matching intro" [ref=f41e141] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=d
+      - generic [ref=f41e142]:
+        - generic [ref=f41e143]:
+          - generic "#F4F8FF" [ref=f41e144]
+          - generic "#22304F" [ref=f41e146]
+          - generic "#D9343F" [ref=f41e148]
+          - generic "#8FA9D1" [ref=f41e150]
+          - generic "#F2B53B" [ref=f41e152]
+          - generic "#141D33" [ref=f41e154]
+        - generic [ref=f41e156]:
+          - generic [ref=f41e157]:
+            - text: Camel Claus
+            - generic [ref=f41e158]: Barlow Condensed, display
+          - generic [ref=f41e159]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f41e160]: Barlow, UI text
+      - generic [ref=f41e161]:
+        - generic [ref=f41e162]:
+          - heading "Strengths" [level=3] [ref=f41e163]
+          - list [ref=f41e164]:
+            - listitem [ref=f41e165]: The sharpest hierarchy and densest information
+            - listitem [ref=f41e166]: Scales cleanly to any resolution (no pixel fonts)
+            - listitem [ref=f41e167]: "Its own story: the lost-explorer framing"
+        - generic [ref=f41e168]:
+          - heading "Watch out for" [level=3] [ref=f41e169]
+          - list [ref=f41e170]:
+            - listitem [ref=f41e171]: White panels are bright over the snow and need dark HUD variants
+            - listitem [ref=f41e172]: The least overtly Christmassy
+    - group [ref=f41e173]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f41e174] [cursor=pointer]

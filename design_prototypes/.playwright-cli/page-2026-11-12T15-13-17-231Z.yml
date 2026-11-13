@@ -1,0 +1,108 @@
+- generic [active] [ref=f14e1]:
+  - generic [ref=f14e2]:
+    - banner [ref=f14e3]:
+      - generic [ref=f14e4]:
+        - generic [ref=f14e5]: Camel Claus
+        - generic [ref=f14e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f14e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [ref=f14e8] [cursor=pointer]:
+          - generic [ref=f14e14]: A Workshop Tin
+          - generic [ref=f14e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f14e16] [cursor=pointer]:
+          - generic [ref=f14e22]: B Ugly Sweater
+          - generic [ref=f14e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [selected] [ref=f14e24] [cursor=pointer]:
+          - generic [ref=f14e30]: C Northern Lights
+          - generic [ref=f14e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f14e32] [cursor=pointer]:
+          - generic [ref=f14e38]: D Polar Expedition
+          - generic [ref=f14e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f14e40] [cursor=pointer]:
+          - generic [ref=f14e46]: E 8-Bit Holiday
+          - generic [ref=f14e47]: Retro holiday arcade
+      - generic [ref=f14e48]:
+        - button "Compare all five" [ref=f14e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f14e50] [cursor=pointer]
+        - link "Splash screens" [ref=f14e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f14e52]:
+      - tab "Main menu" [ref=f14e53] [cursor=pointer]
+      - tab "Level up" [ref=f14e54] [cursor=pointer]
+      - tab "Gameplay HUD" [selected] [ref=f14e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f14e56] [cursor=pointer]
+      - tab "Settings" [ref=f14e57] [cursor=pointer]
+      - tab "Achievements" [ref=f14e58] [cursor=pointer]
+      - tab "Customize" [ref=f14e59] [cursor=pointer]
+      - tab "Results" [ref=f14e60] [cursor=pointer]
+      - tab "Components" [ref=f14e61] [cursor=pointer]
+  - main [ref=f14e62]:
+    - generic [ref=f14e67]:
+      - generic:
+        - generic:
+          - generic:
+            - generic: "216"
+            - generic: "322"
+          - generic: 118 / 150
+          - generic:
+            - generic [ref=f14e69]: Lv 4
+            - generic [ref=f14e71]: Lv 2
+            - generic [ref=f14e73]: Lv 1
+          - list:
+            - listitem: Survive 3:00
+            - listitem: Defeat the Grumpy Yeti
+        - generic: 1:18
+        - generic: "9"
+        - generic:
+          - generic: Santa's Sleigh
+          - generic: 5 / 8
+          - generic [ref=f14e75]: Space
+        - generic:
+          - generic [ref=f14e76]: ×2
+          - generic [ref=f14e80]: ×3
+          - generic [ref=f14e84]: ×2
+    - generic [ref=f14e86]:
+      - generic [ref=f14e87]: Try it
+      - button "Take a hit" [ref=f14e88] [cursor=pointer]
+      - button "Collect XP" [ref=f14e89] [cursor=pointer]
+      - button "Boss arrives" [ref=f14e90] [cursor=pointer]
+      - button "Achievement" [ref=f14e91] [cursor=pointer]
+      - button "Santa ready (Space)" [ref=f14e92] [cursor=pointer]
+      - button "Pause (Esc)" [ref=f14e93] [cursor=pointer]
+      - generic [ref=f14e94]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f14e95]:
+      - generic [ref=f14e96]:
+        - heading "C. Northern Lights" [level=2] [ref=f14e97]
+        - paragraph [ref=f14e98]: "Magic at the top of the world: faceted ice panels with chamfered corners, aurora light drifting behind the menus, and sparkles that only appear when something is chosen."
+        - generic [ref=f14e99]:
+          - text: "Pairs with splash C:"
+          - link "open the matching intro" [ref=f14e100] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=c
+      - generic [ref=f14e101]:
+        - generic [ref=f14e102]:
+          - generic "#141D33" [ref=f14e103]
+          - generic "#22304F" [ref=f14e105]
+          - generic "#7FD6F2" [ref=f14e107]
+          - generic "#C9DAF0" [ref=f14e109]
+          - generic "#3E9A5B" [ref=f14e111]
+          - generic "#F2B53B" [ref=f14e113]
+        - generic [ref=f14e115]:
+          - generic [ref=f14e116]:
+            - text: Camel Claus
+            - generic [ref=f14e117]: Cinzel, display
+          - generic [ref=f14e118]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f14e119]: Alegreya Sans, UI text
+      - generic [ref=f14e120]:
+        - generic [ref=f14e121]:
+          - heading "Strengths" [level=3] [ref=f14e122]
+          - list [ref=f14e123]:
+            - listitem [ref=f14e124]: The most atmospheric; reuses the game's aurora shader
+            - listitem [ref=f14e125]: Clean shapes keep busy screens calm
+            - listitem [ref=f14e126]: Gold-on-ice rewards read as precious
+        - generic [ref=f14e127]:
+          - heading "Watch out for" [level=3] [ref=f14e128]
+          - list [ref=f14e129]:
+            - listitem [ref=f14e130]: The least playful of the five
+            - listitem [ref=f14e131]: Serif display caps lean fantasy-RPG more than cute
+    - group [ref=f14e132]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f14e133] [cursor=pointer]

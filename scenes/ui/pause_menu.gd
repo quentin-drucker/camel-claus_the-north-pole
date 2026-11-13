@@ -130,10 +130,11 @@ func _add_slot(icon: Texture2D, badge: String, on_focus: Callable, gold: bool) -
 	slot.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	slot.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 	slot.text = badge
-	slot.add_theme_font_size_override(&"font_size", 32)
-	slot.add_theme_constant_override(&"icon_max_width", 56)
+	slot.add_theme_constant_override(&"icon_max_width", 48)
+	# Knit nameplate tile; a weapon that has evolved (or can) sits on the gold evolution plate.
+	slot.theme_type_variation = &"RowEvo" if gold else &"KnitTileButton"
 	if gold:
-		slot.add_theme_color_override(&"font_color", Color(Describe.GOLD))
+		slot.add_theme_color_override(&"font_color", Color("FFD64F"))
 	slot.focus_entered.connect(on_focus)
 	slot.mouse_entered.connect(on_focus)
 	build_grid.add_child(slot)
@@ -142,7 +143,6 @@ func _add_slot(icon: Texture2D, badge: String, on_focus: Callable, gold: bool) -
 func _stat_label(text: String, color: Color) -> Label:
 	var label := Label.new()
 	label.text = text
-	label.add_theme_font_size_override(&"font_size", 32)
 	label.add_theme_color_override(&"font_color", color)
 	label.mouse_filter = Control.MOUSE_FILTER_PASS  # tooltips
 	stats_grid.add_child(label)

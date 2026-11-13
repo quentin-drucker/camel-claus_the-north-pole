@@ -14,10 +14,13 @@ const MENU_SCENE: String = "res://scenes/ui/main_menu.tscn"
 @onready var endless_button: Button = %EndlessButton
 @onready var build_row: HBoxContainer = %BuildRow
 @onready var summary: RichTextLabel = %Summary
+@onready var greeting: Label = %Greeting
+@onready var headline_label: Label = %Headline
 
 
 func _ready() -> void:
 	hide()
+	summary.add_theme_constant_override(&"table_h_separation", 48)  # breathing room between the two columns
 	GameState.run_ended.connect(_on_run_ended)
 	restart_button.pressed.connect(_leave.bind(MAIN_SCENE))
 	menu_button.pressed.connect(_leave.bind(MENU_SCENE))
@@ -26,11 +29,14 @@ func _ready() -> void:
 
 func _on_run_ended(won: bool) -> void:
 	var survived: int = int(GameState.run_time)
-	var headline: String = "You survived the North Pole!" if won else "Claus fainted in the snow..."
+	# The postcard header (style guide 4.13): greeting + big headline; the stats line sits in the panel.
+	greeting.text = "Greetings from the" if won else "Wish you were here..."
+	headline_label.text = "North Pole!" if won else "Claus fainted!"
 	if GameState.endless:
-		headline = "Endless run over!"
-	result_label.text = "%s\nSurvived %d:%02d  -  level %d  -  %d critters bonked" % [
-		headline, floori(survived / 60.0), survived % 60, GameState.level, GameState.kills,
+		greeting.text = "Greetings from the"
+		headline_label.text = "Endless night!"
+	result_label.text = "Survived %d:%02d  -  level %d  -  %d critters bonked" % [
+		floori(survived / 60.0), survived % 60, GameState.level, GameState.kills,
 	]
 	_fill_summary(Profile.record_run())
 	endless_button.visible = won and not GameState.endless
@@ -102,12 +108,9 @@ static func _thousands(n: int) -> String:
 	return out
 
 
+## The run's build as postage stamps (rewards are always stamps in this style).
 func _add_icon(texture: Texture2D) -> void:
-	var icon := TextureRect.new()
-	icon.texture = texture
-	icon.custom_minimum_size = Vector2(56, 56)
-	icon.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
-	build_row.add_child(icon)
+	build_row.add_child(Tin.stamp(texture, "common", 32))
 
 
 func _leave(scene: String) -> void:

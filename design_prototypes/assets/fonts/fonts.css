@@ -1,0 +1,37 @@
+@font-face{font-family:'Alegreya Sans';font-style:normal;font-weight:400;font-display:block;src:url('AlegreyaSans-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Alegreya Sans';font-style:normal;font-weight:500;font-display:block;src:url('AlegreyaSans-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Alegreya Sans';font-style:normal;font-weight:700;font-display:block;src:url('AlegreyaSans-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Alegreya Sans';font-style:normal;font-weight:800;font-display:block;src:url('AlegreyaSans-800-normal.woff2') format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-style:italic;font-weight:700;font-display:block;src:url('BarlowCondensed-700-italic.woff2') format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-style:italic;font-weight:800;font-display:block;src:url('BarlowCondensed-800-italic.woff2') format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:500;font-display:block;src:url('BarlowCondensed-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:600;font-display:block;src:url('BarlowCondensed-600-normal.woff2') format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:700;font-display:block;src:url('BarlowCondensed-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:800;font-display:block;src:url('BarlowCondensed-800-normal.woff2') format('woff2')}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:400;font-display:block;src:url('Barlow-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:500;font-display:block;src:url('Barlow-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:600;font-display:block;src:url('Barlow-600-normal.woff2') format('woff2')}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:700;font-display:block;src:url('Barlow-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Bowlby One';font-style:normal;font-weight:400;font-display:block;src:url('BowlbyOne-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Cinzel';font-style:normal;font-weight:500;font-display:block;src:url('Cinzel-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Cinzel';font-style:normal;font-weight:700;font-display:block;src:url('Cinzel-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Cinzel';font-style:normal;font-weight:900;font-display:block;src:url('Cinzel-900-normal.woff2') format('woff2')}
+@font-face{font-family:'Grandstander';font-style:normal;font-weight:400;font-display:block;src:url('Grandstander-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Grandstander';font-style:normal;font-weight:600;font-display:block;src:url('Grandstander-600-normal.woff2') format('woff2')}
+@font-face{font-family:'Grandstander';font-style:normal;font-weight:800;font-display:block;src:url('Grandstander-800-normal.woff2') format('woff2')}
+@font-face{font-family:'Grandstander';font-style:normal;font-weight:900;font-display:block;src:url('Grandstander-900-normal.woff2') format('woff2')}
+@font-face{font-family:'Jacquard 24';font-style:normal;font-weight:400;font-display:block;src:url('Jacquard24-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Jacquarda Bastarda 9';font-style:normal;font-weight:400;font-display:block;src:url('JacquardaBastarda9-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Kenney Mini Square';src:url('kenney_mini_square.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Kenney Pixel';src:url('kenney_pixel.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Tiny5';font-style:normal;font-weight:400;font-display:block;src:url('Tiny5-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Pirata One';font-style:normal;font-weight:400;font-display:block;src:url('PirataOne-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Germania One';font-style:normal;font-weight:400;font-display:block;src:url('GermaniaOne-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:500;font-display:block;src:url('GrenzeGotisch-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:600;font-display:block;src:url('GrenzeGotisch-600-normal.woff2') format('woff2')}
+@font-face{font-family:'Grenze Gotisch';font-style:normal;font-weight:700;font-display:block;src:url('GrenzeGotisch-700-normal.woff2') format('woff2')}
+@font-face{font-family:'New Rocker';font-style:normal;font-weight:400;font-display:block;src:url('NewRocker-400-normal.woff2') format('woff2')}
+@font-face{font-family:'MedievalSharp';font-style:normal;font-weight:400;font-display:block;src:url('MedievalSharp-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Almendra SC';font-style:normal;font-weight:400;font-display:block;src:url('AlmendraSC-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Jacquard 12';font-style:normal;font-weight:400;font-display:block;src:url('Jacquard12-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Metamorphous';font-style:normal;font-weight:400;font-display:block;src:url('Metamorphous-400-normal.woff2') format('woff2')}

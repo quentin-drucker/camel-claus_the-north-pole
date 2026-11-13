@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bb5xa4w3sxlm2"]
 
 [ext_resource type="Script" uid="uid://pg8v4l8e3e8r" path="res://scenes/ui/end_screen.gd" id="1_4ttpn"]
+[ext_resource type="Texture2D" uid="uid://knpway5h06ce" path="res://assets/ui/claus_front.png" id="2_wgyui"]
+[ext_resource type="Texture2D" uid="uid://dsj6na7ri0u5w" path="res://assets/ui/tin/postmark_wavy.png" id="3_53v5j"]
 
 [node name="EndScreen" type="CanvasLayer" unique_id=1987390613]
 process_mode = 3
@@ -18,61 +20,118 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Panel" type="PanelContainer" parent="Center" unique_id=92569161]
+[node name="Stack" type="VBoxContainer" parent="Center" unique_id=994246759]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Postcard" type="PanelContainer" parent="Center/Stack" unique_id=1156003081]
+layout_mode = 2
+theme_type_variation = &"AirmailPanel"
+
+[node name="Row" type="HBoxContainer" parent="Center/Stack/Postcard" unique_id=1693324491]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Text" type="VBoxContainer" parent="Center/Stack/Postcard/Row" unique_id=209451740]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -6
+
+[node name="Greeting" type="Label" parent="Center/Stack/Postcard/Row/Text" unique_id=2076734188]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"PostRedLabel"
+text = "Greetings from the"
+
+[node name="Headline" type="Label" parent="Center/Stack/Postcard/Row/Text" unique_id=1108135664]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"LogoLabel"
+theme_override_colors/font_color = Color(0.95686275, 0.972549, 1, 1)
+theme_override_colors/font_outline_color = Color(0.13333334, 0.1882353, 0.30980393, 1)
+text = "North Pole!"
+
+[node name="StampHolder" type="Control" parent="Center/Stack/Postcard/Row" unique_id=635558495]
+custom_minimum_size = Vector2(170, 136)
 layout_mode = 2
 
-[node name="VBox" type="VBoxContainer" parent="Center/Panel" unique_id=809891372]
+[node name="Stamp" type="PanelContainer" parent="Center/Stack/Postcard/Row/StampHolder" unique_id=890823832]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 4.0
+offset_right = 140.0
+offset_bottom = 128.0
+rotation = 0.07
+theme_type_variation = &"StampCommon"
+
+[node name="Claus" type="TextureRect" parent="Center/Stack/Postcard/Row/StampHolder/Stamp" unique_id=1887791727]
+texture_filter = 2
+layout_mode = 2
+texture = ExtResource("2_wgyui")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Postmark" type="TextureRect" parent="Center/Stack/Postcard/Row/StampHolder" unique_id=742717448]
+modulate = Color(0.133, 0.188, 0.31, 0.7)
+layout_mode = 0
+offset_left = -40.0
+offset_top = 50.0
+offset_right = 140.0
+offset_bottom = 140.0
+rotation = -0.2
+texture = ExtResource("3_53v5j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Panel" type="PanelContainer" parent="Center/Stack" unique_id=92569161]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center/Stack/Panel" unique_id=809891372]
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="ResultLabel" type="Label" parent="Center/Panel/VBox" unique_id=1142960938]
+[node name="ResultLabel" type="Label" parent="Center/Stack/Panel/VBox" unique_id=1142960938]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9490196, 0.70980394, 0.23137255, 1)
-theme_override_font_sizes/font_size = 64
+theme_type_variation = &"BigNumber"
 text = "Result"
 horizontal_alignment = 1
 
-[node name="BuildRow" type="HBoxContainer" parent="Center/Panel/VBox" unique_id=813789265]
+[node name="BuildRow" type="HBoxContainer" parent="Center/Stack/Panel/VBox" unique_id=813789265]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Summary" type="RichTextLabel" parent="Center/Panel/VBox" unique_id=1937833150]
+[node name="Summary" type="RichTextLabel" parent="Center/Stack/Panel/VBox" unique_id=1937833150]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(940, 0)
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
 
-[node name="Buttons" type="HBoxContainer" parent="Center/Panel/VBox" unique_id=581498631]
+[node name="Buttons" type="HBoxContainer" parent="Center/Stack/Panel/VBox" unique_id=581498631]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 18
 alignment = 1
 
-[node name="EndlessButton" type="Button" parent="Center/Panel/VBox/Buttons" unique_id=2049436673]
+[node name="EndlessButton" type="Button" parent="Center/Stack/Panel/VBox/Buttons" unique_id=2049436673]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(300, 88)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9490196, 0.70980394, 0.23137255, 1)
-theme_override_font_sizes/font_size = 64
 text = "Keep going"
 
-[node name="RestartButton" type="Button" parent="Center/Panel/VBox/Buttons" unique_id=1533289641]
+[node name="RestartButton" type="Button" parent="Center/Stack/Panel/VBox/Buttons" unique_id=1533289641]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(320, 88)
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 64
+theme_type_variation = &"PrimaryButton"
 text = "Play again"
 
-[node name="MenuButton" type="Button" parent="Center/Panel/VBox/Buttons" unique_id=390433978]
+[node name="MenuButton" type="Button" parent="Center/Stack/Panel/VBox/Buttons" unique_id=390433978]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(320, 88)
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
 text = "Main menu"

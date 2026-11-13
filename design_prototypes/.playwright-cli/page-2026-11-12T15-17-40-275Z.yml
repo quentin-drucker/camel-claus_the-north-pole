@@ -1,0 +1,124 @@
+- generic [active] [ref=f20e1]:
+  - generic [ref=f20e2]:
+    - banner [ref=f20e3]:
+      - generic [ref=f20e4]:
+        - generic [ref=f20e5]: Camel Claus
+        - generic [ref=f20e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f20e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [ref=f20e8] [cursor=pointer]:
+          - generic [ref=f20e14]: A Workshop Tin
+          - generic [ref=f20e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f20e16] [cursor=pointer]:
+          - generic [ref=f20e22]: B Ugly Sweater
+          - generic [ref=f20e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f20e24] [cursor=pointer]:
+          - generic [ref=f20e30]: C Northern Lights
+          - generic [ref=f20e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f20e32] [cursor=pointer]:
+          - generic [ref=f20e38]: D Polar Expedition
+          - generic [ref=f20e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [selected] [ref=f20e40] [cursor=pointer]:
+          - generic [ref=f20e46]: E 8-Bit Holiday
+          - generic [ref=f20e47]: Retro holiday arcade
+      - generic [ref=f20e48]:
+        - button "Compare all five" [ref=f20e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f20e50] [cursor=pointer]
+        - link "Splash screens" [ref=f20e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f20e52]:
+      - tab "Main menu" [ref=f20e53] [cursor=pointer]
+      - tab "Level up" [selected] [ref=f20e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f20e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f20e56] [cursor=pointer]
+      - tab "Settings" [ref=f20e57] [cursor=pointer]
+      - tab "Achievements" [ref=f20e58] [cursor=pointer]
+      - tab "Customize" [ref=f20e59] [cursor=pointer]
+      - tab "Results" [ref=f20e60] [cursor=pointer]
+      - tab "Components" [ref=f20e61] [cursor=pointer]
+  - main [ref=f20e62]:
+    - dialog "Level up" [ref=f20e69]:
+      - generic [ref=f20e70]:
+        - heading "Level up!" [level=2] [ref=f20e71]
+        - generic [ref=f20e72]: Lv 9 → 10
+      - generic [ref=f20e73]:
+        - button "Common Weapon upgrade Gift Toss Damage 18→23 Gifts per throw 2→3 Ready to evolve into Present Barrage Lv 4 → 5 1" [ref=f20e74] [cursor=pointer]:
+          - generic [ref=f20e75]: Common
+          - generic [ref=f20e77]:
+            - generic [ref=f20e78]: Weapon upgrade
+            - generic [ref=f20e79]: Gift Toss
+            - generic [ref=f20e80]: Damage 18→23
+            - generic [ref=f20e81]: Gifts per throw 2→3
+            - generic [ref=f20e82]: Ready to evolve into Present Barrage
+          - generic [ref=f20e83]: Lv 4 → 5
+          - generic [ref=f20e84]: "1"
+        - button "Rare Stat upgrade Extra Hump Max HP 130→160 Also heals 30 HP right away Lv 2 → 3 2" [ref=f20e85] [cursor=pointer]:
+          - generic [ref=f20e86]: Rare
+          - generic [ref=f20e88]:
+            - generic [ref=f20e89]: Stat upgrade
+            - generic [ref=f20e90]: Extra Hump
+            - generic [ref=f20e91]: Max HP 130→160
+            - generic [ref=f20e92]: Also heals 30 HP right away
+          - generic [ref=f20e93]: Lv 2 → 3
+          - generic [ref=f20e94]: "2"
+        - button "Epic New weapon Jingle Pulse Damage —→14 A jingling burst hits and pushes back everything near Claus New 3" [ref=f20e95] [cursor=pointer]:
+          - generic [ref=f20e96]: Epic
+          - generic [ref=f20e98]:
+            - generic [ref=f20e99]: New weapon
+            - generic [ref=f20e100]: Jingle Pulse
+            - generic [ref=f20e101]: Damage —→14
+            - generic [ref=f20e102]: A jingling burst hits and pushes back everything near Claus
+          - generic [ref=f20e103]: New
+          - generic [ref=f20e104]: "3"
+      - paragraph [ref=f20e105]: Click, press 1–3, or use arrows and Enter.
+      - generic [ref=f20e106]:
+        - button "2 Reroll R" [ref=f20e107] [cursor=pointer]:
+          - generic [ref=f20e108]: "2"
+          - generic [ref=f20e109]: Reroll
+          - generic [ref=f20e110]: R
+        - button "1 Banish B" [ref=f20e111] [cursor=pointer]:
+          - generic [ref=f20e112]: "1"
+          - generic [ref=f20e113]: Banish
+          - generic [ref=f20e114]: B
+    - generic [ref=f20e115]:
+      - generic [ref=f20e116]: Try it
+      - generic [ref=f20e117]: Pick a card (1–3)
+      - button "Reroll (R)" [ref=f20e118] [cursor=pointer]
+      - button "Banish (B)" [ref=f20e119] [cursor=pointer]
+      - generic [ref=f20e120]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f20e121]:
+      - generic [ref=f20e122]:
+        - heading "E. 8-Bit Holiday" [level=2] [ref=f20e123]
+        - paragraph [ref=f20e124]: "Today's cozy-pixel UI grown up: stepped pixel frames, gift-wrap patterns, an arcade cursor, and frame-by-frame motion with modern spacing and hierarchy."
+        - generic [ref=f20e125]:
+          - text: "Pairs with splash E:"
+          - link "open the matching intro" [ref=f20e126] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=e
+      - generic [ref=f20e127]:
+        - generic [ref=f20e128]:
+          - generic "#141D33" [ref=f20e129]
+          - generic "#22304F" [ref=f20e131]
+          - generic "#F2B53B" [ref=f20e133]
+          - generic "#D9343F" [ref=f20e135]
+          - generic "#7FD6F2" [ref=f20e137]
+          - generic "#3E9A5B" [ref=f20e139]
+        - generic [ref=f20e141]:
+          - generic [ref=f20e142]:
+            - text: Camel Claus
+            - generic [ref=f20e143]: Kenney Mini Square, display
+          - generic [ref=f20e144]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f20e145]: Kenney Pixel, UI text
+      - generic [ref=f20e146]:
+        - generic [ref=f20e147]:
+          - heading "Strengths" [level=3] [ref=f20e148]
+          - list [ref=f20e149]:
+            - listitem [ref=f20e150]: The smallest jump from the current game; uses its fonts and icons
+            - listitem [ref=f20e151]: Pixel-perfect at 720p; the icons already match
+            - listitem [ref=f20e152]: Frame-stepped motion is the cheapest to animate
+        - generic [ref=f20e153]:
+          - heading "Watch out for" [level=3] [ref=f20e154]
+          - list [ref=f20e155]:
+            - listitem [ref=f20e156]: The most nostalgic, so it needs the modern spacing to avoid looking dated
+            - listitem [ref=f20e157]: Pixel fonts limit size choices (whole multiples only)
+    - group [ref=f20e158]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f20e159] [cursor=pointer]

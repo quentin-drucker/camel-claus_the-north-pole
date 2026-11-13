@@ -1,0 +1,121 @@
+- generic [active] [ref=f7e1]:
+  - generic [ref=f7e2]:
+    - banner [ref=f7e3]:
+      - generic [ref=f7e4]:
+        - generic [ref=f7e5]: Camel Claus
+        - generic [ref=f7e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f7e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [selected] [ref=f7e8] [cursor=pointer]:
+          - generic [ref=f7e14]: A Workshop Tin
+          - generic [ref=f7e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f7e16] [cursor=pointer]:
+          - generic [ref=f7e22]: B Ugly Sweater
+          - generic [ref=f7e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f7e24] [cursor=pointer]:
+          - generic [ref=f7e30]: C Northern Lights
+          - generic [ref=f7e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f7e32] [cursor=pointer]:
+          - generic [ref=f7e38]: D Polar Expedition
+          - generic [ref=f7e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f7e40] [cursor=pointer]:
+          - generic [ref=f7e46]: E 8-Bit Holiday
+          - generic [ref=f7e47]: Retro holiday arcade
+      - generic [ref=f7e48]:
+        - button "Compare all five" [ref=f7e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f7e50] [cursor=pointer]
+        - link "Splash screens" [ref=f7e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f7e52]:
+      - tab "Main menu" [ref=f7e53] [cursor=pointer]
+      - tab "Level up" [selected] [ref=f7e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f7e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f7e56] [cursor=pointer]
+      - tab "Settings" [ref=f7e57] [cursor=pointer]
+      - tab "Achievements" [ref=f7e58] [cursor=pointer]
+      - tab "Customize" [ref=f7e59] [cursor=pointer]
+      - tab "Results" [ref=f7e60] [cursor=pointer]
+      - tab "Components" [ref=f7e61] [cursor=pointer]
+  - main [ref=f7e62]:
+    - dialog "Level up" [ref=f7e69]:
+      - generic [ref=f7e70]:
+        - heading "Level up!" [level=2] [ref=f7e71]
+        - generic [ref=f7e72]: Lv 9 → 10
+      - generic [ref=f7e73]:
+        - button "Common Gift Toss Damage 18→23 Gifts per throw 2→3 Ready to evolve into Present Barrage Lv 4 → 5 1" [ref=f7e74] [cursor=pointer]:
+          - generic [ref=f7e75]: Common
+          - generic [ref=f7e77]:
+            - generic [ref=f7e78]: Gift Toss
+            - generic [ref=f7e79]: Damage 18→23
+            - generic [ref=f7e80]: Gifts per throw 2→3
+            - generic [ref=f7e81]: Ready to evolve into Present Barrage
+          - generic [ref=f7e82]: Lv 4 → 5
+          - generic [ref=f7e83]: "1"
+        - button "Rare Extra Hump Max HP 130→160 Also heals 30 HP right away Lv 2 → 3 2" [ref=f7e84] [cursor=pointer]:
+          - generic [ref=f7e85]: Rare
+          - generic [ref=f7e87]:
+            - generic [ref=f7e88]: Extra Hump
+            - generic [ref=f7e89]: Max HP 130→160
+            - generic [ref=f7e90]: Also heals 30 HP right away
+          - generic [ref=f7e91]: Lv 2 → 3
+          - generic [ref=f7e92]: "2"
+        - button "Epic Jingle Pulse Damage —→14 A jingling burst hits and pushes back everything near Claus New 3" [ref=f7e93] [cursor=pointer]:
+          - generic [ref=f7e94]: Epic
+          - generic [ref=f7e96]:
+            - generic [ref=f7e97]: Jingle Pulse
+            - generic [ref=f7e98]: Damage —→14
+            - generic [ref=f7e99]: A jingling burst hits and pushes back everything near Claus
+          - generic [ref=f7e100]: New
+          - generic [ref=f7e101]: "3"
+      - paragraph [ref=f7e102]: Click, press 1–3, or use arrows and Enter.
+      - generic [ref=f7e103]:
+        - button "2 Reroll R" [ref=f7e104] [cursor=pointer]:
+          - generic [ref=f7e105]: "2"
+          - generic [ref=f7e106]: Reroll
+          - generic [ref=f7e107]: R
+        - button "1 Banish B" [ref=f7e108] [cursor=pointer]:
+          - generic [ref=f7e109]: "1"
+          - generic [ref=f7e110]: Banish
+          - generic [ref=f7e111]: B
+    - generic [ref=f7e112]:
+      - generic [ref=f7e113]: Try it
+      - generic [ref=f7e114]: Pick a card (1–3)
+      - button "Reroll (R)" [ref=f7e115] [cursor=pointer]
+      - button "Banish (B)" [ref=f7e116] [cursor=pointer]
+      - generic [ref=f7e117]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f7e118]:
+      - generic [ref=f7e119]:
+        - heading "A. Workshop Tin" [level=2] [ref=f7e120]
+        - paragraph [ref=f7e121]: "The closest to Megabonk: riveted enamel plates from Santa's toy workshop, slab buttons with a pressable lip, and corner brackets that jump to whatever is focused."
+        - generic [ref=f7e122]:
+          - text: "Pairs with splash A:"
+          - link "open the matching intro" [ref=f7e123] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=a
+      - generic [ref=f7e124]:
+        - generic [ref=f7e125]:
+          - generic "#1A2438" [ref=f7e126]
+          - generic "#22304F" [ref=f7e128]
+          - generic "#1F5A43" [ref=f7e130]
+          - generic "#F2B53B" [ref=f7e132]
+          - generic "#F4F8FF" [ref=f7e134]
+          - generic "#D9343F" [ref=f7e136]
+        - generic [ref=f7e138]:
+          - generic [ref=f7e139]:
+            - text: Camel Claus
+            - generic [ref=f7e140]: Bowlby One, logo
+          - generic [ref=f7e141]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f7e142]: Jacquarda Bastarda 9, UI text
+      - generic [ref=f7e143]:
+        - generic [ref=f7e144]:
+          - heading "Strengths" [level=3] [ref=f7e145]
+          - list [ref=f7e146]:
+            - listitem [ref=f7e147]: Instantly readable at a glance; the most proven layout for this genre
+            - listitem [ref=f7e148]: Slab buttons and brackets feel great with mouse and gamepad
+            - listitem [ref=f7e149]: "Cheapest to build in Godot: one 9-slice StyleBox plus a bracket node"
+        - generic [ref=f7e150]:
+          - heading "Watch out for" [level=3] [ref=f7e151]
+          - list [ref=f7e152]:
+            - listitem [ref=f7e153]: The closest to Megabonk; needs its own logo and motifs to avoid feeling borrowed
+            - listitem [ref=f7e154]: Blackletter pixel text needs 18 px or more to stay legible
+    - group [ref=f7e155]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f7e156] [cursor=pointer]

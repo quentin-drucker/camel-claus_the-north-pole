@@ -21,8 +21,7 @@ const BORDER: Dictionary = {
 }
 const ITEM_BORDER: Color = Color("E8C48E")
 const CARD_MARGIN: int = 14
-const ICON_SIZE: int = 56
-const HEADER_GAP: int = 10
+const ICON_SIZE: int = 52
 const DIM: Dictionary = {
 	Kind.SANTA: Color(0.357, 0.227, 0.165, 0.75),  # warm wood-brown: Santa's screen feels special
 	Kind.LEVEL_UP: Color(0.133, 0.188, 0.31, 0.6),
@@ -48,10 +47,19 @@ var _choices: Array[Dictionary] = []
 var _kind: Kind = Kind.LEVEL_UP
 var _parts: Array[Dictionary] = []  # per button: the Controls inside the card
 
+## Seconds the panel stays up after a pick while the postmark stamps the row (windowed runs only).
+const PICK_HOLD: float = 0.35
+const RAYS_SPEED: float = TAU / 50.0  # one slow turn every 50 s
+
+var _holding: bool = false
+
 @onready var buttons: Array[Button] = [%Choice1, %Choice2, %Choice3]
-@onready var title: Label = $Center/VBox/Title
+@onready var title: Label = %Title
+@onready var level_tag: Control = %LevelTag
+@onready var level_label: Label = %LevelLabel
+@onready var rays: Control = %Rays
 @onready var dim: ColorRect = $Dim
-@onready var tools: Control = $Center/VBox/Tools
+@onready var tools: Control = %Tools
 @onready var reroll_button: Button = %RerollButton
 @onready var banish_button: Button = %BanishButton
 
@@ -64,14 +72,15 @@ func _ready() -> void:
 	for i in buttons.size():
 		buttons[i].pressed.connect(_on_choice.bind(i))
 		_parts.append(_build_card(buttons[i]))
-		var button: Button = buttons[i]
-		button.focus_entered.connect(func() -> void: _pop(button, 1.04))
-		button.focus_exited.connect(func() -> void: _pop(button, 1.0))
-		button.mouse_entered.connect(button.grab_focus)
-	for tool_button: Button in [reroll_button, banish_button]:
-		tool_button.add_theme_constant_override(&"icon_max_width", 28)
+		buttons[i].mouse_entered.connect(buttons[i].grab_focus)  # hover = focus, so the brackets agree
 	reroll_button.pressed.connect(_reroll)
+	rays.set_meta(&"decor", true)  # decoration larger than the screen on purpose (tests skip its bounds)
 	banish_button.toggled.connect(func(_on: bool) -> void: _refresh_tools())
+
+
+func _process(delta: float) -> void:
+	if visible:
+		rays.rotation += RAYS_SPEED * delta
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -107,16 +116,18 @@ func _open_next() -> void:
 		return
 	banish_button.button_pressed = false
 	_show_choices()
+	level_tag.visible = _kind == Kind.LEVEL_UP
+	level_label.text = "Lv %d" % GameState.level
 	match _kind:
 		Kind.SANTA:
 			var evolving: bool = _choices[0]["card"]["tag"] == "EVOLUTION"
 			title.text = "Santa's present!  " + ("Evolve a weapon" if evolving else "Pick a blessing")
 			Audio.play(&"evolve" if evolving else &"chest")
 		Kind.LEVEL_UP:
-			title.text = "Level up! Pick one"
+			title.text = "Level up!"
 			Audio.play(&"levelup")
 		Kind.CHEST:
-			title.text = "Gift chest! Pick one"
+			title.text = "Gift chest!"
 			Audio.play(&"chest")
 	dim.color = DIM[_kind]
 	show()
@@ -245,95 +256,76 @@ func _refresh_tools() -> void:
 			buttons[i].modulate = Color("FF9AA0") if banishing else Color.WHITE
 
 
-## Card layout: [icon | tag / name | level] header, effect text, evolution hint.
+## Megabonk-style row (style guide 4.4): [rarity tile | name / effect / hint | level], with the rarity tag
+## breaking the row's top border. The row plate itself (fill, knit, line) comes from Row<Rarity>.
 func _build_card(button: Button) -> Dictionary:
 	button.text = ""
 	button.icon = null
 	var margin := MarginContainer.new()
 	margin.set_anchors_preset(Control.PRESET_FULL_RECT)
-	for side in ["left", "right", "top", "bottom"]:
+	for side: String in ["left", "right", "top", "bottom"]:
 		margin.add_theme_constant_override("margin_" + side, CARD_MARGIN)
+	margin.add_theme_constant_override(&"margin_left", 18)
+	# 12 px top/bottom: the longest weapon cards (3 text lines) then fit the 116 px row exactly.
+	margin.add_theme_constant_override(&"margin_top", 12)
+	margin.add_theme_constant_override(&"margin_bottom", 12)
 	margin.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	button.add_child(margin)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override(&"separation", 18)
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	margin.add_child(row)
+	var tile := Tin.tile(null, "common", ICON_SIZE)
+	tile.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	row.add_child(tile)
 	var column := VBoxContainer.new()
-	column.add_theme_constant_override(&"separation", 6)
+	column.add_theme_constant_override(&"separation", 2)
+	column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	column.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	margin.add_child(column)
-	var header := HBoxContainer.new()
-	header.add_theme_constant_override(&"separation", HEADER_GAP)
-	header.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	column.add_child(header)
-	var icon := TextureRect.new()
-	icon.custom_minimum_size = Vector2(ICON_SIZE, ICON_SIZE)
-	icon.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
-	header.add_child(icon)
-	var names := VBoxContainer.new()
-	names.add_theme_constant_override(&"separation", -8)
-	names.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	header.add_child(names)
-	# Tag and level share the small top row so the name gets the full width below them.
-	var tag_row := HBoxContainer.new()
-	names.add_child(tag_row)
-	var tag := Label.new()
-	tag.add_theme_font_size_override(&"font_size", 32)
-	tag.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	tag_row.add_child(tag)
-	var level := Label.new()
-	level.add_theme_font_size_override(&"font_size", 32)
-	level.add_theme_color_override(&"font_color", Color("8FA9D1"))
-	tag_row.add_child(level)
-	var name_label := Label.new()
-	name_label.clip_text = true  # last resort; _fill_card shrinks long names first
-	names.add_child(name_label)
-	var body := _rich(32)
+	row.add_child(column)
+	var name_label := Tin.label("", &"HeaderLabel")
+	name_label.clip_text = true  # last resort; names are short
+	column.add_child(name_label)
+	var body := _rich(&"RichTextLabel")
 	column.add_child(body)
-	var hint := _rich(32)
-	hint.add_theme_color_override(&"default_color", Color("8FA9D1"))
+	var hint := _rich(&"SmallRich")
 	column.add_child(hint)
-	for node: Control in [icon, names, tag_row, tag, name_label, level]:
-		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	return {"icon": icon, "tag": tag, "name": name_label, "level": level, "body": body, "hint": hint}
+	var level := Tin.label("", &"GoldLabel")
+	level.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	row.add_child(level)
+	var tag := Tin.label("", &"TagCommon")
+	tag.position = Vector2(14, -14)
+	tag.set_meta(&"decor", true)  # breaks the row's top border on purpose (style guide 4.4)
+	button.add_child(tag)
+	return {"tile": tile, "icon": tile.get_child(0), "tag": tag, "name": name_label, "level": level,
+		"body": body, "hint": hint}
 
 
-func _rich(size: int) -> RichTextLabel:
+func _rich(variation: StringName) -> RichTextLabel:
 	var rich := RichTextLabel.new()
 	rich.bbcode_enabled = true
 	rich.fit_content = true
 	rich.scroll_active = false
 	rich.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	rich.add_theme_font_size_override(&"normal_font_size", size)
+	rich.theme_type_variation = variation
 	return rich
 
 
 func _fill_card(i: int, choice: Dictionary) -> void:
 	var card: Dictionary = choice["card"]
 	var parts: Dictionary = _parts[i]
+	var rarity: String = Tin.rarity_of(card["tag"])
+	buttons[i].theme_type_variation = StringName("Row" + rarity.capitalize())
+	parts["tile"].theme_type_variation = StringName("Tile" + rarity.capitalize())
 	parts["icon"].texture = choice["icon"]
-	parts["tag"].text = card["tag"]
-	parts["tag"].add_theme_color_override(&"font_color", Color(card["tag_color"]))
-	var name_label: Label = parts["name"]
-	name_label.text = card["name"]
-	# Pixel font stays crisp at multiples of 16: drop from 48 to 32 when a name is too long.
-	# Measured from the card's fixed width: the layout isn't sorted yet while the menu is hidden.
-	var room: float = buttons[i].custom_minimum_size.x - CARD_MARGIN * 2 - ICON_SIZE - HEADER_GAP
-	var fits: bool = name_label.get_theme_font(&"font").get_string_size(card["name"], HORIZONTAL_ALIGNMENT_LEFT,
-		-1, 48).x <= room
-	name_label.add_theme_font_size_override(&"font_size", 48 if fits else 32)
+	parts["tag"].text = Tin.sentence(card["tag"])
+	parts["tag"].theme_type_variation = StringName("Tag" + rarity.capitalize())
+	parts["tag"].reset_size()  # shrink to the new text so the tag hugs it on the border
+	parts["name"].text = card["name"]
 	parts["level"].text = card["level"]
 	parts["body"].text = card["body"]
 	parts["hint"].text = card["hint"]
 	parts["hint"].visible = card["hint"] != ""
-	var style: StyleBoxFlat = ThemeDB.get_project_theme().get_stylebox(&"normal", &"Button").duplicate()
-	style.border_color = choice["border"]
-	if card["tag"] == "EVOLUTION":
-		style.bg_color = Color("5B3A2A")  # warm wood-brown glow behind the evolution card
-		style.set_border_width_all(5)
-	buttons[i].add_theme_stylebox_override(&"normal", style)
-
-
-func _pop(button: Button, to_scale: float) -> void:
-	button.pivot_offset = button.size / 2.0
-	create_tween().tween_property(button, "scale", Vector2.ONE * to_scale, 0.08)
 
 
 func _roll_rarity() -> Dictionary:
@@ -368,7 +360,20 @@ func _on_choice(index: int) -> void:
 			buttons[0].grab_focus()
 			return
 	else:
+		if _holding:
+			return
 		_choices[index]["apply"].call()
+		# The pick is applied at once (tests and the balance bot rely on that); on screen, a postmark
+		# stamps the chosen row and the panel holds a moment before closing.
+		if DisplayServer.get_name() != "headless":
+			_holding = true
+			var row: Button = buttons[index]
+			Tin.stamp_onto(row, Vector2(row.size.x - 190.0, row.size.y / 2.0))
+			await get_tree().create_timer(PICK_HOLD, true, false, true).timeout
+			_holding = false
+			for mark in row.get_children():
+				if mark is TextureRect and mark.texture == Tin.POSTMARK:
+					mark.queue_free()
 	_close_one()
 
 

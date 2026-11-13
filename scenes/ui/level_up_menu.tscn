@@ -27,6 +27,7 @@
 [ext_resource type="Resource" uid="uid://beq7tks7jw42j" path="res://resources/items/chimney_draft.tres" id="22_7ikhm"]
 [ext_resource type="Resource" uid="uid://b6neu3s1e3yt1" path="res://resources/items/lump_of_coal.tres" id="23_db3im"]
 [ext_resource type="Texture2D" uid="uid://buya0uj3iy8ar" path="res://assets/ui/icons/reroll.png" id="26_2f6tg"]
+[ext_resource type="Texture2D" uid="uid://bph7m4lnhppsy" path="res://assets/ui/tin/rays.png" id="27_d4b6d"]
 [ext_resource type="Texture2D" uid="uid://dpkwote27wrwm" path="res://assets/ui/icons/banish.png" id="27_ncni6"]
 
 [node name="LevelUpMenu" type="CanvasLayer" unique_id=1166969450]
@@ -42,73 +43,124 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.13333334, 0.1882353, 0.30980393, 0.6)
 
-[node name="Center" type="CenterContainer" parent="." unique_id=889725778]
+[node name="Rays" type="TextureRect" parent="." unique_id=1727335989]
+unique_name_in_owner = true
+texture_filter = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -600.0
+offset_right = 600.0
+offset_bottom = 600.0
+pivot_offset = Vector2(600, 600)
+mouse_filter = 2
+texture = ExtResource("27_d4b6d")
+expand_mode = 1
+
+[node name="Center" type="CenterContainer" parent="." unique_id=220622312]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
-[node name="VBox" type="VBoxContainer" parent="Center" unique_id=1577980428]
+[node name="Modal" type="PanelContainer" parent="Center" unique_id=1225349357]
+custom_minimum_size = Vector2(820, 0)
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_type_variation = &"PlateTight"
 
-[node name="Title" type="Label" parent="Center/VBox" unique_id=70713708]
+[node name="VBox" type="VBoxContainer" parent="Center/Modal" unique_id=1566080103]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9490196, 0.70980394, 0.23137255, 1)
-theme_override_font_sizes/font_size = 64
-text = "Level up! Pick one"
+theme_override_constants/separation = 0
+
+[node name="Header" type="PanelContainer" parent="Center/Modal/VBox" unique_id=783393988]
+layout_mode = 2
+theme_type_variation = &"HeaderBand"
+
+[node name="Row" type="HBoxContainer" parent="Center/Modal/VBox/Header" unique_id=1854705731]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Center/Modal/VBox/Header/Row" unique_id=649170474]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"TitleLabel"
+text = "Level up!"
+
+[node name="LevelTag" type="PanelContainer" parent="Center/Modal/VBox/Header/Row" unique_id=1177417816]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"LuggageTag"
+
+[node name="LevelLabel" type="Label" parent="Center/Modal/VBox/Header/Row/LevelTag" unique_id=1473017913]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"InkLabel"
+text = "Lv 2"
+
+[node name="Body" type="MarginContainer" parent="Center/Modal/VBox" unique_id=1655658653]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 4
+
+[node name="Choices" type="VBoxContainer" parent="Center/Modal/VBox/Body" unique_id=150483241]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="Choice1" type="Button" parent="Center/Modal/VBox/Body/Choices" unique_id=1105997909]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(770, 116)
+layout_mode = 2
+theme_type_variation = &"RowCommon"
+
+[node name="Choice2" type="Button" parent="Center/Modal/VBox/Body/Choices" unique_id=1678695761]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(770, 116)
+layout_mode = 2
+theme_type_variation = &"RowCommon"
+
+[node name="Choice3" type="Button" parent="Center/Modal/VBox/Body/Choices" unique_id=182020430]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(770, 116)
+layout_mode = 2
+theme_type_variation = &"RowCommon"
+
+[node name="Help" type="Label" parent="Center/Modal/VBox" unique_id=380409561]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "Click a card, or use the arrows and Enter."
 horizontal_alignment = 1
 
-[node name="Choices" type="HBoxContainer" parent="Center/VBox" unique_id=2070900489]
+[node name="ToolsMargin" type="MarginContainer" parent="Center/Modal/VBox" unique_id=1097861641]
 layout_mode = 2
-theme_override_constants/separation = 18
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_bottom = 18
 
-[node name="Choice1" type="Button" parent="Center/VBox/Choices" unique_id=1292554836]
+[node name="Tools" type="HBoxContainer" parent="Center/Modal/VBox/ToolsMargin" unique_id=633065392]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(380, 250)
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-autowrap_mode = 3
-icon_alignment = 1
-vertical_icon_alignment = 0
-
-[node name="Choice2" type="Button" parent="Center/VBox/Choices" unique_id=401546093]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(380, 250)
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-autowrap_mode = 3
-icon_alignment = 1
-vertical_icon_alignment = 0
-
-[node name="Choice3" type="Button" parent="Center/VBox/Choices" unique_id=1612704273]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(380, 250)
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-autowrap_mode = 3
-icon_alignment = 1
-vertical_icon_alignment = 0
-
-[node name="Tools" type="HBoxContainer" parent="Center/VBox" unique_id=2047201144]
-layout_mode = 2
-theme_override_constants/separation = 18
+theme_override_constants/separation = 26
 alignment = 1
 
-[node name="RerollButton" type="Button" parent="Center/VBox/Tools" unique_id=1967006910]
+[node name="RerollButton" type="Button" parent="Center/Modal/VBox/ToolsMargin/Tools" unique_id=48439253]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(260, 56)
+custom_minimum_size = Vector2(230, 0)
 layout_mode = 2
-focus_mode = 0
-theme_override_font_sizes/font_size = 32
+theme_type_variation = &"RerollButton"
 text = "Reroll (2)  [R]"
 icon = ExtResource("26_2f6tg")
 
-[node name="BanishButton" type="Button" parent="Center/VBox/Tools" unique_id=839098987]
+[node name="BanishButton" type="Button" parent="Center/Modal/VBox/ToolsMargin/Tools" unique_id=1341875288]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(260, 56)
+custom_minimum_size = Vector2(230, 0)
 layout_mode = 2
-focus_mode = 0
-theme_override_font_sizes/font_size = 32
+theme_type_variation = &"DangerButton"
 toggle_mode = true
 text = "Banish (1)  [B]"
 icon = ExtResource("27_ncni6")

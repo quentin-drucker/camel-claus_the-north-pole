@@ -227,12 +227,12 @@ func _audit(where: String) -> void:
 				var width: float = font.get_string_size(line, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
 				if width > control.size.x + SLACK:
 					_fail(where, "%s text '%s' is %d px wide in a %d px label" % [name, line, width, control.size.x])
+		# Deliberate overhangs (rays bigger than the screen, a rarity tag breaking its row's border) carry
+		# meta "decor": their text is still measured above, only their bounds are skipped.
+		if control.has_meta(&"decor"):
+			continue
 		if not screen.grow(SLACK).encloses(rect) and not _in_scroll(control):  # scrolled-away rows are clipped, not cut
 			_fail(where, "%s at %s sticks out of the screen" % [name, rect])
-		if control is Label and control.clip_text and control.get_theme_font_size(&"font_size") < 48:
-			var big: float = control.get_theme_font(&"font").get_string_size(control.text, HORIZONTAL_ALIGNMENT_LEFT, -1, 48).x
-			if big <= control.size.x:
-				_fail(where, "%s '%s' was shrunk although it fits at 48 px" % [name, control.text])
 		var button: Control = _button_ancestor(control)
 		if button and not button.get_global_rect().grow(SLACK).encloses(rect):
 			_fail(where, "%s sticks out of its button %s (%s vs %s)" % [name, button.name, rect, button.get_global_rect()])

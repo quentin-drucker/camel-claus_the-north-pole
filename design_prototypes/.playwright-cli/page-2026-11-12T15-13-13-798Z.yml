@@ -1,0 +1,124 @@
+- generic [active] [ref=f13e1]:
+  - generic [ref=f13e2]:
+    - banner [ref=f13e3]:
+      - generic [ref=f13e4]:
+        - generic [ref=f13e5]: Camel Claus
+        - generic [ref=f13e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f13e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [ref=f13e8] [cursor=pointer]:
+          - generic [ref=f13e14]: A Workshop Tin
+          - generic [ref=f13e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f13e16] [cursor=pointer]:
+          - generic [ref=f13e22]: B Ugly Sweater
+          - generic [ref=f13e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [selected] [ref=f13e24] [cursor=pointer]:
+          - generic [ref=f13e30]: C Northern Lights
+          - generic [ref=f13e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f13e32] [cursor=pointer]:
+          - generic [ref=f13e38]: D Polar Expedition
+          - generic [ref=f13e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f13e40] [cursor=pointer]:
+          - generic [ref=f13e46]: E 8-Bit Holiday
+          - generic [ref=f13e47]: Retro holiday arcade
+      - generic [ref=f13e48]:
+        - button "Compare all five" [ref=f13e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f13e50] [cursor=pointer]
+        - link "Splash screens" [ref=f13e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f13e52]:
+      - tab "Main menu" [ref=f13e53] [cursor=pointer]
+      - tab "Level up" [selected] [ref=f13e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f13e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f13e56] [cursor=pointer]
+      - tab "Settings" [ref=f13e57] [cursor=pointer]
+      - tab "Achievements" [ref=f13e58] [cursor=pointer]
+      - tab "Customize" [ref=f13e59] [cursor=pointer]
+      - tab "Results" [ref=f13e60] [cursor=pointer]
+      - tab "Components" [ref=f13e61] [cursor=pointer]
+  - main [ref=f13e62]:
+    - dialog "Level up" [ref=f13e69]:
+      - generic [ref=f13e70]:
+        - heading "Level up!" [level=2] [ref=f13e71]
+        - generic [ref=f13e72]: Lv 9 → 10
+      - generic [ref=f13e73]:
+        - button "Common Weapon upgrade Gift Toss Damage 18→23 Gifts per throw 2→3 Ready to evolve into Present Barrage Lv 4 → 5 1" [ref=f13e74] [cursor=pointer]:
+          - generic [ref=f13e75]: Common
+          - generic [ref=f13e77]:
+            - generic [ref=f13e78]: Weapon upgrade
+            - generic [ref=f13e79]: Gift Toss
+            - generic [ref=f13e80]: Damage 18→23
+            - generic [ref=f13e81]: Gifts per throw 2→3
+            - generic [ref=f13e82]: Ready to evolve into Present Barrage
+          - generic [ref=f13e83]: Lv 4 → 5
+          - generic [ref=f13e84]: "1"
+        - button "Rare Stat upgrade Extra Hump Max HP 130→160 Also heals 30 HP right away Lv 2 → 3 2" [ref=f13e85] [cursor=pointer]:
+          - generic [ref=f13e86]: Rare
+          - generic [ref=f13e88]:
+            - generic [ref=f13e89]: Stat upgrade
+            - generic [ref=f13e90]: Extra Hump
+            - generic [ref=f13e91]: Max HP 130→160
+            - generic [ref=f13e92]: Also heals 30 HP right away
+          - generic [ref=f13e93]: Lv 2 → 3
+          - generic [ref=f13e94]: "2"
+        - button "Epic New weapon Jingle Pulse Damage —→14 A jingling burst hits and pushes back everything near Claus New 3" [ref=f13e95] [cursor=pointer]:
+          - generic [ref=f13e96]: Epic
+          - generic [ref=f13e98]:
+            - generic [ref=f13e99]: New weapon
+            - generic [ref=f13e100]: Jingle Pulse
+            - generic [ref=f13e101]: Damage —→14
+            - generic [ref=f13e102]: A jingling burst hits and pushes back everything near Claus
+          - generic [ref=f13e103]: New
+          - generic [ref=f13e104]: "3"
+      - paragraph [ref=f13e105]: Click, press 1–3, or use arrows and Enter.
+      - generic [ref=f13e106]:
+        - button "2 Reroll R" [ref=f13e107] [cursor=pointer]:
+          - generic [ref=f13e108]: "2"
+          - generic [ref=f13e109]: Reroll
+          - generic [ref=f13e110]: R
+        - button "1 Banish B" [ref=f13e111] [cursor=pointer]:
+          - generic [ref=f13e112]: "1"
+          - generic [ref=f13e113]: Banish
+          - generic [ref=f13e114]: B
+    - generic [ref=f13e115]:
+      - generic [ref=f13e116]: Try it
+      - generic [ref=f13e117]: Pick a card (1–3)
+      - button "Reroll (R)" [ref=f13e118] [cursor=pointer]
+      - button "Banish (B)" [ref=f13e119] [cursor=pointer]
+      - generic [ref=f13e120]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f13e121]:
+      - generic [ref=f13e122]:
+        - heading "C. Northern Lights" [level=2] [ref=f13e123]
+        - paragraph [ref=f13e124]: "Magic at the top of the world: faceted ice panels with chamfered corners, aurora light drifting behind the menus, and sparkles that only appear when something is chosen."
+        - generic [ref=f13e125]:
+          - text: "Pairs with splash C:"
+          - link "open the matching intro" [ref=f13e126] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=c
+      - generic [ref=f13e127]:
+        - generic [ref=f13e128]:
+          - generic "#141D33" [ref=f13e129]
+          - generic "#22304F" [ref=f13e131]
+          - generic "#7FD6F2" [ref=f13e133]
+          - generic "#C9DAF0" [ref=f13e135]
+          - generic "#3E9A5B" [ref=f13e137]
+          - generic "#F2B53B" [ref=f13e139]
+        - generic [ref=f13e141]:
+          - generic [ref=f13e142]:
+            - text: Camel Claus
+            - generic [ref=f13e143]: Cinzel, display
+          - generic [ref=f13e144]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f13e145]: Alegreya Sans, UI text
+      - generic [ref=f13e146]:
+        - generic [ref=f13e147]:
+          - heading "Strengths" [level=3] [ref=f13e148]
+          - list [ref=f13e149]:
+            - listitem [ref=f13e150]: The most atmospheric; reuses the game's aurora shader
+            - listitem [ref=f13e151]: Clean shapes keep busy screens calm
+            - listitem [ref=f13e152]: Gold-on-ice rewards read as precious
+        - generic [ref=f13e153]:
+          - heading "Watch out for" [level=3] [ref=f13e154]
+          - list [ref=f13e155]:
+            - listitem [ref=f13e156]: The least playful of the five
+            - listitem [ref=f13e157]: Serif display caps lean fantasy-RPG more than cute
+    - group [ref=f13e158]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f13e159] [cursor=pointer]

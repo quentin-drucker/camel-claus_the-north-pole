@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Camel Claus: The North Pole"
-run/main_scene="res://scenes/ui/main_menu.tscn"
+run/main_scene="res://scenes/ui/splash.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-boot_splash/bg_color=Color(0.13333334, 0.1882353, 0.30980393, 1)
+boot_splash/bg_color=Color(0.5568628, 0.12156863, 0.18039216, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -23,6 +24,11 @@ Audio="*uid://d3pve3qk1ng7y"
 Transition="*uid://pi5lyfyojr44"
 Profile="*uid://imb5vituc35w"
 DemoCode="*uid://b0rbaafi88aor"
+FocusBrackets="*uid://cpl5upm78s3wr"
+
+[camel_claus]
+
+always_show_intro=false
 
 [display]
 
@@ -37,7 +43,7 @@ enabled=PackedStringArray("res://addons/godot_mcp/plugin.cfg")
 
 [gui]
 
-theme/custom="res://assets/ui/cozy_pixel_theme.tres"
+theme/custom="res://assets/ui/workshop_tin_theme.tres"
 
 [input]
 

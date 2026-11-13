@@ -19,7 +19,7 @@ func _ready() -> void:
 	_toast.position = Vector2(660.0, 112.0)
 	_toast.size = Vector2(600.0, 60.0)
 	_toast.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_toast.add_theme_font_size_override(&"font_size", 48)
+	_toast.theme_type_variation = &"HeaderLabel"
 	_toast.add_theme_color_override(&"font_color", Color("F2B53B"))
 	_toast.add_theme_constant_override(&"outline_size", 12)
 	_toast.add_theme_color_override(&"font_outline_color", Color("22304F"))

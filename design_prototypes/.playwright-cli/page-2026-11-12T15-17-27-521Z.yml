@@ -1,0 +1,127 @@
+- generic [active] [ref=f16e1]:
+  - generic [ref=f16e2]:
+    - banner [ref=f16e3]:
+      - generic [ref=f16e4]:
+        - generic [ref=f16e5]: Camel Claus
+        - generic [ref=f16e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f16e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [ref=f16e8] [cursor=pointer]:
+          - generic [ref=f16e14]: A Workshop Tin
+          - generic [ref=f16e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f16e16] [cursor=pointer]:
+          - generic [ref=f16e22]: B Ugly Sweater
+          - generic [ref=f16e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f16e24] [cursor=pointer]:
+          - generic [ref=f16e30]: C Northern Lights
+          - generic [ref=f16e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [selected] [ref=f16e32] [cursor=pointer]:
+          - generic [ref=f16e38]: D Polar Expedition
+          - generic [ref=f16e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f16e40] [cursor=pointer]:
+          - generic [ref=f16e46]: E 8-Bit Holiday
+          - generic [ref=f16e47]: Retro holiday arcade
+      - generic [ref=f16e48]:
+        - button "Compare all five" [ref=f16e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f16e50] [cursor=pointer]
+        - link "Splash screens" [ref=f16e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f16e52]:
+      - tab "Main menu" [selected] [ref=f16e53] [cursor=pointer]
+      - tab "Level up" [ref=f16e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f16e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f16e56] [cursor=pointer]
+      - tab "Settings" [ref=f16e57] [cursor=pointer]
+      - tab "Achievements" [ref=f16e58] [cursor=pointer]
+      - tab "Customize" [ref=f16e59] [cursor=pointer]
+      - tab "Results" [ref=f16e60] [cursor=pointer]
+      - tab "Components" [ref=f16e61] [cursor=pointer]
+  - main [ref=f16e62]:
+    - generic [ref=f16e67]:
+      - heading "Camel Claus The North Pole 90°00′ N" [level=1] [ref=f16e69]:
+        - generic [ref=f16e70]:
+          - generic [ref=f16e71]: Camel
+          - generic [ref=f16e72]: Claus
+        - generic [ref=f16e73]: The North Pole 90°00′ N
+      - paragraph [ref=f16e74] [cursor=pointer]: Lost camel. Angry critters. Survive 5 minutes!
+      - navigation [ref=f16e75]:
+        - button "Play" [ref=f16e76] [cursor=pointer]
+        - button "Workshop 3" [ref=f16e78] [cursor=pointer]:
+          - generic [ref=f16e79]: Workshop
+          - generic [ref=f16e80]: "3"
+        - button "Achievements" [ref=f16e81] [cursor=pointer]
+        - button "Customize Claus" [ref=f16e83] [cursor=pointer]
+      - navigation [ref=f16e85]:
+        - button "Settings" [ref=f16e86] [cursor=pointer]
+        - button "Credits" [ref=f16e88] [cursor=pointer]
+        - button "Quit" [ref=f16e90] [cursor=pointer]
+      - generic [ref=f16e92]:
+        - heading "Next goals" [level=3] [ref=f16e94]
+        - generic [ref=f16e95]:
+          - generic [ref=f16e98]:
+            - generic [ref=f16e99]: Snow Survivor
+            - generic [ref=f16e100]: Survive the full 5 minutes
+            - generic [ref=f16e101]: 0 / 1
+          - generic [ref=f16e106]:
+            - generic [ref=f16e107]: Not a Scratch
+            - generic [ref=f16e108]: Survive 5 minutes without taking damage
+            - generic [ref=f16e109]: 0 / 1
+          - generic [ref=f16e114]:
+            - generic [ref=f16e115]: Endless Night
+            - generic [ref=f16e116]: Keep going in Endless mode until 8:00
+            - generic [ref=f16e117]: 0:00 / 8:00
+      - generic [ref=f16e120]:
+        - heading "Best runs" [level=3] [ref=f16e122]
+        - table [ref=f16e124]:
+          - rowgroup [ref=f16e125]:
+            - row [ref=f16e126]:
+              - cell "5:00" [ref=f16e127]
+              - cell "Lv 14" [ref=f16e128]
+              - cell "1,042 bonks" [ref=f16e129]
+      - generic [ref=f16e130]: 1,240
+      - generic [ref=f16e133]:
+        - generic [ref=f16e134]: WASDMove
+        - generic [ref=f16e135]: SpaceCall Santa
+        - generic [ref=f16e136]: EscPause
+    - generic [ref=f16e137]:
+      - generic [ref=f16e138]: Try it
+      - generic [ref=f16e139]: Click the tagline for another joke
+      - button "Play" [ref=f16e140] [cursor=pointer]
+      - button "Customize" [ref=f16e141] [cursor=pointer]
+      - generic [ref=f16e142]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f16e143]:
+      - generic [ref=f16e144]:
+        - heading "D. Polar Expedition" [level=2] [ref=f16e145]
+        - paragraph [ref=f16e146]: "Claus is lost, so the UI is his field kit: crisp white survey sheets, navy ink, candy-cane signal tape, slanted buttons and big confident numbers."
+        - generic [ref=f16e147]:
+          - text: "Pairs with splash D:"
+          - link "open the matching intro" [ref=f16e148] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=d
+      - generic [ref=f16e149]:
+        - generic [ref=f16e150]:
+          - generic "#F4F8FF" [ref=f16e151]
+          - generic "#22304F" [ref=f16e153]
+          - generic "#D9343F" [ref=f16e155]
+          - generic "#8FA9D1" [ref=f16e157]
+          - generic "#F2B53B" [ref=f16e159]
+          - generic "#141D33" [ref=f16e161]
+        - generic [ref=f16e163]:
+          - generic [ref=f16e164]:
+            - text: Camel Claus
+            - generic [ref=f16e165]: Barlow Condensed, display
+          - generic [ref=f16e166]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f16e167]: Barlow, UI text
+      - generic [ref=f16e168]:
+        - generic [ref=f16e169]:
+          - heading "Strengths" [level=3] [ref=f16e170]
+          - list [ref=f16e171]:
+            - listitem [ref=f16e172]: The sharpest hierarchy and densest information
+            - listitem [ref=f16e173]: Scales cleanly to any resolution (no pixel fonts)
+            - listitem [ref=f16e174]: "Its own story: the lost-explorer framing"
+        - generic [ref=f16e175]:
+          - heading "Watch out for" [level=3] [ref=f16e176]
+          - list [ref=f16e177]:
+            - listitem [ref=f16e178]: White panels are bright over the snow and need dark HUD variants
+            - listitem [ref=f16e179]: The least overtly Christmassy
+    - group [ref=f16e180]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f16e181] [cursor=pointer]

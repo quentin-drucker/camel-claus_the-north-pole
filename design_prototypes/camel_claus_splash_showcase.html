@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camel Claus Splash Intros</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="ui/base.css">
+<link rel="stylesheet" href="splash/splash.css">
+</head>
+<body>
+<div id="chrome">
+  <header class="top">
+    <div class="brand"><b>Camel Claus</b><span>Splash and intro prototypes</span></div>
+    <nav id="sp-tabs" class="sp-tabs" role="tablist" aria-label="Splash concept"></nav>
+    <div class="tools"><a class="tool" href="camel_claus_ui_showcase.html">UI showcase</a></div>
+  </header>
+  <div class="sp-controls">
+    <button id="replay" class="tool sp-primary">Replay from page load</button>
+    <button id="jump-intro" class="tool">Replay intro only</button>
+    <button id="jump-menu" class="tool">Show main menu</button>
+    <label><input type="checkbox" id="opt-web" checked> Include web loading</label>
+    <label><input type="checkbox" id="opt-slow"> Slow connection (9 s)</label>
+    <label><input type="checkbox" id="opt-rm"> Reduce motion</label>
+  </div>
+</div>
+<main>
+  <div class="view"><div class="stage-fit" id="sp-fit" style="width:min(100%, 1280px, calc((100vh - 250px) * 1.7778));min-width:min(100%,640px)"></div></div>
+  <div class="timeline">
+    <div class="tl-step"><b>1. Web page loading</b>HTML/JS loader, before Godot exists<i></i></div>
+    <div class="tl-step"><b>2. Engine start</b>Boot splash = bg color<i></i></div>
+    <div class="tl-step"><b>3. Intro scene</b>Godot AnimationPlayer, skippable<i></i></div>
+    <div class="tl-step"><b>4. Main menu</b>Paired UI concept<i></i></div>
+  </div>
+  <section id="sp-notes" class="sp-notes"></section>
+
+  <section class="arch">
+    <h2>Recommended startup chain for the web build</h2>
+    <div class="arch-flow">
+      <div class="arch-box"><small>0–3 s (depends on network)</small><b>Custom HTML shell</b>Shown instantly from <code>index.html</code>. It shows the concept's loader, driven by Godot's real <code>onProgress(current, total)</code>. Only CSS and a few KB of inline SVG/PNG, so it appears in the first paint. Its background color is the boot color.</div>
+      <div class="arch-box"><small>~0.3–0.6 s</small><b>Engine boot</b><code>boot_splash/show_image = false</code> and <code>boot_splash/bg_color</code> = the same color. The canvas fades in over the loader, so you never see a white or black flash.</div>
+      <div class="arch-box"><small>3–4.5 s, skippable</small><b>splash.tscn</b>The main scene. AnimationPlayer intro whose first frame is the loader's last frame. It loads the menu with <code>ResourceLoader.load_threaded_request</code> while it plays (sync fallback on web).</div>
+      <div class="arch-box"><small>then</small><b>main_menu.tscn</b>Reached through the existing <code>Transition</code> autoload, using the concept's own wipe (shutter, curtain, dive, swipe, iris).</div>
+    </div>
+    <div class="arch-cols">
+      <div>
+        <h3>Why a combination, not one or the other</h3>
+        <ul>
+          <li>The <b>web loader is unavoidable</b>: <code>index.wasm</code> is 39.5 MB, and until it downloads and compiles nothing from Godot can draw. Godot's default shell only shows a bare progress bar. A custom shell (<code>html/custom_html_shell</code>) gives the first 1–10 s a designed look at almost no cost.</li>
+          <li>The <b>Godot intro</b> is where character animation belongs: it can use the real models, the menu diorama and the game's own shaders, and it's the same on desktop builds.</li>
+          <li>The demo's advice holds here: turn off the boot-splash image, match <code>bg_color</code> to the first frame, make <code>splash.tscn</code> the main scene, use AnimationPlayer's <code>animation_finished</code> to move on, and <b>don't <code>preload()</code> the menu</b> in the splash (that would block its first frame).</li>
+          <li>Keep the intro under 4.5 s, skippable on any key, click or tap. Show it in full on first launch only; on later visits play a 1-second logo sting (save a flag in <code>Profile</code>).</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Not seeing it while developing</h3>
+        <ul>
+          <li>In <code>splash.gd</code>: <code>if not OS.has_feature("template"): get_tree().change_scene_to_file.call_deferred(MENU)</code>. The <code>template</code> feature is true only in exported builds, so F5 in the editor goes straight to the menu while every export shows the intro.</li>
+          <li>Add a project setting such as <code>camel_claus/always_show_intro</code> to force it on when you're working on the intro itself (or use F6 on <code>splash.tscn</code>, which always plays it).</li>
+          <li>Tests and the balance bot already load <code>main.tscn</code> directly, so they're unaffected.</li>
+          <li>Reduced motion: honour a Settings toggle and, on web, <code>prefers-reduced-motion</code> (read in the HTML shell and passed to Godot via <code>JavaScriptBridge</code>). It shows the final frame for 1 s, then crossfades.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="splash/splash.js"></script>
+</body>
+</html>

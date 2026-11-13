@@ -91,7 +91,8 @@ docs/        devlog, art direction, these conventions
 
 ## Game structure
 
-- Main scene is `scenes/ui/main_menu.tscn`; scene changes go through the `Transition` autoload (fade).
+- Main scene is `scenes/ui/splash.tscn` (intro -> `main_menu.tscn`); scene changes go through the `Transition`
+  autoload (knitted curtain).
 - UI text about upgrades/weapons/items/stats comes from `scripts/ui/describe.gd`, which uses the same
   formulas as gameplay (`WeaponData.damage_at/cooldown_at/count_at/radius_at`). Never hard-code numbers
   in UI text.
@@ -105,6 +106,25 @@ docs/        devlog, art direction, these conventions
   script (extends `Weapon`), a `WeaponData` .tres (with evolution fields), an `UpgradeData` weapon card, the
   card in `LevelUpMenu.upgrades` and `Profile.WEAPON_CARDS`, `Describe.WEAPONS`, icons `weapon_<id>` and
   `weapon_<id>_evo`, and an entry in `tests/test_weapons.gd`.
+
+## UI ("Workshop Tin" theme, see `art_reference/GUI_Style_Guide/`)
+
+- Text, buttons and panels get a **theme type variation** (`HeaderLabel`, `PrimaryButton`, `PlateTight`, ...),
+  never per-node font sizes or stylebox overrides. Need a new look? Add a role to
+  `art_src/tools/build_ui_theme.gd`, then rebuild: `godot --headless --path . -s <abs>/art_src/tools/build_ui_theme.gd`.
+- UI textures are generated: edit `art_src/tools/make_ui_textures.py`, run it, `--import`, rebuild the theme.
+- UI built in code uses `Tin` (`scripts/ui/tin.gd`): `Tin.header()`, `Tin.stamp()`, `Tin.tile()`, `Tin.label()`.
+- One gold primary button per screen. Buttons grab focus on hover so the `FocusBrackets` autoload agrees with
+  keyboard/gamepad. Opt a control out with meta `no_brackets`.
+- Deliberate overhangs (rays, a tag breaking a border) set meta `decor`; `test_text_fit.gd` then skips only
+  their bounds. Anything else that sticks out is a bug.
+- Clearing old overrides from existing scenes: `art_src/tools/apply_tin_roles.gd` (MCP can't remove an override).
+- Tweens on UI that can be visible while the tree is paused (toasts, results) must run with
+  `PROCESS_MODE_ALWAYS` (bind the tween to that node), or they freeze half-way.
+- Main scene is `scenes/ui/splash.tscn` (Knit + Tin intro). Editor runs skip it; set
+  `camel_claus/always_show_intro` to preview, and switch it back off.
+- The web loading page is generated: `python art_src/tools/make_web_shell.py` -> `web/shell.html` (the Web
+  preset's custom HTML shell). Its red must match `boot_splash/bg_color` and the intro's first frame.
 
 ## Web build
 

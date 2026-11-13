@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camel Claus UI Directions</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="ui/base.css">
+<link rel="stylesheet" href="ui/concept_a.css">
+<link rel="stylesheet" href="ui/concept_b.css">
+<link rel="stylesheet" href="ui/concept_c.css">
+<link rel="stylesheet" href="ui/concept_d.css">
+<link rel="stylesheet" href="ui/concept_e.css">
+<link rel="stylesheet" href="ui/concept_h.css">
+</head>
+<body>
+<div id="chrome">
+  <header class="top">
+    <div class="brand"><b>Camel Claus</b><span>UI direction prototypes</span></div>
+    <nav id="concept-tabs" class="concept-tabs" role="tablist" aria-label="Design concept"></nav>
+    <div class="tools">
+      <button id="compare-toggle" class="tool" aria-pressed="false">Compare all five</button>
+      <button id="motion-toggle" class="tool" aria-pressed="false">Reduce motion</button>
+      <a class="tool" href="camel_claus_splash_showcase.html">Splash screens</a>
+    </div>
+  </header>
+  <nav id="screen-tabs" class="screen-tabs" role="tablist" aria-label="Screen"></nav>
+</div>
+<main>
+  <div id="view" class="view"></div>
+  <div id="try" class="try"></div>
+  <section id="about" class="about"></section>
+  <details class="research">
+    <summary>What we took from Megabonk (and other roguelites)</summary>
+    <div class="research-body">
+      <div>
+        <h3>Observed in Megabonk</h3>
+        <ul>
+          <li><b>Riveted plates.</b> Every panel is a dark slate-green plate: a lighter header band with the title, a double hairline border and a rivet in each corner. One panel recipe for menus, offers, quests, stats and results.</li>
+          <li><b>Slab buttons sized to their text.</b> The menu buttons aren't one fixed width; they're staggered slabs with a light top bevel and a dark bottom lip, so the column looks hand-stacked.</li>
+          <li><b>Corner brackets for focus.</b> Four L-shaped brackets jump to whatever is selected (buttons, panels, upgrade rows). This works the same with mouse and gamepad.</li>
+          <li><b>Upgrade offers are rows, not cards.</b> Each row is filled with its rarity color, with the rarity name breaking the top border, a rarity-framed icon, the name, a gold level and one line in the form <i>Stat: 2.4 → 3.4</i> with the new value in green. Banish, Skip and Refresh sit underneath as colored slabs, each with its count above.</li>
+          <li><b>The HUD has no panels.</b> Outlined numbers sit straight on the world: a hairline XP bar across the top edge, time, currency and kills top-left, a flat red HP bar with centered numbers, weapon icons with "LVL n", a checkbox objective, a big timer top-center, "LVL 46" top-right, and an item strip along the bottom with ×n stacks.</li>
+          <li><b>Display type is a pixel blackletter</b> with a dark outline. It reads as handmade and a little goofy, and it's used for everything from titles to stat lists. The logo is a separate fat white sans with a heavy outline.</li>
+          <li><b>Quests and stats are dense lists</b>: per-category tabs with their own progress bars, completed rows turn blue with a check, and the reward shows in the last column.</li>
+          <li><b>The world is the backdrop.</b> Menus float over a live, softly blurred 3D diorama, and the level-up screen adds light rays and a gem shower behind the panel.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Carried into Camel Claus</h3>
+        <ul>
+          <li>Every concept keeps Megabonk's <b>information design</b>: rarity-framed offers with before → after numbers, counted action buttons, the HUD layout, quest rows and the two-column stats list. Those are what make it feel responsive and legible.</li>
+          <li>What changes per concept is the <b>material</b> (tin plate, knit, ice, paper, pixels), the type, the motion and the composition, so A–E are real alternatives rather than recolors.</li>
+          <li>Rarity follows our art bible, not Megabonk's: rare = ice, epic = purple, evolution = gold. Purple stays reserved for danger and epic.</li>
+          <li>From other roguelites: Vampire Survivors' bottom item strip with stacks; Brotato's single-screen pause with build and stats side by side; Hades' slanted, tilted panels with big type (concept D); Balatro's tactile lift-and-tilt on hover (all concepts, on cards).</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</main>
+<script src="ui/data.js"></script>
+<script src="ui/showcase.js"></script>
+</body>
+</html>

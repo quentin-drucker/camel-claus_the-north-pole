@@ -22,30 +22,24 @@ var _back: Button
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(600, 0)
+	theme_type_variation = &"PlateTight"  # header band on top, body below (style guide 4.1)
+	var outer := VBoxContainer.new()
+	outer.add_theme_constant_override(&"separation", 0)
+	add_child(outer)
+	_coins = Tin.label("", &"GoldLabel")
+	outer.add_child(Tin.header("Customize Claus", _coins))
 	var column := VBoxContainer.new()
-	column.add_theme_constant_override(&"separation", 10)
-	add_child(column)
-	var header := HBoxContainer.new()
-	column.add_child(header)
-	var title := Label.new()
-	title.text = "Customize Claus"
-	title.add_theme_font_size_override(&"font_size", 48)
-	title.add_theme_color_override(&"font_color", Color("F2B53B"))
-	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	header.add_child(title)
-	_coins = Label.new()
-	_coins.add_theme_font_size_override(&"font_size", 32)
-	_coins.add_theme_color_override(&"font_color", Color("F2B53B"))
-	header.add_child(_coins)
+	column.add_theme_constant_override(&"separation", 12)
+	outer.add_child(Tin.body(column, 16))
 	var tab_row := HBoxContainer.new()
-	tab_row.add_theme_constant_override(&"separation", 8)
+	tab_row.add_theme_constant_override(&"separation", 4)
 	column.add_child(tab_row)
 	for i in TABS.size():
 		var tab := Button.new()
 		tab.text = TABS[i]
 		tab.toggle_mode = true
-		tab.custom_minimum_size = Vector2(180, 56)
-		tab.add_theme_font_size_override(&"font_size", 32)
+		tab.theme_type_variation = &"TabButton"
+		tab.custom_minimum_size = Vector2(120, 0)
 		tab.pressed.connect(_show_tab.bind(i))
 		tab_row.add_child(tab)
 		_tabs.append(tab)
@@ -54,10 +48,7 @@ func _ready() -> void:
 	_list.add_theme_constant_override(&"h_separation", 8)
 	_list.add_theme_constant_override(&"v_separation", 8)
 	column.add_child(_list)
-	_colors_label = Label.new()
-	_colors_label.text = "Color"
-	_colors_label.add_theme_font_size_override(&"font_size", 32)
-	_colors_label.add_theme_color_override(&"font_color", Color("8FA9D1"))
+	_colors_label = Tin.label("Color", &"StatLabel")
 	column.add_child(_colors_label)
 	_colors = HBoxContainer.new()
 	_colors.add_theme_constant_override(&"separation", 8)
@@ -67,8 +58,7 @@ func _ready() -> void:
 	column.add_child(bottom)
 	var reset := Button.new()
 	reset.text = "Default look"
-	reset.custom_minimum_size = Vector2(250, 60)
-	reset.add_theme_font_size_override(&"font_size", 32)
+	reset.size_flags_horizontal = Control.SIZE_EXPAND
 	reset.pressed.connect(func() -> void:
 		Audio.play(&"click")
 		Profile.reset_look()
@@ -76,7 +66,8 @@ func _ready() -> void:
 	bottom.add_child(reset)
 	_back = Button.new()
 	_back.text = "Back"
-	_back.custom_minimum_size = Vector2(250, 60)
+	_back.theme_type_variation = &"PrimaryButton"
+	_back.custom_minimum_size = Vector2(150, 0)
 	_back.pressed.connect(close)
 	bottom.add_child(_back)
 	visibility_changed.connect(func() -> void:
@@ -117,16 +108,18 @@ func _refresh() -> void:
 		var status: String = "Wearing" if item == worn else ("Owned" if owned else "%d coins" % item.price)
 		if item == _armed:
 			status = "Buy for %d?" % item.price
-		var button := Button.new()
+		var button := Button.new()  # knit nameplate tile; the worn one sits on the gold plate
+		button.theme_type_variation = &"KnitTileButton"
+		button.toggle_mode = true
+		button.set_pressed_no_signal(item == worn)
 		button.text = "%s\n%s" % [item.title, status]
-		button.custom_minimum_size = Vector2(278, 76)
-		button.add_theme_font_size_override(&"font_size", 32)
+		button.custom_minimum_size = Vector2(270, 74)
 		if item == worn:
-			button.add_theme_color_override(&"font_color", Color("F2B53B"))
+			button.add_theme_color_override(&"font_pressed_color", Color("FFD64F"))
+			button.add_theme_color_override(&"font_hover_pressed_color", Color("FFD64F"))
 		elif not owned:
-			button.add_theme_color_override(&"font_color", Color("8FA9D1"))
+			button.add_theme_color_override(&"font_color", Color("A9BDDC"))
 			button.icon = Describe.icon("lock")
-			button.add_theme_constant_override(&"icon_max_width", 28)
 		button.pressed.connect(_pick.bind(item))
 		button.mouse_entered.connect(button.grab_focus)
 		_list.add_child(button)

@@ -117,6 +117,7 @@ const DEFAULTS: Dictionary = {
 	"seen_combos": [],  # sorted loadout ids already played ("Mix and Match")
 	"cosmetics_owned": [],  # bought cosmetic ids (free ones are always owned)
 	"look": DEFAULT_LOOK,  # equipped cosmetic per slot + chosen colors
+	"seen_intro": false,  # the Knit + Tin intro plays in full once, then as a short sting
 }
 
 ## Tests point this at a scratch file so they never touch the player's save.

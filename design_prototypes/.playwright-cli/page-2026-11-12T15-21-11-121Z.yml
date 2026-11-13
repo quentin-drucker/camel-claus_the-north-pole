@@ -1,0 +1,111 @@
+- generic [ref=f56e1]:
+  - generic [ref=f56e2]:
+    - banner [ref=f56e3]:
+      - generic [ref=f56e4]:
+        - generic [ref=f56e5]: Camel Claus
+        - generic [ref=f56e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f56e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [selected] [ref=f56e8] [cursor=pointer]:
+          - generic [ref=f56e14]: A Workshop Tin
+          - generic [ref=f56e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f56e16] [cursor=pointer]:
+          - generic [ref=f56e22]: B Ugly Sweater
+          - generic [ref=f56e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f56e24] [cursor=pointer]:
+          - generic [ref=f56e30]: C Northern Lights
+          - generic [ref=f56e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f56e32] [cursor=pointer]:
+          - generic [ref=f56e38]: D Polar Expedition
+          - generic [ref=f56e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f56e40] [cursor=pointer]:
+          - generic [ref=f56e46]: E 8-Bit Holiday
+          - generic [ref=f56e47]: Retro holiday arcade
+      - generic [ref=f56e48]:
+        - button "Compare all five" [ref=f56e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f56e50] [cursor=pointer]
+        - link "Splash screens" [ref=f56e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f56e52]:
+      - tab "Main menu" [ref=f56e53] [cursor=pointer]
+      - tab "Level up" [ref=f56e54] [cursor=pointer]
+      - tab "Gameplay HUD" [selected] [ref=f56e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f56e56] [cursor=pointer]
+      - tab "Settings" [ref=f56e57] [cursor=pointer]
+      - tab "Achievements" [ref=f56e58] [cursor=pointer]
+      - tab "Customize" [ref=f56e59] [cursor=pointer]
+      - tab "Results" [ref=f56e60] [cursor=pointer]
+      - tab "Components" [ref=f56e61] [cursor=pointer]
+  - main [ref=f56e62]:
+    - generic [ref=f56e250]:
+      - generic:
+        - generic:
+          - generic:
+            - generic: "216"
+            - generic: "329"
+          - generic: 118 / 150
+          - generic:
+            - generic [ref=f56e252]: Lv 4
+            - generic [ref=f56e254]: Lv 2
+            - generic [ref=f56e256]: Lv 1
+          - list:
+            - listitem: Survive 3:00
+            - listitem: Defeat the Grumpy Yeti
+        - generic: 1:12
+        - generic: Lv 9
+        - generic:
+          - generic: Santa's Sleigh
+          - generic: 5 / 8
+          - generic [ref=f56e258]: Space
+        - generic:
+          - generic [ref=f56e259]: ×2
+          - generic [ref=f56e263]: ×3
+          - generic [ref=f56e267]: ×2
+        - generic:
+          - generic: "16"
+          - generic: "14"
+    - generic [ref=f56e142]:
+      - generic [ref=f56e269]: Try it
+      - button "Take a hit" [ref=f56e270] [cursor=pointer]
+      - button "Collect XP" [active] [ref=f56e271] [cursor=pointer]
+      - button "Boss arrives" [ref=f56e272] [cursor=pointer]
+      - button "Achievement" [ref=f56e273] [cursor=pointer]
+      - button "Santa ready (Space)" [ref=f56e274] [cursor=pointer]
+      - button "Pause (Esc)" [ref=f56e275] [cursor=pointer]
+      - generic [ref=f56e276]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f56e148]:
+      - generic [ref=f56e277]:
+        - heading "A. Workshop Tin" [level=2] [ref=f56e278]
+        - paragraph [ref=f56e279]: "The closest to Megabonk: riveted enamel plates from Santa's toy workshop, slab buttons with a pressable lip, and corner brackets that jump to whatever is focused."
+        - generic [ref=f56e280]:
+          - text: "Pairs with splash A:"
+          - link "open the matching intro" [ref=f56e281] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=a
+      - generic [ref=f56e282]:
+        - generic [ref=f56e283]:
+          - generic "#1A2438" [ref=f56e284]
+          - generic "#22304F" [ref=f56e286]
+          - generic "#1F5A43" [ref=f56e288]
+          - generic "#F2B53B" [ref=f56e290]
+          - generic "#F4F8FF" [ref=f56e292]
+          - generic "#D9343F" [ref=f56e294]
+        - generic [ref=f56e296]:
+          - generic [ref=f56e297]:
+            - text: Camel Claus
+            - generic [ref=f56e298]: Bowlby One, logo
+          - generic [ref=f56e299]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f56e300]: Jacquarda Bastarda 9, UI text
+      - generic [ref=f56e301]:
+        - generic [ref=f56e302]:
+          - heading "Strengths" [level=3] [ref=f56e303]
+          - list [ref=f56e304]:
+            - listitem [ref=f56e305]: Instantly readable at a glance; the most proven layout for this genre
+            - listitem [ref=f56e306]: Slab buttons and brackets feel great with mouse and gamepad
+            - listitem [ref=f56e307]: "Cheapest to build in Godot: one 9-slice StyleBox plus a bracket node"
+        - generic [ref=f56e308]:
+          - heading "Watch out for" [level=3] [ref=f56e309]
+          - list [ref=f56e310]:
+            - listitem [ref=f56e311]: The closest to Megabonk; needs its own logo and motifs to avoid feeling borrowed
+            - listitem [ref=f56e312]: Blackletter pixel text needs 18 px or more to stay legible
+    - group [ref=f56e185]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f56e186] [cursor=pointer]

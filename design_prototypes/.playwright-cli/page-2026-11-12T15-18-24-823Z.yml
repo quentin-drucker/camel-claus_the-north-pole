@@ -1,0 +1,167 @@
+- generic [active] [ref=f27e1]:
+  - generic [ref=f27e2]:
+    - banner [ref=f27e3]:
+      - generic [ref=f27e4]:
+        - generic [ref=f27e5]: Camel Claus
+        - generic [ref=f27e6]: UI direction prototypes
+      - tablist "Design concept" [ref=f27e7]:
+        - tab "A Workshop Tin Megabonk-style arcade" [selected] [ref=f27e8] [cursor=pointer]:
+          - generic [ref=f27e14]: A Workshop Tin
+          - generic [ref=f27e15]: Megabonk-style arcade
+        - tab "B Ugly Sweater Cozy knitted Christmas" [ref=f27e16] [cursor=pointer]:
+          - generic [ref=f27e22]: B Ugly Sweater
+          - generic [ref=f27e23]: Cozy knitted Christmas
+        - tab "C Northern Lights Frosted North Pole fantasy" [ref=f27e24] [cursor=pointer]:
+          - generic [ref=f27e30]: C Northern Lights
+          - generic [ref=f27e31]: Frosted North Pole fantasy
+        - tab "D Polar Expedition Modern indie roguelite" [ref=f27e32] [cursor=pointer]:
+          - generic [ref=f27e38]: D Polar Expedition
+          - generic [ref=f27e39]: Modern indie roguelite
+        - tab "E 8-Bit Holiday Retro holiday arcade" [ref=f27e40] [cursor=pointer]:
+          - generic [ref=f27e46]: E 8-Bit Holiday
+          - generic [ref=f27e47]: Retro holiday arcade
+      - generic [ref=f27e48]:
+        - button "Compare all five" [ref=f27e49] [cursor=pointer]
+        - button "Reduce motion" [ref=f27e50] [cursor=pointer]
+        - link "Splash screens" [ref=f27e51] [cursor=pointer]:
+          - /url: camel_claus_splash_showcase.html
+    - tablist "Screen" [ref=f27e52]:
+      - tab "Main menu" [ref=f27e53] [cursor=pointer]
+      - tab "Level up" [ref=f27e54] [cursor=pointer]
+      - tab "Gameplay HUD" [ref=f27e55] [cursor=pointer]
+      - tab "Pause + build" [ref=f27e56] [cursor=pointer]
+      - tab "Settings" [ref=f27e57] [cursor=pointer]
+      - tab "Achievements" [ref=f27e58] [cursor=pointer]
+      - tab "Customize" [ref=f27e59] [cursor=pointer]
+      - tab "Results" [ref=f27e60] [cursor=pointer]
+      - tab "Components" [selected] [ref=f27e61] [cursor=pointer]
+  - main [ref=f27e62]:
+    - generic [ref=f27e69]:
+      - generic [ref=f27e70]:
+        - heading "Buttons" [level=3] [ref=f27e72]
+        - generic [ref=f27e73]:
+          - generic [ref=f27e74]:
+            - generic [ref=f27e75]:
+              - button "Play" [ref=f27e76] [cursor=pointer]
+              - generic [ref=f27e78]: Idle
+            - generic [ref=f27e79]:
+              - button "Play" [ref=f27e80] [cursor=pointer]
+              - generic [ref=f27e82]: Hover
+            - generic [ref=f27e83]:
+              - button "Play" [ref=f27e84] [cursor=pointer]
+              - generic [ref=f27e86]: Pressed
+            - generic [ref=f27e87]:
+              - button "Play" [disabled] [ref=f27e88]
+              - generic [ref=f27e90]: Disabled
+          - generic [ref=f27e91]:
+            - generic [ref=f27e92]:
+              - button "Settings" [ref=f27e93] [cursor=pointer]
+              - generic [ref=f27e95]: Idle
+            - generic [ref=f27e96]:
+              - button "Settings" [ref=f27e97] [cursor=pointer]
+              - generic [ref=f27e99]: Hover
+            - generic [ref=f27e100]:
+              - button "Settings" [ref=f27e101] [cursor=pointer]
+              - generic [ref=f27e103]: Pressed
+            - generic [ref=f27e104]:
+              - button "Settings" [disabled] [ref=f27e105]
+              - generic [ref=f27e107]: Disabled
+          - generic [ref=f27e108]:
+            - button "2 Reroll R" [ref=f27e109] [cursor=pointer]:
+              - generic [ref=f27e110]: "2"
+              - generic [ref=f27e111]: Reroll
+              - generic [ref=f27e112]: R
+            - button "1 Banish B" [ref=f27e113] [cursor=pointer]:
+              - generic [ref=f27e114]: "1"
+              - generic [ref=f27e115]: Banish
+              - generic [ref=f27e116]: B
+            - button "Reset progress" [ref=f27e117] [cursor=pointer]
+            - button "Try me" [ref=f27e119] [cursor=pointer]
+      - generic [ref=f27e121]:
+        - heading "Rarity and tiles" [level=3] [ref=f27e123]
+        - generic [ref=f27e124]:
+          - generic [ref=f27e125]: Common
+          - generic [ref=f27e128]: Rare
+          - generic [ref=f27e131]: Epic
+          - generic [ref=f27e134]: Evolution
+          - generic [ref=f27e137]: Locked
+          - generic [ref=f27e140]:
+            - generic [ref=f27e141]: Lv 4
+            - generic [ref=f27e143]: With level
+          - generic [ref=f27e144]:
+            - generic [ref=f27e145]: ×2
+            - generic [ref=f27e147]: Stacked
+      - generic [ref=f27e148]:
+        - heading "Meters" [level=3] [ref=f27e150]
+        - generic [ref=f27e151]:
+          - generic [ref=f27e152]:
+            - generic [ref=f27e153]: Health
+            - generic [ref=f27e154]: 118 / 150
+          - generic [ref=f27e157]: Experience
+          - generic [ref=f27e161]: Santa's Sleigh
+          - generic [ref=f27e165]:
+            - generic [ref=f27e166]: Boss
+            - generic [ref=f27e167]: 3,360 / 4,800
+      - generic [ref=f27e170]:
+        - heading "Feedback" [level=3] [ref=f27e172]
+        - generic [ref=f27e173]:
+          - generic [ref=f27e174]:
+            - generic [ref=f27e175]:
+              - generic [ref=f27e176]: Achievement unlocked
+              - generic [ref=f27e177]: Blizzard of Bonks
+            - generic [ref=f27e178]: "+60"
+          - generic: The Grumpy Yeti approaches!
+          - generic [ref=f27e180]:
+            - generic [ref=f27e181]: Christmas Cracker ×3
+            - generic [ref=f27e182]: "Hits have a 25% chance to go BANG: 60% damage to enemies nearby"
+          - generic [ref=f27e183]:
+            - generic: "14"
+            - generic: "38"
+            - generic: "+30"
+            - generic: Frozen
+          - generic [ref=f27e184]:
+            - generic [ref=f27e185]: R
+            - generic [ref=f27e186]: B
+            - generic [ref=f27e187]: Space
+            - generic [ref=f27e188]: Esc
+    - generic [ref=f27e189]:
+      - generic [ref=f27e190]: Try it
+      - generic [ref=f27e191]: Hover tiles for tooltips; click “Try me”
+      - generic [ref=f27e192]: Arrows move the selection like a gamepad · Enter picks · Esc goes back
+    - generic [ref=f27e193]:
+      - generic [ref=f27e194]:
+        - heading "A. Workshop Tin" [level=2] [ref=f27e195]
+        - paragraph [ref=f27e196]: "The closest to Megabonk: riveted enamel plates from Santa's toy workshop, slab buttons with a pressable lip, and corner brackets that jump to whatever is focused."
+        - generic [ref=f27e197]:
+          - text: "Pairs with splash A:"
+          - link "open the matching intro" [ref=f27e198] [cursor=pointer]:
+            - /url: camel_claus_splash_showcase.html?c=a
+      - generic [ref=f27e199]:
+        - generic [ref=f27e200]:
+          - generic "#1A2438" [ref=f27e201]
+          - generic "#22304F" [ref=f27e203]
+          - generic "#1F5A43" [ref=f27e205]
+          - generic "#F2B53B" [ref=f27e207]
+          - generic "#F4F8FF" [ref=f27e209]
+          - generic "#D9343F" [ref=f27e211]
+        - generic [ref=f27e213]:
+          - generic [ref=f27e214]:
+            - text: Camel Claus
+            - generic [ref=f27e215]: Bowlby One, logo
+          - generic [ref=f27e216]:
+            - text: "Gift Toss: damage 18 → 23"
+            - generic [ref=f27e217]: Jacquarda Bastarda 9, UI text
+      - generic [ref=f27e218]:
+        - generic [ref=f27e219]:
+          - heading "Strengths" [level=3] [ref=f27e220]
+          - list [ref=f27e221]:
+            - listitem [ref=f27e222]: Instantly readable at a glance; the most proven layout for this genre
+            - listitem [ref=f27e223]: Slab buttons and brackets feel great with mouse and gamepad
+            - listitem [ref=f27e224]: "Cheapest to build in Godot: one 9-slice StyleBox plus a bracket node"
+        - generic [ref=f27e225]:
+          - heading "Watch out for" [level=3] [ref=f27e226]
+          - list [ref=f27e227]:
+            - listitem [ref=f27e228]: The closest to Megabonk; needs its own logo and motifs to avoid feeling borrowed
+            - listitem [ref=f27e229]: Blackletter pixel text needs 18 px or more to stay legible
+    - group [ref=f27e230]:
+      - generic "What we took from Megabonk (and other roguelites)" [ref=f27e231] [cursor=pointer]
