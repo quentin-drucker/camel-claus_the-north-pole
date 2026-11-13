@@ -21,6 +21,10 @@ const COLORS: Dictionary = {
 
 @export var id: String = ""
 @export var title: String = ""
+## One line under the title in the Customize detail panel.
+@export var description: String = ""
+## Tile picture (a render of the piece); null for skins (they show swatches) and "none" pieces.
+@export var picture: Texture2D
 @export var slot: Slot = Slot.HAT
 ## Wrapper scene of the piece; empty for skins and for "no hat" / "no outfit".
 @export var model: PackedScene

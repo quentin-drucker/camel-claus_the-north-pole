@@ -7,6 +7,8 @@ extends RefCounted
 const POSTMARK: Texture2D = preload("res://assets/ui/tin/postmark.png")
 const POSTMARK_WAVY: Texture2D = preload("res://assets/ui/tin/postmark_wavy.png")
 const RAYS: Texture2D = preload("res://assets/ui/tin/rays.png")
+const CLOSE: Texture2D = preload("res://assets/ui/tin/icon_close.png")
+const COIN: Texture2D = preload("res://assets/ui/icons/coin.png")
 const INK: Color = Color(0.133, 0.188, 0.31, 0.78)  # navy postmark ink on paper
 const INK_LIGHT: Color = Color(0.957, 0.973, 1.0, 0.9)  # white postmark ink on dark plates
 ## Rarity keys used by Row*/Tile*/Stamp* variations.
@@ -23,19 +25,78 @@ static func label(text: String, variation: StringName = &"", wrap: bool = false)
 	return l
 
 
-## Pine header band with the Fair Isle trim and a title (for PlateTight panels).
-static func header(title: String, extra: Control = null) -> PanelContainer:
+## Pine header band with the Fair Isle trim and a title (for PlateTight panels). `extra` sits right of
+## the title; `on_close` adds the red close X at the far right (style guide 4.1).
+static func header(title: String, extra: Control = null, on_close: Callable = Callable()) -> PanelContainer:
 	var band := PanelContainer.new()
 	band.theme_type_variation = &"HeaderBand"
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override(&"separation", 14)
 	band.add_child(row)
-	var t := label(title, &"HeaderLabel")
+	var t := label(title, &"TitleLabel")
 	t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(t)
 	if extra:
+		extra.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		row.add_child(extra)
+	if on_close.is_valid():
+		row.add_child(close_button(on_close))
 	return band
+
+
+## Red pixel X that closes a panel (no brackets: it is a header glyph, not a slab).
+static func close_button(on_press: Callable) -> Button:
+	var b := Button.new()
+	b.theme_type_variation = &"CloseButton"
+	b.icon = CLOSE
+	b.tooltip_text = "Close (Esc)"
+	b.focus_mode = Control.FOCUS_NONE
+	b.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	b.set_meta(&"no_brackets", true)
+	b.pressed.connect(on_press)
+	return b
+
+
+## Coin icon + amount ("1,240", "+60", "+186 coins").
+static func coin(text: String, variation: StringName = &"GoldLabel", icon_size: int = 22) -> HBoxContainer:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override(&"separation", 6)
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var icon := _icon_rect(COIN, icon_size)
+	icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	row.add_child(icon)
+	row.add_child(label(text, variation))
+	return row
+
+
+## A keyboard key ("WASD", "Space", "Esc"): snow keycap with navy text.
+static func keycap(text: String) -> PanelContainer:
+	var cap := PanelContainer.new()
+	cap.theme_type_variation = &"KeyCap"
+	cap.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	cap.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	cap.add_child(label(text, &"KeyCapLabel"))
+	return cap
+
+
+## Keycap + what it does, for control hints.
+static func key_hint(key: String, what: String) -> HBoxContainer:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override(&"separation", 8)
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	row.add_child(keycap(key))
+	row.add_child(label(what, &"HintLabel"))
+	return row
+
+
+## "1,042" (thousands separators, like the prototype's numbers).
+static func num(value: int) -> String:
+	var digits := str(absi(value))
+	var out := ""
+	while digits.length() > 3:
+		out = "," + digits.right(3) + out
+		digits = digits.left(digits.length() - 3)
+	return ("-" if value < 0 else "") + digits + out
 
 
 ## A body margin for content under a header inside a PlateTight panel.

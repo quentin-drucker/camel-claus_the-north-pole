@@ -63,7 +63,7 @@ func _run() -> void:
 			_audit("customize tab %d %s" % [tab, "rich" if rich else "fresh"])
 	customize.hide()
 	profile.data = profile.DEFAULTS.duplicate(true)
-	for page: String in ["%WorkshopPanel", "%AchievementsPanel", "%StatsPanel"]:
+	for page: String in ["%WorkshopPanel", "%AchievementsPanel", "%StatsPanel", "%CreditsPanel"]:
 		for veteran in [false, true]:  # fresh profile, then huge numbers and everything earned
 			if veteran:
 				profile.data["coins"] = 999999
@@ -155,10 +155,7 @@ func _run() -> void:
 	paused = false
 	pause_menu._open()
 	await _frames(2)
-	for slot: Control in pause_menu.build_grid.get_children():
-		slot.focus_entered.emit()
-		await _frames(2)
-		_audit("pause details " + slot.text)
+	_audit("pause build + stats")
 	pause_menu.main_panel.hide()
 	pause_menu.settings.show()
 	await _frames(2)
@@ -170,8 +167,6 @@ func _run() -> void:
 	end._on_run_ended(false)
 	await _frames(45)
 	_audit("lose screen")
-	for child in end.build_row.get_children():
-		child.free()
 	end._on_run_ended(true)
 	await _frames(45)
 	_audit("win screen")

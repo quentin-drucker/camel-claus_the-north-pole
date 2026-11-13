@@ -142,12 +142,15 @@ func find_weapon(scene: PackedScene) -> Weapon:
 	return null
 
 
-func deal_damage(enemy: Enemy, amount: float, can_proc: bool = true) -> void:
+## `source` names who hit (a weapon's display name, an item or event) for the results damage table.
+func deal_damage(enemy: Enemy, amount: float, can_proc: bool = true, source: String = "Other") -> void:
 	var dmg: float = amount * (1.0 + minf(GameState.kills * damage_per_kill, 0.6)) * blessing_damage
 	if enemy.is_elite or enemy.is_boss:
 		dmg *= 1.0 + elite_damage_bonus
 	var pos: Vector3 = enemy.global_position
-	GameState.damage_dealt += minf(dmg, maxf(enemy.hp, 0.0))
+	var dealt: float = minf(dmg, maxf(enemy.hp, 0.0))
+	GameState.damage_dealt += dealt
+	GameState.damage_by[source] = GameState.damage_by.get(source, 0.0) + dealt
 	enemy.take_damage(dmg)
 	DamageNumber.spawn(pos, dmg, Color("F4F8FF") if can_proc else Color("F2B53B"))
 	if not can_proc:
@@ -161,7 +164,7 @@ func deal_damage(enemy: Enemy, amount: float, can_proc: bool = true) -> void:
 	if explode_chance > 0.0 and randf() < explode_chance:
 		for other: Enemy in GameState.enemies.duplicate():
 			if other != enemy and other.global_position.distance_to(pos) < explosion_radius + other.radius:
-				deal_damage(other, dmg * 0.6, false)
+				deal_damage(other, dmg * 0.6, false, "Christmas Cracker")
 		Burst.spawn(Burst.RED, pos, explosion_radius)
 		Audio.play(&"explode")
 		get_tree().call_group(&"camera", &"shake", 0.12)
@@ -309,7 +312,7 @@ func _blizzard(blessing: BlessingData) -> void:
 		if enemy.global_position.distance_to(global_position) > 18.0:
 			continue
 		var big: bool = enemy.is_elite or enemy.is_boss
-		deal_damage(enemy, enemy.max_hp * (0.05 if big else blessing.amount), false)
+		deal_damage(enemy, enemy.max_hp * (0.05 if big else blessing.amount), false, "Blizzard")
 		enemy.freeze(blessing.duration)
 	Burst.spawn(Burst.ICE, global_position, 9.0)
 	Burst.spawn(Burst.ICE, global_position, 14.0)

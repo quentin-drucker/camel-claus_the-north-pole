@@ -57,6 +57,7 @@ func launch(from: Vector3, to: Vector3, dmg: float, splash: float, pieces: int, 
 	shell.target = Vector3(to.x, 0.0, to.z)
 	shell.flight_time = flight_time * (0.7 if size < 1.0 else 1.0)
 	shell.damage = dmg
+	shell.source = data.display_name
 	shell.splash_radius = splash
 	shell.size = size
 	shell.fragments = pieces

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="AchievementData" format=3]
+[gd_resource type="Resource" script_class="AchievementData" format=3 uid="uid://bs72mg33xn007"]
 
 [ext_resource type="Script" uid="uid://dg51ame1esmqh" path="res://scripts/data/achievement_data.gd" id="1_a"]
+[ext_resource type="Texture2D" uid="uid://dga00fhv6qd13" path="res://assets/ui/icons/santa_sleigh.png" id="9_pic"]
 
 [resource]
 script = ExtResource("1_a")
@@ -10,4 +11,5 @@ description = "Evolve 3 weapons in one run"
 stat = "run_evolutions"
 target = 3.0
 reward_coins = 120
-unlocks_weapon = ""
+category = "santa"
+icon = ExtResource("9_pic")

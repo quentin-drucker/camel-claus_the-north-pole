@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="AchievementData" format=3]
+[gd_resource type="Resource" script_class="AchievementData" format=3 uid="uid://cu7a6522kur5i"]
 
 [ext_resource type="Script" uid="uid://dg51ame1esmqh" path="res://scripts/data/achievement_data.gd" id="1_a"]
+[ext_resource type="Texture2D" uid="uid://cvd72xi1x7pm6" path="res://assets/ui/icons/snow_globe.png" id="9_pic"]
 
 [resource]
 script = ExtResource("1_a")
@@ -8,6 +9,5 @@ id = "snow_day"
 title = "Snow Day"
 description = "Finish your first run"
 stat = "total_runs"
-target = 1.0
 reward_coins = 20
-unlocks_weapon = ""
+icon = ExtResource("9_pic")

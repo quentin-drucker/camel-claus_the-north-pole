@@ -31,17 +31,36 @@ var _sleigh_left: float = 3.0
 @onready var quit_button: Button = %QuitButton
 @onready var settings: Control = %SettingsPanel
 @onready var loadout: Control = %LoadoutPanel
-@onready var best_label: Label = %BestLabel
+@onready var best_list: GridContainer = %BestList
+@onready var keys: HBoxContainer = %Keys
 @onready var coins_label: Label = %Coins
 @onready var goals: VBoxContainer = %Goals
 @onready var meta_pages: Dictionary = {%WorkshopButton: %WorkshopPanel, %AchievementsButton: %AchievementsPanel,
-	%StatsButton: %StatsPanel, %CustomizeButton: %CustomizePanel}
+	%StatsButton: %StatsPanel, %CreditsButton: %CreditsPanel, %CustomizeButton: %CustomizePanel}
+## Control hints under the menu: keycap -> what it does.
+const KEY_HINTS: Array[Array] = [["WASD", "Move"], ["Space", "Call Santa"], ["Esc", "Pause"]]
+
+## Camera poses: [position, look-at target]. Wide = the menu diorama; close = Customize's live preview.
+const CAMERA_WIDE: Array[Vector3] = [Vector3(-2.6, 2.4, 6.5), Vector3(-2.3, 1.55, 0.0)]
+const CAMERA_CLOSE: Array[Vector3] = [Vector3(-0.5, 1.5, 4.6), Vector3(-0.25, 1.0, 0.0)]
+
+var _badge: PanelContainer
+var _camera_tween: Tween
+
+
+func _frame_camera(pose: Array[Vector3]) -> void:
+	var camera: Camera3D = $Pivot/Camera3D
+	var goal := Transform3D(Basis.looking_at(pose[1] - pose[0]), pose[0])
+	if _camera_tween:
+		_camera_tween.kill()
+	_camera_tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	_camera_tween.tween_property(camera, "transform", goal, 0.0 if Audio.options["reduce_motion"] else 0.5)
 
 
 func _ready() -> void:
 	# Frame Claus on the right third, leaving the left for the menu panel.
 	# Low and level enough to show the sky, mountains and aurora above the forest, Claus on the right.
-	$Pivot/Camera3D.look_at_from_position(Vector3(-2.6, 2.4, 6.5), Vector3(-2.3, 1.55, 0.0))
+	$Pivot/Camera3D.look_at_from_position(CAMERA_WIDE[0], CAMERA_WIDE[1])
 	for critter: Node3D in critters + [yeti, lobber]:
 		critter.look_at(Vector3(0.0, critter.position.y, 0.0))  # models face -Z: turn to Claus
 	_yeti_scale = yeti.scale
@@ -50,6 +69,11 @@ func _ready() -> void:
 	Audio.set_paused_duck(false)
 	Audio.play_music()
 	quit_button.visible = not OS.has_feature("web")  # browsers can't quit a page
+	var version: String = str(ProjectSettings.get_setting("application/config/version", ""))
+	%Version.text = "v" + (version if version != "" else "1.2")
+	for hint: Array in KEY_HINTS:
+		keys.add_child(Tin.key_hint(hint[0], hint[1]))
+	_badge = _make_badge(%WorkshopButton)
 	play_button.pressed.connect(func() -> void:
 		Audio.play(&"click")
 		menu_box.hide()
@@ -81,23 +105,55 @@ func _ready() -> void:
 			_refresh_meta()
 			menu_box.show()
 			button.grab_focus())
+	# Customize: the camera moves in so Claus stands big between the picker and the detail panel.
+	%CustomizePanel.visibility_changed.connect(func() -> void:
+		_frame_camera(CAMERA_CLOSE if %CustomizePanel.visible else CAMERA_WIDE))
 	_refresh_meta()
 	for button: Button in [play_button, settings_button, quit_button] + meta_pages.keys():
 		button.mouse_entered.connect(button.grab_focus)  # hover = focus, so the brackets agree
 	play_button.grab_focus()
 
 
-## Best run, coins and the next three goals (Profile may have changed after a run or purchase).
+## Best runs, coins, Workshop badge and the next three goals (Profile may have changed after a run or
+## a purchase).
 func _refresh_meta() -> void:
-	var bests: Dictionary = Profile.data["bests"]
-	if bests.is_empty():
-		best_label.text = "None yet - good luck!"
-	else:
-		var t: int = int(bests.get("time", 0))
-		best_label.text = "Time  %d:%02d\nBonks  %d\nEvolved  %d" % [
-			floori(t / 60.0), t % 60, int(bests.get("kills", 0)), int(bests.get("evolutions", 0))]
-	coins_label.text = str(Profile.coins())
+	for child in best_list.get_children():
+		child.queue_free()
+	var runs: Array = Profile.data["top_runs"]
+	best_list.columns = 1 if runs.is_empty() else 4
+	if runs.is_empty():
+		best_list.add_child(Tin.label("None yet - good luck!", &"MutedLabel"))
+	for i in runs.size():
+		var run: Dictionary = runs[i]
+		var t: int = int(run["time"])
+		var cells: Array[String] = [str(i + 1), "%d:%02d" % [floori(t / 60.0), t % 60], "Lv %d" % int(run["level"]),
+			"%s bonks" % Tin.num(int(run["kills"]))]
+		for c in cells.size():
+			best_list.add_child(Tin.label(cells[c], &"MutedLabel" if c == 0 else (&"GoldLabel" if i == 0 else &"")))
+	coins_label.text = Tin.num(Profile.coins())
+	var affordable: int = 0
+	for item: WorkshopData in Profile.WORKSHOP:
+		var cost: int = Profile.workshop_cost(item)
+		affordable += int(cost >= 0 and cost <= Profile.coins())
+	_badge.visible = affordable > 0
+	(_badge.get_child(0) as Label).text = str(affordable)
 	_fill_goals()
+
+
+## Red count bubble on a button's top-right corner (Workshop: upgrades you can afford right now).
+func _make_badge(button: Button) -> PanelContainer:
+	var badge := PanelContainer.new()
+	badge.theme_type_variation = &"Badge"
+	badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	badge.set_meta(&"decor", true)  # overhangs the button's corner on purpose
+	var l := Tin.label("0", &"BadgeLabel")
+	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	badge.add_child(l)
+	button.add_child(badge)
+	var place := func() -> void: badge.position = Vector2(button.size.x - 20.0, -10.0)
+	button.resized.connect(place)
+	place.call()
+	return badge
 
 
 ## Megabonk-style quest cards: knit card, trophy stamp, gold title, description, progress bar + count.
@@ -117,7 +173,7 @@ func _fill_goals() -> void:
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override(&"separation", 12)
 		card.add_child(row)
-		row.add_child(Tin.stamp(Describe.icon("trophy"), "common", 28))
+		row.add_child(Tin.stamp(Describe.goal_icon(goal), "common", 34))
 		var text := VBoxContainer.new()
 		text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		text.add_theme_constant_override(&"separation", 2)
@@ -143,6 +199,8 @@ func _goal_num(goal: AchievementData, v: float) -> String:
 
 func _process(delta: float) -> void:
 	_time += delta
+	if Audio.options["reduce_motion"]:
+		return
 	pivot.rotation.y = sin(_time * 0.12) * 0.22
 	claus.position.y = absf(sin(_time * 3.2)) * 0.1
 	claus.rotation.y = PI + sin(_time * 0.6) * 0.35

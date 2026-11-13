@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="AchievementData" format=3]
+[gd_resource type="Resource" script_class="AchievementData" format=3 uid="uid://dqvjcf0cphgys"]
 
 [ext_resource type="Script" uid="uid://dg51ame1esmqh" path="res://scripts/data/achievement_data.gd" id="1_a"]
+[ext_resource type="Texture2D" uid="uid://s4ur04nhhnov" path="res://assets/ui/icons/weapon_gift_toss_evo.png" id="9_pic"]
 
 [resource]
 script = ExtResource("1_a")
@@ -10,4 +11,5 @@ description = "Evolve 2 weapons in one run"
 stat = "run_evolutions"
 target = 2.0
 reward_coins = 80
-unlocks_weapon = ""
+category = "santa"
+icon = ExtResource("9_pic")

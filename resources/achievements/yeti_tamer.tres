@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="AchievementData" format=3]
+[gd_resource type="Resource" script_class="AchievementData" format=3 uid="uid://gvfq4td4pf5v"]
 
 [ext_resource type="Script" uid="uid://dg51ame1esmqh" path="res://scripts/data/achievement_data.gd" id="1_a"]
+[ext_resource type="Texture2D" uid="uid://ccxmg5qu7xdok" path="res://assets/ui/renders/yeti.png" id="9_pic"]
 
 [resource]
 script = ExtResource("1_a")
@@ -8,6 +9,6 @@ id = "yeti_tamer"
 title = "Yeti Tamer"
 description = "Defeat the Grumpy Yeti"
 stat = "total_bosses"
-target = 1.0
 reward_coins = 80
-unlocks_weapon = ""
+category = "bonks"
+icon = ExtResource("9_pic")

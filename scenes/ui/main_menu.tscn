@@ -181,9 +181,9 @@ layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = -200.0
+offset_top = -260.0
 offset_right = 240.0
-offset_bottom = -40.0
+offset_bottom = -24.0
 mouse_filter = 2
 theme_override_constants/separation = 12
 alignment = 2
@@ -204,6 +204,15 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"SmallButton"
 text = "Stats"
+alignment = 0
+
+[node name="CreditsButton" type="Button" parent="UI/MenuBox/Side" unique_id=108472856]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"SmallButton"
+text = "Credits"
 alignment = 0
 
 [node name="QuitButton" type="Button" parent="UI/MenuBox/Side" unique_id=1211706527]
@@ -229,10 +238,10 @@ theme_override_constants/separation = 14
 layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -322.0
+offset_left = -342.0
 offset_top = 150.0
 offset_right = -32.0
-offset_bottom = 290.0
+offset_bottom = 320.0
 mouse_filter = 2
 theme_type_variation = &"PlateTight"
 
@@ -247,7 +256,7 @@ theme_type_variation = &"HeaderBand"
 [node name="Title" type="Label" parent="UI/MenuBox/Best/VBox/Header" unique_id=1622679449]
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
-text = "Best run"
+text = "Best runs"
 
 [node name="Body" type="MarginContainer" parent="UI/MenuBox/Best/VBox" unique_id=957358966]
 layout_mode = 2
@@ -256,10 +265,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 14
 theme_override_constants/margin_bottom = 10
 
-[node name="BestLabel" type="Label" parent="UI/MenuBox/Best/VBox/Body" unique_id=89048227]
+[node name="BestList" type="GridContainer" parent="UI/MenuBox/Best/VBox/Body" unique_id=421550864]
 unique_name_in_owner = true
 layout_mode = 2
-text = "-"
+mouse_filter = 2
+theme_override_constants/h_separation = 18
+theme_override_constants/v_separation = 6
+columns = 4
 
 [node name="Wallet" type="HBoxContainer" parent="UI/MenuBox" unique_id=850827360]
 layout_mode = 0
@@ -287,17 +299,6 @@ layout_mode = 2
 theme_type_variation = &"HudLabel"
 text = "0"
 
-[node name="Controls" type="Label" parent="UI/MenuBox" unique_id=1696971742]
-layout_mode = 0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_bottom = -18.0
-theme_type_variation = &"SmallLabel"
-text = "Move: WASD / arrows   Santa: Space   Pause: Esc / P"
-horizontal_alignment = 1
-
 [node name="Postmark" type="TextureRect" parent="UI/MenuBox" unique_id=1353055050]
 modulate = Color(0.133, 0.188, 0.31, 0.5)
 layout_mode = 0
@@ -310,6 +311,28 @@ mouse_filter = 2
 texture = ExtResource("13_jbte4")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Controls" type="PanelContainer" parent="UI/MenuBox" unique_id=824035624]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -62.0
+offset_right = 260.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_type_variation = &"HintBar"
+
+[node name="Keys" type="HBoxContainer" parent="UI/MenuBox/Controls" unique_id=461485728]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 28
+alignment = 1
 
 [node name="SettingsCenter" type="CenterContainer" parent="UI" unique_id=2055798154]
 anchors_preset = 15
@@ -356,6 +379,12 @@ visible = false
 layout_mode = 2
 page = 2
 
+[node name="CreditsPanel" parent="UI/MetaCenter" unique_id=1663791305 instance=ExtResource("12_otr3d")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+page = 3
+
 [node name="CustomizePanel" parent="UI" unique_id=1105747866 instance=ExtResource("13_8ekit")]
 unique_name_in_owner = true
 visible = false
@@ -365,18 +394,19 @@ anchor_top = 0.06
 anchor_right = 0.05
 anchor_bottom = 0.06
 
-[node name="Credits" type="Label" parent="UI" unique_id=626648406]
+[node name="Version" type="Label" parent="UI" unique_id=626648406]
+unique_name_in_owner = true
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -600.0
+offset_left = -200.0
 offset_top = -22.0
 offset_right = -14.0
 offset_bottom = -4.0
 theme_type_variation = &"SmallLabel"
-text = "Made with Godot & Blender  -  sounds: Kenney (CC0)  -  fonts: OFL"
+text = "v1.2"
 horizontal_alignment = 2
 
 [node name="Backdrop" parent="." unique_id=1188099731 instance=ExtResource("15_877pj")]

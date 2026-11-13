@@ -66,7 +66,7 @@ func _land() -> void:
 			continue
 		if not enemy.is_elite:
 			enemy.global_position = pos + away / maxf(d, 0.01) * (blast_radius + 0.5)
-		GameState.player.deal_damage(enemy, blast_damage, false)
+		GameState.player.deal_damage(enemy, blast_damage, false, "Santa's Sleigh")
 		enemy.freeze(freeze_time)
 	Burst.spawn(Burst.ICE, pos, blast_radius)
 	Burst.spawn(Burst.GOLD, pos, blast_radius * 0.5)

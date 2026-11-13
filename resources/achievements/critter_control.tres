@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="AchievementData" format=3]
+[gd_resource type="Resource" script_class="AchievementData" format=3 uid="uid://clglo7sjcw7q3"]
 
 [ext_resource type="Script" uid="uid://dg51ame1esmqh" path="res://scripts/data/achievement_data.gd" id="1_a"]
+[ext_resource type="Texture2D" uid="uid://dykliajatdhk5" path="res://assets/ui/renders/zoomer.png" id="9_pic"]
 
 [resource]
 script = ExtResource("1_a")
@@ -11,3 +12,5 @@ stat = "total_kills"
 target = 300.0
 reward_coins = 30
 unlocks_weapon = "snowball_barrage"
+category = "bonks"
+icon = ExtResource("9_pic")

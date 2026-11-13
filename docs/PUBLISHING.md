@@ -58,10 +58,10 @@ path `build/web/index.html`; then zip the *contents* of `build/web/` (not the fo
 7. Updates later: upload the new zip and delete the old one (or use butler:
    `butler push build/web <your-itch-user>/camel-claus:html5`).
 
-## B. GitHub Pages — live at https://quentin-drucker.github.io/camel-claus_survivors_workflow-test/
+## B. GitHub Pages — live at https://quentin-drucker.github.io/camel-claus_the-north-pole/
 
-Set up 2026-11-11 from the public repo `github.com/quentin-drucker/camel-claus_survivors_workflow-test`
-(renamed from `camel-claus`; the old URL redirects). The **`gh-pages`** branch holds only the web build
+Set up 2026-11-11 from the public repo `github.com/quentin-drucker/camel-claus_the-north-pole`
+(renamed from `camel-claus` and `camel-claus_survivors_workflow-test`; Pages URLs do not redirect). The **`gh-pages`** branch holds only the web build
 (plus an empty `.nojekyll`); Pages serves it from the branch root. `build/` stays git-ignored on `main`.
 `index.wasm` is ~40 MB: too big for GitHub's drag-and-drop uploader (25 MB), fine for `git push`.
 

@@ -14,6 +14,8 @@ const EVO_MODEL: PackedScene = preload("res://scenes/weapons/gift_evo_model.tscn
 var direction: Vector3 = Vector3.FORWARD
 var speed: float = 14.0
 var damage: float = 5.0
+## Weapon display name, for the results damage table.
+var source: String = "Other"
 ## Extra enemies this gift can pass through.
 var pierce: int = 0
 var evolved: bool = false
@@ -60,7 +62,7 @@ func _process(delta: float) -> void:
 		if Vector2(pos.x - e_pos.x, pos.z - e_pos.z).length_squared() < reach * reach \
 				and not _already_hit.has(enemy):
 			_already_hit.append(enemy)
-			GameState.player.deal_damage(enemy, damage)
+			GameState.player.deal_damage(enemy, damage, true, source)
 			if hit_burst:
 				Burst.spawn(hit_burst, e_pos, 0.7)
 			if _already_hit.size() > pierce:

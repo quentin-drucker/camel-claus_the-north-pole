@@ -14,3 +14,7 @@ extends Resource
 @export var reward_coins: int = 0
 ## Weapon id this goal makes buyable in the Workshop ("" = none).
 @export var unlocks_weapon: String = ""
+## Achievements tab: "survival", "bonks", "santa" or "collection".
+@export var category: String = "survival"
+## Stamp picture (an item icon or an enemy render); null = the trophy.
+@export var icon: Texture2D

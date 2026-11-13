@@ -99,7 +99,7 @@ func _snow_bomb(pos: Vector3) -> void:
 		if d < reach + enemy.radius:
 			var big: bool = enemy.is_elite or enemy.is_boss
 			# deal_damage only scales damage up, so hp * 1.01 always pops a normal enemy.
-			GameState.player.deal_damage(enemy, enemy.max_hp * bomb_big_damage if big else enemy.hp * 1.01, false)
+			GameState.player.deal_damage(enemy, enemy.max_hp * bomb_big_damage if big else enemy.hp * 1.01, false, "Snow bomb")
 			enemy.freeze(2.0)
 		elif d < reach * 1.5:
 			enemy.freeze(2.0)

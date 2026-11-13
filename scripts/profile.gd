@@ -118,7 +118,9 @@ const DEFAULTS: Dictionary = {
 	"cosmetics_owned": [],  # bought cosmetic ids (free ones are always owned)
 	"look": DEFAULT_LOOK,  # equipped cosmetic per slot + chosen colors
 	"seen_intro": false,  # the Knit + Tin intro plays in full once, then as a short sting
+	"top_runs": [],  # main menu "Best runs": up to TOP_RUNS of {time, level, kills}, longest first
 }
+const TOP_RUNS: int = 3
 
 ## Tests point this at a scratch file so they never touch the player's save.
 var save_path: String = "user://profile.json"
@@ -189,9 +191,12 @@ func _sanitize() -> void:
 	for key: String in ["shop", "achievements", "stats", "bests", "look"]:
 		if not data[key] is Dictionary:
 			data[key] = {}
-	for key: String in ["unlocked", "loadout", "seen_combos", "cosmetics_owned"]:
+	for key: String in ["unlocked", "loadout", "seen_combos", "cosmetics_owned", "top_runs"]:
 		if not data[key] is Array:
 			data[key] = DEFAULTS[key].duplicate()
+	if data["top_runs"].is_empty() and data["bests"].has("time"):  # saves from before the list existed
+		var b: Dictionary = data["bests"]
+		data["top_runs"] = [{"time": int(b["time"]), "level": int(b.get("level", 1)), "kills": int(b.get("kills", 0))}]
 	data["coins"] = maxi(int(data["coins"]), 0)
 	for key: String in DEFAULT_LOOK:  # unknown or unowned pieces fall back to the default look
 		if not data["look"].has(key):
@@ -387,6 +392,15 @@ func apply_workshop(player: Player) -> void:
 	player.pickup_bonus += workshop_bonus(WorkshopData.Stat.PICKUP)
 
 
+## Keep the TOP_RUNS longest runs (more bonks breaks a tie).
+func _add_top_run(entry: Dictionary) -> void:
+	var runs: Array = data["top_runs"]
+	runs.append(entry)
+	runs.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return a["time"] > b["time"] or (a["time"] == b["time"] and a["kills"] > b["kills"]))
+	data["top_runs"] = runs.slice(0, TOP_RUNS)
+
+
 # --- Achievements, stats, bests -----------------------------------------------------------------
 func has_achievement(id: String) -> bool:
 	return data["achievements"].has(id)
@@ -494,6 +508,7 @@ func record_run() -> Dictionary:
 			if key == "kills" and gs.player:
 				bests["build"] = gs.player.weapons().map(func(w: Weapon) -> String: return w.title())
 	if first:
+		_add_top_run({"time": roundi(gs.run_time), "level": gs.level, "kills": gs.kills})
 		var combo: Array = gs.loadout.duplicate()
 		combo.sort()
 		if combo not in data["seen_combos"]:

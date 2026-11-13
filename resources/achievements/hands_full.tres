@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="AchievementData" format=3]
+[gd_resource type="Resource" script_class="AchievementData" format=3 uid="uid://c4civa2434id6"]
 
 [ext_resource type="Script" uid="uid://dg51ame1esmqh" path="res://scripts/data/achievement_data.gd" id="1_a"]
+[ext_resource type="Texture2D" uid="uid://b6dpskonlundn" path="res://assets/ui/icons/santas_sack.png" id="9_pic"]
 
 [resource]
 script = ExtResource("1_a")
@@ -10,4 +11,5 @@ description = "Carry 3 weapons in one run"
 stat = "run_weapons"
 target = 3.0
 reward_coins = 25
-unlocks_weapon = ""
+category = "collection"
+icon = ExtResource("9_pic")

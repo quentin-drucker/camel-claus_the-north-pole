@@ -45,6 +45,7 @@ func _process(delta: float) -> void:
 		cookie.direction = aim.rotated(Vector3.UP, (i - (n - 1) * 0.5) * fan)
 		cookie.out_distance = reach
 		cookie.damage = damage()
+		cookie.source = data.display_name
 		cookie.size = evolved_size if evolved else 1.0
 		cookie.crumbs = evolved
 		cookie.position = origin + Vector3.UP * 0.6  # before add_child: _ready() remembers the start

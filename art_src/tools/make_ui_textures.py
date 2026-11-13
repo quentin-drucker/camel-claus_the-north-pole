@@ -394,6 +394,51 @@ def yarn_ball() -> None:
     save(big.resize((64, 64), Image.LANCZOS), "yarn_ball")
 
 
+def keycap() -> None:
+    """Keyboard key for control hints: snow face, steel lip at the bottom, dark outline.
+    9-slice margins 4/4/4/7 (theme role KeyCap)."""
+    img = Image.new("RGBA", (16, 18), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    rect(d, 0, 0, 15, 17, DARK)
+    rect(d, 1, 1, 14, 16, "#8FA9D1")  # lip
+    rect(d, 1, 1, 14, 12, SNOW)  # face
+    rect(d, 1, 1, 14, 1, "#FFFFFF")
+    save(img, "keycap")
+
+
+def close_icon() -> None:
+    """Red pixel X for panel headers (theme role CloseButton), with a dark drop."""
+    img = Image.new("RGBA", (22, 22), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    for off, color in ((2, DARK), (0, "#E2636B")):
+        for i in range(16):
+            rect(d, 2 + i, 2 + i + off, 4 + i, 4 + i + off, color)
+            rect(d, 17 - i, 2 + i + off, 19 - i, 4 + i + off, color)
+    save(img, "icon_close")
+
+
+def tick_icon() -> None:
+    """Airmail-blue check mark for delivered (earned) achievements on the postcard."""
+    s = 4
+    big = Image.new("RGBA", (28 * s, 24 * s), (0, 0, 0, 0))
+    ImageDraw.Draw(big).line([(3 * s, 13 * s), (10 * s, 20 * s), (25 * s, 4 * s)], fill=rgba("#3A8FBF"), width=5 * s, joint="curve")
+    save(big.resize((28, 24), Image.LANCZOS), "icon_tick")
+
+
+def check_boxes() -> None:
+    """HUD objective boxes: snow outline (open) and the same with a green tick (done), 18 px."""
+    for done in (False, True):
+        img = Image.new("RGBA", (18, 18), (0, 0, 0, 0))
+        d = ImageDraw.Draw(img)
+        rect(d, 0, 0, 17, 17, DARK)
+        rect(d, 1, 1, 16, 16, SNOW)
+        rect(d, 3, 3, 14, 14, "#22304F")
+        if done:
+            for x, y in ((4, 9), (5, 10), (6, 11), (7, 12), (8, 11), (9, 10), (10, 9), (11, 8), (12, 7), (13, 6)):
+                rect(d, x, y - 1, x, y, "#8DE09F")
+        save(img, "check_on" if done else "check_off")
+
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     plate("plate", PLATE, STEEL, knit=False)
@@ -413,3 +458,7 @@ if __name__ == "__main__":
     postmarks()
     rays()
     yarn_ball()
+    keycap()
+    close_icon()
+    tick_icon()
+    check_boxes()

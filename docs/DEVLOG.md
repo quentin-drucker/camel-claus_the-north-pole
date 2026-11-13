@@ -7,6 +7,37 @@ Entry format: `## YYYY-MM-DD — short title`, then what changed, why, and what'
 
 ---
 
+## 2026-11-13 — Phase 8 pass 2: the game now matches the approved A+ hybrid screen by screen
+
+Quentin played the GitHub Pages build and found many gaps against the approved HTML hybrid (settings,
+menu controls, no Credits, trophy icons everywhere). Every screen was cross-checked against
+`design_prototypes/` (`showcase.js` concept "h") and the guide's `screens/` captures, then rebuilt:
+- **Main menu:** Credits button + Credits page (Godot, Blender, art/music made with Claude Opus 5.5, Kenney
+  CC0 sounds, OFL fonts); "Best runs" top-3 table (`Profile.data.top_runs`, seeded from old bests); red
+  Workshop badge (affordable upgrades); controls as snow keycaps on a dark bar (`Tin.key_hint`); version
+  bottom right; goal cards use each achievement's own stamp picture.
+- **Data:** `AchievementData.icon` + `category`, `CosmeticData.picture` + `description` (renders from the
+  prototype, `assets/ui/renders/`, 96 px).
+- **Settings:** header band + close X; Sound / Display / Gameplay sections; % values; new options
+  Interface size (scales the HUD corners), Screen shake, Damage numbers, Reduce motion
+  (`Audio.options`, saved in `settings.cfg`).
+- **Achievements:** count + bar + coins earned in the header, category tabs with progress, per-goal
+  stamps, coin rewards, "Delivered" + tick.
+- **Customize:** picture tiles (renders, skin swatch rings, price), detail panel with Equip / Buy /
+  Equipped and colors, the camera moves in so Claus is the live preview.
+- **Level up:** rarity tags, `old → new` numbers, 1-3 keys + keycaps, Reroll/Banish with keycaps and
+  uses left above.
+- **HUD:** coin + bonk counters, objectives checklist (survive 5:00, defeat the Yeti), Santa count +
+  Space keycap, achievement toasts show the goal's own picture.
+- **Pause:** three plates (Your build with level pips / Paused with run numbers + buttons / Stats).
+- **Results:** postcard with pills, Damage table (new `GameState.damage_by`, every `deal_damage` names
+  its source), Summary, Unlocked (+ next goal); the HUD hides behind it.
+- Stats page as two tables, Loadout with the header band; new theme roles (CloseButton, KeyCap,
+  HintBar, Badge, Pill, SubLabel, NameLabel, TabName, BadLabel...).
+- Checks: all suites 0 failed; text fit 122 screens, 0 problems; balance bot seeds 3 and 4 WIN; web
+  release: loader -> intro -> menu with 0 console errors.
+- Next: Quentin replays the live build (Checkpoint 8).
+
 ## 2026-11-13 — Phase 8 built: "Workshop Tin" A+ hybrid UI in the game (awaiting Checkpoint 8)
 
 - **Style guide / template** for this game and future ones (hackathon): `art_reference/GUI_Style_Guide/`

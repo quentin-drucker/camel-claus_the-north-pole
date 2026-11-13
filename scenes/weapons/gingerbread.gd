@@ -13,6 +13,8 @@ extends Node3D
 var direction: Vector3 = Vector3.FORWARD
 var out_distance: float = 6.0
 var damage: float = 14.0
+## Weapon display name, for the results damage table.
+var source: String = "Other"
 var hit_radius: float = 0.45
 var size: float = 1.0
 var crumbs: bool = false
@@ -62,4 +64,4 @@ func _process(delta: float) -> void:
 		var reach: float = reach_base + enemy.radius
 		if Vector2(pos.x - e_pos.x, pos.z - e_pos.z).length_squared() < reach * reach:
 			_hit[id] = true
-			GameState.player.deal_damage(enemy, damage)
+			GameState.player.deal_damage(enemy, damage, true, source)

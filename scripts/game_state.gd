@@ -68,6 +68,9 @@ var santa_calls: int = 0
 
 ## Run totals (results screen, lifetime stats, achievements).
 var damage_dealt: float = 0.0
+## Damage by source for the results table: weapon display name (or "Christmas Cracker", "Snow bomb",
+## "Santa's Sleigh", "Blizzard") -> damage.
+var damage_by: Dictionary = {}
 var damage_taken: float = 0.0
 var elites_killed: int = 0
 var bosses_killed: int = 0
@@ -112,6 +115,7 @@ func start_run() -> void:
 	santa_ready = false
 	santa_calls = 0
 	damage_dealt = 0.0
+	damage_by = {}
 	damage_taken = 0.0
 	elites_killed = 0
 	bosses_killed = 0

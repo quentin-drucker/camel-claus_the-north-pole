@@ -41,6 +41,7 @@ func _fire_at(target: Enemy, fan_step: int) -> void:
 	projectile.direction = aim.normalized().rotated(Vector3.UP, fan_step * 0.35)
 	projectile.speed = data.projectile_speed
 	projectile.damage = damage()
+	projectile.source = data.display_name
 	projectile.pierce = data.evolved_pierce if evolved else 0
 	projectile.evolved = evolved
 	get_tree().current_scene.add_child(projectile)

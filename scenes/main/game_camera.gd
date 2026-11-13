@@ -17,6 +17,8 @@ func _ready() -> void:
 
 
 func shake(amount: float) -> void:
+	if not Audio.shake_allowed():
+		return
 	_trauma = minf(_trauma + amount, 1.0)
 
 

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="AchievementData" format=3]
+[gd_resource type="Resource" script_class="AchievementData" format=3 uid="uid://d2gyujj3num38"]
 
 [ext_resource type="Script" uid="uid://dg51ame1esmqh" path="res://scripts/data/achievement_data.gd" id="1_a"]
+[ext_resource type="Texture2D" uid="uid://b84081csidjnd" path="res://assets/ui/icons/trophy.png" id="9_pic"]
 
 [resource]
 script = ExtResource("1_a")
@@ -10,4 +11,5 @@ description = "Unlock every weapon"
 stat = "total_weapons_unlocked"
 target = 6.0
 reward_coins = 100
-unlocks_weapon = ""
+category = "collection"
+icon = ExtResource("9_pic")

@@ -119,6 +119,12 @@ docs/        devlog, art direction, these conventions
 - Deliberate overhangs (rays, a tag breaking a border) set meta `decor`; `test_text_fit.gd` then skips only
   their bounds. Anything else that sticks out is a bug.
 - Clearing old overrides from existing scenes: `art_src/tools/apply_tin_roles.gd` (MCP can't remove an override).
+- Panels built in code: `Tin.header(title, extra, close_callable)` gives the band + red close X; coins
+  via `Tin.coin()`, keys via `Tin.keycap()` / `Tin.key_hint()`, numbers via `Tin.num()` (1,042).
+- Settings options live in `Audio.options` (`set_option()` saves to `user://settings.cfg`); gameplay
+  checks them (`Audio.shake_allowed()`, `options["damage_numbers"]`, `options["reduce_motion"]`).
+- `Player.deal_damage(..., source)`: pass the weapon's `data.display_name` (or the item/event name) so
+  the results Damage table can attribute it.
 - Tweens on UI that can be visible while the tree is paused (toasts, results) must run with
   `PROCESS_MODE_ALWAYS` (bind the tween to that node), or they freeze half-way.
 - Main scene is `scenes/ui/splash.tscn` (Knit + Tin intro). Editor runs skip it; set

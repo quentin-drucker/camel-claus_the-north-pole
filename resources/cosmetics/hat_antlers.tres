@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="CosmeticData" format=3]
+[gd_resource type="Resource" script_class="CosmeticData" format=3 uid="uid://dn1r0qn4amlnd"]
 
 [ext_resource type="Script" uid="uid://bgd37brpu4d2n" path="res://scripts/data/cosmetic_data.gd" id="1_c"]
 [ext_resource type="PackedScene" path="res://scenes/player/cosmetics/hat_antlers_model.tscn" id="2_m"]
+[ext_resource type="Texture2D" uid="uid://bco37yu6hisup" path="res://assets/ui/renders/hat_antlers.png" id="9_pic"]
 
 [resource]
 script = ExtResource("1_c")
 id = "hat_antlers"
 title = "Reindeer Antlers"
-slot = 1
+description = "Comes with a red nose. Camels love it."
+picture = ExtResource("9_pic")
 model = ExtResource("2_m")
 price = 150
 swap_from = PackedColorArray()

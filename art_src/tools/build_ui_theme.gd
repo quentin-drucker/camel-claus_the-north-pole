@@ -91,11 +91,15 @@ func labels() -> void:
 	label("SmallLabel", tiny5, 16, MUTED, 0, 2)
 	label("GoldLabel", tiny5, 16, GOLD, 0, 2)
 	label("GoodLabel", tiny5, 16, GOOD, 0, 2)
+	label("BadLabel", tiny5, 16, Color("F28890"), 0, 2)  # a stat worse than base
 	label("StatLabel", tiny5, 16, LABEL, 0, 2)
 	label("TitleLabel", rocker, 36, TEXT, 4, 3)  # dialog titles
 	label("HeaderLabel", rocker, 27, TEXT, 4, 3)  # panel titles, names
 	label("TagLabel", rocker, 20, TEXT, 4, 2)  # rarity tags, small display text
 	label("GoalTitle", rocker, 20, TITLE_GOLD, 4, 2)
+	label("SubLabel", rocker, 22, LABEL, 4, 2)  # section headings inside a panel ("Sound", "Items")
+	label("TabName", rocker, 22, MUTED, 4, 2)  # inactive tab name
+	label("NameLabel", rocker, 22, TEXT, 4, 2)  # names in rows and lists (weapons, unlocks, cosmetics)
 	# Rarity tags that sit on an offer row's top border: row fill behind, rarity line color text.
 	for r in [["Common", "263450", "8FA9D1"], ["Rare", "17425C", "7FD6F2"], ["Epic", "37204F", "B47BE6"], ["Evo", "4A3A12", "F2B53B"]]:
 		label("Tag" + r[0], rocker, 20, Color(r[2]), 4, 2)
@@ -117,6 +121,9 @@ func labels() -> void:
 	label("ToastTitle", rocker, 20, POST_RED)
 	# Key hints: a small outlined box around Tiny5 13.
 	label("KeyLabel", tiny5, 16, MUTED)
+	label("KeyCapLabel", tiny5, 16, NAVY)  # text on a KeyCap
+	label("HintLabel", tiny5, 16, TEXT, 0, 2)  # what a key does, next to its KeyCap
+	label("BadgeLabel", tiny5, 16, TEXT, 0, 0)  # count in a red Badge bubble
 	t.set_stylebox(&"normal", "KeyLabel", flat(Color(DARK, 0.6), 1, Color(MUTED, 0.7), [5, 1, 5, 2]))
 	t.set_font(&"normal_font", "RichTextLabel", tiny5)
 	t.set_font_size(&"normal_font_size", "RichTextLabel", 16)
@@ -225,6 +232,13 @@ func buttons() -> void:
 	t.set_stylebox(&"hover_pressed", "KnitTileButton", sbt("row_evo_hover", [22, 22, 22, 29], [8, 8, 8, 8], [0, 0, 0, 7], true))
 	t.set_stylebox(&"disabled", "KnitTileButton", sbt("row_common", [22, 22, 22, 29], [8, 8, 8, 8], [0, 0, 0, 7], true))
 	t.set_stylebox(&"focus", "KnitTileButton", StyleBoxEmpty.new())
+	# Header close X (icon set by Tin.close_button): no plate, a faint wash on hover.
+	t.set_type_variation("CloseButton", &"Button")
+	t.set_stylebox(&"normal", "CloseButton", flat(Color(0, 0, 0, 0), 0, DARK, [6, 6, 6, 6]))
+	t.set_stylebox(&"hover", "CloseButton", flat(Color(TEXT, 0.12), 0, DARK, [6, 6, 6, 6]))
+	t.set_stylebox(&"pressed", "CloseButton", flat(Color(DARK, 0.3), 0, DARK, [6, 7, 6, 5]))
+	t.set_stylebox(&"hover_pressed", "CloseButton", flat(Color(DARK, 0.3), 0, DARK, [6, 7, 6, 5]))
+	t.set_stylebox(&"focus", "CloseButton", StyleBoxEmpty.new())
 
 
 func panels() -> void:
@@ -258,6 +272,18 @@ func panels() -> void:
 	t.set_stylebox(&"panel", "DoneRow", flat(Color(0.23, 0.56, 0.75, 0.13), 0, DARK, [8, 6, 8, 6]))
 	t.set_type_variation("LuggageTag", &"PanelContainer")
 	t.set_stylebox(&"panel", "LuggageTag", sbt("luggage_tag", [20, 5, 5, 5], [24, 3, 12, 4]))
+	t.set_type_variation("KeyCap", &"PanelContainer")  # keyboard key in control hints
+	t.set_stylebox(&"panel", "KeyCap", sbt("keycap", [4, 4, 4, 7], [8, 1, 8, 6]))
+	t.set_type_variation("Badge", &"PanelContainer")  # red count bubble (Workshop: affordable upgrades)
+	var badge := flat(Color("C42F3A"), 2, DARK, [7, 1, 7, 2])
+	badge.set_corner_radius_all(12)
+	t.set_stylebox(&"panel", "Badge", badge)
+	t.set_type_variation("Pill", &"PanelContainer")  # results postcard: "5:00 survived"
+	t.set_stylebox(&"panel", "Pill", flat(NAVY, 0, DARK, [12, 4, 12, 6]))
+	t.set_type_variation("PillRed", &"PanelContainer")  # results postcard: "New best run"
+	t.set_stylebox(&"panel", "PillRed", flat(POST_RED, 2, Color("E2636B"), [12, 2, 12, 4]))
+	t.set_type_variation("HintBar", &"PanelContainer")  # dark strip behind control hints
+	t.set_stylebox(&"panel", "HintBar", flat(Color(DARK, 0.88), 2, STEEL, [16, 8, 16, 8]))
 	t.set_stylebox(&"panel", "TooltipPanel", sbt("plate", [22, 22, 22, 29], [16, 12, 16, 14], [0, 0, 0, 7]))
 	t.set_font(&"font", "TooltipLabel", tiny5)
 	t.set_font_size(&"font_size", "TooltipLabel", 16)

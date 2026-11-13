@@ -74,4 +74,4 @@ func _blast(pos: Vector3, reach: float, dmg: float) -> void:
 		var e_pos: Vector3 = enemy.global_position
 		var r: float = reach + enemy.radius
 		if Vector2(pos.x - e_pos.x, pos.z - e_pos.z).length_squared() < r * r:
-			GameState.player.deal_damage(enemy, dmg)
+			GameState.player.deal_damage(enemy, dmg, true, weapon.data.display_name)

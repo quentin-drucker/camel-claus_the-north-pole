@@ -34,12 +34,17 @@ static func pct(v: float) -> String:
 
 ## "old > new" with the new value highlighted as an improvement.
 static func change(old: String, new: String) -> String:
-	return "%s > %s" % [old, c(GOOD, new)]
+	return "%s → %s" % [old, c(GOOD, new)]
 
 
 static func icon(name: String) -> Texture2D:
 	var path: String = ICON_DIR + name + ".png"
 	return load(path) if ResourceLoader.exists(path) else null
+
+
+## An achievement's stamp picture (its own icon or enemy render; the trophy if it has none).
+static func goal_icon(goal: AchievementData) -> Texture2D:
+	return goal.icon if goal.icon else icon("trophy")
 
 
 static func icon_for(res: Resource) -> Texture2D:
@@ -92,17 +97,18 @@ static func evolution_progress(data: WeaponData, level: int, evolved: bool) -> S
 	if evolved:
 		return c(GOLD, "EVOLVED into " + data.evolved_name)
 	if level < WeaponData.MAX_LEVEL:
-		return "Evolves at %s > %s" % [c(MUTED, "Lv %d/%d" % [level, WeaponData.MAX_LEVEL]), data.evolved_name]
+		return "Evolves at %s → %s" % [c(MUTED, "Lv %d/%d" % [level, WeaponData.MAX_LEVEL]), data.evolved_name]
 	return c(GOLD, "READY to evolve into %s - call Santa's Sleigh!" % data.evolved_name)
 
 
 ## Card content for a level-up card. Keys: tag, tag_color, name, level, body, hint.
 static func upgrade_card(player: Player, upgrade: UpgradeData, rarity_name: String, rarity_mult: float) -> Dictionary:
 	var level: int = player.upgrade_level(upgrade)
-	var card: Dictionary = {"name": upgrade.title, "level": "Lv %d > %d" % [level, level + 1] if level > 0 else "Lv 1", "hint": ""}
+	var card: Dictionary = {"name": upgrade.title, "level": "Lv %d → %d" % [level, level + 1] if level > 0 else "Lv 1", "hint": ""}
 	if upgrade.stat == UpgradeData.Stat.WEAPON:
 		var data: WeaponData = weapon_data_named(upgrade.title)
 		if level == 0:
+			card["level"] = "New"
 			card["tag"] = "NEW WEAPON"
 			card["tag_color"] = GOLD
 			card["body"] = sentence(upgrade.new_description.get_slice(": ", 1)) if ": " in upgrade.new_description else upgrade.new_description

@@ -63,6 +63,9 @@ var _holding: bool = false
 @onready var reroll_button: Button = %RerollButton
 @onready var banish_button: Button = %BanishButton
 
+var _reroll_count: Label
+var _banish_count: Label
+
 
 func _ready() -> void:
 	hide()
@@ -74,6 +77,13 @@ func _ready() -> void:
 		_parts.append(_build_card(buttons[i]))
 		buttons[i].mouse_entered.connect(buttons[i].grab_focus)  # hover = focus, so the brackets agree
 	reroll_button.pressed.connect(_reroll)
+	_reroll_count = _dress_tool(reroll_button, "R")
+	_banish_count = _dress_tool(banish_button, "B")
+	for i in buttons.size():  # 1-3 pick a card (the keycap sits in the row's corner)
+		var key := Tin.keycap(str(i + 1))
+		buttons[i].add_child(key)
+		key.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT, Control.PRESET_MODE_MINSIZE)
+		key.position -= Vector2(14, 16)  # inside the row's frame, above its lip
 	rays.set_meta(&"decor", true)  # decoration larger than the screen on purpose (tests skip its bounds)
 	banish_button.toggled.connect(func(_on: bool) -> void: _refresh_tools())
 
@@ -84,7 +94,17 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not visible or _kind != Kind.LEVEL_UP:
+	if not visible:
+		return
+	var key := event as InputEventKey
+	if key and key.pressed and not key.echo and key.keycode >= KEY_1 and key.keycode <= KEY_3:
+		var i: int = key.keycode - KEY_1
+		if i < _choices.size() and buttons[i].visible:
+			buttons[i].grab_focus()
+			_on_choice(i)
+			get_viewport().set_input_as_handled()
+		return
+	if _kind != Kind.LEVEL_UP:
 		return
 	if event.is_action_pressed("reroll"):
 		_reroll()
@@ -117,7 +137,8 @@ func _open_next() -> void:
 	banish_button.button_pressed = false
 	_show_choices()
 	level_tag.visible = _kind == Kind.LEVEL_UP
-	level_label.text = "Lv %d" % GameState.level
+	var from_level: int = GameState.level - GameState.pending_level_ups
+	level_label.text = "Lv %d → %d" % [from_level, from_level + 1]
 	match _kind:
 		Kind.SANTA:
 			var evolving: bool = _choices[0]["card"]["tag"] == "EVOLUTION"
@@ -246,11 +267,13 @@ func _reroll() -> void:
 
 func _refresh_tools() -> void:
 	tools.visible = _kind == Kind.LEVEL_UP
-	reroll_button.text = "Reroll (%d)  [R]" % GameState.rerolls
+	_reroll_count.text = str(GameState.rerolls)
 	reroll_button.disabled = GameState.rerolls <= 0
 	banish_button.disabled = GameState.banishes <= 0
 	var banishing: bool = banish_button.button_pressed and GameState.banishes > 0
-	banish_button.text = "Pick a card to banish" if banishing else "Banish (%d)  [B]" % GameState.banishes
+	banish_button.get_meta(&"label").text = "Cancel" if banishing else "Banish"
+	_banish_count.text = str(GameState.banishes)
+	%Help.text = "Pick a card to banish it for this run. B cancels." if banishing 		else "Click, press 1-3, or use arrows and Enter."
 	for i in buttons.size():
 		if buttons[i].visible:
 			buttons[i].modulate = Color("FF9AA0") if banishing else Color.WHITE
@@ -301,6 +324,46 @@ func _build_card(button: Button) -> Dictionary:
 		"body": body, "hint": hint}
 
 
+## Reroll / Banish as in the prototype: icon, name and a keycap inside the slab, the uses left above it.
+func _dress_tool(button: Button, key: String) -> Label:
+	var text: String = button.text.get_slice(" (", 0)
+	button.text = ""
+	var row := HBoxContainer.new()
+	row.alignment = BoxContainer.ALIGNMENT_CENTER
+	row.add_theme_constant_override(&"separation", 10)
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var icon := TextureRect.new()
+	icon.texture = button.icon
+	icon.custom_minimum_size = Vector2(28, 28)
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	icon.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	row.add_child(icon)
+	button.icon = null
+	var label := Tin.label(text, &"HeaderLabel")
+	row.add_child(label)
+	row.add_child(Tin.keycap(key))
+	button.add_child(row)
+	row.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	row.offset_bottom = -6  # the slab's lip
+	button.set_meta(&"label", label)
+	button.custom_minimum_size = Vector2(230, 56)
+	# The uses left sit above the button (wrap it in a column, keeping its place in the row).
+	var column := VBoxContainer.new()
+	column.add_theme_constant_override(&"separation", 4)
+	var parent: Node = button.get_parent()
+	var index: int = button.get_index()
+	parent.remove_child(button)
+	parent.add_child(column)
+	parent.move_child(column, index)
+	var count := Tin.label("", &"HudSmall")
+	count.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	column.add_child(count)
+	column.add_child(button)
+	return count
+
+
 func _rich(variation: StringName) -> RichTextLabel:
 	var rich := RichTextLabel.new()
 	rich.bbcode_enabled = true
@@ -318,7 +381,8 @@ func _fill_card(i: int, choice: Dictionary) -> void:
 	buttons[i].theme_type_variation = StringName("Row" + rarity.capitalize())
 	parts["tile"].theme_type_variation = StringName("Tile" + rarity.capitalize())
 	parts["icon"].texture = choice["icon"]
-	parts["tag"].text = Tin.sentence(card["tag"])
+	# Level-up cards wear their rarity (Common / Rare / Epic); chests, evolutions and blessings their kind.
+	parts["tag"].text = rarity.capitalize() if _kind == Kind.LEVEL_UP else Tin.sentence(card["tag"])
 	parts["tag"].theme_type_variation = StringName("Tag" + rarity.capitalize())
 	parts["tag"].reset_size()  # shrink to the new text so the tag hugs it on the border
 	parts["name"].text = card["name"]

@@ -9,7 +9,7 @@ static var _alive: int = 0
 
 
 static func spawn(pos: Vector3, amount: float, color: Color = Color("F4F8FF")) -> void:
-	if _alive >= MAX_ALIVE or amount < 1.0:
+	if _alive >= MAX_ALIVE or amount < 1.0 or not Audio.options["damage_numbers"]:
 		return
 	var label := DamageNumber.new()
 	label.text = str(roundi(amount))

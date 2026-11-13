@@ -1,39 +1,157 @@
 extends PanelContainer
-## Shared settings panel (main menu + pause menu): music and sound volume, fullscreen, reset progress.
-## Volumes go through Audio (bus-based, saved to user://settings.cfg).
+## Shared settings panel (main menu + pause menu), laid out like the approved hybrid (style guide 5.5):
+## header band with a close X; Sound (music, sounds), Display (fullscreen, interface size) and Gameplay
+## (screen shake, damage numbers, reduce motion); Reset progress (main menu only) and Back.
+## Volumes go through Audio's buses; the other options are Audio.options (all in user://settings.cfg).
 
 signal closed
-## Profile was wiped (the main menu refreshes its best-run line and coins).
+## Profile was wiped (the main menu refreshes its best runs and coins).
 signal progress_reset
 
-var _reset_armed: bool = false
+const SIZES: Array[String] = ["Small", "Medium", "Large"]
+const LABEL_WIDTH: int = 210
+const VALUE_WIDTH: int = 56
 
-@onready var reset_button: Button = %ResetButton
-@onready var music_slider: HSlider = %MusicSlider
-@onready var sfx_slider: HSlider = %SfxSlider
-@onready var fullscreen: CheckButton = %Fullscreen
-@onready var back_button: Button = %BackButton
+var _reset_armed: bool = false
+var music_slider: HSlider
+var sfx_slider: HSlider
+var fullscreen: CheckButton
+var reset_button: Button
+var back_button: Button
+var _size_value: Label
 
 
 func _ready() -> void:
-	music_slider.value = Audio.get_volume(&"Music")
-	sfx_slider.value = Audio.get_volume(&"SFX")
-	fullscreen.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
-	music_slider.value_changed.connect(func(v: float) -> void: Audio.set_volume(&"Music", v))
-	sfx_slider.value_changed.connect(func(v: float) -> void:
+	var column := VBoxContainer.new()
+	column.add_theme_constant_override(&"separation", 0)
+	add_child(column)
+	column.add_child(Tin.header("Settings", null, close))
+	var body := VBoxContainer.new()
+	body.add_theme_constant_override(&"separation", 10)
+	column.add_child(Tin.body(body, 18))
+
+	body.add_child(Tin.label("Sound", &"SubLabel"))
+	music_slider = _slider_row(body, "Music", Audio.get_volume(&"Music"), func(v: float) -> void:
+		Audio.set_volume(&"Music", v))
+	sfx_slider = _slider_row(body, "Sounds", Audio.get_volume(&"SFX"), func(v: float) -> void:
 		Audio.set_volume(&"SFX", v)
 		Audio.play(&"click"))
-	fullscreen.toggled.connect(func(on: bool) -> void:
+
+	body.add_child(Tin.label("Display", &"SubLabel"))
+	fullscreen = _toggle_row(body, "Fullscreen", _is_fullscreen(), func(on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if on else DisplayServer.WINDOW_MODE_WINDOWED))
-	_sync_fullscreen()
-	back_button.pressed.connect(close)
+	var size_row := _row(body, "Interface size")
+	var smaller := _arrow("<", -1)
+	size_row.add_child(smaller)
+	_size_value = Tin.label("", &"GoldLabel")
+	_size_value.custom_minimum_size = Vector2(120, 0)
+	_size_value.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	size_row.add_child(_size_value)
+	size_row.add_child(_arrow(">", 1))
+	_show_size()
+
+	body.add_child(Tin.label("Gameplay", &"SubLabel"))
+	_toggle_row(body, "Screen shake", Audio.options["shake"], func(on: bool) -> void:
+		Audio.set_option("shake", on))
+	_toggle_row(body, "Damage numbers", Audio.options["damage_numbers"], func(on: bool) -> void:
+		Audio.set_option("damage_numbers", on))
+	_toggle_row(body, "Reduce motion", Audio.options["reduce_motion"], func(on: bool) -> void:
+		Audio.set_option("reduce_motion", on))
+
+	var footer := HBoxContainer.new()
+	footer.add_theme_constant_override(&"separation", 16)
+	column.add_child(Tin.body(footer, 18))
+	reset_button = Button.new()
+	reset_button.theme_type_variation = &"DangerButton"
 	reset_button.pressed.connect(_on_reset)
+	footer.add_child(reset_button)
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	footer.add_child(spacer)
+	back_button = Button.new()
+	back_button.text = "Back"
+	back_button.theme_type_variation = &"PrimaryButton"
+	back_button.custom_minimum_size = Vector2(150, 0)
+	back_button.pressed.connect(close)
+	footer.add_child(back_button)
+	for b: Button in [reset_button, back_button]:
+		b.mouse_entered.connect(b.grab_focus)
+
+	_sync_fullscreen()
 	visibility_changed.connect(func() -> void:
 		if visible:
 			_reset_armed = false
 			reset_button.text = "Reset progress"
 			reset_button.visible = not GameState.is_running  # main menu only, never mid-run
 			music_slider.grab_focus())
+
+
+func _row(parent: Control, text: String) -> HBoxContainer:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override(&"separation", 16)
+	row.custom_minimum_size = Vector2(0, 36)
+	parent.add_child(row)
+	var l := Tin.label(text)
+	l.custom_minimum_size = Vector2(LABEL_WIDTH, 0)
+	l.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	row.add_child(l)
+	return row
+
+
+func _slider_row(parent: Control, text: String, value: float, on_change: Callable) -> HSlider:
+	var row := _row(parent, text)
+	var slider := HSlider.new()
+	slider.max_value = 1.0
+	slider.step = 0.05
+	slider.value = value
+	slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	slider.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	slider.custom_minimum_size = Vector2(0, 34)
+	slider.mouse_entered.connect(slider.grab_focus)
+	row.add_child(slider)
+	var pct := Tin.label("", &"MutedLabel")
+	pct.custom_minimum_size = Vector2(VALUE_WIDTH, 0)
+	pct.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	pct.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	row.add_child(pct)
+	var show := func(v: float) -> void: pct.text = "%d%%" % roundi(v * 100.0)
+	show.call(value)
+	slider.value_changed.connect(show)
+	slider.value_changed.connect(on_change)
+	return slider
+
+
+func _toggle_row(parent: Control, text: String, on: bool, on_toggle: Callable) -> CheckButton:
+	var row := _row(parent, text)
+	var toggle := CheckButton.new()
+	toggle.button_pressed = on
+	toggle.text = "On" if on else "Off"
+	toggle.layout_direction = Control.LAYOUT_DIRECTION_RTL  # switch first, then "On"/"Off" (prototype order)
+	toggle.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	toggle.toggled.connect(func(pressed: bool) -> void:
+		toggle.text = "On" if pressed else "Off"
+		Audio.play(&"click"))
+	toggle.toggled.connect(on_toggle)
+	toggle.mouse_entered.connect(toggle.grab_focus)
+	row.add_child(toggle)
+	return toggle
+
+
+func _arrow(text: String, step: int) -> Button:
+	var b := Button.new()
+	b.text = text
+	b.theme_type_variation = &"SmallButton"
+	b.custom_minimum_size = Vector2(48, 40)
+	b.mouse_entered.connect(b.grab_focus)
+	b.pressed.connect(func() -> void:
+		Audio.play(&"click")
+		Audio.set_option("ui_size", clampi(int(Audio.options["ui_size"]) + step, 0, SIZES.size() - 1))
+		_show_size())
+	return b
+
+
+func _show_size() -> void:
+	_size_value.text = SIZES[int(Audio.options["ui_size"])]
 
 
 func _process(_delta: float) -> void:
@@ -49,13 +167,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
-## The checkbox mirrors the real state: a browser leaves fullscreen on Esc (or its own UI) without the
-## game asking, so the box is read from the window every frame the panel is open, never remembered.
-func _sync_fullscreen() -> void:
+func _is_fullscreen() -> bool:
 	var mode: DisplayServer.WindowMode = DisplayServer.window_get_mode()
-	var is_full: bool = mode == DisplayServer.WINDOW_MODE_FULLSCREEN or mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
+	return mode == DisplayServer.WINDOW_MODE_FULLSCREEN or mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
+
+
+## The toggle mirrors the real state: a browser leaves fullscreen on Esc (or its own UI) without the
+## game asking, so it is read from the window every frame the panel is open, never remembered.
+func _sync_fullscreen() -> void:
+	var is_full: bool = _is_fullscreen()
 	if fullscreen.button_pressed != is_full:
 		fullscreen.set_pressed_no_signal(is_full)
+		fullscreen.text = "On" if is_full else "Off"
 
 
 ## Two presses: the first asks, the second wipes coins, Workshop, unlocks, achievements and stats.
@@ -63,7 +186,7 @@ func _on_reset() -> void:
 	if not _reset_armed:
 		_reset_armed = true
 		Audio.play(&"hurt", 1.4)
-		reset_button.text = "Really erase all progress? Press again"
+		reset_button.text = "Press again to erase"
 		return
 	_reset_armed = false
 	Profile.reset()

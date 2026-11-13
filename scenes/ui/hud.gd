@@ -8,6 +8,9 @@ extends CanvasLayer
 const TOAST_SLIDE: float = 16.0
 const BANNER_MAX_WIDTH: float = 1200.0
 const DESIGN_WIDTH: float = 1280.0
+const CHECK_ON: Texture2D = preload("res://assets/ui/tin/check_on.png")
+const CHECK_OFF: Texture2D = preload("res://assets/ui/tin/check_off.png")
+const KILLS_ICON: Texture2D = preload("res://assets/ui/renders/chaser.png")
 
 @onready var hp_bar: ProgressBar = %HpBar
 @onready var hp_label: Label = %HpLabel
@@ -38,6 +41,10 @@ var _blessing_labels: Dictionary = {}  # BlessingData -> Label with seconds left
 var _achievement_check_left: float = 1.0
 var _toasts: Array[AchievementData] = []
 var _toast: PanelContainer
+var _coins_label: Label
+var _santa_count: Label
+## Run objectives under the weapons: [checkbox, label, test].
+var _objectives: Array[Array] = []
 
 
 func _ready() -> void:
@@ -60,6 +67,69 @@ func _ready() -> void:
 	_on_santa_changed(GameState.santa_progress, GameState.santa_needed(), GameState.santa_ready)
 	GameState.weapon_evolved.connect(func(w: Weapon) -> void:
 		_show_banner("Evolution!  " + w.title(), Describe.weapon_icon(w)))
+	_build_extras()
+	Audio.options_changed.connect(_apply_ui_size)
+
+
+## Pieces of the approved HUD built in code (style guide 5.3): coin counter beside the bonks, the
+## objectives checklist, and the Space keycap + count on Santa's meter.
+func _build_extras() -> void:
+	var counters: HBoxContainer = $TopLeft/Counters/KillsIcon.get_parent()
+	$TopLeft/Counters/KillsIcon.texture = KILLS_ICON
+	var coin := TextureRect.new()
+	coin.texture = Tin.COIN
+	coin.custom_minimum_size = $TopLeft/Counters/KillsIcon.custom_minimum_size
+	coin.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	coin.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	coin.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	counters.add_child(coin)
+	counters.move_child(coin, 0)
+	_coins_label = Tin.label("0", kills_label.theme_type_variation)
+	counters.add_child(_coins_label)
+	counters.move_child(_coins_label, 1)
+	var goals := VBoxContainer.new()
+	goals.add_theme_constant_override(&"separation", 6)
+	goals.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	owned.get_parent().add_child(goals)
+	owned.get_parent().move_child(goals, owned.get_index() + 1)
+	var survive_text: String = "Survive %d:%02d" % [floori(GameState.RUN_LENGTH / 60.0), int(GameState.RUN_LENGTH) % 60]
+	for goal: Array in [[survive_text, func() -> bool: return GameState.run_time >= GameState.RUN_LENGTH or GameState.won],
+			["Defeat the Grumpy Yeti", func() -> bool: return GameState.bosses_killed > 0]]:
+		var box := PanelContainer.new()
+		box.theme_type_variation = &"DarkBox"
+		box.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		goals.add_child(box)
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override(&"separation", 8)
+		box.add_child(row)
+		var check := TextureRect.new()
+		check.texture = CHECK_OFF
+		check.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
+		row.add_child(check)
+		var label := Tin.label(goal[0], &"HudSmall")
+		row.add_child(label)
+		_objectives.append([check, label, goal[1]])
+	var santa_row: HBoxContainer = santa_icon.get_parent()
+	_santa_count = Tin.label("", &"HudSmall")
+	_santa_count.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	santa_row.add_child(_santa_count)
+	santa_row.add_child(Tin.keycap("Space"))
+	_on_santa_changed(GameState.santa_progress, GameState.santa_needed(), GameState.santa_ready)
+	_apply_ui_size()
+
+
+## Settings > Interface size scales the HUD's corner groups around their own anchor corner, so they
+## grow or shrink in place and never leave the screen.
+func _apply_ui_size() -> void:
+	var s: float = Audio.UI_SCALES[int(Audio.options["ui_size"])]
+	for node: Control in [$TopLeft, timer_label, level_label, santa_box.get_parent(), items_row, boss_panel]:
+		node.scale = Vector2.ONE * s
+
+
+func _update_pivots() -> void:
+	for node: Control in [$TopLeft, timer_label, level_label, santa_box.get_parent(), items_row, boss_panel]:
+		node.pivot_offset = Vector2(node.anchor_left * node.size.x, node.anchor_top * node.size.y)
 
 
 func _process(_delta: float) -> void:  # _delta is used for the achievement check timer
@@ -73,7 +143,14 @@ func _process(_delta: float) -> void:  # _delta is used for the achievement chec
 		if GameState.boss != _announced_boss:
 			_announced_boss = GameState.boss
 			_show_banner("The Grumpy Yeti approaches!")
-	kills_label.text = str(GameState.kills)
+	kills_label.text = Tin.num(GameState.kills)
+	_coins_label.text = Tin.num(Profile.run_coins(GameState.kills, GameState.run_time, GameState.elites_killed,
+		GameState.bosses_killed, false)["total"])
+	for goal: Array in _objectives:
+		var done: bool = goal[2].call()
+		goal[0].texture = CHECK_ON if done else CHECK_OFF
+		goal[1].modulate.a = 0.7 if done else 1.0
+	_update_pivots()
 	fps_label.text = "%d fps - %d enemies - %d kills%s" % [
 		Engine.get_frames_per_second(), GameState.enemies.size(), GameState.kills,
 		"   GOD MODE (F2 debug)" if GameState.player.invincible else "",
@@ -103,8 +180,8 @@ func _show_toast() -> void:
 		row.add_theme_constant_override(&"separation", 12)
 		_toast.add_child(row)
 		var icon := TextureRect.new()
-		icon.texture = Describe.icon("trophy")
-		icon.custom_minimum_size = Vector2(40, 40)
+		icon.name = "Icon"
+		icon.custom_minimum_size = Vector2(44, 44)
 		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		row.add_child(icon)
@@ -115,13 +192,16 @@ func _show_toast() -> void:
 		var name_label := Tin.label("", &"InkLabel")
 		name_label.name = "Text"
 		text.add_child(name_label)
-		var reward := Tin.label("", &"InkLabel")
+		var reward := Tin.coin("", &"InkLabel", 22)
 		reward.name = "Reward"
 		reward.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		row.add_child(reward)
 		add_child(_toast)
 	_toast.find_child("Text", true, false).text = goal.title
-	_toast.find_child("Reward", true, false).text = "+%d coins" % goal.reward_coins if goal.reward_coins > 0 else ""
+	(_toast.find_child("Icon", true, false) as TextureRect).texture = Describe.goal_icon(goal)
+	var reward: HBoxContainer = _toast.find_child("Reward", true, false)
+	reward.visible = goal.reward_coins > 0
+	(reward.get_child(1) as Label).text = "+%d" % goal.reward_coins
 	_toast.reset_size()
 	var screen: Vector2 = get_viewport().get_visible_rect().size
 	var shown_at: Vector2 = screen - Vector2(20.0, 96.0) - _toast.get_combined_minimum_size()
@@ -148,7 +228,9 @@ func _on_santa_changed(progress: int, needed: int, is_ready: bool) -> void:
 	_santa_ready = is_ready
 	santa_bar.max_value = needed
 	santa_bar.value = progress
-	santa_label.text = "Santa is ready!  [Space]" if is_ready else "Santa's Sleigh  %d / %d" % [progress, needed]
+	santa_label.text = "Santa is ready!" if is_ready else "Santa's Sleigh"
+	if _santa_count:
+		_santa_count.text = "Ready" if is_ready else "%d / %d" % [progress, needed]
 	santa_label.add_theme_color_override(&"font_color", Color("F2B53B") if is_ready else Color("F4F8FF"))
 	santa_box.self_modulate = Color(1.0, 0.85, 0.5) if is_ready else Color.WHITE  # warm box when ready
 	santa_icon.scale = Vector2.ONE

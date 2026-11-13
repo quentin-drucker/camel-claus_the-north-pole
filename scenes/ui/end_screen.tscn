@@ -22,7 +22,7 @@ anchor_bottom = 1.0
 
 [node name="Stack" type="VBoxContainer" parent="Center" unique_id=994246759]
 layout_mode = 2
-theme_override_constants/separation = 18
+theme_override_constants/separation = 12
 
 [node name="Postcard" type="PanelContainer" parent="Center/Stack" unique_id=1156003081]
 layout_mode = 2
@@ -50,6 +50,12 @@ theme_type_variation = &"LogoLabel"
 theme_override_colors/font_color = Color(0.95686275, 0.972549, 1, 1)
 theme_override_colors/font_outline_color = Color(0.13333334, 0.1882353, 0.30980393, 1)
 text = "North Pole!"
+
+[node name="Pills" type="HBoxContainer" parent="Center/Stack/Postcard/Row/Text" unique_id=1799734974]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
 
 [node name="StampHolder" type="Control" parent="Center/Stack/Postcard/Row" unique_id=635558495]
 custom_minimum_size = Vector2(170, 136)
@@ -83,55 +89,7 @@ texture = ExtResource("3_53v5j")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Panel" type="PanelContainer" parent="Center/Stack" unique_id=92569161]
-layout_mode = 2
-
-[node name="VBox" type="VBoxContainer" parent="Center/Stack/Panel" unique_id=809891372]
+[node name="Columns" type="HBoxContainer" parent="Center/Stack" unique_id=1748101576]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 14
-
-[node name="ResultLabel" type="Label" parent="Center/Stack/Panel/VBox" unique_id=1142960938]
-unique_name_in_owner = true
-layout_mode = 2
-theme_type_variation = &"BigNumber"
-text = "Result"
-horizontal_alignment = 1
-
-[node name="BuildRow" type="HBoxContainer" parent="Center/Stack/Panel/VBox" unique_id=813789265]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="Summary" type="RichTextLabel" parent="Center/Stack/Panel/VBox" unique_id=1937833150]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(940, 0)
-layout_mode = 2
-bbcode_enabled = true
-fit_content = true
-scroll_active = false
-
-[node name="Buttons" type="HBoxContainer" parent="Center/Stack/Panel/VBox" unique_id=581498631]
-layout_mode = 2
-theme_override_constants/separation = 18
-alignment = 1
-
-[node name="EndlessButton" type="Button" parent="Center/Stack/Panel/VBox/Buttons" unique_id=2049436673]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-text = "Keep going"
-
-[node name="RestartButton" type="Button" parent="Center/Stack/Panel/VBox/Buttons" unique_id=1533289641]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(220, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"PrimaryButton"
-text = "Play again"
-
-[node name="MenuButton" type="Button" parent="Center/Stack/Panel/VBox/Buttons" unique_id=390433978]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(220, 0)
-layout_mode = 2
-text = "Main menu"

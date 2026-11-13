@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="CosmeticData" format=3]
+[gd_resource type="Resource" script_class="CosmeticData" format=3 uid="uid://b7drf6r35h71s"]
 
 [ext_resource type="Script" uid="uid://bgd37brpu4d2n" path="res://scripts/data/cosmetic_data.gd" id="1_c"]
 [ext_resource type="PackedScene" path="res://scenes/player/cosmetics/hat_elf_model.tscn" id="2_m"]
+[ext_resource type="Texture2D" uid="uid://xjd0oammhrbm" path="res://assets/ui/renders/hat_elf.png" id="9_pic"]
 
 [resource]
 script = ExtResource("1_c")
 id = "hat_elf"
 title = "Elf Hat"
-slot = 1
+description = "Pointy, green, slightly too small."
+picture = ExtResource("9_pic")
 model = ExtResource("2_m")
 price = 100
 swap_from = PackedColorArray(0.2431, 0.6039, 0.3569, 1, 0.1216, 0.3529, 0.2627, 1)

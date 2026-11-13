@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="AchievementData" format=3]
+[gd_resource type="Resource" script_class="AchievementData" format=3 uid="uid://dev8uf5etat3u"]
 
 [ext_resource type="Script" uid="uid://dg51ame1esmqh" path="res://scripts/data/achievement_data.gd" id="1_a"]
+[ext_resource type="Texture2D" uid="uid://cx6kos8nljilp" path="res://assets/ui/icons/coin.png" id="9_pic"]
 
 [resource]
 script = ExtResource("1_a")
@@ -10,4 +11,5 @@ description = "Buy 5 Workshop upgrades"
 stat = "total_workshop_levels"
 target = 5.0
 reward_coins = 50
-unlocks_weapon = ""
+category = "collection"
+icon = ExtResource("9_pic")

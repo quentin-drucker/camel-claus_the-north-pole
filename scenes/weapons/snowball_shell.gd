@@ -11,6 +11,8 @@ var start: Vector3
 var target: Vector3
 var flight_time: float = 0.65
 var damage: float = 10.0
+## Weapon display name, for the results damage table.
+var source: String = "Other"
 var splash_radius: float = 1.6
 ## Visual scale (Avalanche 1.4, fragments 0.6).
 var size: float = 1.0
@@ -47,7 +49,7 @@ func _splash() -> void:
 		var e_pos: Vector3 = enemy.global_position
 		var reach: float = splash_radius + enemy.radius
 		if Vector2(pos.x - e_pos.x, pos.z - e_pos.z).length_squared() < reach * reach:
-			GameState.player.deal_damage(enemy, damage)
+			GameState.player.deal_damage(enemy, damage, true, source)
 	if size >= 1.0:  # fragments only puff: a ring each would blanket the screen with Avalanche
 		Burst.spawn(Burst.ICE, pos, splash_radius)
 	Poof.spawn(pos, Color("F4F8FF"), 8 if size >= 1.0 else 4, 3.5 * size)

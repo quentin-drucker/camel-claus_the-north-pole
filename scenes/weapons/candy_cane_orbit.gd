@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 			var id: int = enemy.get_instance_id()
 			if now - _last_hit.get(id, -99.0) >= rehit_time:
 				_last_hit[id] = now
-				GameState.player.deal_damage(enemy, dmg)
+				GameState.player.deal_damage(enemy, dmg, true, data.display_name)
 	if evolved:
 		_fling_left -= delta
 		if _fling_left <= 0.0:

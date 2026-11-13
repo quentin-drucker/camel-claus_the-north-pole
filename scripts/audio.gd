@@ -33,6 +33,14 @@ const SFX: Dictionary = {
 	&"lose": ["jingle_lose.wav", -2.0, 1.0, 1],
 }
 const SETTINGS_PATH: String = "user://settings.cfg"
+## Settings-panel options, saved with the volumes (section "options"). Interface size: 0 small, 1 medium,
+## 2 large (scales the in-run HUD). Reduce motion also turns off screen shake and menu bobbing.
+const OPTION_DEFAULTS: Dictionary = {"ui_size": 1, "shake": true, "damage_numbers": true, "reduce_motion": false}
+const UI_SCALES: Array[float] = [0.85, 1.0, 1.15]
+
+signal options_changed
+
+var options: Dictionary = OPTION_DEFAULTS.duplicate()
 
 var _players: Dictionary = {}  # name -> AudioStreamPlayer
 var _last_played: Dictionary = {}  # name -> engine time (s)
@@ -68,6 +76,8 @@ func _ready() -> void:
 	if config.load(SETTINGS_PATH) == OK:
 		set_volume(&"Music", config.get_value("audio", "music", 0.8))
 		set_volume(&"SFX", config.get_value("audio", "sfx", 0.8))
+		for key: String in OPTION_DEFAULTS:
+			options[key] = config.get_value("options", key, OPTION_DEFAULTS[key])
 
 
 func play(sfx_name: StringName, pitch: float = 1.0, jitter: float = 0.06) -> void:
@@ -136,6 +146,20 @@ func set_volume(bus_name: StringName, value: float) -> void:
 	config.load(SETTINGS_PATH)
 	config.set_value("audio", "music" if bus_name == &"Music" else "sfx", value)
 	config.save(SETTINGS_PATH)
+
+
+func set_option(key: String, value: Variant) -> void:
+	options[key] = value
+	var config := ConfigFile.new()
+	config.load(SETTINGS_PATH)
+	config.set_value("options", key, value)
+	config.save(SETTINGS_PATH)
+	options_changed.emit()
+
+
+## Screen shake and other decorative motion are allowed (both settings agree).
+func shake_allowed() -> bool:
+	return options["shake"] and not options["reduce_motion"]
 
 
 func get_volume(bus_name: StringName) -> float:

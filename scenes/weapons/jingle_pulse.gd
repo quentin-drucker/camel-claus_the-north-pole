@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 			continue
 		if not enemy.is_boss:
 			enemy.global_position += away.normalized() * knockback
-		GameState.player.deal_damage(enemy, dmg)
+		GameState.player.deal_damage(enemy, dmg, true, data.display_name)
 	Burst.spawn(Burst.GOLD, origin, reach)
 	Audio.play(&"pulse", 1.25 if evolved else 1.0)
 	if _bell:

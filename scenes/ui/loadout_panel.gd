@@ -21,18 +21,15 @@ var _start_button: Button
 
 
 func _ready() -> void:
+	theme_type_variation = &"PlateTight"  # header band + close X like every other panel (style guide 4.1)
+	var outer := VBoxContainer.new()
+	outer.add_theme_constant_override(&"separation", 0)
+	add_child(outer)
+	outer.add_child(Tin.header("Pick your loadout", null, close))
 	var column := VBoxContainer.new()
 	column.add_theme_constant_override(&"separation", 10)
-	add_child(column)
-	var title := Label.new()
-	title.text = "Pick your loadout"
-	title.theme_type_variation = &"TitleLabel"
-	title.add_theme_color_override(&"font_color", Color("F2B53B"))
-	column.add_child(title)
-	var help := Label.new()
-	help.text = "Up to 3 weapons. You start with the gold one; the rest come from level-ups."
-	help.add_theme_color_override(&"font_color", Color("8FA9D1"))
-	column.add_child(help)
+	outer.add_child(Tin.body(column, 16))
+	column.add_child(Tin.label("Up to 3 weapons. You start with the gold one; the rest come from level-ups.", &"MutedLabel"))
 
 	var grid := HBoxContainer.new()
 	grid.add_theme_constant_override(&"separation", 10)
